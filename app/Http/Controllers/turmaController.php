@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Endereco;
-use App\Contato;
-use App\Escola;
 
-class escolaController extends Controller
+use App\NomeTurma;
+use App\Turma;
+
+
+class turmaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,10 @@ class escolaController extends Controller
      */
     public function index()
     {
-        $escolaa = Escola::all();
-        
-        return view('escola.index', compact('escola'));
+
+        $turma = Turma::all();
+        $nome = NomeTurma::all();
+        return view('turma.index', compact('turma', 'nome'));
     }
 
     /**
@@ -28,7 +30,9 @@ class escolaController extends Controller
      */
     public function create()
     {
-        return view('escola.create');
+        $turma = Turma::all();
+        $nome = NomeTurma::all();
+        return view('turma.create', compact('turma', 'nome'));
     }
 
     /**
@@ -39,32 +43,12 @@ class escolaController extends Controller
      */
     public function store(Request $request)
     {
-        $formulario = new Escola;
-        $ende = new Endereco;
-        $telefone = new Contato;
+        $formulario = new Turma;
 
-        $ende->rua = $request->rua;
-        $ende->bairro = $request->bairro;
-        $ende->numero = $request->numero;
-        $ende->complemento = $request->complemento;
-        $ende->cep = $request->cep;
-        $ende->cidade = $request->cidade;
-        $ende->estado = $request->estado;
-        $ende->pais = $request->pais;
-        $ende->save(['timestamps' => false]);
-        //recriar relação escola e dados inscrição
-        $telefone->numero_fixo = $request->telefone;
-        $telefone->celular1 = $request->celular1;
-        $telefone->celular2 = $request->celular2;
-        $telefone->email = $request->email;
-        $telefone->save(['timestamps' => false]);
-       
-
-        $formulario->nome_fantasia = $request->nome_fantasia;
-        $formulario->nome = $request->nome;
-        $formulario->tipo = $request->tipo;
-        $formulario->contato()->associate($telefone);
-        $formulario->Endereco()->associate($ende);
+        $formulario->nome_turma_int = $request->turma;
+        $formulario->turno = $request->turno;
+      
+    
         $formulario->save(['timestamps' => false]);
 
 

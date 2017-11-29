@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Endereco;
-use App\Contato;
-use App\Escola;
+use App\Matricula;
+use App\Inscricao;
+use App\Turma;
+use App\StatusMatricula;
 
-class escolaController extends Controller
+
+class matriculaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,11 @@ class escolaController extends Controller
      */
     public function index()
     {
-        $escolaa = Escola::all();
-        
-        return view('escola.index', compact('escola'));
+        $matriculaa = Matricula::all();
+        $inscricao_id = Inscricao::all();
+        $turma_id = Turma::all();
+        $status = StatusMatricula::all();
+        return view('matricula.index', compact('matricula', 'inscricao_id', 'turma_id', 'status'));
     }
 
     /**
@@ -28,7 +32,11 @@ class escolaController extends Controller
      */
     public function create()
     {
-        return view('escola.create');
+        $matriculaa = Matricula::all();
+        $inscricao_id = Inscricao::all();
+        $turma_id = Turma::all();
+         $status = StatusMatricula::all();
+        return view('matricula.create', compact('matricula', 'inscricao_id', 'turma_id', 'status'));
     }
 
     /**
@@ -39,32 +47,15 @@ class escolaController extends Controller
      */
     public function store(Request $request)
     {
-        $formulario = new Escola;
-        $ende = new Endereco;
-        $telefone = new Contato;
-
-        $ende->rua = $request->rua;
-        $ende->bairro = $request->bairro;
-        $ende->numero = $request->numero;
-        $ende->complemento = $request->complemento;
-        $ende->cep = $request->cep;
-        $ende->cidade = $request->cidade;
-        $ende->estado = $request->estado;
-        $ende->pais = $request->pais;
-        $ende->save(['timestamps' => false]);
-        //recriar relação escola e dados inscrição
-        $telefone->numero_fixo = $request->telefone;
-        $telefone->celular1 = $request->celular1;
-        $telefone->celular2 = $request->celular2;
-        $telefone->email = $request->email;
-        $telefone->save(['timestamps' => false]);
-       
-
-        $formulario->nome_fantasia = $request->nome_fantasia;
-        $formulario->nome = $request->nome;
-        $formulario->tipo = $request->tipo;
-        $formulario->contato()->associate($telefone);
-        $formulario->Endereco()->associate($ende);
+        $formulario = new Matricula;
+        
+        //$formulario->turno = $request->turno;
+        $formulario->periodo = $request->periodo;
+        $formulario->inscricao_id = $request->inscricao_id;
+        $formulario->data = $request->data;
+        $formulario->status_matricula_id = $request->status;
+        $formulario->turma_id = $request->turma_id;
+    
         $formulario->save(['timestamps' => false]);
 
 
@@ -81,6 +72,7 @@ class escolaController extends Controller
     {
         //
     }
+   
 
     /**
      * Show the form for editing the specified resource.

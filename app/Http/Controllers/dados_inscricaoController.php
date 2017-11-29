@@ -8,6 +8,9 @@ use App\Pessoa;
 use App\Endereco;
 use App\Contato;
 use App\Escola;
+use App\Inscricao;
+use App\Documento;
+use App\Documento_tipo;
 
 class dados_inscricaoController extends Controller
 {
@@ -20,8 +23,11 @@ class dados_inscricaoController extends Controller
     {
         $dados_inscricao = DadosInscricao::all();
         $escola = Escola::all();
+        $documento_tipo = Documento_tipo::all();
+        $documento_tipo2 = Documento_tipo::all();
+        $documento_tipo3 = Documento_tipo::all();
         
-        return view('dados_inscricao.index', compact('dados_inscricao', 'escola'));
+        return view('dados_inscricao.index', compact('dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3'));
     }
 
     /**
@@ -33,10 +39,19 @@ class dados_inscricaoController extends Controller
     {
         $dados_inscricao = DadosInscricao::all();
         $escola = Escola::all();
+        $documento_tipo = Documento_tipo::all();
+        $documento_tipo2 = Documento_tipo::all();
+        $documento_tipo3 = Documento_tipo::all();
 
-        return view('dados_inscricao.create', compact('dados_inscricao', 'escola'));
+
+        return view('dados_inscricao.create', compact('dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3'));
     }
 
+    public function pesquisa($cpf){
+
+      return DB::table('pessoa')->where('cpf', '=', $cpf)->get();
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -50,6 +65,11 @@ class dados_inscricaoController extends Controller
         $pai = new Pessoa;
         $mae = new Pessoa;
         $ende = new Endereco;
+        $insc = new Inscricao;
+        $document = new Documento;
+        //$document2 = new Documento;
+        //$document3 = new Documento;
+        //$document4 = new Documento;
         // criar view cadastrar escola pra ter campo com lista de escolas pra mostrar. 
         // criar objeto do endereço pra colocar endereço tanto da escolaa quanto das pessoas
         // contato tbm
@@ -112,8 +132,48 @@ class dados_inscricaoController extends Controller
         //$formulario->mae_id
         //$formulario->pai_id
         $formulario->save(['timestamps' => false]);
+        $insc->data_inscricao = $request->data_inscricao;
+        $insc->data_avaliacao = $request->data_avaliacao;
+        $insc->dados_inscricao()->associate($formulario);
+        $insc->save(['timestamps' => false]);
 
-        return view('welcome');
+        $this->validate($request, [
+            'documento' => 'required|file'
+         ]);
+        
+        $file = $request->file('documento');
+        $document->url = $file->store('documento');
+        $document->numero_documento = $request->numero_documento;
+        $document->comentario = $request->comentario;
+        $document->inscricao()->associate($insc);
+        $document->documento_tipo_id = $request->doc_type; 
+        $document->save(['timestamps' => false]);
+
+        $this->validate($request, [
+            'documento' => 'required|file'
+         ]);
+        
+        $file = $request->file('documento2');
+        $document->url = $file->store('documento');
+        $document->numero_documento = $request->numero_documento;
+        $document->comentario = $request->comentario2;
+        $document->inscricao()->associate($insc);
+        $document->documento_tipo_id = $request->doc_type2; 
+        $document->save(['timestamps' => false]);
+
+        $this->validate($request, [
+            'documento' => 'required|file'
+         ]);
+        
+        $file = $request->file('documento3');
+        $document->url = $file->store('documento');
+        $document->numero_documento = $request->numero_documento3;
+        $document->comentario = $request->comentario3;
+        $document->inscricao()->associate($insc);
+        $document->documento_tipo_id = $request->doc_type3; 
+        $document->save(['timestamps' => false]);
+
+        return view('home');
     }
 
     /**
