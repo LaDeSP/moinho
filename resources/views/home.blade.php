@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     <h1>
-                        {{dd($busca)}}
+                       
                     </h1>
                 </div>
             </div>
