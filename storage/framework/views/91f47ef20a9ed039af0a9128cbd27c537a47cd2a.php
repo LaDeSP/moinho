@@ -10,7 +10,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-
+    
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
     <!-- Styles -->
@@ -62,13 +62,18 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="f">
-            <left> <img src="<?php echo e(url('Logo_Corumba.jpg')); ?>" alt="logo" width="100" height="100"> </left>
+            <left>  <a href="/home"> <img src="<?php echo e(url('logo_moinho.png')); ?>" alt="logo" width="150" height="100"></a> </left>
             <img class="c" src="<?php echo e(url('selosim.jpg')); ?>" alt="logo" width="100" height="100">
             Aaaaaaaaaaaaaaaa
           </div>
           <ul class="g">
-            <li class="k"><a href="#">Relatórios</a></li>
-            <li class="k"><a href="<?php echo e(route('organizations.index')); ?>">Empresas</a></li>
+            <li class="k"><a href="<?php echo e(route('escola.create')); ?>">Escolas</a></li>
+            <li class="k"><a href="<?php echo e(route('dados_inscricao.create')); ?>">Inscrição</a></li>
+            <li class="k"><a href="<?php echo e(route('matricula.create')); ?>">Matricula</a></li>
+            <li class="k"><a href="<?php echo e(route('turma.create')); ?>">Turma</a></li>
+            <li class="k"><a href="<?php echo e(route('NomeTurma.create')); ?>">Nova Turma</a></li>
+            <li class="k"><a href="<?php echo e(route('listar_matriculas.index')); ?>">Matriculas Regulares</a></li>
+            <li class="k"><a href="<?php echo e(route('lista_matriculas_irregulares.index')); ?>">Matriculas Irregulares</a></li>
             <?php if(!Auth::guest()): ?>
               <li class="k"><a href="/auth/logout">Logout</a></li>
             <?php endif; ?>

@@ -1,6 +1,11 @@
+<?php 
+
+use PHP\test;
+?>
+
 <html>
     <head>
- 
+ 	
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Adicionando Javascript -->
@@ -33,7 +38,7 @@
         
     function pesquisacep(valor) {
 
-        //Nova variável "cep" somente com dígitos.
+        //Nova variável "cep" somente com dígitos./
         var cep = valor.replace(/\D/g, '');
 
         //Verifica se campo cep possui valor informado.
@@ -73,12 +78,43 @@
             limpa_formulário_cep();
         }
     };
+    //copiar essa porra e tentar refazer com nome. pelo menos a inserção dos ... na tela que nem consegui. depois vejo de pegar do BD
+
     </script>
 
+<!--
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+   //---------------------------------------------------------------------------------------------- começo do 2
+/*
+    
+      
+    //copiar essa porra e tentar refazer com nome. pelo menos a inserção dos ... na tela que nem consegui. depois vejo de pegar do BD
+    $(document).ready(function () {
+    	$.ajaxSetup({
+        	headers: {
+        	    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        	}
+    	});
+	$.ajax({
+    	url: '/dados_inscricao/busca',
+    	type: 'POST',
+    	dataType: 'JSON',
+    	data: $('form#profile-form').serialize()
+	});
+		$('#cpf').blur(function(){ 	//Ao submeter formulário
+					var a = <?php //echo busca_nome();?>;
+					console.log(a);
+					
+				});
+	});*/
+   
+    </script>
+-->
+    
 
 
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+   <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
     $("input[name='cpf']").blur(function(){
@@ -99,7 +135,7 @@
         );
     });
   });
-  </script>
+  </script> -->
 <!--possivelmente excluir esse script e o function.php.
 ai fazer o update or save  em vez de só save
 coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chave primaria-->
@@ -116,9 +152,10 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
         <?php echo e(csrf_field()); ?>
 
         <div class="col-md-4">
-        <span> Nome: <input type="text" name="nome"></span></br>
+
+        <span> Nome: <input type="text" name="nome" value="" id="nome"></span></br>
         <span> Data de Nascimento: <input type="date" name="data_nascimento"></span></br>
-        <span> CPF: <input type="text" name="cpf"></span></br>
+        <span> CPF: <input name="cpf" type="text" id="cpf" value="" size="10" maxlength="9" /></span></br>
         <span> Nome do Pai: <input type="text" name="nomePai"></span></br>
         <span> Data de Nascimento do Pai: <input type="date" name="data_nascimentoPai"></span></br>
         <span> CPF do Pai: <input type="text" name="cpfPai"></span></br>
@@ -170,6 +207,51 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
         <span> Cidade: <input name="cidade" type="text" id="cidade" size="40" /></span></br>
         <span> Estado: <input name="uf" type="text" id="uf" size="2" /></br>
         <span> Pais: <input type="text" name="pais"></span></br>
+        <span> Data de Inscrição: <input type="date" name="data_inscricao"></span></br>
+        <span> Data de Avaliação: <input type="date" name="data_avaliacao"></span></br>
+        </div>
+
+        <div class="col-md-4">
+        <br>
+        <span> Número do documento: <input type="text" name="numero_documento"></span></br>
+        <span> Tipo do documento: 
+        <select name="doc_type">
+        <?php $__currentLoopData = $documento_tipo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc_type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
+            <option value="<?php echo e($doc_type->id); ?>"> <?php echo e($doc_type->nome); ?> </option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </select>
+        </span></br>
+        <span> Anotação: <input type="text" name="comentario"></span></br>
+        <span> Anexo: <input type="file" name="documento"></span></br>
+
+        <span> Número do documento: <input type="text" name="numero_documento2"></span></br>
+        <span> Tipo do documento: 
+        <select name="doc_type2">
+        <?php $__currentLoopData = $documento_tipo2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc_type2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
+            <option value="<?php echo e($doc_type2->id); ?>"> <?php echo e($doc_type2->nome); ?> </option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </select>
+        </span></br>
+        <span> Anotação: <input type="text" name="comentario2"></span></br>
+        <span> Anexo: <input type="file" name="documento2"></span></br>
+
+
+        <span> Número do documento: <input type="text" name="numero_documento3"></span></br>
+        <span> Tipo do documento: 
+        <select name="doc_type3">
+        <?php $__currentLoopData = $documento_tipo3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doc_type3): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
+            <option value="<?php echo e($doc_type3->id); ?>"> <?php echo e($doc_type3->nome); ?> </option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </select>
+        </span></br>
+        <span> Anotação: <input type="text" name="comentario3"></span></br>
+        <span> Anexo: <input type="file" name="documento3"></span></br>
+
+
+
+
+
+
      
         </div>
    

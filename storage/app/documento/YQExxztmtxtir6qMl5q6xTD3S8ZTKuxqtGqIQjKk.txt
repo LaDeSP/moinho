@@ -1,0 +1,3 @@
+- anexar documentos. tipo rg, cpf, comprovante de residencia, etc.
+- alternativa pra atualizar documentos. 
+- 
