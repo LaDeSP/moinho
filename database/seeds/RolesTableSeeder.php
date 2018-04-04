@@ -1,8 +1,9 @@
 <?php
 
+use App\Role;
 use Illuminate\Database\Seeder;
 
-class RoleTableSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,7 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $administrador = new Role();
+       $administrador = new Role();
         $administrador->name         = 'administrador';
         $administrador->display_name = 'Administrador'; // optional
         $administrador->description  = 'Administrador do projeto'; // optional
@@ -32,19 +33,19 @@ class RoleTableSeeder extends Seeder
         $social = new Role();
         $social->name = 'social';
         $social->display_name = 'Social';
-        $social->decription = 'Social';
+        $social->description = 'Social';
         $social->save();
 
         $colaborador = new Role();
         $colaborador->name = 'colaborador';
         $colaborador->display_name = 'Colaborador';
-        $colaborador->decription = 'Colaborador';
+        $colaborador->description = 'Colaborador';
         $colaborador->save();
 
         $apoio = new Role();
         $apoio->name = 'apoio';
         $apoio->display_name = 'Apoio';
-        $apoio->decription = 'Apoio';
+        $apoio->description = 'Apoio';
         $apoio->save();
     }
 }
