@@ -62,6 +62,7 @@ class matriculaController extends Controller
         return view('home');
     }
 
+<<<<<<< HEAD
    /* public function ajaxprod(){
         $item_categoria = Request::input('selecao_ano');
         $produtos = busca_matricula($item_categoria);
@@ -69,6 +70,8 @@ class matriculaController extends Controller
         return response()->json($json); // retorna uma resposta com o json
     }*/
 
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     /**
      * Display the specified resource.
      *

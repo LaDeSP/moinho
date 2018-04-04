@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Documento;
 use App\Documento_tipo;
+<<<<<<< HEAD
 use App\DadosInscricao;
 use App\Inscricao;
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 
 class documentoController extends Controller
 {
@@ -18,6 +21,7 @@ class documentoController extends Controller
     public function index()
     {
         
+<<<<<<< HEAD
     
         $documento_tipo = Documento_tipo::all();
         $documento_tipo2 = Documento_tipo::all();
@@ -80,6 +84,27 @@ class documentoController extends Controller
         $document->documento_tipo_id = $request->doc_type3; 
         $document->save(['timestamps' => false]);
         return view('home');
+=======
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+       
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+       
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     }
     /**
      * Display the specified resource.
@@ -96,9 +121,12 @@ class documentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     
     }
 
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     public function edit($id)
     {
         //

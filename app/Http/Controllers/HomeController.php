@@ -31,7 +31,10 @@ class HomeController extends Controller
         ->where(DB::raw('documents.document_type_id = 1'))
         ->orderBy('Dias_para_expirar')
         ->get();*/
+<<<<<<< HEAD
      
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         return view('home');
         
     }

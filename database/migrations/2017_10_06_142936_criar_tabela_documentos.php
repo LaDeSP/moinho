@@ -2,7 +2,11 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+<<<<<<< HEAD
 class CriarTabelaDocumentos extends Migration
+=======
+class CriarTabaleDocumentos extends Migration
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 {
     /**
      * Run the migrations.
@@ -16,8 +20,13 @@ class CriarTabelaDocumentos extends Migration
             $table->string('comentario');
             $table->string('url');
             $table->string('documento_numero');
+<<<<<<< HEAD
             $table->integer('documento_tipo_id')->unsigned();
             $table->integer('inscricao_id')->unsigned();
+=======
+            $table->integer('documento_tipo_id')->unsigned;
+            
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
             $table->timestamps();
         });
     }

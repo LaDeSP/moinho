@@ -80,6 +80,7 @@ use PHP\test;
     };
     //copiar essa porra e tentar refazer com nome. pelo menos a inserção dos ... na tela que nem consegui. depois vejo de pegar do BD
 
+<<<<<<< HEAD
     function verifica_cpf(cpf){
         var validacpf = /^[0-9]{11}$/;
             if(validacpf.test(cpf)) {
@@ -101,6 +102,8 @@ use PHP\test;
 
     }
 
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     </script>
 
 <!--
@@ -172,6 +175,7 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
     <form method= "POST" action="{{ route('dados_inscricao.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-md-4">
+<<<<<<< HEAD
          <table>
             <tr>
                 <td><label>Nome: </label></td>
@@ -223,6 +227,10 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
         
             <br>
         <!--<span> Nome: <input type="text" name="nome" value="" id="nome"></span></br>
+=======
+
+        <span> Nome: <input type="text" name="nome" value="" id="nome"></span></br>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         <span> Data de Nascimento: <input type="date" name="data_nascimento"></span></br>
         <span> CPF: <input name="cpf" type="text" id="cpf" value="" size="10" maxlength="9" /></span></br>
         <span> Nome do Pai: <input type="text" name="nomePai"></span></br>
@@ -230,6 +238,7 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
         <span> CPF do Pai: <input type="text" name="cpfPai"></span></br>
         <span> Nome da Mãe: <input type="text" name="nomeMae"></span></br>
         <span> Data de Nascimento da Mãe: <input type="date" name="data_nascimentoMae"></span></br>
+<<<<<<< HEAD
         <span> CPF da Mãe: <input type="text" name="cpfMae"></span></br>-->
         </div>
         <div class="col-md-4">
@@ -291,6 +300,12 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
         </table>
 
         <!--<span> Turma: <input type="text" name="turma"></span></br>
+=======
+        <span> CPF da Mãe: <input type="text" name="cpfMae"></span></br>
+        </div>
+        <div class="col-md-4">
+        <span> Turma: <input type="text" name="turma"></span></br>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         <span> Turno: <input type="text" name="turno"></span></br>
         <span> Observacoes: <input type="text" name="observacoes"></span></br>
         <span> Transporte: <input type="text" name="transporte"></span></br>
@@ -307,7 +322,11 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
             <option value="{{ $school->id }}"> {{ $school->nome_fantasia }} </option>
         @endforeach
         </select> </br>
+<<<<<<< HEAD
         </span>-->
+=======
+        </span>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         </div>
 
         <div class="col-md-4">
@@ -324,6 +343,7 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
         <label>Estado:
         <input name="uf" type="text" id="uf" size="2" /></label><br />
       </form>-->
+<<<<<<< HEAD
            <table>
             <tr>
                 <td><label>CEP: </label></td>
@@ -390,6 +410,9 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
 
         </table>
         <!--<span> CEP: <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+=======
+        <span> CEP: <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
                onblur="pesquisacep(this.value);" /></span></br>
         <span> Rua: <input name="rua" type="text" id="rua" size="60" /></span></br>
         <span> Bairro: <input name="bairro" type="text" id="bairro" size="40" /></span></br>
@@ -399,6 +422,7 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
         <span> Estado: <input name="uf" type="text" id="uf" size="2" /></br>
         <span> Pais: <input type="text" name="pais"></span></br>
         <span> Data de Inscrição: <input type="date" name="data_inscricao"></span></br>
+<<<<<<< HEAD
         <span> Data de Avaliação: <input type="date" name="data_avaliacao"></span></br>-->
         </div>
 
@@ -468,6 +492,12 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
             </table>
             
 
+=======
+        <span> Data de Avaliação: <input type="date" name="data_avaliacao"></span></br>
+        </div>
+
+        <div class="col-md-4">
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         <br>
         <span> Número do documento: <input type="text" name="numero_documento"></span></br>
         <span> Tipo do documento: 
@@ -509,10 +539,17 @@ coisar cpf unico ou não, falaram algo e eu não peguei exatamente. algo de chav
 
 
      
+<<<<<<< HEAD
         </div>-->
    
 
         
+=======
+        </div>
+   
+
+        <input type="submit">
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     </form>
 @endsection
 

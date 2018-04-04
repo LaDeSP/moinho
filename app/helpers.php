@@ -5,7 +5,11 @@
     {
         $query = DB::table('nome_turma')
             ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+<<<<<<< HEAD
             ->select('nome_turma.nome_turma', 'turma.id', 'turma.ano', 'turma.turno')
+=======
+            ->select('nome_turma.nome', 'turma.id', 'turma.turno')
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
             ->get();
         //$query = json_encode($query); para funcionar com o php puro que o alan fez. do Laravel é assim. tava faltando campos no select tbm
         $query = json_decode($query);
@@ -28,7 +32,11 @@
     {
         $query = DB::table('nome_turma')
             ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+<<<<<<< HEAD
             ->select('nome_turma.nome_turma', 'turma.id', 'turma.turno')
+=======
+            ->select('nome_turma.nome', 'turma.id', 'turma.turno')
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
             ->get();
         //$query = json_encode($query); para funcionar com o php puro que o alan fez. do Laravel é assim. tava faltando campos no select tbm
         //$query = json_decode($query);
@@ -52,6 +60,7 @@
         $query = DB::table('pessoa')->where('id', '=', $id)->get();
         return $query;
     }
+<<<<<<< HEAD
     function buscar_turma($id)
     {
         $query = DB::table('turma')->where('id', '=', $id)->get();
@@ -121,5 +130,7 @@
 
 
 
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 
     //'nome_turma.*', 

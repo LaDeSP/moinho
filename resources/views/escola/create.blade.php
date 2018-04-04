@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 
 use PHP\test;
@@ -92,6 +93,8 @@ use PHP\test;
 
     </script>
     </head>
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 @extends('layouts.app');
 
 @section('content')
@@ -100,6 +103,7 @@ use PHP\test;
     <form method= "POST" action="{{ route('escola.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-md-4">
+<<<<<<< HEAD
          <table>
             <tr>
                 <td><label>Nome: </label></td>
@@ -136,10 +140,23 @@ use PHP\test;
             </tr>
        </table>
 
+=======
+        <span> Nome: <input type="text" name="nome"></span></br>
+        <span> Nome Fantasia: <input type="text" name="nome_fantasia"></span></br>
+        <span> Tipo: <input type="text" name="tipo"></span></br>
+        
+        </div>
+        <div class="col-md-4">
+        <span> Telefone: <input type="text" name="telefone"></span></br>
+        <span> Celular 1: <input type="text" name="celular1"></span></br>
+        <span> Celular 2: <input type="text" name="celular2"></span></br>
+        <span> Email: <input type="text" name="email"></span></br>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
        
         </div>
 
         <div class="col-md-4">
+<<<<<<< HEAD
         <table>
             <tr>
                 <td><label>CEP: </label></td>
@@ -178,11 +195,25 @@ use PHP\test;
                 <td><input type="submit" class="btn-success"></td>
             </tr>
             </table>
+=======
+        <span> Rua: <input type="text" name="rua"></span></br>
+        <span> Bairro: <input type="text" name="bairro"></span></br>
+        <span> Numero: <input type="text" name="numero"></span></br>
+        <span> Complemento: <input type="text" name="complemento"></span></br>
+        <span> CEP: <input type="text" name="cep"></span></br>
+        <span> Cidade: <input type="text" name="cidade"></span></br>
+        <span> Estado: <input type="text" name="estado"></span></br>
+        <span> Pais: <input type="text" name="pais"></span></br>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
      
         </div>
    
 
+<<<<<<< HEAD
         
+=======
+        <input type="submit">
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     </form>
 @endsection
 

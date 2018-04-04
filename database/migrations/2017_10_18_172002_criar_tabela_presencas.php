@@ -15,11 +15,19 @@ class CriarTabelaPresencas extends Migration
     {
         Schema::create('presenca', function (Blueprint $table) {
             $table->increments('id');
+<<<<<<< HEAD
             $table->date('data');
             $table->string('presenca');
             $table->string('justificativa');
             $table->integer('participante_id')->unsigned();
             $table->integer('disciplina_id')->unsigned();
+=======
+            $table->date_time_set('dd/mm/yyyy')('data');
+            $table->string('presenca');
+            $table->string('justificativa');
+            $table->integer('participante_id')->unsigned;
+            $table->integer('disciplina_id')->unsigned;
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         });
     }
 

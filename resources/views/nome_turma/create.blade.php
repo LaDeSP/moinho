@@ -7,6 +7,7 @@
         {{ csrf_field() }}
         <div class="col-md-4">
         
+<<<<<<< HEAD
         <table>
         	<tr>
         		<td><label>Nome: </label></td>
@@ -21,6 +22,14 @@
     
         </div>
      
+=======
+        
+        <span> Nome: <input type="text" name="nome"></span></br>
+       
+    
+        </div>
+        <input type="submit">
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     </form>
 @endsection
 

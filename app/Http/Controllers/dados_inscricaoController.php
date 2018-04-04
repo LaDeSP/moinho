@@ -26,9 +26,14 @@ class dados_inscricaoController extends Controller
         $documento_tipo = Documento_tipo::all();
         $documento_tipo2 = Documento_tipo::all();
         $documento_tipo3 = Documento_tipo::all();
+<<<<<<< HEAD
         $contato = Contato::all();
         
         return view('dados_inscricao.index', compact('dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3', 'contato'));
+=======
+        
+        return view('dados_inscricao.index', compact('dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3'));
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     }
 
     /**
@@ -43,10 +48,16 @@ class dados_inscricaoController extends Controller
         $documento_tipo = Documento_tipo::all();
         $documento_tipo2 = Documento_tipo::all();
         $documento_tipo3 = Documento_tipo::all();
+<<<<<<< HEAD
         $contato = Contato::all();
 
 
         return view('dados_inscricao.create', compact('dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3', 'contato'));
+=======
+
+
+        return view('dados_inscricao.create', compact('dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3'));
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     }
 
     public function pesquisa($cpf){
@@ -69,8 +80,11 @@ class dados_inscricaoController extends Controller
         $ende = new Endereco;
         $insc = new Inscricao;
         $document = new Documento;
+<<<<<<< HEAD
         $telefone = new Contato;
 
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         //$document2 = new Documento;
         //$document3 = new Documento;
         //$document4 = new Documento;
@@ -140,6 +154,7 @@ class dados_inscricaoController extends Controller
         $insc->data_avaliacao = $request->data_avaliacao;
         $insc->dados_inscricao()->associate($formulario);
         $insc->save(['timestamps' => false]);
+<<<<<<< HEAD
         $telefone->numero_fixo = $request->telefone;
         $telefone->celular1 = $request->celular1;
         $telefone->celular2 = $request->celular2;
@@ -152,6 +167,46 @@ class dados_inscricaoController extends Controller
         $documento_tipo2 = Documento_tipo::all();
         $documento_tipo3 = Documento_tipo::all();
        return view('documento.create', compact('documento_tipo', 'documento_tipo2', 'documento_tipo3', 'help'));
+=======
+
+        $this->validate($request, [
+            'documento' => 'required|file'
+         ]);
+        
+        $file = $request->file('documento');
+        $document->url = $file->store('documento');
+        $document->numero_documento = $request->numero_documento;
+        $document->comentario = $request->comentario;
+        $document->inscricao()->associate($insc);
+        $document->documento_tipo_id = $request->doc_type; 
+        $document->save(['timestamps' => false]);
+
+        $this->validate($request, [
+            'documento' => 'required|file'
+         ]);
+        
+        $file = $request->file('documento2');
+        $document->url = $file->store('documento');
+        $document->numero_documento = $request->numero_documento;
+        $document->comentario = $request->comentario2;
+        $document->inscricao()->associate($insc);
+        $document->documento_tipo_id = $request->doc_type2; 
+        $document->save(['timestamps' => false]);
+
+        $this->validate($request, [
+            'documento' => 'required|file'
+         ]);
+        
+        $file = $request->file('documento3');
+        $document->url = $file->store('documento');
+        $document->numero_documento = $request->numero_documento3;
+        $document->comentario = $request->comentario3;
+        $document->inscricao()->associate($insc);
+        $document->documento_tipo_id = $request->doc_type3; 
+        $document->save(['timestamps' => false]);
+
+        return view('home');
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     }
 
     /**

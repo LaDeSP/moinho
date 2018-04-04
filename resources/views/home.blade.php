@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
 
 <div class="panel panel-info">
     <div class="panel-heading">
@@ -43,4 +44,26 @@
 
       </table>
       </div>
+=======
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard</div>
+
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <h1>
+                       
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 @endsection

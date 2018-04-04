@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+<<<<<<< HEAD
 class CriarTabelaDadosInscricao extends Migration
+=======
+class CriarTabelaDadosInscricoes extends Migration
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 {
     /**
      * Run the migrations.
@@ -22,6 +26,7 @@ class CriarTabelaDadosInscricao extends Migration
             $table->string('profissao');
             $table->string('raca');
             $table->string('religiao');
+<<<<<<< HEAD
             $table->float('renda')->unsigned();
             $table->integer('qtd_residencia')->unsigned();
             $table->string('beneficio_social');
@@ -30,6 +35,16 @@ class CriarTabelaDadosInscricao extends Migration
             $table->integer('dados_pessoais_id')->unsigned();
             $table->integer('mae_id')->unsigned();
             $table->integer('pai_id')->unsigned();
+=======
+            $table->float('renda')->unsigned;
+            $table->integer('qtd_residencia')->unsigned;
+            $table->string('beneficio_social');
+            $table->string('serie');
+            $table->integer('escola_id')->unsigned;
+            $table->integer('dados_pessoais_id')->unsigned;
+            $table->integer('mae')->unsigned;
+            $table->integer('pai')->unsigned;
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
             $table->timestamps();
         });
     }

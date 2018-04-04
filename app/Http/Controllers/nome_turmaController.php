@@ -43,7 +43,11 @@ class nome_turmaController extends Controller
     {
         $formulario = new NomeTurma;
         
+<<<<<<< HEAD
         $formulario->nome_turma = $request->nome;
+=======
+        $formulario->nome = $request->nome;
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
       
     
         $formulario->save(['timestamps' => false]);

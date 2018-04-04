@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+<<<<<<< HEAD
 class CriarTabelaStatusMatricula extends Migration
+=======
+class CriarTabelaStatus_Matricula extends Migration
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 {
     /**
      * Run the migrations.

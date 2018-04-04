@@ -17,7 +17,11 @@ class CriarTabelaHorarios extends Migration
             $table->increments('id');
             $table->string('dia_semana');
             $table->time('hora');
+<<<<<<< HEAD
             $table->integer('disciplina_id')->unsigned();
+=======
+            $table->integer('disciplina_id');
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         });
     }
 

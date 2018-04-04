@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -183,6 +184,12 @@
 
 
  <!--
+=======
+@extends('layouts.app')
+
+@section('content')
+<br><br><br>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
   <div class="row">
     <div class="col-md-12">
       <table id="myTable">
@@ -201,7 +208,10 @@
        
               
       		@foreach(busca_inscricao2($mat->inscricao_id) as $inscricao)<!-- logica é essa. só colocar os campos certos pra impressão e deu-->
+<<<<<<< HEAD
           <!--
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
       			@foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
       				@foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
       				 <td>{{$mat->id}}</td>
@@ -221,6 +231,7 @@
      
       </table>
     </div>
+<<<<<<< HEAD
   </div>-->
 
    <!--a.append(`
@@ -364,4 +375,7 @@
       
  
 </script>-->
+=======
+  </div>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 @endsection

@@ -7,6 +7,7 @@
     <form method= "POST" action="{{ route('matricula.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-md-4">
+<<<<<<< HEAD
         <table>
             <tr>
                 <td><label>Inscrição: </label></td>
@@ -47,6 +48,37 @@
        </table>
         
         
+=======
+        
+        <span>Inscricao:
+        <select name="inscricao_id">
+        @foreach(busca_inscricao() as $inscricao) 
+            <option value="{{ $inscricao->id }}"> {{ $inscricao->nome }} </option>
+        @endforeach
+        </select> </br>
+        </span>
+      <!-- <span> Turno: <input type="text" name="turno"></span></br>-->
+        <span> Período: <input type="text" name="periodo"></span></br>
+        <span> Data: <input type="date" name="data"></span></br>
+        <span> Turma:
+        <select name="turma_id">
+        
+        @foreach(busca_turma() as $turma) 
+            <option value="{{ $turma->id }}"> {{ $turma->nome }} - {{$turma->turno}} </option><!--aqui tava dando merda pq tava turma_id as turma, dai imprimia a string da função em vez do turma->nome. Assim, imprimia a função toda. Mais algum BO que esqueci -->
+        @endforeach
+        </select> </br>
+        </span>
+        <span> Status:
+        <select name="status">
+        
+        @foreach($status as $stat) 
+            <option value="{{ $stat->id }}"> {{ $stat->status }}</option>
+        @endforeach
+        </select> </br>
+        </span>
+        </div>
+        <input type="submit">
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     </form>
 @endsection
 

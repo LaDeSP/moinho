@@ -41,6 +41,7 @@ class listar_matriculasController extends Controller
        
     }
 
+<<<<<<< HEAD
     public function matricula(){
          $query = busca_matricula(0);
          //echo $query;
@@ -86,6 +87,8 @@ class listar_matriculasController extends Controller
         $query = busca_dados_inscricao(0);
         return $query;
     }
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     /**
      * Store a newly created resource in storage.
      *

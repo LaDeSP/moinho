@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('mostra_irregulares', 'lista_matriculas_irregularesController@index');
 
 });
+<<<<<<< HEAD
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('colaborador', 'colaboradorController');
 });
@@ -63,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
    Route::get('/nome_turma', 'listar_matriculasController@nome_turma');
 
 
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
     <style type="text/css">
@@ -9,10 +10,17 @@
 
 @section('content')
     
+=======
+@extends('layouts.app');
+
+@section('content')
+    <h1>Cadastrar Turma</h1>
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 
     <form method= "POST" action="{{ route('turma.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-md-4">
+<<<<<<< HEAD
         <h1>Cadastrar Turma</h1>
         <table>
              <tr>
@@ -44,6 +52,21 @@
         </div>
 
         
+=======
+        
+        <span>Nome:
+        <select name="turma">
+        @foreach($nome as $turma) 
+            <option value="{{ $turma->id }}"> {{ $turma->nome }} </option>
+        @endforeach
+        </select> </br>
+        </span>
+        <span> Turno: <input type="text" name="turno"></span></br>
+        
+    
+        </div>
+        <input type="submit">
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
     </form>
 @endsection
 

@@ -16,10 +16,17 @@ class CriarTabelaMatriculas extends Migration
         Schema::create('matricula', function (Blueprint $table) {
             $table->increments('id');
             $table->string('turno');
+<<<<<<< HEAD
             $table->integer('status_matricula_id')->unsigned();
             $table->integer('inscricao_id')->unsigned();
             $table->date('data');
             $table->integer('turma_id')->unsigned();
+=======
+            $table->integer('status_matricula_id');->unsigned;
+            $table->integer('inscricao_id')->unsigned;
+            $table->date_time_set('dd/mm/yyyy')('data');
+            $table->integer->('turma_id')->unsigned;
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
         });
     }
 

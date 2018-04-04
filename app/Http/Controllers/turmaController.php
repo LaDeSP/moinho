@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 use App\NomeTurma;
 use App\Turma;
+<<<<<<< HEAD
 use App\Disciplina;
 use App\TurmaDisciplina;
+=======
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 
 
 class turmaController extends Controller
@@ -46,16 +49,23 @@ class turmaController extends Controller
     public function store(Request $request)
     {
         $formulario = new Turma;
+<<<<<<< HEAD
         
 
         $formulario->nome_turma_int = $request->turma;
         $formulario->turno = $request->turno;
         $formulario->ano = $request->ano;
         $formulario->periodo = $request->periodo;
+=======
+
+        $formulario->nome_turma_int = $request->turma;
+        $formulario->turno = $request->turno;
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
       
     
         $formulario->save(['timestamps' => false]);
 
+<<<<<<< HEAD
         $help = $formulario->id;
         $turma = Turma::all();
         $nome = NomeTurma::all();
@@ -64,6 +74,11 @@ class turmaController extends Controller
     }
 
 
+=======
+
+        return view('home');
+    }
+>>>>>>> e15b13fc87d3094c1cb5b1a030eddaee0b9133ab
 
     /**
      * Display the specified resource.
