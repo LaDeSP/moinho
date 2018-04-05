@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/resume.min.css" rel="stylesheet">
+    <link href="/css/moinho.css" rel="stylesheet">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,106 +26,260 @@
     <!--<title>{{ config('app.name', 'Moinho Cultural') }}</title>-->
     <title>Moinho Cultural</title>
 
-    <!-- Styles -->
     <style>
-    .c{
-    	float: right;
-    }
-    .g {//ul
-        list-style-type: none;
-        margin: 0px;
-        padding: 5px;
-        overflow: hidden;
-        background-color: #ffffff;
-        font-size: 15px;
-
-    }
-    li a {
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 30px;
-        text-decoration: none;
-    }
-    .k {
-        float: left;
-    }
-    li a:hover {
-        color:  #FF4500; 
-    }
-    .a{
-      margin-top: 50px;
-      margin-right: 80px;
-      float: center;
-    }
-      .b{
-        margin-top: 100px;
-      }
-      .f{//div
-         margin-top: 0px;
-         color: black;
-         font-size:50px;
-      	 background-color: white;
-         
-      }
-      #SI {
-    background-color:rgba(0, 0, 0, 0);
-    color:white;
-    border: none;
-    outline:none;
-    height:30px;
-    transition:height 1s;
-    -webkit-transition:height 1s;
-}
-#SI:focus {
-    height:50px;
-    font-size:16px;
-}
-
+        .scroll {
+            height: 100vh;// or change to whatever you want 
+            overflow: scroll;
+            overflow-x: hidden;
+        }
     </style>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
-  <br><br><br><br><!--<br><br><br><br>-->
-    <div id="app">
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="f">
-            <left>  <a href="/home"> <img src="{{url('logo_moinho.png')}}" alt="logo" width="150" height="100"></a> </left>
-            <!--<img class="c" src="{{url('selosim.jpg')}}" alt="logo" width="100" height="100">-->
-            <label><center> Moinho Cultural</center></label>
-          </div>
-          <div>
-            <ul class="g">
-            <li class="k"><a href="{{ route('escola.create')}}">Escola</a></li>
-            <li class="k"><a href="{{ route('dados_inscricao.create')}}">Inscrição</a></li>
-            <li class="k"><a href="{{ route('matricula.create')}}">Matricula</a></li>
-            <li class="k"><a href="{{ route('turma.create')}}">Turma</a></li>
-            <!--<li class="k"><a href="{{ route('NomeTurma.create')}}">Nova Turma</a></li>-->
-            <li class="k"><a href="{{ route('listar_matriculas.index')}}">Matriculas Regulares</a></li>
-            <li class="k"><a href="{{ route('lista_matriculas_irregulares.index')}}">Matriculas Irregulares</a></li>
-            <li class="k"><a href="{{ route('colaborador.create')}}">Colaborador</a></li>
-            <li class="k"><a href="{{ route('disciplina.create')}}">Disciplina</a></li>
-            @if(!Auth::guest())
-              <li class="k"><a href="/auth/logout">Logout</a></li>
-            @endif
-          </ul>
-
-          </div>
-          </nav>
-          <br> <br> <br>
-          
 
 
-       <!--  </nav>
-       background-color: #98cee0;
-      background-color: #ddeff5;
+    <!-- Novo Front -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top" id="sideNav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars text-dark" aria-hidden="true"></i>
+      </button>
+      <div class="collapse navbar-collapse" data-spy="scroll" data-target="#sub-menu" id="navbarSupportedContent">
+        <ul class="navbar-nav" id="sub-menu" style="text-align: center; overflow: visible;">
+            <div class="scroll">
+                @if(Auth::guest())
+                    <li class="nav-item ">
+                        <a href="#page-top" class="js-scroll-trigger">
+                        <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn nav-link" data-toggle="collapse" href="#login" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+                            <h4 class="blue"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login</h4> 
+                        </a>
+                        <div class="collapse drop-login" id="login">
+                            <div class="container">
+                                <form class="subheading " method="POST" action="{{ route('login') }}">
+                                    {{ csrf_field() }}
+                                    <!-- Campo Email -->
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="Entre com o seu email">
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
-      -->
+                                    <!-- Campo Senha -->
+                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <label for="exampleInputPassword1">Senha</label>
+                                        <input id="password" type="password" class="form-control" name="password" required placeholder="Senha">
 
-        @yield('content')
+                                        @if ($errors->has('password'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                                    <!-- Campo Lembre-me e Submit -->
+                                    <div class="form-check">
+                                        <button type="submit" class="btn btn-info">Entrar</button>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="exampleCheck1">Lembre-me</label>
+                                    </div>
+                                    
+                                </form>
+                                <br>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="http://www.moinhocultural.org.br/">
+                        <h4 class="red">
+                            <i class="fa fa-ravelry" aria-hidden="true"></i> Site
+                        </h4>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#Evento">
+                            <h4 class="yellow">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> Eventos
+                            </h4>
+                        </a>
+                    </li>
+                @endif
+                @if(!Auth::guest())
+                    <li class="nav-item ">
+                        <a class="js-scroll-trigger" href="{{ route('home')}}">
+                        <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
+                        </a>
+                    </li>
+
+                    <!-- Link para inscrição-->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('dados_inscricao.create')}}">
+                            <h4 class="blue">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> Inscrição
+                            </h4>
+                        </a>
+                    </li>
+
+                    <!-- Link para matricula-->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('matricula.create')}}">
+                            <h4 class="green">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i> Matricula
+                            </h4>
+                        </a>
+                    </li>
+
+                    <!-- Link para colaborador -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('colaborador.create')}}">
+                            <h4 class="red">
+                            <i class="fa fa-handshake-o" aria-hidden="true"></i> Colaborador
+                            </h4>
+                        </a>
+                    </li>
+
+                    <!-- Link para turma -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('turma.create')}}">
+                            <h4 class="yellow">
+                            <i class="fa fa-list" aria-hidden="true"></i> Turma
+                            </h4>
+                        </a>
+                    </li>
+
+                    <!-- Link para escola -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('escola.create')}}">
+                            <h4 class="green">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> Escola
+                            </h4>
+                        </a>
+                    </li>
+
+                    <!-- Link para disciplina -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('disciplina.create')}}">
+                            <h4 class="blue">
+                            <i class="fa fa-book" aria-hidden="true"></i> Disciplina
+                            </h4>
+                        </a>
+                    </li>
+
+                    <!-- Link para matriculas inrregulares -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('lista_matriculas_irregulares.index')}}">
+                            <h4 class="blue">
+                            <i class="fa fa-book" aria-hidden="true"></i> Inrregulares
+                            </h4>
+                        </a>
+                    </li>
+
+
+                    <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('NomeTurma.create')}}">Nova Turma</a></li>-->
+                    <!-- Colocar tudo no tela de Matricula
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('listar_matriculas.index')}}">Matriculas Regulares</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('lista_matriculas_irregulares.index')}}">Matriculas Irregulares</a></li>
+                    -->
+                @endif
+            </div>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+    @if(!Auth::guest())
+        
+        <div class="d-flex flex-row-reverse">
+            <div class="p-2">
+                <a class="nav-link js-scroll-trigger" href="/auth/logout">
+                    <h4 class="red">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        Sair
+                    </h4>
+                </a>
+            </div>
+            <div class="p-2">
+                <a class="nav-link js-scroll-trigger" href="#">
+                    <h4 class="blue">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        {{{ Auth::user()->name }}}
+                    </h4>
+                </a>
+            </div>
+        </div>
+    @endif
+    @if(Auth::guest())
+        <section class="resume-section p-3 p-lg-5 d-flex d-column row" id="Sobre" >
+            <div class="col-sm-11">
+                <h1 class="mb-0 ">
+                    Instituto
+                    <span class="text-success" > Moinho </span>
+                    <span class="text-info" > Cultural </span>
+                    <span class="text-danger" > Sul </span>
+                    <span class="text-warning" > Americano </span> 
+                </h1>
+                <div class="subheading mb-5">
+                    Rua Comendador Domingos Sahib, 300 | Porto Geral | Corumbá/MS - Brasil | 
+                    <span class="text-danger" > +55 (67) 3231 8436 </span>
+                </div>
+                <p class="mb-5">
+                    O Instituto Moinho Cultural Sul-Americano (IMC) é uma instituição não governamental, sem fins lucrativos, que tem como missão a diminuição da vulnerabilidade de crianças e adolescentes em região de fronteira através do acesso a bens culturais e conhecimento tecnológico. Atende hoje 290 crianças e adolescentes dos municípios de Corumbá, Ladário/MS, e das cidades bolivianas de Puerto Suarez e Puerto Quijarro, com aulas diárias de música, dança, tecnologia, apoio escolar, idiomas, educação ambiental e patrimonial, no contraturno da escola regular em um ciclo com oito anos de duração. Os familiares dos participantes e a Comunidade participam de cursos de geração de renda e economia criativa promovidos pela instituição. Em 2015, com onze anos de atividades ininterruptas, o Moinho inspirou duas cidades Ladário/MS e Puerto Suarez/Bolívia a criar Projetos de Políticas Públicas baseadas nas ações desenvolvidas pelo Moinho. Além disso, vários participantes foram absorvidos pelo mercado de trabalho não só nas áreas fins da instituição, como também em outros cursos superiores, influenciados pela formação cidadã aqui adquirida.
+                </p>
+            </div>
+            <ul class="list-inline list-social-icons mb-0 col-sm-1">
+                <li class="list-inline-item">
+                    <a href="https://www.facebook.com/IMCultural/?ref=hl">
+                    <span class="fa-stack fa-lg facebook">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://www.youtube.com/channel/UCLq5EXr1orgvK1H3SzSmo2g">
+                    <span class="fa-stack fa-lg youtube">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section class="resume-section p-3 p-lg-5 d-flex d-column" id="Evento">
+            <div class="row"> 
+                <div class="col-12">
+                    <h1 class="text-warning">
+                        Eventos 
+                    </h1>
+                    <h3>
+                        Ainda em andamento
+                    </h3>
+                </div>
+            </div>
+        </section>
+    @endif
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Antigo Front -->
+    <div id="app" class="container">
+        @yield('content')
+    </div>
+    
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/resume.min.js"></script>
 </body>
 </html>
