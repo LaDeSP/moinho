@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaDadosInscricoes extends Migration
+class CriarTabelaDadosInscricao extends Migration
 {
     /**
      * Run the migrations.
@@ -28,8 +28,8 @@ class CriarTabelaDadosInscricoes extends Migration
             $table->string('serie');
             $table->integer('escola_id')->unsigned();
             $table->integer('dados_pessoais_id')->unsigned();
-            $table->integer('mae')->unsigned();
-            $table->integer('pai')->unsigned();
+            $table->integer('mae_id')->unsigned();
+            $table->integer('pai_id')->unsigned();
             $table->timestamps();
         });
     }

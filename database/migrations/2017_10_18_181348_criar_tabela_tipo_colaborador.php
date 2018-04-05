@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaTipo_Colaborador extends Migration
+class CriarTabelaTipoColaborador extends Migration
 {
     /**
      * Run the migrations.
