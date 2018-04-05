@@ -15,8 +15,8 @@ class CriarTabelaTurmaDisciplinas extends Migration
     {
         Schema::create('turma_disciplina', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('turma_id')->unsigned;
-            $table->integer('disciplina_id')->unsigned;
+            $table->integer('turma_id')->unsigned();
+            $table->integer('disciplina_id')->unsigned();
         });
     }
 

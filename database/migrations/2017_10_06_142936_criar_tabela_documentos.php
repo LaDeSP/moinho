@@ -16,8 +16,8 @@ class CriarTabaleDocumentos extends Migration
             $table->string('comentario');
             $table->string('url');
             $table->string('documento_numero');
-            $table->integer('documento_tipo_id')->unsigned;
-            $table->integer('inscricao_id')->unsigned
+            $table->integer('documento_tipo_id')->unsigned();
+            $table->integer('inscricao_id')->unsigned();
             $table->timestamps();
         });
     }

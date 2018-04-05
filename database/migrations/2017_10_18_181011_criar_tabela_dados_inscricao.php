@@ -22,14 +22,14 @@ class CriarTabelaDadosInscricoes extends Migration
             $table->string('profissao');
             $table->string('raca');
             $table->string('religiao');
-            $table->float('renda')->unsigned;
-            $table->integer('qtd_residencia')->unsigned;
+            $table->float('renda')->unsigned();
+            $table->integer('qtd_residencia')->unsigned();
             $table->string('beneficio_social');
             $table->string('serie');
-            $table->integer('escola_id')->unsigned;
-            $table->integer('dados_pessoais_id')->unsigned;
-            $table->integer('mae')->unsigned;
-            $table->integer('pai')->unsigned;
+            $table->integer('escola_id')->unsigned();
+            $table->integer('dados_pessoais_id')->unsigned();
+            $table->integer('mae')->unsigned();
+            $table->integer('pai')->unsigned();
             $table->timestamps();
         });
     }

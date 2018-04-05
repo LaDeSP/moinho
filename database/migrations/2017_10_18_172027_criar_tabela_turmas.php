@@ -16,8 +16,8 @@ class CriarTabelaTurmas extends Migration
         Schema::create('turma', function (Blueprint $table) {
             $table->increments('id');
             $table->string('turno');
-            $table->integer('nome_turma_id')->unsigned;
-            $table->year('ano')->;
+            $table->integer('nome_turma_id')->unsigned();
+            $table->integer('ano');
             $table->string('periodo');
         });
     }

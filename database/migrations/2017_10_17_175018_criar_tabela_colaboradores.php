@@ -15,7 +15,7 @@ class CriarTabelaColaboradores extends Migration
     {
         Schema::create('colaborador', function (Blueprint $table) {
             $table->increments('id');
-            $table->year('ano_ingreco');
+            $table->integer('ano_ingreco');
             $table->string('area_atuacao');
             $table->integer('pessoa_id')->unsigned();
             $table->integer('tipo_colaborador_id')->unsigned();

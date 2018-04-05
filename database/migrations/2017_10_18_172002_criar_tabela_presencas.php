@@ -15,7 +15,7 @@ class CriarTabelaPresencas extends Migration
     {
         Schema::create('presenca', function (Blueprint $table) {
             $table->increments('id');
-            $table->date_time_set('dd/mm/yyyy')('data');
+            $table->date('data');
             $table->string('presenca');
             $table->string('justificativa');
             $table->integer('participante_id')->unsigned;

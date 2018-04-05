@@ -17,8 +17,8 @@ class CriarTabelaEventos extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('tipo');
-            $table->date_time_set('dd/mm/yyyy')('data_inicial');
-            $table->date_time_set('dd/mm/yyyy')('data_final');
+            $table->date('data_inicial');
+            $table->date('data_final');
             $table->string('descricao');
             $table->string('situacao');
         });

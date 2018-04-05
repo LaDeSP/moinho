@@ -15,8 +15,8 @@ class CriarTabelaInscricoes extends Migration
     {
         Schema::create('inscricao', function (Blueprint $table) {
             $table->increments('id');
-            $table->date_time_set('dd/mm/yyyy')('data_inscricao');
-            $table->date_time_set('dd/mm/yyyy')('data_avaliacao');
+            $table->date('data_inscricao');
+            $table->date('data_avaliacao');
             $table->integer('dados_inscricao_id')->unsigned;
         });
     }

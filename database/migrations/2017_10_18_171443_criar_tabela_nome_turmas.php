@@ -16,6 +16,7 @@ class CriarTabelaNomeTurmas extends Migration
         Schema::create('nome_turma', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome_turma');
+        });
     }
 
     /**
