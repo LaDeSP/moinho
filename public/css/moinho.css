@@ -137,15 +137,74 @@ td.calendar {
 }
 
 .carousel-control-prev {
-    height: 50%;
+    top: 100%;
+    height: 10%;
 }
 
 .carousel-control-next {
-    height: 50%;
+    top: 100%;
+    height: 10%;
 }
 
+input {
+    margin-bottom: 10px
+}
 .scrollable-menu {
     height: auto;
     max-height: 200px;
     overflow-x: hidden;
+}
+
+.col-md-4 {
+    margin-bottom: 10px;
+}
+
+textarea {
+    border: 1px solid #ced4da;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+    h1{
+        font-size: 3.5rem;
+    }
+    .scroll{
+        height: 75vh !important;
+    }
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    h1{
+        font-size: 5rem;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    h1{
+        font-size: 6rem;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    h1{
+        font-size: 5.5rem;
+    }
+    .logo {
+        max-width: 80%;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    h1{
+        font-size: 3.5rem;
+    }
+    .logo {
+        max-width: 50%;
+    }
 }
