@@ -105,128 +105,138 @@ use PHP\test;
     </head>
 
 
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
-    <h1>Adicionar Colaborador</h1>
+    <h1 class="text-danger">Adicionar Colaborador</h1>
 
     <form method= "POST" action="{{ route('colaborador.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <div class="col-md-4">
-      
-
-
-
-        <table>
-            <tr>
-                <td><label>Nome: </label></td>
-                <td><input type="text" name="nome" value="" id="nome" size="23" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Data de Nascimento: </label></td>
-                <td><input type="date" name="data_nascimento" size="20" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>CPF: </label></td>
-                <td><input name="cpf" type="text" id="cpf" value="" size="23" maxlength="11" class="form-control" onblur="verifica_cpf(this.value);" /></td>
-            </tr>
-
-            <tr>
-                <td><label>Telefone: </label></td>
-                <td><input type="text" name="telefone" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9"></td>
-            </tr>
-            <tr>
-                <td><label>Celular 1: </label></td>
-                <td><input type="text" name="celular1" size="23" class="form-control" onblur="verifica_telefone(this.value); " maxlength="9"></td>
-            </tr>
-            <tr>
-                <td><label>Celular 2: </label></td>
-                <td><input type="text" name="celular2" size="23" class="form-control" onblur="verifica_telefone(this.value); " maxlength="9"></td>
-            </tr>
-            <tr>
-                <td><label>Email: </label></td>
-                <td><input type="text" name="email" size="23" class="form-control"></td>
-            </tr>
-      
-
-       
-   
-
-        </table>
-
-
-        
-        </div>
-        
-
-        <div class="col-md-4">
-
-         <table>
-            <tr>
-                <td><label>CEP: </label></td>
-                <td><input name="cep" type="text" id="cep" value="" size="20" maxlength="9"
-               onblur="pesquisacep(this.value);" class="form-control" /></td>
-            </tr>
-            <tr>
-                <td><label>Rua: </label></td>
-                <td><input name="rua" type="text" id="rua" size="20" class="form-control" /></td>
-            </tr>
-            <tr>
-                <td><label>Bairro: </label></td>
-                <td><input name="bairro" type="text" id="bairro" size="20" class="form-control" /></td>
-            </tr>
-            <tr>
-                <td><label>Numero: </label></td>
-                <td><input type="text" name="numero" size="20" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Complemento: </label></td>
-                <td><input type="text" name="complemento" size="20" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Cidade: </label></td>
-                <td><input name="cidade" type="text" id="cidade" size="20" class="form-control" /></td>
-            </tr>
-            <tr>
-                <td><label>Estado: </label></td>
-                <td><input name="uf" type="text" id="uf" size="20" class="form-control" /></td>
-            </tr>
-            <tr>
-                <td><label>País: </label></td>
-                <td><input type="text" name="pais" class="form-control"></td>
-            </tr>
-
-
-
-
-        </table>
-        
-        </div>
-
-        <div class="col-md-4">
-        <table>
-            <tr>
-                <td><label>Ano de Ingresso: </label></td>
-                <td><input type="text" name="ano_ingresso" size="20" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Área de Atuação: </label></td>
-                <td><input type="text" name="area_atuacao" size="20" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Tipo de Colaborador: </label></td>
-                <td><select name="tipo_colaborador" class="form-control">
-                    @foreach($tipo as $tipo_col) 
-                      <option value="{{ $tipo_col->id }}"> {{ $tipo_col->nome }}</option>
-                    @endforeach
-                    </select></td>
-            </tr>
-            <tr>
-               <td> <input type="submit" size="20" class="btn-success"></td>
-            </tr>
-            </table>
-        
-        
+        <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
+            <div class="carousel-inner" >
+                <div class="carousel-item active">
+                    <div class="row">
+                        <!-- Dados do Colaborador -->
+                        <div class="col-md-4">
+                            <!-- Nome Colaborador -->
+                            <label for="exampleFormControlInput1">Nome</label>
+                            <input type="text" name="nome" value="" id="nome" size="23" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Data de Nascimento Colaborador -->
+                            <label for="exampleFormControlInput1">Data de Nascimento</label>
+                            <input type="date" name="data_nascimento" size="20" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- CPF do Colaborador -->
+                            <label for="exampleFormControlInput1">CPF</label>
+                            <input name="cpf" type="text" id="cpf" value="" size="23" maxlength="11" class="form-control" onblur="verifica_cpf(this.value);" />
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Telefone do Colaborador -->
+                            <label for="exampleFormControlInput1">Telefone</label>
+                            <input type="text" name="telefone" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Celular 1 do Colaborador -->
+                            <label for="exampleFormControlInput1">Celular 1</label>
+                            <input type="text" name="celular1" size="23" class="form-control" onblur="verifica_telefone(this.value); " maxlength="9">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Celular 2 do Colaborador -->
+                            <label for="exampleFormControlInput1">Celular 2</label>
+                            <input type="text" name="celular2" size="23" class="form-control" onblur="verifica_telefone(this.value); " maxlength="9">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <!-- Dados do Colaborador -->
+                        <div class="col-md-3">
+                            <!-- CEP do Colaborador -->
+                            <label for="exampleFormControlInput1">CEP</label>
+                            <input placeholder="xxxxx-xxx" name="cep" type="text" id="cep" value="" size="20" maxlength="9"
+                            onblur="pesquisacep(this.value);" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Rua do Colaborador -->
+                            <label for="exampleFormControlInput1">Rua</label>
+                            <input name="rua" type="text" id="rua" size="20" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Bairro do Colaborador -->
+                            <label for="exampleFormControlInput1">Bairro</label>
+                            <input name="bairro" type="text" id="bairro" size="20" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Número do Colaborador -->
+                            <label for="exampleFormControlInput1">Número</label>
+                            <input type="text" name="numero" size="20" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Complemento -->
+                            <label for="exampleFormControlInput1">Complemento</label>
+                            <input type="text" name="complemento" size="20" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Cidade do Colaborador -->
+                            <label for="exampleFormControlInput1">Cidade</label>
+                            <input name="cidade" type="text" id="cidade" size="20" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Estado do Colaborador -->
+                            <label for="exampleFormControlInput1">Cidade</label>
+                            <input name="uf" type="text" id="uf" size="20" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <!-- País do Colaborador -->
+                            <label for="exampleFormControlInput1">País</label>
+                            <input type="text" name="pais" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- Email do Colaborador -->
+                            <label for="exampleFormControlInput1">Email</label>
+                            <input type="text" name="email" size="23" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Ano de Ingresso do Colaborador -->
+                            <label for="exampleFormControlInput1">Ano de Ingresso</label>
+                            <input type="text" name="ano_ingresso" size="20" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Área de Atuação -->
+                            <label for="exampleFormControlInput1">Área de Atuação</label>
+                            <input type="text" name="area_atuacao" size="20" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Tipo de Colaborador -->
+                            <label for="exampleFormControlInput1">Área de Atuação</label>
+                            <select name="tipo_colaborador" class="form-control">
+                                @foreach($tipo as $tipo_col) 
+                                <option value="{{ $tipo_col->id }}"> {{ $tipo_col->nome }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="right: 50%">
+                <i class="fa fa-arrow-left fa-lg text-success icon" aria-hidden="true"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <i class="fa fa-arrow-right fa-lg text-success icon" aria-hidden="true"></i>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
    
 
