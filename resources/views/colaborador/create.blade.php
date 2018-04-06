@@ -186,7 +186,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-3">
                             <!-- Estado do Colaborador -->
-                            <label for="exampleFormControlInput1">Cidade</label>
+                            <label for="exampleFormControlInput1">Estado</label>
                             <input name="uf" type="text" id="uf" size="20" class="form-control" />
                         </div>
                         <div class="col-md-3">
