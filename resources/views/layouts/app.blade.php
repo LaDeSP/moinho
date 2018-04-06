@@ -172,15 +172,6 @@
                         </a>
                     </li>
 
-                    <!-- Link para matriculas inrregulares -->
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ route('lista_matriculas_irregulares.index')}}">
-                            <h4 class="blue">
-                            <i class="fa fa-book" aria-hidden="true"></i> Inrregulares
-                            </h4>
-                        </a>
-                    </li>
-
 
                     <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('NomeTurma.create')}}">Nova Turma</a></li>-->
                     <!-- Colocar tudo no tela de Matricula
