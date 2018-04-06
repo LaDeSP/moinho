@@ -92,97 +92,100 @@ use PHP\test;
 
     </script>
     </head>
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
-    <h1>Inscrever Escolas</h1>
+    <h1 class="text-success">Adicionar Escola</h1>
 
     <form method= "POST" action="{{ route('escola.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <div class="col-md-4">
-         <table>
-            <tr>
-                <td><label>Nome: </label></td>
-                <td><input type="text" name="nome" size="23" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Nome Fantasia: </label></td>
-                <td><input type="text" name="nome_fantasia" size="23" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Tipo: </label></td>
-                <td><input type="text" name="tipo" size="23" class="form-control"></td>
-            </tr>
-       </table>
-        
-        </div>
-        <div class="col-md-4">
-        <table>
-            <tr>
-                <td><label>Telefone: </label></td>
-                <td><input type="text" name="telefone" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9" ></td>
-            </tr>
-            <tr>
-                <td><label>Celular 1: </label></td>
-                <td><input type="text" name="celular1" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9"></td>
-            </tr>
-            <tr>
-                <td><label>Celular 2: </label></td>
-                <td><input type="text" name="celular2" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9"></td>
-            </tr>
-            <tr>
-                <td><label>Email: </label></td>
-                <td><input type="text" name="email" size="23" class="form-control"></td>
-            </tr>
-       </table>
+        <div class="row">
+            <!-- Dados Escola -->
+            <div class="col-md-4">
+                <!-- Nome da Escola -->
+                <label for="exampleFormControlInput1">Nome</label>
+                <input type="text" name="nome" size="23" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <!-- Nome Fantasia da Escola -->
+                <label for="exampleFormControlInput1">Nome Fantasia</label>
+                <input type="text" name="nome_fantasia" size="23" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <!-- Tipo da Escola -->
+                <label for="exampleFormControlInput1">Tipo</label>
+                <input type="text" name="tipo" size="23" class="form-control">
+            </div>
 
-       
-        </div>
+            <!-- Meios de Comunicação -->
+            <div class="col-md-3">
+                <!-- Telefone da Escola -->
+                <label for="exampleFormControlInput1">Telefone</label>
+                <input type="text" name="telefone" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9" >
+            </div>
+            <div class="col-md-3">
+                <!-- Celular 1 da Escola -->
+                <label for="exampleFormControlInput1">Celular 1</label>
+                <input type="text" name="celular1" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9">
+            </div>
+            <div class="col-md-3">
+                <!-- Celular 2 da Escola -->
+                <label for="exampleFormControlInput1">Celular 2</label>
+                <input type="text" name="celular2" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9">
+            </div>
+            <div class="col-md-3">
+                <!-- Email da Escola -->
+                <label for="exampleFormControlInput1">Email</label>
+                <input type="text" name="email" size="23" class="form-control">
+            </div>
 
-        <div class="col-md-4">
-        <table>
-            <tr>
-                <td><label>CEP: </label></td>
-                <td><input name="cep" type="text" id="cep" value="" size="23" maxlength="9"
-               onblur="pesquisacep(this.value);" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td><label>Rua: </label></td>
-                <td><input name="rua" type="text" id="rua" size="23" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td><label>Bairro: </label></td>
-                <td><input name="bairro" type="text" id="bairro" size="23" class="form-control"/></td>
-            </tr>
-            <tr>
-                <td><label>Numero: </label></td>
-                <td><input type="text" name="numero" size="23" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Complemento: </label></td>
-                <td><input type="text" name="complemento" size="23" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><label>Cidade: </label></td>
-                <td> <input name="cidade" type="text" id="cidade" size="23" class="form-control" /></td>
-            </tr>
-            <tr>
-                <td><label>Estado: </label></td>
-                <td> <input name="uf" type="text" id="uf" size="23" class="form-control" /></td>
-            </tr>
-            <tr>
-                <td><label>País: </label></td>
-                <td><input type="text" name="pais" size="23" class="form-control"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" class="btn-success"></td>
-            </tr>
-            </table>
-     
+            <!-- Localização da Escola -->
+            <div class="col-md-3">
+                <!-- CEP da Escola -->
+                <label for="exampleFormControlInput1">CEP</label>
+                <input name="cep" type="text" id="cep" value="" size="23" maxlength="9"
+                onblur="pesquisacep(this.value);" class="form-control"/>
+            </div>
+            <div class="col-md-3">
+                <!-- Rua da Escola -->
+                <label for="exampleFormControlInput1">Rua</label>
+                <input name="rua" type="text" id="rua" size="23" class="form-control"/>
+            </div>
+            <div class="col-md-3">
+                <!-- Bairro da Escola -->
+                <label for="exampleFormControlInput1">Bairro</label>
+                <input name="bairro" type="text" id="bairro" size="23" class="form-control"/>
+            </div>
+            <div class="col-md-3">
+                <!-- Numero da Escola -->
+                <label for="exampleFormControlInput1">Numero</label>
+                <input type="text" name="numero" size="23" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <!-- Complemento da Escola -->
+                <label for="exampleFormControlInput1">Complemento</label>
+                <input type="text" name="complemento" size="23" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <!-- Cidade da Escola -->
+                <label for="exampleFormControlInput1">Cidade</label>
+                <input name="cidade" type="text" id="cidade" size="23" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <!-- Estado da Escola -->
+                <label for="exampleFormControlInput1">Estado</label>
+                <input name="uf" type="text" id="uf" size="23" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <!-- País da Escola -->
+                <label for="exampleFormControlInput1">País</label>
+                <input type="text" name="pais" size="23" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <!-- Submit -->
+                <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
+            </div>
         </div>
-   
-
-        
     </form>
 @endsection
 
