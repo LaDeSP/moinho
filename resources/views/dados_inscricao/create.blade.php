@@ -320,7 +320,7 @@ use PHP\test;
 
                         <!-- Submit -->
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-outline-info" id="submit">Inscrever</button>
+                            <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
                         </div>
                     </div>
                 </div>
