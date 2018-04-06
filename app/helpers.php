@@ -24,6 +24,26 @@
         return $query;
     }
 
+    function data_matricula($status)
+    {
+        $query = DB::table('matricula')
+            ->join('status_matricula', 'matricula.status_matricula_id', '=', 'status_matricula.id')
+            ->select('matricula.data')
+            ->where('status_matricula.status', '=', $status)
+            ->get();
+
+        $date = [];
+        foreach($query as $data)
+        {
+            $dados = date( 'Y', strtotime( $data->data ) );
+            $date[] = $dados;
+        }
+
+        $date = array_unique($date);
+        arsort($date);
+        return $date;
+    }
+
     function busca_nome()
     {
         $query = DB::table('nome_turma')
