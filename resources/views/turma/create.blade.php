@@ -5,7 +5,7 @@
 
     <form method= "POST" action="{{ route('turma.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <h1 class="text-warning">Cadastrar Turma</h1>
+        <h1 class="text-warning">Adicionar Turma</h1>
         <div class="row">
             <!-- Dados da Turma -->
             <div class="col-md-4">
