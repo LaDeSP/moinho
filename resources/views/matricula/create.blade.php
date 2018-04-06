@@ -78,7 +78,7 @@
 
             <div class="col-md-12">
                 <br>
-                <button type="submit" class="btn btn-outline-info">Matricular</button>
+                <button type="submit" class="btn btn-outline-info">Adicionar</button>
             </div>
         </div>
         
