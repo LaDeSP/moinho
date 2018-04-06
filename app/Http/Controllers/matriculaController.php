@@ -18,7 +18,7 @@ class matriculaController extends Controller
      */
     public function index()
     {
-        $matriculaa = Matricula::all();
+        $matricula = Matricula::all();
         $inscricao_id = Inscricao::all();
         $turma_id = Turma::all();
         $status = StatusMatricula::all();
@@ -32,7 +32,7 @@ class matriculaController extends Controller
      */
     public function create()
     {
-        $matriculaa = Matricula::all();
+        $matricula = Matricula::all();
         $inscricao_id = Inscricao::all();
         $turma_id = Turma::all();
          $status = StatusMatricula::all();
