@@ -24,15 +24,15 @@ class relatorioController extends Controller {
     public function testando(){
         return $this->dados_inscricao();
     }
+    
+
     public function buscar_inscricao(){
         $query = DB::table('inscricao')
             ->join('dados_inscricao', 'inscricao.dados_inscricao_id', '=', 'dados_inscricao.id')
             ->join('pessoa', function($join){
-                $join->on('pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
-                     ->orOn('pessoa.id', '=', 'dados_inscricao.mae_id')
-                     ->orOn('pessoa.id', '=', 'dados_inscricao.pai_id');
+                $join->on('pessoa.id', '=', 'dados_inscricao.dados_pessoais_id');
             })
-            ->select('*', 'inscricao.id as id_inscricao', '')
+            ->select('*', 'inscricao.id as id_inscricao')
             ->get();
         return $query;
     }
