@@ -11,7 +11,7 @@
             <th style="width:243px;"></th>
             <th style="width:243px;"></th>
     </tr>
-    <td><b>Nome do Inscrito</b></td>
+    <td><b> <?php echo Lang::get('conteudo.namei'); ?> </b></td>
     <td><b>CPF do Inscrito</b></td>
     <td><b>Data de Avaliação</b></td>
     
