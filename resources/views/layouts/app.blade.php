@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -36,8 +36,6 @@
 
 </head>
 <body>
-
-
     <!-- Novo Front -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top" id="sideNav">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +52,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="btn nav-link" data-toggle="collapse" href="#login" role="button" aria-expanded="false" aria-controls="collapseExample"> 
-                            <h4 class="blue"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login</h4> 
+                            <h4 class="blue"> <i class="fa fa-sign-in" aria-hidden="true"> </i> <?php echo Lang::get('auth.login');?> </h4> 
                         </a>
                         <div class="collapse drop-login" id="login">
                             <div class="container">
@@ -73,7 +71,7 @@
 
                                     <!-- Campo Senha -->
                                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label for="exampleInputPassword1">Senha</label>
+                                        <label for="exampleInputPassword1">Password</label>
                                         <input id="password" type="password" class="form-control" name="password" required placeholder="Senha">
 
                                         @if ($errors->has('password'))
@@ -106,7 +104,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#Evento">
                             <h4 class="yellow">
-                                <i class="fa fa-calendar" aria-hidden="true"></i> Eventos
+                                <i class="fa fa-calendar" aria-hidden="true"></i> <?php echo Lang::get('conteudo.event');?> 
                             </h4>
                         </a>
                     </li>
@@ -179,6 +177,31 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('lista_matriculas_irregulares.index')}}">Matriculas Irregulares</a></li>
                     -->
                 @endif
+                <li class="nav-item">
+                    <a class="btn nav-link" data-toggle="collapse" href="#A" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+                        <h4 class="blue">
+                            <i class="lang fa fa-language" aria-hidden="true"></i> Línguas
+                        </h4>
+                    </a>
+                    <div class="collapse" id="A">
+                        <div class="container">
+                            <a class="dropdown-item" href="{{ url('lang', ['es']) }}">es</a>
+                            <a class="dropdown-item" href="{{ url('lang', ['pt']) }}">pt</a>
+                            <a class="dropdown-item" href="{{ url('lang', ['en']) }}">en</a>
+                        </div>
+                    </div>
+                    
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            
+                        </div>
+                    </div>
+                </li>
             </div>
         </ul>
       </div>
