@@ -30,7 +30,7 @@
 
 @section('content')
     <h1 class="text-success">
-        Participantes
+        Matrícula
     </h1>
 
     <form method= "POST" action="{{ route('matricula.store') }}" enctype="multipart/form-data">
