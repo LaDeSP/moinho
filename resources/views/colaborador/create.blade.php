@@ -110,6 +110,12 @@ use PHP\test;
 @section('content')
     <h1 class="text-danger">Adicionar Colaborador</h1>
 
+    <!-- Relatório -->
+    <div style="margin-bottom: 20px">
+        <!-- Adicionar filtros -->
+        <a href="{{ url('/relatorio_colaborador')}}"  class="btn btn-outline-info">Baixar - Relatório de Colaborador</a>
+    </div>
+
     <form method= "POST" action="{{ route('colaborador.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
