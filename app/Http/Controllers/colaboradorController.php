@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Pessoa;
 use App\Colaborador;
@@ -138,4 +139,71 @@ class colaboradorController extends Controller
     {
         $documents = Documents::where('organization');
     }*/
+
+    public function export(Request $request){       
+        $tot_record_found=1;
+        $CsvData = $this->dados();
+        $filename='Colaborador_'.date('Y-m-d').".csv";
+        $file_path=base_path().'/'.$filename;   
+        $file = fopen($file_path,"w+");
+        foreach ($CsvData as $exp_data){
+            fputcsv($file, $exp_data);
+        }   
+        fclose($file);          
+        $headers = ['Content-Type' => 'application/csv'];
+        return response()->download($file_path,$filename,$headers ); 
+    }
+    
+
+    public function buscar_colaborador(){
+        $column = '';
+        $order = '';
+        if(strcmp($column, '')){
+            $order = 'desc';
+        }
+
+        $query = DB::table('colaborador')
+            ->join('pessoa', 'pessoa.id', '=', 'colaborador.pessoa_id')
+            ->join('tipo_colaborador', 'tipo_colaborador.id', '=', 'colaborador.tipo_colaborador_id')
+            ->select('pessoa.*', 'colaborador.*', 'tipo_colaborador.nome as Atuacao');
+        
+        if(strcmp($column, '')){
+            $query = $query->orderBy($column, $order)->get();
+        } else{
+            $query = $query->get();
+        }
+        
+        return $query;
+    }
+
+    public function buscar_chave($query){
+        foreach($query[0] as $key => $value)
+        {
+            if( strcmp($key, 'id') && strcmp( substr($key, '-3'), '_id' ) ){
+                $array[] = ucfirst( str_replace('_', ' ', $key) );
+            }
+        }
+        $result[] = $array;
+        return $result;
+    }
+
+    public function juntar($result, $query){
+        foreach($query as $row){
+            foreach($row as $key => $value){
+                if( strcmp($key, 'id') && strcmp( substr($key, '-3'), '_id' ) )
+                    $array[] = $value;
+            }
+            $result[] = $array;
+            $array = [];
+        }
+        return $result;
+    }
+
+    public function dados(){
+        $query = $this->buscar_colaborador();
+        $key = $this->buscar_chave($query);
+        $arquivo = $this->juntar($key, $query);
+        
+        return $arquivo;
+    }
 }
