@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::resource('disciplina', 'disciplinaController');
     Route::resource('turma_disciplina', 'turma_disciplinaController');
     Route::resource('documento', 'documentoController');
+    Route::resource('participante', 'participanteController');
 
     //Get
     Route::get('mostra_regulares', 'listar_matriculasController@index');
@@ -46,9 +47,12 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/inscricao', 'listar_matriculasController@inscricao');
     Route::get('/dados', 'listar_matriculasController@dados_inscricao');
     Route::get('/nome_turma', 'listar_matriculasController@nome_turma');
-    Route::get('/relatorio_inscricao', 'relatorioController@export');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('auth/logout', 'Auth\LoginController@logout');
+        //Relatórios
+    Route::get('/relatorio_inscricao', 'relatorioController@export');
+    Route::get('/relatorio_participante', 'participanteController@export');
+    Route::get('/relatorio_colaborador', 'colaboradorController@export');
 });
 
 
