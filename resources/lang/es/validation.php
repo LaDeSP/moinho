@@ -120,17 +120,17 @@ return [
     */
 
     'attributes' => [
-        'name' => 'nombre',
+        'name' => 'Nombre',
         'username' => 'usuario',
         'email' => 'correo electrónico',
         'first_name' => 'nombre',
         'last_name' => 'apellido',
         'password' => 'contraseña',
         'password_confirmation' => 'confirmación de la contraseña',
-        'city' => 'ciudad',
-        'country' => 'país',
+        'city' => 'Ciudad',
+        'country' => 'País',
         'address' => 'dirección',
-        'phone' => 'teléfono',
+        'phone' => 'Teléfono',
         'mobile' => 'móvil',
         'age' => 'edad',
         'sex' => 'sexo',

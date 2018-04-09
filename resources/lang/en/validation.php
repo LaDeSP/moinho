@@ -116,6 +116,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'name',
+        'city' => 'City',
+        'country' => 'Country',
+        'phone' => 'Telephone Number',
+
+    ],
 
 ];

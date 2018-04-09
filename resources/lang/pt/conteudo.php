@@ -1,16 +1,44 @@
 <?php
-    
+//portugues
 return[
-                'school' => 'Escola',
-                'registration' => 'Inscrição',
-                'matricula' =>'Matrícula',
-                'class' => 'Turma',
-                'regularRegistration' => 'Matrículas regulares',
-                'irregularRegistration' => 'Matrículas irregulares',
-                'contributors' => 'Colaboradores',
-                'course' => 'Disciplina',
-                'logOut' => 'Sair', //tradução do menu
-                'namei' =>'Nome do Inscrito',
-                'event' => 'Evento',
-                'registerDiscipline' => 'Cadastrar Disciplina'
-        ];
+'school' => 'Escola',
+'registration' => 'Inscrição',
+'enrolment' =>'Matrícula',
+'grade' => 'Turma',
+'regularRegistration' => 'Matrículas regulares',
+'irregularRegistration' => 'Matrículas irregulares',
+'contributors' => 'Colaboradores',
+'schoolSubject' => 'Disciplina',
+'logOut' => 'Sair', 
+'event' => 'Evento',
+'language' => 'Language',//tradução do menu
+'addInscription'=> 'Adicionar Inscrição',
+'namei' =>'Nome do Inscrito',
+'registerDiscipline' => 'Cadastrar Disciplina',
+'responsibleName'=>'Nome do Responsável',
+'responsibleBirth'=>'Data de Nascimento do Responsável',
+'cpfResponsible'=>'CPF do Responsável',//cpf do responsável
+'birthdate' => 'Data de Nascimento',
+'inscriptionDate'=> 'Data de Inscrição',
+'exameDate'=> 'Data da Avaliação',
+'shift' => 'Turno',
+'transportation' => 'Transporte',
+'observation'=>'Observações',
+'profession' => 'Profissão',
+'religion' => 'Religião',
+'race' => 'Raça',
+'income' => 'Renda',
+'manyResidence' => 'Quantidade na Residência',
+'socialBenefit'=> 'Benefício Social',
+'grade' => 'Série',
+'zipCode' => 'CEP',
+'street' => 'Rua',
+'neighbourhood' => 'Bairro',
+'number' => 'Número',
+'complement' => 'Complemento',
+'state'=>'Estado',
+'cell'=>'Celular',
+'email' => 'E-mail',
+'cpf' => 'CPF do Inscrito',
+
+];
