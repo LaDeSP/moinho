@@ -108,6 +108,9 @@ use PHP\test;
 
 @section('content')
     <h1 class="text-info"><?php echo Lang::get('conteudo.addInscription');?></h1>
+    <div style="margin-bottom: 20px">
+        <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info">Baixar - Relatório de Inscrição</a>
+    </div>
     <form method= "POST" action="{{ route('dados_inscricao.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
