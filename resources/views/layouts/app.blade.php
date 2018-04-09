@@ -120,7 +120,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('dados_inscricao.create')}}">
                             <h4 class="blue">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i> Inscrição
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo Lang::get('conteudo.registration');?> 
                             </h4>
                         </a>
                     </li>
@@ -129,7 +129,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('matricula.create')}}">
                             <h4 class="green">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i> Matricula
+                            <i class="fa fa-user-plus" aria-hidden="true"></i><?php echo Lang::get('conteudo.enrolment');?> 
                             </h4>
                         </a>
                     </li>
@@ -138,7 +138,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('colaborador.create')}}">
                             <h4 class="red">
-                            <i class="fa fa-handshake-o" aria-hidden="true"></i> Colaborador
+                            <i class="fa fa-handshake-o" aria-hidden="true"></i> <?php echo Lang::get('conteudo.contributors');?> 
                             </h4>
                         </a>
                     </li>
@@ -147,7 +147,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('turma.create')}}">
                             <h4 class="yellow">
-                            <i class="fa fa-list" aria-hidden="true"></i> Turma
+                            <i class="fa fa-list" aria-hidden="true"></i>  <?php echo Lang::get('conteudo.grade');?> 
                             </h4>
                         </a>
                     </li>
@@ -156,7 +156,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('escola.create')}}">
                             <h4 class="green">
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> Escola
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> <?php echo Lang::get('conteudo.school');?> 
                             </h4>
                         </a>
                     </li>
@@ -165,7 +165,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('disciplina.create')}}">
                             <h4 class="blue">
-                            <i class="fa fa-book" aria-hidden="true"></i> Disciplina
+                            <i class="fa fa-book" aria-hidden="true"></i> <?php echo Lang::get('conteudo.schoolSubject');?> 
                             </h4>
                         </a>
                     </li>
@@ -180,7 +180,7 @@
                 <li class="nav-item">
                     <a class="btn nav-link" data-toggle="collapse" href="#A" role="button" aria-expanded="false" aria-controls="collapseExample"> 
                         <h4 class="blue">
-                            <i class="lang fa fa-language" aria-hidden="true"></i> Línguas
+                            <i class="lang fa fa-language" aria-hidden="true"></i> <?php echo Lang::get('conteudo.language');?>
                         </h4>
                     </a>
                     <div class="collapse" id="A">
