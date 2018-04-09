@@ -170,6 +170,15 @@
                         </a>
                     </li>
 
+                    <!-- Link para participante -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('participante.create')}}">
+                            <h4 class="yellow">
+                            <i class="fa fa-book" aria-hidden="true"></i> Participante
+                            </h4>
+                        </a>
+                    </li>
+
 
                     <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('NomeTurma.create')}}">Nova Turma</a></li>-->
                     <!-- Colocar tudo no tela de Matricula
