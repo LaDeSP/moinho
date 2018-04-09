@@ -1,7 +1,21 @@
 <?php
 
+    function buscar_matricula_pessoa($status)
+    {
+        $query = DB::table('matricula')
+            ->join('turma', 'turma.id', '=', 'matricula.turma_id')
+            ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+            ->join('inscricao', 'inscricao.id', '=', 'matricula.inscricao_id')
+            ->join('dados_inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
+            ->join('pessoa', 'pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
+            ->join('status_matricula', 'status_matricula.id', '=', 'matricula.status_matricula_id')
+            ->select('matricula.id', 'pessoa.nome', 'nome_turma.nome_turma')
+            ->where('status_matricula.status', '=', $status)
+            ->get();
+        return $query;
+    }
 
-   function busca_turma()
+    function busca_turma()
     {
         $query = DB::table('nome_turma')
             ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
