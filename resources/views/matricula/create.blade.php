@@ -29,8 +29,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-success">
-        Matrícula
+    <h1 class="text-success"> 
+    <?php echo Lang::get('conteudo.enrolment'); ?>
     </h1>
 
     <form method= "POST" action="{{ route('matricula.store') }}" enctype="multipart/form-data">
@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- Inscrição -->
-                <label for="exampleFormControlInput1">Inscrição</label>
+                <label for="exampleFormControlInput1">  <?php echo Lang::get('conteudo.registration'); ?> </label>
                 <select name="inscricao_id" class="form-control">
                     @foreach(busca_inscricao() as $inscricao) 
                         <option value="{{ $inscricao->id }}"> {{ $inscricao->nome }} </option>
@@ -47,19 +47,19 @@
             </div>
             <div class="col-md-6">
                 <!-- Data -->
-                <label for="exampleFormControlInput1">Data</label>
+                <label for="exampleFormControlInput1"> <?php echo Lang::get('conteudo.dateRegistration'); ?> </label>
                 <input type="date" name="data" size="23" class="form-control">
             </div>
 
             <!-- Segunda Linha -->
             <div class="col-md-4">
                 <!-- Período -->
-                <label for="exampleFormControlInput1">Período</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.period'); ?> </label>
                 <input type="text" name="periodo" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Turma -->
-                <label for="exampleFormControlInput1">Turma</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.turma'); ?> </label>
                 <select name="turma_id" class="form-control">
                     @foreach(busca_turma() as $turma) 
                         <option value="{{ $turma->id }}"> {{ $turma->nome_turma }} - {{$turma->ano}} </option><!--aqui tava dando merda pq tava turma_id as turma, dai imprimia a string da função em vez do turma->nome. Assim, imprimia a função toda. Mais algum BO que esqueci -->
@@ -68,7 +68,7 @@
             </div>
             <div class="col-md-4">
                 <!-- Status -->
-                <label for="exampleFormControlInput1">Status</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.status'); ?></label>
                 <select name="status" class="form-control">
                     @foreach($status as $stat) 
                         <option value="{{ $stat->id }}"> {{ $stat->status }}</option>
@@ -78,7 +78,7 @@
 
             <div class="col-md-12">
                 <br>
-                <button type="submit" class="btn btn-outline-info">Adicionar</button>
+                <button type="submit" class="btn btn-outline-info"><?php echo Lang::get('conteudo.add'); ?></button>
             </div>
         </div>
         
@@ -91,7 +91,7 @@
     <div class="row">
         <div class="col-md-6">
             <h4 class="text-success text-md-right">
-                LISTA DE PARTICIPANTES REGULARES
+            <?php echo Lang::get('conteudo.listRegular'); ?>            
             </h4>
             <div>
                 <center>
@@ -114,10 +114,10 @@
                     <table class="table table-striped">
                       <thead class="text-success">
                           <tr>
-                              <th >Matrícula</th>
-                              <th >Data</th>
-                              <th >Participante</th>
-                              <th >Turma</th>
+                              <th > <?php echo Lang::get('conteudo.enrolment'); ?>  </th>
+                              <th ><?php echo Lang::get('validation.attributes.date'); ?> </th> 
+                              <th > <?php echo Lang::get('conteudo.participant'); ?> </th>
+                              <th ><?php echo Lang::get('conteudo.grade'); ?> </th>
                           </tr>
                       </thead>
                       <tbody class="panel-body regular">
@@ -145,12 +145,12 @@
                     </table>
                 </div> 
             </div>
-            <div><center><button onclick="printDiv('body_regular')" type="button" class="btn btn-outline-info">Imprimir</button></center></div>
+            <div><center><button onclick="printDiv('body_regular')" type="button" class="btn btn-outline-info"><?php echo Lang::get('conteudo.print'); ?></button></center></div>
             <br>
         </div>
         <div class="col-md-6" style="text-align: left">
             <h4 class="text-danger">
-                LISTA DE PARTICIPANTES IRREGULARES
+            <?php echo Lang::get('conteudo.listIrregular'); ?> 
             </h4>
             <div>
                 <center>
@@ -173,10 +173,10 @@
                     <table class="table table-striped">
                         <thead class="text-danger">
                             <tr>
-                                <th >Matrícula</th>
-                                <th >Data</th>
-                                <th >Participante</th>
-                                <th >Turma</th>
+                                <th ><?php echo Lang::get('conteudo.enrolment'); ?> </th>
+                                <th ><?php echo Lang::get('validation.attributes.date'); ?></th>
+                                <th > <?php echo Lang::get('conteudo.participant'); ?> </th>
+                                <th ><?php echo Lang::get('conteudo.grade'); ?> </th>
                             </tr>
                         </thead>
                         <tbody class="panel-body inrregular" >
@@ -204,7 +204,7 @@
                     </table>
                 </div> 
             </div>
-            <div><center><button onclick="printDiv('body_inrregular')" type="button" class="btn btn-outline-info">Imprimir</button></center></div>
+            <div><center><button onclick="printDiv('body_inrregular')" type="button" class="btn btn-outline-info"><?php echo Lang::get('conteudo.print'); ?></button></center></div>
             <br>
         </div>
     </div>
