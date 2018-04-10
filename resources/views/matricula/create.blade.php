@@ -33,6 +33,8 @@
     <?php echo Lang::get('conteudo.enrolment'); ?>
     </h1>
 
+    <!-- Criar matricula -->
+    @permission('criar-matricula')
     <form method= "POST" action="{{ route('matricula.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
@@ -81,14 +83,12 @@
                 <button type="submit" class="btn btn-outline-info"><?php echo Lang::get('conteudo.add'); ?></button>
             </div>
         </div>
-        
-        
     </form>
+    @endpermission
 
-
-<!-- Listar Matriculas Inrregulares -->
 <section class="">
     <div class="row">
+        @permission('ver-matriculas-regulares')
         <div class="col-md-6">
             <h4 class="text-success text-md-right">
             <?php echo Lang::get('conteudo.listRegular'); ?>            
@@ -148,6 +148,10 @@
             <div><center><button onclick="printDiv('body_regular')" type="button" class="btn btn-outline-info"><?php echo Lang::get('conteudo.print'); ?></button></center></div>
             <br>
         </div>
+        @endpermission
+
+        <!-- Listar Matriculas Irregulares -->
+        @permission('ver-matriculas-irregulares')
         <div class="col-md-6" style="text-align: left">
             <h4 class="text-danger">
             <?php echo Lang::get('conteudo.listIrregular'); ?> 
@@ -207,6 +211,7 @@
             <div><center><button onclick="printDiv('body_inrregular')" type="button" class="btn btn-outline-info"><?php echo Lang::get('conteudo.print'); ?></button></center></div>
             <br>
         </div>
+        @endpermission
     </div>
 </section>
 @endsection
