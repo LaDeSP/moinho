@@ -32,10 +32,10 @@
             overflow: scroll;
             overflow-x: hidden;
         }
-        .idioma{
-            width: 100px;
-           height: 50px;  
+        a{
+            color: #343a40;
         }
+       
     </style>
 
 </head>
@@ -197,10 +197,11 @@
     </nav>
 
     <div class="container-fluid p-0">
-    @if(!Auth::guest())
+    
            
         
         <div class="d-flex flex-row-reverse">
+            @if(!Auth::guest())
             <div class="p-2">
                 <a class="nav-link js-scroll-trigger" href="/auth/logout">
                     <h4 class="red">
@@ -217,33 +218,24 @@
                     </h4>
                 </a>
             </div>
+            @endif
             <div class="p-2">
-            <div class="idioma">
-                    <a class="btn nav-link" data-toggle="collapse" href="#A" role="button" aria-expanded="false" aria-controls="collapseExample"> 
-                        <h4 class="blue">
-                            <i class="lang fa fa-language" aria-hidden="true"></i> <?php echo Lang::get('conteudo.language');?>
-                        </h4>
-                    </a>
-                    <div class="collapse" id="A">
-                        <div class="container">
-                            <a class="dropdown-item" href="{{ url('lang', ['es']) }}">es</a>
-                            <a class="dropdown-item" href="{{ url('lang', ['pt']) }}">pt</a>
-                            <a class="dropdown-item" href="{{ url('lang', ['en']) }}">en</a>
+                <div class="nav-item dropdown">
+                    <h4 >
+                        <a class="nav-link dropdown-toggle green" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="lang fa fa-language" aria-hidden="true"></i>
+                            <?php echo Lang::get('conteudo.language');?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('lang', ['es']) }}">Spanish</a>
+                                <a class="dropdown-item" href="{{ url('lang', ['pt']) }}">Portuguese</a>
+                                <a class="dropdown-item" href="{{ url('lang', ['en']) }}">English</a>
                         </div>
-                    </div>
-                    <div class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        </div>
-                    </div>
+                    </h4>
                 </div>
             </div>
-
         </div>
-    @endif
+
     @if(Auth::guest())
         <section class="resume-section p-3 p-lg-5 d-flex d-column row" id="Sobre" >
             <div class="col-sm-11">
