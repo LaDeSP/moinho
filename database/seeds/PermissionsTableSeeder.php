@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Permission;
+use App\Role;
 
 class PermissionsTableSeeder extends Seeder
 {
@@ -12,41 +13,88 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        # Ver alunos
-        $new_permission = new Permission();
-        $new_permission -> name = 'ver-lista-alunos';
-        $new_permission -> display_name = 'Ver Lista de Alunos';
-        $new_permission -> description = 'Permite ver a lista de alunos';
-        $new_permission -> save();
-        
-        # Ver presença
-        $new_permission = new Permission();
-        $new_permission -> name = 'ver-presenca-alunos';
-        $new_permission -> display_name = 'Ver Presença de Alunos';
-        $new_permission -> description = 'Permite ver a presença de alunos';
-        $new_permission -> save();
 
-        # Ver matricula
-        $new_permission = new Permission();
-        $new_permission -> name = 'ver-matricula-alunos';
-        $new_permission -> display_name = 'Ver matricula de Alunos';
-        $new_permission -> description = 'Permite ver a matricula de alunos';
-        $new_permission -> save();
+        #'''Criando as permissões necessárias'''
 
-        # Criar matricula
-        $new_permission = new Permission();
-        $new_permission -> name = 'criar-matricula-alunos';
-        $new_permission -> display_name = 'Criar matricula de Alunos';
-        $new_permission -> description = 'Permite criar a matricula de alunos';
-        $new_permission -> save();
+        #______________________--TURMAS--_____________________#
+        $ver_turma = new Permission();
+        $ver_turma -> name = 'ver-turma';
+        $ver_turma -> display_name = 'Ver turma';
+        $ver_turma -> description = 'Permite ver as turmas';
+        $ver_turma -> save();
 
-        # Editar matricula
-        $new_permission = new Permission();
-        $new_permission -> name = 'editar-matricula-alunos';
-        $new_permission -> display_name = 'Editar matricula de Alunos';
-        $new_permission -> description = 'Permite editar a matricula de alunos';
-        $new_permission -> save();
+        #______________________--DISCIPLINA--_____________________#
+        $ver_disciplina = new Permission();
+        $ver_disciplina -> name = 'ver-disciplina';
+        $ver_disciplina -> display_name = 'Ver disciplina';
+        $ver_disciplina -> description = 'Permite ver as disciplinas';
+        $ver_disciplina -> save();
 
+        #______________________--PARTICIPANTE--_____________________#
+        $ver_participante = new Permission();
+        $ver_participante -> name = 'ver-participante';
+        $ver_participante -> display_name = 'Ver participante';
+        $ver_participante -> description = 'Permite ver os participantes';
+        $ver_participante -> save();
+
+        #______________________--INSCRIÇÃO--_____________________#
+        $ver_inscricao = new Permission();
+        $ver_inscricao -> name = 'ver-inscricao';
+        $ver_inscricao -> display_name = 'Ver inscrição';
+        $ver_inscricao -> description = 'Permite ver as inscrições';
+        $ver_inscricao -> save();
+
+        #______________________--COLABORADOR--_____________________#
+        $ver_colaborador = new Permission();
+        $ver_colaborador -> name = 'ver-colaborador';
+        $ver_colaborador -> display_name = 'Ver colaborador';
+        $ver_colaborador -> description = 'Permite ver os colaboradores';
+        $ver_colaborador -> save();
+
+        #______________________--ESCOLA--_____________________#
+        $ver_escola = new Permission();
+        $ver_escola -> name = 'ver-escola';
+        $ver_escola -> display_name = 'Ver escola';
+        $ver_escola -> description = 'Permite ver as escolas';
+        $ver_escola -> save();
+
+        #_______________________--MATRICULAS--_______________________#
+        $ver_matricula = new Permission();
+        $ver_matricula -> name = 'ver-matricula';
+        $ver_matricula -> display_name = 'Ver matricula de Alunos';
+        $ver_matricula -> description = 'Permite ver a matricula de alunos';
+        $ver_matricula -> save();
+
+        $criar_matricula = new Permission();
+        $criar_matricula -> name = 'criar-matricula';
+        $criar_matricula -> display_name = 'Criar matricula de Alunos';
+        $criar_matricula -> description = 'Permite criar a matricula de alunos';
+        $criar_matricula -> save();
+
+        $editar_matricula = new Permission();
+        $editar_matricula -> name = 'editar-matricula';
+        $editar_matricula -> display_name = 'Editar matricula de Alunos';
+        $editar_matricula -> description = 'Permite editar a matricula de alunos';
+        $editar_matricula -> save();
+
+        $ver_matriculas_regulares = new Permission();
+        $ver_matriculas_regulares -> name = 'ver-matriculas-regulares';
+        $ver_matriculas_regulares -> display_name = 'Ver matriculas regulares de Alunos';
+        $ver_matriculas_regulares -> description = 'Permite ver as matricula regulares de alunos';
+        $ver_matriculas_regulares -> save();
+
+        $ver_matriculas_irregulares = new Permission();
+        $ver_matriculas_irregulares -> name = 'ver-matriculas-irregulares';
+        $ver_matriculas_irregulares -> display_name = 'Ver matriculas irregulares de Alunos';
+        $ver_matriculas_irregulares -> description = 'Permite ver as matricula irregulares de alunos';
+        $ver_matriculas_irregulares -> save();
+
+        #''' Atribuindo as permissões às funções'''
+
+        $administrador = Role::where('name', '=', 'administrador') -> first();
+        $administrador -> attachPermissions(array($ver_colaborador, $ver_turma, 
+            $ver_matricula, $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao));
 
 
     }
