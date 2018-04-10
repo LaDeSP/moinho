@@ -109,7 +109,7 @@ use PHP\test;
 @section('content')
     <h1 class="text-info"><?php echo Lang::get('conteudo.addInscription');?></h1>
     <div style="margin-bottom: 20px">
-        <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info">Baixar - Relatório de Inscrição</a>
+        <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.inscriptionReport');?></a>
     </div>
     <form method= "POST" action="{{ route('dados_inscricao.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -323,7 +323,7 @@ use PHP\test;
 
                         <!-- Submit -->
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
+                            <button type="submit" class="btn btn-outline-info" id="submit"><?php echo Lang::get('conteudo.add');?></button>
                         </div>
                     </div>
                 </div>
