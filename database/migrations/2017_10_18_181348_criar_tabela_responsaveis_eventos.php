@@ -30,4 +30,3 @@ class CriarTabelaResponsaveisEventos extends Migration
         Schema::dropIfExists('responsavel_evento');
     }
 }
-

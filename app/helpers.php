@@ -1,7 +1,21 @@
 <?php
 
+    function buscar_matricula_pessoa($status)
+    {
+        $query = DB::table('matricula')
+            ->join('turma', 'turma.id', '=', 'matricula.turma_id')
+            ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+            ->join('inscricao', 'inscricao.id', '=', 'matricula.inscricao_id')
+            ->join('dados_inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
+            ->join('pessoa', 'pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
+            ->join('status_matricula', 'status_matricula.id', '=', 'matricula.status_matricula_id')
+            ->select('matricula.id', 'pessoa.nome', 'nome_turma.nome_turma')
+            ->where('status_matricula.status', '=', $status)
+            ->get();
+        return $query;
+    }
 
-   function busca_turma()
+    function busca_turma()
     {
         $query = DB::table('nome_turma')
             ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
@@ -22,6 +36,26 @@
         //$query = json_encode($query); para funcionar com o php puro
         $query = json_decode($query);
         return $query;
+    }
+
+    function data_matricula($status)
+    {
+        $query = DB::table('matricula')
+            ->join('status_matricula', 'matricula.status_matricula_id', '=', 'status_matricula.id')
+            ->select('matricula.data')
+            ->where('status_matricula.status', '=', $status)
+            ->get();
+
+        $date = [];
+        foreach($query as $data)
+        {
+            $dados = date( 'Y', strtotime( $data->data ) );
+            $date[] = $dados;
+        }
+
+        $date = array_unique($date);
+        arsort($date);
+        return $date;
     }
 
     function busca_nome()

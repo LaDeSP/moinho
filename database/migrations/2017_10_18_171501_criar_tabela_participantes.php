@@ -18,7 +18,7 @@ class CriarTabelaParticipantes extends Migration
             $table->string('serie');
             $table->string('sala_de_aula');
             $table->string('status');
-            $table->integer('matricula_id')->unsigned();
+            $table->integer('matricula_id')->unsigned;
         });
     }
 

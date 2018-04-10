@@ -18,8 +18,8 @@ class CriarTabelaPresencas extends Migration
             $table->date('data');
             $table->string('presenca');
             $table->string('justificativa');
-            $table->integer('participante_id')->unsigned();
-            $table->integer('disciplina_id')->unsigned();
+            $table->integer('participante_id')->unsigned;
+            $table->integer('disciplina_id')->unsigned;
         });
     }
 

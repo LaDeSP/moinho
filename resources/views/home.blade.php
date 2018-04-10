@@ -4,6 +4,7 @@
 
 <div class="panel panel-info">
     <div class="panel-heading">
+    
     <table>
       <tr class="header">
             <th style="width:243px;"></th>
@@ -11,9 +12,9 @@
             <th style="width:243px;"></th>
             <th style="width:243px;"></th>
     </tr>
-    <td><b>Nome do Inscrito</b></td>
-    <td><b>CPF do Inscrito</b></td>
-    <td><b>Data de Avaliação</b></td>
+    <td><b> <?php echo Lang::get('conteudo.namei'); ?> </b></td>
+    <td><b><?php echo Lang::get('conteudo.cpf'); ?></b></td>
+    <td><b><?php echo Lang::get('conteudo.exameDate'); ?> </b></td>
     
     </table>
 

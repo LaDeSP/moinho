@@ -17,7 +17,7 @@ class CriarTabelaInscricoes extends Migration
             $table->increments('id');
             $table->date('data_inscricao');
             $table->date('data_avaliacao');
-            $table->integer('dados_inscricao_id')->unsigned();
+            $table->integer('dados_inscricao_id')->unsigned;
         });
     }
 
