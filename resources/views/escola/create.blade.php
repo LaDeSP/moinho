@@ -95,7 +95,7 @@ use PHP\test;
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-success">Adicionar Escola</h1>
+    <h1 class="text-success"><?php echo Lang::get('conteudo.addSchool'); ?> </h1>
 
     <form method= "POST" action="{{ route('escola.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -103,7 +103,7 @@ use PHP\test;
             <!-- Dados Escola -->
             <div class="col-md-4">
                 <!-- Nome da Escola -->
-                <label for="exampleFormControlInput1">Nome</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?></label>
                 <input type="text" name="nome" size="23" class="form-control">
             </div>
             <div class="col-md-4">
@@ -120,22 +120,22 @@ use PHP\test;
             <!-- Meios de Comunicação -->
             <div class="col-md-3">
                 <!-- Telefone da Escola -->
-                <label for="exampleFormControlInput1">Telefone</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone'); ?></label>
                 <input type="text" name="telefone" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9" >
             </div>
             <div class="col-md-3">
                 <!-- Celular 1 da Escola -->
-                <label for="exampleFormControlInput1">Celular 1</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  1</label>
                 <input type="text" name="celular1" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9">
             </div>
             <div class="col-md-3">
                 <!-- Celular 2 da Escola -->
-                <label for="exampleFormControlInput1">Celular 2</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  2</label>
                 <input type="text" name="celular2" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9">
             </div>
             <div class="col-md-3">
                 <!-- Email da Escola -->
-                <label for="exampleFormControlInput1">Email</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.email');?></label>
                 <input type="text" name="email" size="23" class="form-control">
             </div>
 
@@ -148,42 +148,42 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Rua da Escola -->
-                <label for="exampleFormControlInput1">Rua</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?></label>
                 <input name="rua" type="text" id="rua" size="23" class="form-control"/>
             </div>
             <div class="col-md-3">
                 <!-- Bairro da Escola -->
-                <label for="exampleFormControlInput1">Bairro</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?></label>
                 <input name="bairro" type="text" id="bairro" size="23" class="form-control"/>
             </div>
             <div class="col-md-3">
                 <!-- Numero da Escola -->
-                <label for="exampleFormControlInput1">Numero</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                 <input type="text" name="numero" size="23" class="form-control">
             </div>
             <div class="col-md-3">
                 <!-- Complemento da Escola -->
-                <label for="exampleFormControlInput1">Complemento</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                 <input type="text" name="complemento" size="23" class="form-control">
             </div>
             <div class="col-md-3">
                 <!-- Cidade da Escola -->
-                <label for="exampleFormControlInput1">Cidade</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?></label>
                 <input name="cidade" type="text" id="cidade" size="23" class="form-control" />
             </div>
             <div class="col-md-3">
                 <!-- Estado da Escola -->
-                <label for="exampleFormControlInput1">Estado</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?></label>
                 <input name="uf" type="text" id="uf" size="23" class="form-control" />
             </div>
             <div class="col-md-3">
                 <!-- País da Escola -->
-                <label for="exampleFormControlInput1">País</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?></label>
                 <input type="text" name="pais" size="23" class="form-control">
             </div>
             <div class="col-md-3">
                 <!-- Submit -->
-                <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
+                <button type="submit" class="btn btn-outline-info" id="submit"><?php echo Lang::get('conteudo.add');?></button>
             </div>
         </div>
     </form>
