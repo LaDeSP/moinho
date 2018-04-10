@@ -167,37 +167,37 @@ use PHP\test;
                         </div>
                         <div class="col-md-3">
                             <!-- Rua do Colaborador -->
-                            <label for="exampleFormControlInput1">Rua</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?></label>
                             <input name="rua" type="text" id="rua" size="20" class="form-control" />
                         </div>
                         <div class="col-md-3">
                             <!-- Bairro do Colaborador -->
-                            <label for="exampleFormControlInput1">Bairro</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?></label>
                             <input name="bairro" type="text" id="bairro" size="20" class="form-control" />
                         </div>
                         <div class="col-md-3">
                             <!-- Número do Colaborador -->
-                            <label for="exampleFormControlInput1">Número</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                             <input type="text" name="numero" size="20" class="form-control">
                         </div>
                         <div class="col-md-3">
                             <!-- Complemento -->
-                            <label for="exampleFormControlInput1">Complemento</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                             <input type="text" name="complemento" size="20" class="form-control">
                         </div>
                         <div class="col-md-3">
                             <!-- Cidade do Colaborador -->
-                            <label for="exampleFormControlInput1">Cidade</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?></label>
                             <input name="cidade" type="text" id="cidade" size="20" class="form-control" />
                         </div>
                         <div class="col-md-3">
                             <!-- Estado do Colaborador -->
-                            <label for="exampleFormControlInput1">Estado</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?></label>
                             <input name="uf" type="text" id="uf" size="20" class="form-control" />
                         </div>
                         <div class="col-md-3">
                             <!-- País do Colaborador -->
-                            <label for="exampleFormControlInput1">País</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?></label>
                             <input type="text" name="pais" class="form-control">
                         </div>
                     </div>
@@ -206,22 +206,22 @@ use PHP\test;
                     <div class="row">
                         <div class="col-md-4">
                             <!-- Email do Colaborador -->
-                            <label for="exampleFormControlInput1">Email</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.email');?></label>
                             <input type="text" name="email" size="23" class="form-control">
                         </div>
                         <div class="col-md-4">
                             <!-- Ano de Ingresso do Colaborador -->
-                            <label for="exampleFormControlInput1">Ano de Ingresso</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.enrrollmentTime');?></label>
                             <input type="text" name="ano_ingresso" size="20" class="form-control">
                         </div>
                         <div class="col-md-4">
                             <!-- Área de Atuação -->
-                            <label for="exampleFormControlInput1">Área de Atuação</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.occupationArea');?></label>
                             <input type="text" name="area_atuacao" size="20" class="form-control">
                         </div>
                         <div class="col-md-4">
                             <!-- Tipo de Colaborador -->
-                            <label for="exampleFormControlInput1">Área de Atuação</label>
+                            <label for="exampleFormControlInput1">Área de Atuação (Repetido)</label>
                             <select name="tipo_colaborador" class="form-control">
                                 @foreach($tipo as $tipo_col) 
                                 <option value="{{ $tipo_col->id }}"> {{ $tipo_col->nome }}</option>
@@ -230,7 +230,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-8"></div>
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
+                            <button type="submit" class="btn btn-outline-info" id="submit"><?php echo Lang::get('conteudo.add');?></button>
                         </div>
                     </div>
                 </div>
