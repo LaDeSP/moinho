@@ -56,7 +56,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="btn nav-link" data-toggle="collapse" href="#login" role="button" aria-expanded="false" aria-controls="collapseExample"> 
-                            <h4 class="blue"> <i class="fa fa-sign-in" aria-hidden="true"> </i> <?php echo Lang::get('auth.login');?> </h4> 
+                            <h4 class="blue"> <i class="fa fa-sign-in" aria-hidden="true"> </i> Login</h4> 
                         </a>
                         <div class="collapse drop-login" id="login">
                             <div class="container">
@@ -87,10 +87,8 @@
 
                                     <!-- Campo Lembre-me e Submit -->
                                     <div class="form-check">
-                                        <button type="submit" class="btn btn-info">Entrar</button>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="exampleCheck1">Lembre-me</label>
-                                    </div>
+                                        <button type="submit" class="btn btn-info"><?php echo Lang::get('auth.login');?> </button>
+                                         </div>
                                     
                                 </form>
                                 <br>
@@ -227,9 +225,9 @@
                             <?php echo Lang::get('conteudo.language');?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('lang', ['es']) }}">Spanish</a>
-                                <a class="dropdown-item" href="{{ url('lang', ['pt']) }}">Portuguese</a>
-                                <a class="dropdown-item" href="{{ url('lang', ['en']) }}">English</a>
+                                <a class="dropdown-item" href="{{ url('lang', ['es']) }}"> <?php echo Lang::get('conteudo.spanish');?></a>
+                                <a class="dropdown-item" href="{{ url('lang', ['pt']) }}"><?php echo Lang::get('conteudo.portuguese');?></a>
+                               <!-- <a class="dropdown-item" href="{{ url('lang', ['en']) }}"><php echo Lang::get('conteudo.english');?></a>-->
                         </div>
                     </h4>
                 </div>
