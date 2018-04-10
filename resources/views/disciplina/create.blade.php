@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-info">Adicionar Disciplina</h1>
+    <h1 class="text-info"><?php echo Lang::get('conteudo.registerDiscipline'); ?></h1>
 
     <form method= "POST" action="{{ route('disciplina.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -9,22 +9,22 @@
             <!-- Dados Disciplina -->
             <div class="col-md-4">
                 <!-- Nome da Disciplina -->
-                <label for="exampleFormControlInput1">Nome</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?></label>
                 <input type="text" name="nome" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Turno da Disciplina -->
-                <label for="exampleFormControlInput1">Nome</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?></label>
                 <input type="text" name="turno" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Sala de Aula da Disciplina -->
-                <label for="exampleFormControlInput1">Sala de Aula</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.classroom'); ?></label>
                 <input type="text" name="sala_de_aula" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Professor da Disciplina -->
-                <label for="exampleFormControlInput1">Professor</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.teacher'); ?></label>
                 <select name="colaborador_id" class="form-control">
                     @foreach($colaborador as $professor) 
                         @foreach(busca_pessoa($professor->pessoa_id) as $nome)
@@ -35,17 +35,17 @@
             </div>
             <div class="col-md-4">
                 <!-- Dia da Semana da Disciplina -->
-                <label for="exampleFormControlInput1">Dia da Semana</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.dayWeek'); ?></label>
                 <input type="text" name="dia_semana" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Hora da Disciplina -->
-                <label for="exampleFormControlInput1">Hora</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.hour'); ?></label>
                 <input type="time" name="hora" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Submit -->
-                <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
+                <button type="submit" class="btn btn-outline-info" id="submit"><?php echo Lang::get('conteudo.add'); ?></button>
             </div>
         </div>
     </form>
