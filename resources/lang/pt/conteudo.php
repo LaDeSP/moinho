@@ -11,7 +11,7 @@ return[
 'schoolSubject' => 'Disciplina',
 'logOut' => 'Sair', 
 'event' => 'Evento',
-'language' => 'Language',//tradução do menu
+'language' => 'Idioma',//tradução do menu
 'addInscription'=> 'Adicionar Inscrição',
 'namei' =>'Nome do Inscrito',
 'registerDiscipline' => 'Cadastrar Disciplina',
@@ -40,5 +40,30 @@ return[
 'cell'=>'Celular',
 'email' => 'E-mail',
 'cpf' => 'CPF do Inscrito',
+//agora começa matricula
+'dateRegistration'=>'Data da Matrícula',
+'period' => 'Período',
+'turma'=>'Turma',
+'status'=>'Status',
+'add'=>'Adicionar',
+'listRegular'=>'Lista de Prticipantes regulares',
+'listIrregular'=>'Lista de Participantes Irregulares',
+'participant'=>'Participante',
+'print'=>'Imprimir',
+//Colaborador
+'addCollaborator'=>'Adicionar Colaborador',
+'employeeReport'=> 'Download - Relatório do Colaborador',
+'enrrollmentTime'=>'Ano de Ingresso',
+'occupationArea'=>'Área de Atuação',
+//Adicionar Turma
+'addClass'=>'Adicionar Turma',
+'semester'=>'Semestre',
+//escola
+'addSchool'=>'Adicionar Escola',
+'classroom'=>'Sala de aula',
+'teacher'=> 'Professor',
+'dayWeek'=> 'Dia da Semana',
+'hour'=>'Hora'
+
 
 ];
