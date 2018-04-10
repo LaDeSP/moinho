@@ -174,7 +174,7 @@ use PHP\test;
             <div class="col-md-3">
                 <!-- Estado da Escola -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?></label>
-                <input name="uf" type="text" id="uf" size="23" class="form-control" />
+                <input name="estado" type="text" id="estado" size="23" class="form-control" />
             </div>
             <div class="col-md-3">
                 <!-- País da Escola -->
