@@ -12,6 +12,7 @@ return[
 'logOut' => 'Salir', 
 'event' => 'evento',
 'language' => 'Lenguage',//tradução do menu
+'inscriptionReport'=>'Informe de inscripción',
 'addInscription'=> 'Añadir Matricula',
 'namei' =>'Nombre del suscriptor',
 'registerDiscipline' => 'Registrar Disciplina',
@@ -65,4 +66,10 @@ return[
 'dayWeek'=> 'Día de la Semana',
 'hour'=> 'Hora',
 'addPartipant'=>'Añadir Participante',
+'participantReport'=> 'Download - Informe del Participante',
+//menu Idioma
+'spanish'=>'Español',
+'portuguese'=>'Portugués-BR',
+'english'=>'Inglés',
+
 ];

@@ -11,18 +11,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'login' => 'Spanish',
+    'login' => 'Login',
     'failed' => 'Estas credenciales no coinciden con nuestros registros.',
     'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
-    'school' => 'Colegio',
-    'registration' => 'Inscricion',
-    'matricula' => 'Matricula',
-    'class' => 'Clase',
-    'regularRegistration' => 'Matricula regular',
-    'irregularRegistration' => 'Matricula irregular',
-    'contributors' => 'Contribuyente',
-    'course' => 'Curso',
+    
     'logOut' => 'Salir', //tradução do menu
-    'name' => 'nombre',
     'password' => 'contraseña',
+    'login'=>'Iniciar Sesión',
+    'remember'=>'Recuérdame',
 ];
