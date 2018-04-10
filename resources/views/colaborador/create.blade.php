@@ -108,12 +108,12 @@ use PHP\test;
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-danger">Adicionar Colaborador</h1>
+    <h1 class="text-danger"><?php echo Lang::get('conteudo.addCollaborator'); ?></h1>
 
     <!-- Relatório -->
     <div style="margin-bottom: 20px">
         <!-- Adicionar filtros -->
-        <a href="{{ url('/relatorio_colaborador')}}"  class="btn btn-outline-info">Baixar - Relatório de Colaborador</a>
+        <a href="{{ url('/relatorio_colaborador')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.employeeReport'); ?> </a>
     </div>
 
     <form method= "POST" action="{{ route('colaborador.store') }}" enctype="multipart/form-data">
@@ -125,12 +125,12 @@ use PHP\test;
                         <!-- Dados do Colaborador -->
                         <div class="col-md-4">
                             <!-- Nome Colaborador -->
-                            <label for="exampleFormControlInput1">Nome</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?></label>
                             <input type="text" name="nome" value="" id="nome" size="23" class="form-control">
                         </div>
                         <div class="col-md-4">
                             <!-- Data de Nascimento Colaborador -->
-                            <label for="exampleFormControlInput1">Data de Nascimento</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.birthdate'); ?></label>
                             <input type="date" name="data_nascimento" size="20" class="form-control">
                         </div>
                         <div class="col-md-4">
@@ -140,17 +140,17 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Telefone do Colaborador -->
-                            <label for="exampleFormControlInput1">Telefone</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone'); ?></label>
                             <input type="text" name="telefone" size="23" class="form-control" value="" onblur="verifica_telefone(this.value); " maxlength="9">
                         </div>
                         <div class="col-md-4">
                             <!-- Celular 1 do Colaborador -->
-                            <label for="exampleFormControlInput1">Celular 1</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 1</label>
                             <input type="text" name="celular1" size="23" class="form-control" onblur="verifica_telefone(this.value); " maxlength="9">
                         </div>
                         <div class="col-md-4">
                             <!-- Celular 2 do Colaborador -->
-                            <label for="exampleFormControlInput1">Celular 2</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2</label>
                             <input type="text" name="celular2" size="23" class="form-control" onblur="verifica_telefone(this.value); " maxlength="9">
                         </div>
                         
