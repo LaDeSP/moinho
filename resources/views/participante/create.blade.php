@@ -2,12 +2,12 @@
 
 @section('content')
     
-    <h1 class="text-success">Adicionar Participante</h1>
+    <h1 class="text-success"><?php echo Lang::get('conteudo.addPartipant');?></h1>
 
     <!-- Relatório -->
     <div style="margin-bottom: 20px">
         <!-- Adicionar filtros -->
-        <a href="{{ url('/relatorio_participante')}}"  class="btn btn-outline-info">Baixar - Relatório de Participante</a>
+        <a href="{{ url('/relatorio_participante')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.participantReport');?></a>
     </div>
     <form method= "POST" action="{{ route('participante.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -15,22 +15,22 @@
             <!-- Dados do Participante -->
             <div class="col-md-4">
                 <!-- Nome do Participante -->
-                <label for="exampleFormControlInput1">Série</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.grade');?></label>
                 <input type="text" name="serie" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Sala de Aula do Participante -->
-                <label for="exampleFormControlInput1">Sala de Aula</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.classroom');?></label>
                 <input type="text" name="sala" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Status do Participante -->
-                <label for="exampleFormControlInput1">Status</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.status');?></label> 
                 <input type="year" name="status" size="23" class="form-control">
             </div>
             <div class="col-md-4">
                 <!-- Matricula do Participante -->
-                <label for="exampleFormControlInput1">Matrícula</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.enrolment');?></label>
                 <select name="matricula_id" class="form-control">
                     @foreach( buscar_matricula_pessoa('Regular') as $matricula )
                         <option value="{{ $matricula->id}}"> {{ $matricula->nome }} - {{ $matricula->nome_turma }} </option>
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-4">
                 <!-- Submit -->
-                <button type="submit" class="btn btn-outline-info" id="submit">Adicionar</button>
+                <button type="submit" class="btn btn-outline-info" id="submit"><?php echo Lang::get('conteudo.add');?></button>
             </div>
         </div>   
     </form>
