@@ -118,6 +118,7 @@
                         </a>
                     </li>
 
+                    @permission('ver-inscricao')
                     <!-- Link para inscrição-->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('dados_inscricao.create')}}">
@@ -126,7 +127,9 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
 
+                    @permission('ver-matricula')
                     <!-- Link para matricula-->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('matricula.create')}}">
@@ -135,7 +138,10 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
 
+
+                    @permission('ver-colaborador')
                     <!-- Link para colaborador -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('colaborador.create')}}">
@@ -144,7 +150,9 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
 
+                    @permission('ver-turma')
                     <!-- Link para turma -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('turma.create')}}">
@@ -153,7 +161,9 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
 
+                    @permission('ver-escola')
                     <!-- Link para escola -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('escola.create')}}">
@@ -162,7 +172,9 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
 
+                    @permission('ver-disciplina')
                     <!-- Link para disciplina -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('disciplina.create')}}">
@@ -171,7 +183,9 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
 
+                    @permission('ver-participante')
                     <!-- Link para participante -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('participante.create')}}">
@@ -180,6 +194,7 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
 
 
                     <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('NomeTurma.create')}}">Nova Turma</a></li>-->
