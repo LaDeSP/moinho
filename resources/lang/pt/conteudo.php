@@ -63,7 +63,8 @@ return[
 'classroom'=>'Sala de aula',
 'teacher'=> 'Professor',
 'dayWeek'=> 'Dia da Semana',
-'hour'=>'Hora'
+'hour'=>'Hora',
+'addPartipant'=>'Adicionar Participante',
 
 
 ];

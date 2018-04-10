@@ -12,7 +12,7 @@ return[
 'logOut' => 'Salir', 
 'event' => 'evento',
 'language' => 'Lenguage',//tradução do menu
-'addInscription'=> 'Añadir a Matricula',
+'addInscription'=> 'Añadir Matricula',
 'namei' =>'Nombre del suscriptor',
 'registerDiscipline' => 'Registrar Disciplina',
 'responsibleName' => 'Nombre del Responsable',
@@ -44,7 +44,7 @@ return[
 'dateRegistration'=>'Decha de Matriculación',
 'period' => 'Período',
 'turma' => 'Clase',
-'status'=>'Estado',
+'status'=>'Status',
 'add'=>'Añadir',
 'listRegular'=>'La Lista de Participantes Regulares',
 'listIrregular'=>'La Lista de Participantes Irregulares',
@@ -64,4 +64,5 @@ return[
 'teacher'=> 'Profesor',
 'dayWeek'=> 'Día de la Semana',
 'hour'=> 'Hora',
+'addPartipant'=>'Añadir Participante',
 ];
