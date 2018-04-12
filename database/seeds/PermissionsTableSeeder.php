@@ -89,7 +89,7 @@ class PermissionsTableSeeder extends Seeder
         $ver_matriculas_irregulares -> description = 'Permite ver as matricula irregulares de alunos';
         $ver_matriculas_irregulares -> save();
 
-        #''' Atribuindo as permissões às funções'''
+        # Atribuindo as permissões às funções
 
         $administrador = Role::where('name', '=', 'administrador') -> first();
         $administrador -> attachPermissions(array($ver_colaborador, $ver_turma, 
