@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Matricula;
 use App\Participante;
+use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class participanteController extends Controller {
     /**
@@ -27,6 +28,10 @@ class participanteController extends Controller {
      */
     public function create()
     {
+        # Caso o usuário logado não tenha acesso a essa página, retorna um erro
+        if(!Entrust::can('ver-participante')) {
+            return abort(404);
+        }
         $matricula = Matricula::all();
         $participante = Participante::all();
         return view('participante.create', compact('matricula', 'participante'));

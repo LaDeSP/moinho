@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Endereco;
 use App\Contato;
 use App\Escola;
+use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class escolaController extends Controller
 {
@@ -28,6 +29,10 @@ class escolaController extends Controller
      */
     public function create()
     {
+        # Caso o usuário logado não tenha acesso a essa página, retorna um erro
+        if(!Entrust::can('ver-escola')) {
+            return abort(404);
+        }
         return view('escola.create');
     }
 

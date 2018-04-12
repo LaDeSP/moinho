@@ -10,6 +10,7 @@ use App\Colaborador;
 use App\Endereco;
 use App\TipoColaborador;
 use App\Contato;
+use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class colaboradorController extends Controller
 {
@@ -34,9 +35,13 @@ class colaboradorController extends Controller
      */
     public function create()
     {
-         $colaborador = Colaborador::all();
-         $tipo = TipoColaborador::all();
-  
+        # Caso o usuário logado não tenha acesso a essa página, retorna um erro
+        if(!Entrust::can('ver-colaborador')) {
+            return abort(404);
+        }
+        
+        $colaborador = Colaborador::all();
+        $tipo = TipoColaborador::all();
         
         return view('colaborador.create', compact('colaborador', 'tipo'));
     }

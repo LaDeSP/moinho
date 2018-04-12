@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Disciplina;
 use App\Colaborador;
 use App\Horario;
-
+use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class disciplinaController extends Controller
 {
@@ -31,6 +31,10 @@ class disciplinaController extends Controller
      */
     public function create()
     {
+        # Caso o usuário logado não tenha acesso a essa página, retorna um erro
+        if(!Entrust::can('ver-disciplina')) {
+            return abort(404);
+        }
         $disciplina = Disciplina::all();
         $colaborador = Colaborador::all();
         return view('disciplina.create', compact('disciplina', 'colaborador'));

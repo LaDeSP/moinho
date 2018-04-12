@@ -8,7 +8,7 @@ use App\NomeTurma;
 use App\Turma;
 use App\Disciplina;
 use App\TurmaDisciplina;
-
+use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class turmaController extends Controller
 {
@@ -32,6 +32,10 @@ class turmaController extends Controller
      */
     public function create()
     {
+        # Caso o usuário logado não tenha acesso a essa página, retorna um erro
+        if(!Entrust::can('ver-turma')) {
+            return abort(404);
+        }
         $turma = Turma::all();
         $nome = NomeTurma::all();
         return view('turma.create', compact('turma', 'nome'));

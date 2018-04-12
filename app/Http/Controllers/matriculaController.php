@@ -7,6 +7,7 @@ use App\Matricula;
 use App\Inscricao;
 use App\Turma;
 use App\StatusMatricula;
+use Zizaco\Entrust\EntrustFacade as Entrust;
 
 
 class matriculaController extends Controller
@@ -32,6 +33,11 @@ class matriculaController extends Controller
      */
     public function create()
     {
+        # Caso o usuário logado não tenha acesso a essa página, retorna um erro
+        if(!Entrust::can('ver-matricula')) {
+            return abort(404);
+        }
+
         $matricula = Matricula::all();
         $inscricao_id = Inscricao::all();
         $turma_id = Turma::all();

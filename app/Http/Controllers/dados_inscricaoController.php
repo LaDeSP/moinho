@@ -11,6 +11,7 @@ use App\Escola;
 use App\Inscricao;
 use App\Documento;
 use App\Documento_tipo;
+use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class dados_inscricaoController extends Controller
 {
@@ -38,6 +39,10 @@ class dados_inscricaoController extends Controller
      */
     public function create()
     {
+        #Caso o usuário logado não tenha acesso a essa página, retorna um erro
+        if(!Entrust::can('ver-inscricao'))
+            return abort(404);
+
         $dados_inscricao = DadosInscricao::all();
         $escola = Escola::all();
         $documento_tipo = Documento_tipo::all();
