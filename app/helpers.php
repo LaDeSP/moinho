@@ -4,7 +4,7 @@
     {
         $query = DB::table('matricula')
             ->join('turma', 'turma.id', '=', 'matricula.turma_id')
-            ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+            ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
             ->join('inscricao', 'inscricao.id', '=', 'matricula.inscricao_id')
             ->join('dados_inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
             ->join('pessoa', 'pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
@@ -18,7 +18,7 @@
     function busca_turma()
     {
         $query = DB::table('nome_turma')
-            ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+            ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
             ->select('nome_turma.nome_turma', 'turma.id', 'turma.ano', 'turma.turno')
             ->get();
         //$query = json_encode($query); para funcionar com o php puro que o alan fez. do Laravel é assim. tava faltando campos no select tbm
@@ -61,7 +61,7 @@
     function busca_nome()
     {
         $query = DB::table('nome_turma')
-            ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+            ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
             ->select('nome_turma.nome_turma', 'turma.id', 'turma.turno')
             ->get();
         //$query = json_encode($query); para funcionar com o php puro que o alan fez. do Laravel é assim. tava faltando campos no select tbm
@@ -138,7 +138,7 @@
             ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
             ->join('matricula', 'inscricao.id', '=', 'matricula.inscricao_id')
             ->join('turma', 'turma.id', '=', 'matricula.turma_id')
-            ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_int')
+            ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
             ->select('pessoa.nome', 'inscricao.id')
             ->get();
         return $query;
