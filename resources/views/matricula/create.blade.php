@@ -128,7 +128,7 @@
                               @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
                                   @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
                                     @foreach (buscar_turma($mat->turma_id) as $turma)
-                                      @foreach (buscar_nometurma($turma->nome_turma_int) as $nometurma)
+                                      @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
                                         <td>{{ $mat->id }}</td>
                                         <td>{{ $mat->data }}</td>
                                         <td>{{ $pessoa->nome}}</td>
@@ -191,7 +191,7 @@
                                             @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
                                                 @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
                                                     @foreach (buscar_turma($mat->turma_id) as $turma)
-                                                        @foreach (buscar_nometurma($turma->nome_turma_int) as $nometurma)
+                                                        @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
                                                             <td>{{$mat->id }}</td>
                                                             <td>{{ $mat->data }}</td>
                                                             <td>{{ $pessoa->nome}}</td>
