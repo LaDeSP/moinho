@@ -1,0 +1,26 @@
+Permissões
+
+
+// Colaborador #done
+ver-colaborador
+
+// Turma #done
+ver-turma
+
+//Matricula #done
+ver-matricula
+criar-matricula
+ver-matriculas-regulares
+ver-matriculas-irregulares
+
+//Escola #done
+ver-escola
+
+//Disciplina #done
+ver-disciplina
+
+//Participante #done
+ver-participante
+
+//Inscrição #done
+ver-inscrição
