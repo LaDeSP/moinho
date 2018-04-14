@@ -36,114 +36,11 @@ use PHP\test;
         }
     }
         
-    function pesquisacep(valor, id) {
-
-        //Nova variável "cep" somente com dígitos./
-        var cep = valor.replace(/\D/g, '');
-        element = $('#'+id);
-
-        //Verifica se campo cep possui valor informado.
-        if (cep != "") {
-
-            //Expressão regular para validar o CEP.
-            var validacep = /^[0-9]{8}$/;
-
-            //Valida o formato do CEP.
-            if(validacep.test(cep)) {
-
-                //Campo Valido
-                element.removeClass('is-invalid');
-                element.addClass('is-valid');
-                
-
-                //Cria um elemento javascript.
-                var script = document.createElement('script');
-
-                //Sincroniza com o callback.
-                script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-                //Insere script no documento e carrega o conteúdo.
-                document.body.appendChild(script);
-
-                //verifica os elementos
-                setTimeout(function(){
-                    verifica_vazio(document.getElementById('rua').value, 'rua');
-                    verifica_vazio(document.getElementById('bairro').value, 'bairro');
-                    verifica_vazio(document.getElementById('cidade').value, 'cidade');
-                    verifica_vazio(document.getElementById('uf').value, 'uf');
-                }, 250);
-            } //end if.
-            else {
-                //cep é inválido.
-                element.removeClass('is-valid');
-                element.addClass('is-invalid');
-            }
-        } //end if.
-    };
-    function verifica_telefone(telefone, id){
-        var validate = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/;
-        element = $('#'+id);
-        if(validate.test(telefone)) {
-            element.removeClass('is-invalid');
-            element.addClass('is-valid');
-        }
-        else{
-            element.removeClass('is-valid');
-            element.addClass('is-invalid');
-        }
-    }
-
-    function verifica_email(email, id){
-        var validate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        element = $('#'+id);
-        if(validate.test(email)) {
-            element.removeClass('is-invalid');
-            element.addClass('is-valid');
-        }
-        else{
-            element.removeClass('is-valid');
-            element.addClass('is-invalid');
-        }
-    }
-
-    function verifica_vazio(valor, id){
-        element = $('#'+id);
-        console.log(valor);
-        if(valor !== '') {
-            element.removeClass('is-invalid');
-            element.addClass('is-valid');
-        }
-        else{
-            element.removeClass('is-valid');
-            element.addClass('is-invalid');
-        }
-    }
-
-    function verifica_submit(classe){
-        elements = $('.'+classe);
-        cont = 0;
-        elements.each(function(){
-            if(!$(this).hasClass('is-valid')){
-                cont++;
-            }
-        });
-
-        if(cont == 0){
-            console.log(cont);
-            $('#submit').removeClass( 'btn-outline-danger' );
-            $('#submit').addClass( 'btn-outline-info' );
-            $('#submit').removeAttr( 'disabled' );
-        }
-        else{
-            console.log(cont);
-            $('#submit').removeClass( 'btn-outline-info' );
-            $('#submit').addClass( 'btn-outline-danger' );
-        }
-    }
+    
    
 
     </script>
-    </head>
+</head>
 @extends('layouts.app')
 
 @section('content')
