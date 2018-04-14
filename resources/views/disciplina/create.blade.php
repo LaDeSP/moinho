@@ -12,18 +12,27 @@
                 <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?></label>
                 <input type="text" name="nome" size="23" class="form-control validate" 
                 id="nome" onkeyup="verifica_vazio(this.value, this.id);">
+                <div class="invalid-feedback">
+                    Por favor, digite o nome da disciplina
+                </div>
             </div>
             <div class="col-md-4">
                 <!-- Turno da Disciplina -->
                 <label for="exampleFormControlInput1"> Turno da Disciplina (Estático) </label>
                 <input type="text" name="turno" size="23" class="form-control validate"
                 id="turno" onkeyup="verifica_vazio(this.value, this.id);">
+                <div class="invalid-feedback">
+                    Por favor, digite o turno da disciplina
+                </div>
             </div>
             <div class="col-md-4">
                 <!-- Sala de Aula da Disciplina -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.classroom'); ?></label>
                 <input type="text" name="sala_de_aula" size="23" class="form-control validate"
                 id="sala_de_aula" onkeyup="verifica_vazio(this.value, this.id);">
+                <div class="invalid-feedback">
+                    Por favor, digite a sala da disciplina
+                </div>
             </div>
             <div class="col-md-4">
                 <!-- Professor da Disciplina -->
@@ -41,12 +50,18 @@
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.dayWeek'); ?></label>
                 <input type="text" name="dia_semana" size="23" class="form-control validate"
                 id="dia_semana" onkeyup="verifica_vazio(this.value, this.id);">
+                <div class="invalid-feedback">
+                    Por favor, digite o dia da semana da disciplina
+                </div>
             </div>
             <div class="col-md-4">
                 <!-- Hora da Disciplina -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.hour'); ?></label>
                 <input type="time" name="hora" size="23" class="form-control validate"
                 id="hora" onkeyup="verifica_vazio(this.value, this.id);">
+                <div class="invalid-feedback">
+                    Por favor, digite a hora da disciplina
+                </div>
             </div>
             <div class="col-md-4">
                 <!-- Submit -->
