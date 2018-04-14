@@ -35,7 +35,7 @@
 
     <!-- Criar matricula -->
     @permission('criar-matricula')
-    <form method= "POST" action="{{ route('matricula.store') }}" enctype="multipart/form-data">
+    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('matricula.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-6">
@@ -50,17 +50,18 @@
             <div class="col-md-6">
                 <!-- Data -->
                 <label for="exampleFormControlInput1"> <?php echo Lang::get('conteudo.dateRegistration'); ?> </label>
-                <input type="date" name="data" size="23" class="form-control">
+                <input type="date" name="data" size="23" id="data" class="form-control validate"
+                onkeyup="verifica_vazio(this.value, this.id);">
             </div>
 
             <!-- Segunda Linha -->
             <div class="col-md-4">
                 <!-- Turno -->
-            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
-            <select name="turno" class="form-control">
-                <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
-                <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
-            </select>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
+                <select name="turno" class="form-control">
+                    <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
+                    <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
+                </select>
             </div>
             <div class="col-md-4">
                 <!-- Turma -->
@@ -83,7 +84,7 @@
 
             <div class="col-md-12">
                 <br>
-                <button type="submit" class="btn btn-outline-info"><?php echo Lang::get('conteudo.add'); ?></button>
+                <button id="submit" type="submit" class="btn btn-outline-danger" disabled><?php echo Lang::get('conteudo.add'); ?></button>
             </div>
         </div>
     </form>
