@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Escola extends Model
 {
-    protected $table="escola";
+    protected $table="escolas";
 
-    public function Endereco()
+    public function endereco()
     {
         return $this->belongsTo(Endereco::class);
     }
 
     public function contato()
     {
-        return $this->belongsTo(contato::class);
+        return $this->belongsTo(Contato::class);
     }
 
 

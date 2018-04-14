@@ -11,7 +11,7 @@ class CriarTabelaDocumentos extends Migration
      */
     public function up()
     {
-        Schema::create('documento', function (Blueprint $table) {
+        Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('comentario');
             $table->string('url');
@@ -28,6 +28,6 @@ class CriarTabelaDocumentos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documento');
+        Schema::dropIfExists('documentos');
     }
 }

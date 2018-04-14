@@ -13,13 +13,12 @@ class CriarTabelaContato extends Migration
      */
     public function up()
     {
-        Schema::create('contato', function (Blueprint $table) {
+        Schema::create('contatos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('numero_fixo');
             $table->string('celular1');
             $table->string('celular2');
             $table->string('email');
-            $table->integer('pessoa_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CriarTabelaContato extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contato');
+        Schema::dropIfExists('contatos');
     }
 }

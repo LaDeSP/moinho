@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
-    protected $table = "pessoa";
+    protected $table = "pessoas";
     
-    public function Endereco()
+    public function endereco()
     {
         return $this->belongsTo(Endereco::class);
+    }
+
+    public function contato() {
+        return $this->hasMany(Contato::class);
     }
 
 

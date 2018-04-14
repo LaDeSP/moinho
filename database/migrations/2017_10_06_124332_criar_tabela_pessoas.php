@@ -13,12 +13,13 @@ class CriarTabelaPessoas extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa', function (Blueprint $table) {
+        Schema::create('pessoas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
             $table->string('cpf');
             $table->string('data_nascimento');
-            $table->integer('Endereco_id')->unsigned();
+            $table->integer('endereco_id')->unsigned();
+            $table->integer('contato_id')->unsigned();
             $table->timestamps();
         });
     }

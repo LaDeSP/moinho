@@ -109,9 +109,9 @@ class dados_inscricaoController extends Controller
         $ende->pais = $request->pais;
         $ende->save(['timestamps' => false]);
             //SQLSTATE[HY000]: General error: 1364 Field 'Endereco_id' doesn't have a default value
-        $person->Endereco()->associate($ende);
-        $mae->Endereco()->associate($ende);
-        $pai->Endereco()->associate($ende);
+        $person->endereco()->associate($ende);
+        $mae->endereco()->associate($ende);
+        $pai->endereco()->associate($ende);
         $person->save(['timestamps' => false]);
         $pai->save(['timestamps' => false]);
         $mae->save(['timestamps' => false]);
@@ -131,8 +131,8 @@ class dados_inscricaoController extends Controller
         $formulario->escola_id = $request->escola;
         //$formulario->escola()->associate($escola_id);
         $formulario->dados_pessoais()->associate($person); //BO aqui
-        $formulario->pai()->associate($pai);
-        $formulario->mae()->associate($mae);
+        $formulario->responsavel()->associate($pai);
+        $formulario->responsavel()->associate($mae);
        
 
 
