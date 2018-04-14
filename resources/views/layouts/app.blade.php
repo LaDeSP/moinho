@@ -117,6 +117,13 @@
                         <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger"href="{{ route('home')}}">
+                            <h4 class="yellow">
+                            <i class="fa fa-home" aria-hidden="true"></i><?php echo Lang::get('conteudo.home');?> 
+                            </h4>
+                        </a>
+                    </li>
 
                     @permission('ver-inscricao')
                     <!-- Link para inscrição-->

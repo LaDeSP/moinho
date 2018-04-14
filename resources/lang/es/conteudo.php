@@ -1,6 +1,7 @@
 <?php
 //espanhol
 return[
+'home'=>'Home',
 'school' => 'Escuela',
 'registration' => 'Inscripción',
 'enrollment' => 'Matricula',

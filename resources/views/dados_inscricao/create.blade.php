@@ -145,7 +145,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleDate');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?></label>
                             <input type="date" name="data_nascimentoPai" class="form-control">
                         </div>
                         <div class="col-md-4">
@@ -163,7 +163,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleDate');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?></label>
                             <input type="date" name="data_nascimentoMae" class="form-control">
                         </div>
                         <div class="col-md-4">

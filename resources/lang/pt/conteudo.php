@@ -1,6 +1,7 @@
 <?php
 //portugues
 return[
+'home'=>'Home',
 'school' => 'Escola',
 'registration' => 'Inscrição',
 'enrolment' =>'Matrícula',
@@ -31,7 +32,6 @@ return[
 'income' => 'Renda',
 'manyResidence' => 'Quantidade na Residência',
 'socialBenefit'=> 'Benefício Social',
-'grade' => 'Série',
 'zipCode' => 'CEP',
 'street' => 'Rua',
 'neighbourhood' => 'Bairro',
