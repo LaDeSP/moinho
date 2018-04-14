@@ -19,7 +19,7 @@ class DadosInscricao extends Model
     }
     
     public function escola(){
-        return $this->belongsTo(Escola::class);
+        return $this->belongsTo(Escolas::class);
     }
 
     

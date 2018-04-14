@@ -19,7 +19,7 @@ class CriarTabelaPessoas extends Migration
             $table->string('cpf');
             $table->string('data_nascimento');
             $table->integer('endereco_id')->unsigned();
-            $table->integer('contato_id')->unsigned();
+            $table->integer('contatos_id')->unsigned();
             $table->timestamps();
         });
     }

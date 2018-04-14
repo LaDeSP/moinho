@@ -7,9 +7,9 @@
             ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
             ->join('inscricao', 'inscricao.id', '=', 'matricula.inscricao_id')
             ->join('dados_inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
-            ->join('pessoa', 'pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
+            ->join('pessoas', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
             ->join('status_matricula', 'status_matricula.id', '=', 'matricula.status_matricula_id')
-            ->select('matricula.id', 'pessoa.nome', 'nome_turma.nome_turma')
+            ->select('matricula.id', 'pessoas.nome', 'nome_turma.nome_turma')
             ->where('status_matricula.status', '=', $status)
             ->get();
         return $query;
@@ -17,9 +17,9 @@
 
     function buscar_escola()
     {
-        $query = DB::table('escola')
-            ->join('Endereco', 'Endereco.id', '=', 'escola.Endereco_id')
-            ->join('contato', 'contato.id', '=', 'escola.contato_id')
+        $query = DB::table('escolas')
+            ->join('enderecos', 'enderecos.id', '=', 'escolas.endereco_id')
+            ->join('contatos', 'contatos.id', '=', 'escolas.contatos_id')
             ->get();
         
         return $query; 
@@ -38,10 +38,10 @@
 
     function busca_inscricao()
     {
-        $query = DB::table('pessoa')
-            ->join('dados_inscricao', 'pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
+        $query = DB::table('pessoas')
+            ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
             ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
-            ->select('pessoa.nome', 'inscricao.id')
+            ->select('pessoas.nome', 'inscricao.id')
             ->get();
         //$query = json_encode($query); para funcionar com o php puro
         $query = json_decode($query);
@@ -93,7 +93,7 @@
 
     function busca_pessoa($id)
     {
-        $query = DB::table('pessoa')->where('id', '=', $id)->get();
+        $query = DB::table('pessoas')->where('id', '=', $id)->get();
         return $query;
     }
     function buscar_turma($id)
@@ -116,12 +116,12 @@
         return $query;
     }
     function busca_pessoa2($nome){
-        $query = DB::table('pessoa')->where('nome', '=', $nome)->get();
+        $query = DB::table('pessoas')->where('nome', '=', $nome)->get();
         return $query;
     }
     function busca_pessoa3($id)
     {
-        $query = DB::table('pessoa')->where('id', '>', $id)->get();
+        $query = DB::table('pessoas')->where('id', '>', $id)->get();
         return $query;
     }
     function busca_inscricao3($id)
@@ -143,21 +143,21 @@
     }
 
     function teste(){
-        $query = DB::table('pessoa')
-            ->join('dados_inscricao', 'pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
+        $query = DB::table('pessoas')
+            ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
             ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
             ->join('matricula', 'inscricao.id', '=', 'matricula.inscricao_id')
             ->join('turma', 'turma.id', '=', 'matricula.turma_id')
             ->join('nome_turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
-            ->select('pessoa.nome', 'inscricao.id')
+            ->select('pessoas.nome', 'inscricao.id')
             ->get();
         return $query;
     }
     function home(){
-           $query = DB::table('pessoa')
-        ->join('dados_inscricao', 'pessoa.id', '=', 'dados_inscricao.dados_pessoais_id')
+           $query = DB::table('pessoas')
+        ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
         ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
-        ->select(DB::raw('inscricao.data_avaliacao, pessoa.nome, inscricao.id, pessoa.cpf, DATEDIFF(inscricao.data_avaliacao, CURDATE()) AS Dias'))  
+        ->select(DB::raw('inscricao.data_avaliacao, pessoas.nome, inscricao.id, pessoas.cpf, DATEDIFF(inscricao.data_avaliacao, CURDATE()) AS Dias'))  
         ->orderBy('Dias')
         ->get();
         return $query;

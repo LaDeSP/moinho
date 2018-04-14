@@ -27,15 +27,15 @@ class ForeignKeys extends Migration
             $table->foreign('endereco_id')->references('id')->on('enderecos');
         });
 
-        Schema::table('escola', function(Blueprint $table){
-            $table->foreign('contato_id')->references('id')->on('contatos');
+        Schema::table('escolas', function(Blueprint $table){
+            $table->foreign('contatos_id')->references('id')->on('contatos');
         });
 
         Schema::table('pessoas', function(Blueprint $table){
-            $table->foreign('contato_id')->references('id')->on('contatos');
+            $table->foreign('contatos_id')->references('id')->on('contatos');
         });
 
-        Schema::table('escola', function(Blueprint $table){
+        Schema::table('escolas', function(Blueprint $table){
             $table->foreign('endereco_id')->references('id')->on('enderecos');
         });
 
@@ -45,7 +45,7 @@ class ForeignKeys extends Migration
         });
 
         Schema::table('colaborador', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
 
@@ -75,11 +75,11 @@ class ForeignKeys extends Migration
         Schema::table('pessoas', function (Blueprint $table){
             $table->dropForeign(['Endereco_id']);
         });
-        Schema::table('escola', function (Blueprint $table){
+        Schema::table('escolas', function (Blueprint $table){
             $table->dropForeign(['Endereco_id']);
         });
-        Schema::table('escola', function (Blueprint $table){
-            $table->dropForeign(['contato_id']);
+        Schema::table('escolas', function (Blueprint $table){
+            $table->dropForeign(['contatos_id']);
         });
         Schema::table('documento', function (Blueprint $table){
             $table->dropForeign(['documento_tipo_id', 'inscricao_id']);

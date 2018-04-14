@@ -18,7 +18,7 @@ class CriarTabelaEscolas extends Migration
             $table->string('nome_fantasia');
             $table->string('nome');
             $table->string('tipo');
-            $table->integer('contato_id')->unsigned();
+            $table->integer('contatos_id')->unsigned();
             $table->integer('endereco_id')->unsigned();
         });
     }
