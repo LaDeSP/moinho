@@ -17,6 +17,7 @@ class CriarTabelaColaboradores extends Migration
             $table->increments('id');
             $table->integer('ano_ingreco');
             $table->string('area_atuacao');
+            $table->integer('user_id')->unsigned();
             $table->integer('pessoa_id')->unsigned();
             $table->integer('tipo_colaborador_id')->unsigned();
         });
