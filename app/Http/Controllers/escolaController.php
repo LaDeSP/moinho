@@ -69,7 +69,7 @@ class escolaController extends Controller
         $formulario->nome = $request->nome;
         $formulario->tipo = $request->tipo;
         $formulario->contato()->associate($telefone);
-        $formulario->Endereco()->associate($ende);
+        $formulario->endereco()->associate($ende);
         $formulario->save(['timestamps' => false]);
 
 

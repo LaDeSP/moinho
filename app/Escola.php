@@ -15,7 +15,7 @@ class Escola extends Model
 
     public function contato()
     {
-        return $this->hasMany(Contato::class);
+        return $this->belongsTo(Contato::class);
     }
 
 
