@@ -13,12 +13,7 @@ class DadosInscricao extends Model
         return $this->belongsTo(Pessoa::class);
     }
 
-    public function mae()
-    {
-        return $this->belongsTo(Pessoa::class);
-    }
-
-    public function pai()
+    public function responsavel()
     {
         return $this->belongsTo(Pessoa::class);
     }
