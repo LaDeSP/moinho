@@ -52,7 +52,7 @@ class turmaController extends Controller
         $formulario = new Turma;
         
 
-        $formulario->nome_turma_int = $request->turma;
+        $formulario->nome_turma_id = $request->turma;
         $formulario->turno = $request->turno;
         $formulario->ano = $request->ano;
         $formulario->periodo = $request->periodo;

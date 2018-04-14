@@ -3,7 +3,7 @@
 @section('content')
     
 
-    <form method= "POST" action="{{ route('turma.store') }}" enctype="multipart/form-data">
+    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('turma.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <h1 class="text-warning"><?php echo Lang::get('conteudo.addClass');?></h1>
         <div class="row">
@@ -18,17 +18,21 @@
                 </select> 
             </div>
             <div class="col-md-3 mb-3">
-                <!-- Turno da Turma -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
-                           <select name="turno" class="form-control">
-                                <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
-                                <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
-                           </select>
+            <!-- Turno da Turma -->
+            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
+                        <select name="turno" class="form-control">
+                            <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
+                            <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
+                        </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <!-- Ano da Turma -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.year'); ?></label>
-                <input type="year" name="ano" size="23" class="form-control">
+                <input type="year" value="" id="ano" name="ano" size="23" class="form-control validate"
+                onkeyup="verifica_vazio(this.value, this.id);">
+                <div class="invalid-feedback">
+                    Por favor, digite o ano da turma
+                </div>
             </div>
             <div class="form-group col-md-2">
                 <!-- Semestre da Turma -->
@@ -42,7 +46,7 @@
             </div>
             <div class="col-md-4">
                 <!-- Submit -->
-                <button type="submit" class="btn btn-outline-info" id="submit"><?php echo Lang::get('conteudo.add');?></button>
+                <button type="submit" class="btn btn-outline-danger" id="submit" disabled><?php echo Lang::get('conteudo.add');?></button>
             </div>
         </div>   
     </form>

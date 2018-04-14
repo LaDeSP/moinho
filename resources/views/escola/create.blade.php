@@ -56,7 +56,7 @@ use PHP\test;
                     <?php echo Lang::get('validation.attributes.name'); ?> 
                 </label>
                 <input type="text" name="nome" size="23" class="form-control validate"
-                id="nome" onkeyup="verifica_vazio(this.value, this.id); " require>
+                id="nome" onkeyup="verifica_vazio(this.value, this.id);" require>
                 <div class="text-danger information">
                     * Campo Importante
                 </div>
