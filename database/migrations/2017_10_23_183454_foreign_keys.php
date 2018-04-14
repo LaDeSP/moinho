@@ -44,6 +44,10 @@ class ForeignKeys extends Migration
             $table->foreign('inscricao_id')->references('id')->on('inscricao');
         });
 
+        Schema::table('colaborador', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('user');
+        });
+
 
     }
     /**
@@ -53,6 +57,10 @@ class ForeignKeys extends Migration
      */
     public function down()
     {
+        Schema::table('colaborador', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+        
         Schema::table('dados_inscricao', function (Blueprint $table){
             $table->dropForeign(['dados_pessoais_id']);
         });
