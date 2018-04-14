@@ -27,7 +27,7 @@ class ForeignKeys extends Migration
             $table->foreign('endereco_id')->references('id')->on('enderecos');
         });
 
-        Schema::table('escolas', function(Blueprint $table){
+        Schema::table('escola', function(Blueprint $table){
             $table->foreign('contato_id')->references('id')->on('contatos');
         });
 
@@ -35,7 +35,7 @@ class ForeignKeys extends Migration
             $table->foreign('contato_id')->references('id')->on('contatos');
         });
 
-        Schema::table('escolas', function(Blueprint $table){
+        Schema::table('escola', function(Blueprint $table){
             $table->foreign('endereco_id')->references('id')->on('enderecos');
         });
 
@@ -75,10 +75,10 @@ class ForeignKeys extends Migration
         Schema::table('pessoas', function (Blueprint $table){
             $table->dropForeign(['Endereco_id']);
         });
-        Schema::table('escolas', function (Blueprint $table){
+        Schema::table('escola', function (Blueprint $table){
             $table->dropForeign(['Endereco_id']);
         });
-        Schema::table('escolas', function (Blueprint $table){
+        Schema::table('escola', function (Blueprint $table){
             $table->dropForeign(['contato_id']);
         });
         Schema::table('documento', function (Blueprint $table){

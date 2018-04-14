@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Escola extends Model
 {
-    protected $table="escolas";
+    protected $table="escola";
 
     public function endereco()
     {
