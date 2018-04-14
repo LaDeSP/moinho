@@ -8,9 +8,13 @@ class Pessoa extends Model
 {
     protected $table = "pessoa";
     
-    public function Endereco()
+    public function endereco()
     {
         return $this->belongsTo(Endereco::class);
+    }
+
+    public function contato() {
+        return $this->hasMany(Contato::class);
     }
 
 

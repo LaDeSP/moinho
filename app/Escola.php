@@ -8,14 +8,14 @@ class Escola extends Model
 {
     protected $table="escola";
 
-    public function Endereco()
+    public function endereco()
     {
         return $this->belongsTo(Endereco::class);
     }
 
     public function contato()
     {
-        return $this->belongsTo(contato::class);
+        return $this->hasMany(Contato::class);
     }
 
 
