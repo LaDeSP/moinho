@@ -28,8 +28,8 @@ class CriarTabelaDadosInscricao extends Migration
             $table->string('serie');
             $table->integer('escola_id')->unsigned();
             $table->integer('dados_pessoais_id')->unsigned();
-            $table->integer('mae_id')->unsigned();
-            $table->integer('pai_id')->unsigned();
+            $table->integer('responsavel1_id')->unsigned();
+            $table->integer('responsavel2_id')->unsigned();
             $table->timestamps();
         });
     }

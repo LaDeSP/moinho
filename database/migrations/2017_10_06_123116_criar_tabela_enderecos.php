@@ -13,7 +13,7 @@ class CriarTabelaEnderecos extends Migration
      */
     public function up()
     {
-        Schema::create('Endereco', function (Blueprint $table) {
+        Schema::create('enderecos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('rua');
             $table->string('bairro');
