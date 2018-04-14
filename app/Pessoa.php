@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
-    protected $table = "pessoa";
+    protected $table = "pessoas";
     
     public function endereco()
     {
