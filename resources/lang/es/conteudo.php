@@ -5,7 +5,7 @@ return[
 'school' => 'Escuela',
 'registration' => 'Inscripción',
 'enrollment' => 'Matricula',
-'grade' => 'Año', //turma
+'grade' => 'Año', //série
 'regularRegistration' => 'Matricula regular',
 'irregularRegistration' => 'Matricula irregular',
 'contributors' => 'Contribuyente',
@@ -32,7 +32,7 @@ return[
 'income' => 'Renta',
 'manyResidence' => 'Cantidad en la residencia',
 'socialBenefit'=> 'Beneficio Social',
-'grade' => 'Grado',
+'serie' => 'Grado',
 'zipCode' => 'Código Postal',
 'street' => 'Calle',
 'neighbourhood' => 'Barrio',
@@ -44,7 +44,6 @@ return[
 'cpf'=>'CPF del Inscripto',
 //agora começa matricula
 'dateRegistration'=>'Decha de Matriculación',
-'period' => 'Período',
 'turma' => 'Clase',
 'status'=>'Status',
 'add'=>'Añadir',
@@ -57,6 +56,7 @@ return[
 'employeeReport'=>'Download - Informe del Colaborador',
 'enrrollmentTime'=>'Año de Inscriptión',
 'occupationArea'=>'Área de Actuación',
+'typeCollaborator'=>'Tipo Colaborador',
 //Adicionar Turma
 'addClass'=>'Añadir a la Classe',
 'semester'=>'Mitad',

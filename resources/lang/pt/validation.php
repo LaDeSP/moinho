@@ -147,5 +147,7 @@ return [
         'title' => 'título',
         'username' => 'usuário',
         'year' => 'Ano',
+        'morning' => 'Matutino',
+        'afternoon'=>'Vespertino',
     ],
 ];

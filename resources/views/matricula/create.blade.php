@@ -55,9 +55,12 @@
 
             <!-- Segunda Linha -->
             <div class="col-md-4">
-                <!-- Período -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.period'); ?> </label>
-                <input type="text" name="periodo" size="23" class="form-control">
+                <!-- Turno -->
+            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
+            <select name="turno" class="form-control">
+                <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
+                <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
+            </select>
             </div>
             <div class="col-md-4">
                 <!-- Turma -->

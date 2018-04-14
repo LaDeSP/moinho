@@ -194,8 +194,11 @@ use PHP\test;
                         </div>
                         <!-- Turno -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
-                            <input type="text" name="turma" size="23" class="form-control">
+                        <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
+                            <select name="turno" class="form-control">
+                                <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
+                                <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
+                           </select>
                         </div>
                         <!-- Transporte -->
                         <div class="col-md-4">
@@ -237,14 +240,9 @@ use PHP\test;
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.socialBenefit');?></label>
                             <input name="beneficio_social" type="text" size="23" class="form-control"/>
                         </div>
-                        <!-- Benefício Social -->
-                        <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.socialBenefit');?></label>
-                            <input name="beneficio_social" type="text" size="23" class="form-control"/>
-                        </div>
                         <!-- Sériel -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.grade');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.serie');?></label>
                             <input name="serie" type="text" size="23" class="form-control" />
                         </div>
                         <!-- Escola -->

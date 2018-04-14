@@ -150,5 +150,7 @@ return [
         'time' => 'hora',
         'subject' => 'asunto',
         'message' => 'mensaje',
+        'matutino' =>'Matutino',
+        'vespertino'=>'Vespertino',
     ],
 ];

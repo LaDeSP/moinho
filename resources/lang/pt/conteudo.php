@@ -32,6 +32,7 @@ return[
 'income' => 'Renda',
 'manyResidence' => 'Quantidade na Residência',
 'socialBenefit'=> 'Benefício Social',
+'serie'=>'Série',
 'zipCode' => 'CEP',
 'street' => 'Rua',
 'neighbourhood' => 'Bairro',
@@ -43,7 +44,6 @@ return[
 'cpf' => 'CPF do Inscrito',
 //agora começa matricula
 'dateRegistration'=>'Data da Matrícula',
-'period' => 'Período',
 'turma'=>'Turma',
 'status'=>'Status',
 'add'=>'Adicionar',
@@ -56,6 +56,7 @@ return[
 'employeeReport'=> 'Download - Relatório do Colaborador',
 'enrrollmentTime'=>'Ano de Ingresso',
 'occupationArea'=>'Área de Atuação',
+'typeCollaborator'=>'Tipo Colaborador',
 //Adicionar Turma
 'addClass'=>'Adicionar Turma',
 'semester'=>'Semestre',

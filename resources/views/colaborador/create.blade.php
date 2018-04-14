@@ -221,7 +221,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Tipo de Colaborador -->
-                            <label for="exampleFormControlInput1">Área de Atuação (Repetido)</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.typeCollaborator');?></label>
                             <select name="tipo_colaborador" class="form-control">
                                 @foreach($tipo as $tipo_col) 
                                 <option value="{{ $tipo_col->id }}"> {{ $tipo_col->nome }}</option>

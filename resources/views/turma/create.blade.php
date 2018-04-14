@@ -17,20 +17,26 @@
                     @endforeach
                 </select> 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 mb-3">
                 <!-- Turno da Turma -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?> </label>
-                <input type="text" name="turno" size="23" class="form-control">
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
+                           <select name="turno" class="form-control">
+                                <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
+                                <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
+                           </select>
             </div>
             <div class="col-md-4">
                 <!-- Ano da Turma -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.year'); ?></label>
                 <input type="year" name="ano" size="23" class="form-control">
             </div>
-            <div class="col-md-4">
+            <div class="form-group col-md-2">
                 <!-- Semestre da Turma -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.semester');?></label>
-                <input type="text" name="periodo" size="23" class="form-control">
+                <select name="turno" class="form-control">
+                                <option value="1"> 1º </option>
+                                <option value="2"> 2º </option>
+                           </select>
             </div>
             <div class="col-md-8">
             </div>

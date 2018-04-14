@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-4">
                 <!-- Turno da Disciplina -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?></label>
+                <label for="exampleFormControlInput1"> Turno da Disciplina (Estático) </label>
                 <input type="text" name="turno" size="23" class="form-control">
             </div>
             <div class="col-md-4">
