@@ -12,6 +12,10 @@ class Colaborador extends Model
     {
         return $this->belongsTo(Pessoa::class);
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
     public $timestamps = false;
 
 }
