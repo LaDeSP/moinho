@@ -15,6 +15,16 @@
         return $query;
     }
 
+    function buscar_escola()
+    {
+        $query = DB::table('escola')
+            ->join('Endereco', 'Endereco.id', '=', 'escola.Endereco_id')
+            ->join('contato', 'contato.id', '=', 'escola.contato_id')
+            ->get();
+        
+        return $query; 
+    }
+
     function busca_turma()
     {
         $query = DB::table('nome_turma')

@@ -57,9 +57,6 @@ use PHP\test;
                 </label>
                 <input type="text" name="nome" size="23" class="form-control validate"
                 id="nome" onkeyup="verifica_vazio(this.value, this.id);" require>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o nome da escola
                 </div>
@@ -69,9 +66,6 @@ use PHP\test;
                 <label for="exampleFormControlInput1">Nome Fantasia</label>
                 <input type="text" name="nome_fantasia" size="23" class="form-control validate"
                 id="nome_fantasia" onkeyup="verifica_vazio(this.value, this.id); " require>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o nome fantasia da escola
                 </div>
@@ -93,36 +87,24 @@ use PHP\test;
                 <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone'); ?></label>
                 <input type="text" name="telefone" size="23" class="form-control validate" value="" 
                     id="telefone" onkeyup="verifica_telefone(this.value, this.id); " maxlength="15" require>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
             </div>
             <div class="col-md-3">
                 <!-- Celular 1 da Escola -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  1</label>
                 <input type="text" name="celular1" size="23" class="form-control validate" value="" 
                 id="celular1" onkeyup="verifica_telefone(this.value, this.id); "  maxlength="15" require>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
             </div>
             <div class="col-md-3">
                 <!-- Celular 2 da Escola -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  2</label>
                 <input type="text" name="celular2" size="23" class="form-control validate" value="" 
                 id="celular2" onkeyup="verifica_telefone(this.value, this.id); "  maxlength="15" require>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
             </div>
             <div class="col-md-3">
                 <!-- Email da Escola -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.email');?></label>
                 <input type="text" name="email" size="23" class="form-control validate"
                 id="email" onkeyup="verifica_email(this.value, this.id);">
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
             </div>
 
             <!-- Localização da Escola -->
@@ -131,18 +113,12 @@ use PHP\test;
                 <label for="exampleFormControlInput1">CEP</label>
                 <input name="cep" type="text" id="cep" value="" size="23" maxlength="9"
                 onkeyup="pesquisacep(this.value, this.id);" class="form-control validate" require/>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
             </div>
             <div class="col-md-3">
                 <!-- Rua da Escola -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?></label>
                 <input value="" name="rua" type="text" size="23" class="form-control validate"
                 id="rua" onkeyup="verifica_vazio(this.value, this.id); " require/>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o nome da rua
                 </div>
@@ -152,9 +128,6 @@ use PHP\test;
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?></label>
                 <input value="" name="bairro" type="text" id="bairro" size="23" class="form-control validate"
                 onkeyup="verifica_vazio(this.value, this.id); " require/>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o nome do bairro
                 </div>
@@ -164,9 +137,6 @@ use PHP\test;
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                 <input value="" type="text" name="numero" size="23" class="form-control validate"
                 id="numero" onkeyup="verifica_vazio(this.value, this.id); " require/>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o numero da escola
                 </div>
@@ -176,9 +146,6 @@ use PHP\test;
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                 <input value="" type="text" name="complemento" size="23" class="form-control validate"
                 id="complemento" onkeyup="verifica_vazio(this.value, this.id); " require>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o complemento
                 </div>
@@ -188,9 +155,6 @@ use PHP\test;
                 <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?></label>
                 <input value="" name="cidade"  type="text" id="cidade" size="23" class="form-control validate" 
                 onkeyup="verifica_vazio(this.value, this.id); " require/>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o nome da cidade
                 </div>
@@ -200,9 +164,6 @@ use PHP\test;
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?></label>
                 <input value="" name="estado" type="text" id="uf" size="23" class="form-control validate" 
                 onkeyup="verifica_vazio(this.value, this.id); " require/>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o nome do estado
                 </div>
@@ -212,23 +173,22 @@ use PHP\test;
                 <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?></label>
                 <input value="" type="text" name="pais" size="23" class="form-control validate"
                 id="pais" onkeyup="verifica_vazio(this.value, this.id); " require>
-                <div class="text-danger information">
-                    * Campo Importante
-                </div>
                 <div class="invalid-feedback">
                     Por favor, digite o nome do pais
                 </div>
             </div>
             <div class="col-md-3">
                 <!-- Submit -->
-                <button type="submit" class="btn btn-outline-danger " id="submit" disabled><?php echo Lang::get('conteudo.add');?></button>
+                <button onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-danger " id="submit" disabled><?php echo Lang::get('conteudo.add');?></button>
             </div>
         </div>
     </form>
 
     <br>
     <br>
-
+    @foreach(buscar_escola() as $value)
+        {{ $value }}
+    @endforeach
     
 @endsection
 
