@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    
+    <h1 class="text-warning"><?php echo Lang::get('conteudo.addClass');?></h1>
 
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('turma.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <h1 class="text-warning"><?php echo Lang::get('conteudo.addClass');?></h1>
         <div class="row">
             <!-- Dados da Turma -->
             <div class="col-md-4">
@@ -41,8 +40,6 @@
                                 <option value="1"> 1º </option>
                                 <option value="2"> 2º </option>
                            </select>
-            </div>
-            <div class="col-md-8">
             </div>
             <div class="col-md-4">
                 <!-- Submit -->
