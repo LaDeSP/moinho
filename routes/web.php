@@ -53,6 +53,9 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/nome_turma', 'listar_matriculasController@nome_turma');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('auth/logout', 'Auth\LoginController@logout');
+    Route::get('user', function(){
+        return view('auth.passwords.reset');
+    });
     
         //Relatórios
     Route::get('/relatorio_inscricao', 'relatorioController@export');

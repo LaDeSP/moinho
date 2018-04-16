@@ -53,7 +53,7 @@ use PHP\test;
             <div class="col-md-4">
                 <!-- Nome da Escola -->
                 <label for="exampleFormControlInput1">
-                    <?php echo Lang::get('validation.attributes.name'); ?> 
+                    <?php echo Lang::get('validation.attributes.name'); ?>*
                 </label>
                 <input type="text" name="nome" size="23" class="form-control validate"
                 id="nome" onkeyup="verifica_vazio(this.value, this.id);" require>
@@ -63,7 +63,7 @@ use PHP\test;
             </div>
             <div class="col-md-4">
                 <!-- Nome Fantasia da Escola -->
-                <label for="exampleFormControlInput1">Nome Fantasia</label>
+                <label for="exampleFormControlInput1">Nome Fantasia*</label>
                 <input type="text" name="nome_fantasia" size="23" class="form-control validate"
                 id="nome_fantasia" onkeyup="verifica_vazio(this.value, this.id); " require>
                 <div class="invalid-feedback">
@@ -72,7 +72,7 @@ use PHP\test;
             </div>
             <div class="col-md-4">
                 <!-- Tipo da Escola -->
-                <label for="exampleFormControlInput1">Tipo</label>
+                <label for="exampleFormControlInput1">Tipo*</label>
                 <select name="tipo" id="Tipo" class="form-control" require>
                     <option value="Particular">Particular</option>
                     <option value="Federal">Federal</option>
@@ -84,25 +84,25 @@ use PHP\test;
             <!-- Meios de Comunicação -->
             <div class="col-md-3">
                 <!-- Telefone da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone'); ?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone'); ?>*</label>
                 <input type="text" name="telefone" size="23" class="form-control validate" value="" 
                     id="telefone" onkeyup="verifica_telefone(this.value, this.id); " maxlength="15" require>
             </div>
             <div class="col-md-3">
                 <!-- Celular 1 da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  1</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  1*</label>
                 <input type="text" name="celular1" size="23" class="form-control validate" value="" 
                 id="celular1" onkeyup="verifica_telefone(this.value, this.id); "  maxlength="15" require>
             </div>
             <div class="col-md-3">
                 <!-- Celular 2 da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  2</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  2*</label>
                 <input type="text" name="celular2" size="23" class="form-control validate" value="" 
                 id="celular2" onkeyup="verifica_telefone(this.value, this.id); "  maxlength="15" require>
             </div>
             <div class="col-md-3">
                 <!-- Email da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.email');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.email');?>*</label>
                 <input type="text" name="email" size="23" class="form-control validate"
                 id="email" onkeyup="verifica_email(this.value, this.id);">
             </div>
@@ -116,7 +116,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Rua da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?>*</label>
                 <input value="" name="rua" type="text" size="23" class="form-control validate"
                 id="rua" onkeyup="verifica_vazio(this.value, this.id); " require/>
                 <div class="invalid-feedback">
@@ -125,7 +125,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Bairro da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?>*</label>
                 <input value="" name="bairro" type="text" id="bairro" size="23" class="form-control validate"
                 onkeyup="verifica_vazio(this.value, this.id); " require/>
                 <div class="invalid-feedback">
@@ -134,7 +134,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Numero da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
                 <input value="" type="text" name="numero" size="23" class="form-control validate"
                 id="numero" onkeyup="verifica_vazio(this.value, this.id); " require/>
                 <div class="invalid-feedback">
@@ -143,7 +143,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Complemento da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
                 <input value="" type="text" name="complemento" size="23" class="form-control validate"
                 id="complemento" onkeyup="verifica_vazio(this.value, this.id); " require>
                 <div class="invalid-feedback">
@@ -152,7 +152,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Cidade da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?>*</label>
                 <input value="" name="cidade"  type="text" id="cidade" size="23" class="form-control validate" 
                 onkeyup="verifica_vazio(this.value, this.id); " require/>
                 <div class="invalid-feedback">
@@ -161,7 +161,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Estado da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?>*</label>
                 <input value="" name="estado" type="text" id="uf" size="23" class="form-control validate" 
                 onkeyup="verifica_vazio(this.value, this.id); " require/>
                 <div class="invalid-feedback">
@@ -170,7 +170,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- País da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?></label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?>*</label>
                 <input value="" type="text" name="pais" size="23" class="form-control validate"
                 id="pais" onkeyup="verifica_vazio(this.value, this.id); " require>
                 <div class="invalid-feedback">

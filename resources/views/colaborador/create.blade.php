@@ -58,7 +58,7 @@ use PHP\test;
                         <!-- Dados do Colaborador -->
                         <div class="col-md-4">
                             <!-- Nome Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?>*</label>
                             <input type="text" name="nome" value="" id="nome" size="23" class="form-control validate"
                             id="nome" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -67,7 +67,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data de Nascimento Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.birthdate'); ?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.birthdate'); ?>*</label>
                             <input type="date" name="data_nascimento" size="20" class="form-control validate"
                             id="data_nascimento" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -76,25 +76,25 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF do Colaborador -->
-                            <label for="exampleFormControlInput1">CPF</label>
+                            <label for="exampleFormControlInput1">CPF*</label>
                             <input name="cpf" type="text" id="cpf" value="" size="23" maxlength="14" 
                             class="form-control validate" onkeyup="verifica_cpf(this.value, this.id);" />
                         </div>
                         <div class="col-md-4">
                             <!-- Telefone do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone'); ?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone'); ?>*</label>
                             <input type="text" name="telefone" size="23" class="form-control validate" 
                             id="telefone" onkeyup="verifica_telefone(this.value, this.id); " maxlength="15">
                         </div>
                         <div class="col-md-4">
                             <!-- Celular 1 do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 1</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 1*</label>
                             <input type="text" name="celular1" size="23" class="form-control validate" 
                             id="celular1" onkeyup="verifica_telefone(this.value, this.id); " maxlength="15">
                         </div>
                         <div class="col-md-4">
                             <!-- Celular 2 do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2*</label>
                             <input type="text" name="celular2" size="23" class="form-control validate" 
                             id="celular2" onkeyup="verifica_telefone(this.value, this.id); " maxlength="15">
                         </div>
@@ -106,51 +106,72 @@ use PHP\test;
                         <!-- Dados do Colaborador -->
                         <div class="col-md-3">
                             <!-- CEP do Colaborador -->
-                            <label for="exampleFormControlInput1">CEP</label>
+                            <label for="exampleFormControlInput1">CEP*</label>
                             <input name="cep" type="text" id="cep" size="20" maxlength="9"
                             onkeyup="pesquisacep(this.value, this.id);" class="form-control validate" />
                         </div>
                         <div class="col-md-3">
                             <!-- Rua do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?>*</label>
                             <input name="rua" type="text" id="rua" size="20" 
                             onkeyup="verifica_vazio(this.value, this.id);" class="form-control validate"/>
+                            <div class="invalid-feedback">
+                                Por favor, digite o nome da rua
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <!-- Bairro do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?>*</label>
                             <input name="bairro" type="text" id="bairro" size="20" 
                             onkeyup="verifica_vazio(this.value, this.id);" class="form-control validate"/>
+                            <div class="invalid-feedback">
+                                Por favor, digite o nome do bairro
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <!-- Número do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
                             <input type="text" name="numero" size="20" class="form-control validate"
                             id="numero" onkeyup="verifica_vazio(this.value, this.id);">
+                            <div class="invalid-feedback">
+                                Por favor, digite o numero da residência
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <!-- Complemento -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
                             <input type="text" name="complemento" size="20" class="form-control validate"
                             id="complemento" onkeyup="verifica_vazio(this.value, this.id);">
+                            <div class="invalid-feedback">
+                                Por favor, digite o complemento
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <!-- Cidade do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?>*</label>
                             <input name="cidade" type="text" id="cidade" size="20" class="form-control validate"
                             onkeyup="verifica_vazio(this.value, this.id);"/>
+                            <div class="invalid-feedback">
+                                Por favor, digite o nome da cidade
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <!-- Estado do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?>*</label>
                             <input name="uf" type="text" id="uf" size="20" class="form-control validate" 
                             onkeyup="verifica_vazio(this.value, this.id);"/>
+                            <div class="invalid-feedback">
+                                Por favor, digite o nome do estado
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <!-- País do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?>*</label>
                             <input type="text" name="pais" class="form-control validate"
                             id="pais" onkeyup="verifica_vazio(this.value, this.id);">
+                            <div class="invalid-feedback">
+                                Por favor, digite o nome do país
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -158,28 +179,28 @@ use PHP\test;
                     <div class="row">
                         <div class="col-md-4">
                             <!-- Email do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.email');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.email');?>*</label>
                             <input type="text" name="email" size="23" class="form-control validate"
                             id="email" onkeyup="verifica_email(this.value, this.id);">
                         </div>
                         <div class="col-md-4">
                             <!-- Ano de Ingresso do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.enrrollmentTime');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.enrrollmentTime');?>*</label>
                             <input type="number" min="1950" max="2018" value="2018" name="ano_ingresso" size="20" class="form-control validate is-valid"
                             id="ano_ingresso" onkeyup="verifica_vazio(this.value, this.id);">
                         </div>
                         <div class="col-md-4">
                             <!-- Área de Atuação -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.occupationArea');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.occupationArea');?>*</label>
                             <input type="text" name="area_atuacao" size="20" class="form-control validate"
                             id="area_atuacao" onkeyup="verifica_vazio(this.value, this.id);">
                         </div>
                         <div class="col-md-4">
                             <!-- Tipo de Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.typeCollaborator');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.typeCollaborator');?>*</label>
                             <select name="tipo_colaborador" class="form-control">
                                 @foreach($tipo as $tipo_col) 
-                                <option value="{{ $tipo_col->id }}"> {{ $tipo_col->nome }}</option>
+                                    <option value="{{ $tipo_col->id }}">{{ ucfirst($tipo_col->name) }}</option>
                                 @endforeach
                             </select>
                         </div>

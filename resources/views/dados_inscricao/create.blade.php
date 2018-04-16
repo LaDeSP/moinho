@@ -55,7 +55,7 @@ use PHP\test;
                         <!-- Dados Participante -->
                         <div class="col-md-4">
                             <!-- Nome Participante -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?>*</label>
                             <input type="text" name="nome" value="" id="nome" size="23" class="form-control validate"
                             onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -64,7 +64,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Participante -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.birthdate');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.birthdate');?>*</label>
                             <input type="date" name="data_nascimento" size="20" class="form-control validate"
                             id="data_nascimento" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -73,7 +73,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Participante -->
-                            <label for="exampleFormControlInput1">CPF</label>
+                            <label for="exampleFormControlInput1">CPF*</label>
                             <input name="cpf" type="text" id="cpf" value="" size="23" maxlength="14" class="form-control validate" 
                             onkeyup="verifica_cpf(this.value, this.id);" />
                         </div>
@@ -84,7 +84,7 @@ use PHP\test;
                         <!-- Dados Responsável -->
                         <div class="col-md-4">
                             <!-- Nome Responsável -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?>*</label>
                             <input name="nomePai" type="text" id="nomePai" value="" size="23"  class="form-control validate" 
                             onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -93,7 +93,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?>*</label>
                             <input type="date" name="data_nascimentoPai" class="form-control validate"
                             id="data_nascimentoPai" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -102,7 +102,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Responsável -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?>*</label>
                             <input name="cpfPai" type="text" size="23" maxlength="11" class="form-control validate" 
                             id="cpfPai" onkeyup="verifica_cpf(this.value, this.id);" />
                         </div>
@@ -111,7 +111,7 @@ use PHP\test;
                         <!-- Dados Responsável 2 -->
                         <div class="col-md-4">
                             <!-- Nome Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?>*</label>
                             <input name="nomeMae" type="text" id="nomeMae" value="" size="23" class="form-control validate" 
                             onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -120,7 +120,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?>*</label>
                             <input type="date" name="data_nascimentoMae" class="form-control validate"
                             id="data_nascimentoMae" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -129,7 +129,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?>*</label>
                             <input name="cpfMae" type="text" size="23" maxlength="11" class="form-control validate" 
                             id="cpfMae" onkeyup="verifica_cpf(this.value, this.id);" />
                         </div>
@@ -137,7 +137,7 @@ use PHP\test;
                         <!-- Data da Inscrição e Avaliação -->
                         <div class="col-md-6">
                             <!-- Data de Inscrição -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.inscriptionDate');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.inscriptionDate');?>*</label>
                             <input type="date" name="data_inscricao" size="23" class="form-control validate"
                             id="data_inscricao" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -146,7 +146,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-6">
                             <!-- Data de Avaliação -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.exameDate');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.exameDate');?>*</label>
                             <input type="date" name="data_avaliacao" size="23" class="form-control validate"
                             id="data_avaliacao" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -159,7 +159,7 @@ use PHP\test;
                     <div class="row">
                         <!-- Turma -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.grade');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.grade');?>*</label>
                             <input type="text" name="turma" size="23" class="form-control validate"
                             id="turma" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -168,7 +168,7 @@ use PHP\test;
                         </div>
                         <!-- Turno -->
                         <div class="col-md-4">
-                        <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?></label>
+                        <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?>*</label>
                             <select name="turno" class="form-control validate">
                                 <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
                                 <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
@@ -176,7 +176,7 @@ use PHP\test;
                         </div>
                         <!-- Transporte -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.transportation');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.transportation');?>*</label>
                             <input name="transporte" type="text" value="" size="23" maxlength="9" class="form-control validate" 
                             id="transporte" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -185,12 +185,12 @@ use PHP\test;
                         </div>
                         <!-- Observações -->
                         <div class="col-md-12">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?>*</label>
                             <textarea name="observacoes" rows="5"></textarea>
                         </div>
                         <!-- Profissão -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.profession');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.profession');?>*</label>
                             <input type="text" name="profissao" size="23" class="form-control validate"
                             id="profissao" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -199,7 +199,7 @@ use PHP\test;
                         </div>
                         <!-- Religião -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.religion');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.religion');?>*</label>
                             <input name="religiao" type="text" size="23" class="form-control validate"
                             id="religiao" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -208,7 +208,7 @@ use PHP\test;
                         </div>
                         <!-- Raça -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.race');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.race');?>*</label>
                             <input name="raca" type="text" value="" size="23" class="form-control validate"
                             id="raca" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -217,7 +217,7 @@ use PHP\test;
                         </div>
                         <!-- Renda -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.income');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.income');?>*</label>
                             <input type="text" name="renda" size="23" class="form-control validate"
                             id="renda" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -226,7 +226,7 @@ use PHP\test;
                         </div>
                         <!-- Quantidade Residência -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.manyResidence');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.manyResidence');?>*</label>
                             <input name="qtd_residencia" type="text" size="23" class="form-control validate"
                             id="qtd_residencia" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -235,7 +235,7 @@ use PHP\test;
                         </div>
                         <!-- Benefício Social -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.socialBenefit');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.socialBenefit');?>*</label>
                             <input name="beneficio_social" type="text" size="23" class="form-control validate"
                             id="beneficio_social" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -244,7 +244,7 @@ use PHP\test;
                         </div>
                         <!-- Sériel -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.serie');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.serie');?>*</label>
                             <input name="serie" type="text" size="23" class="form-control validate" 
                             id="serie" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -253,7 +253,7 @@ use PHP\test;
                         </div>
                         <!-- Escola -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.school');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.school');?>*</label>
                             <select name="escola" class="form-control validate">
                                 @foreach($escola as $school) 
                                     <option value="{{ $school->id }}"> {{ $school->nome_fantasia }} </option>
@@ -266,13 +266,13 @@ use PHP\test;
                     <div class="row">
                         <!-- CEP -->
                         <div class="col-md-2">
-                            <label for="exampleFormControlInput1">CEP</label>
+                            <label for="exampleFormControlInput1">CEP*</label>
                             <input placeholder="00000-000" name="cep" type="text" id="cep" value="" size="23" maxlength="9" 
                             onkeyup="pesquisacep(this.value, this.id);" class="form-control validate"/>
                         </div>
                         <!-- Rua -->
                         <div class="col-md-5">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.street');?>*</label>
                             <input name="rua" type="text" id="rua" size="23" class="form-control validate" 
                             onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -281,7 +281,7 @@ use PHP\test;
                         </div>
                         <!-- Bairro -->
                         <div class="col-md-5">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.neighbourhood');?>*</label>
                             <input name="bairro" type="text" id="bairro" size="23" class="form-control validate"
                             onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -290,7 +290,7 @@ use PHP\test;
                         </div>
                         <!-- Número -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
                             <input type="text" name="numero" size="23" class="form-control validate"
                             id="numero" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -299,7 +299,7 @@ use PHP\test;
                         </div>
                         <!-- Complemento -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
                             <input type="text" name="complemento" size="23" class="form-control validate"
                             id="compĺemento" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
@@ -308,7 +308,7 @@ use PHP\test;
                         </div>
                         <!-- Cidade -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.city');?>*</label>
                             <input name="cidade" type="text" id="cidade" size="23" class="form-control validate"
                             onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -317,7 +317,7 @@ use PHP\test;
                         </div>
                         <!-- Estado -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.state');?>*</label>
                             <input name="uf" type="text" id="uf" size="23" class="form-control validate"
                             id="uf" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -326,7 +326,7 @@ use PHP\test;
                         </div>
                         <!-- País -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.country');?>*</label>
                             <input type="text" name="pais" size="23" class="form-control validate"
                             id="pais" onkeyup="verifica_vazio(this.value, this.id);"/>
                             <div class="invalid-feedback">
@@ -335,25 +335,25 @@ use PHP\test;
                         </div>
                         <!-- Telefone -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone');?></label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.phone');?>*</label>
                             <input type="text" name="telefone" size="23" class="form-control validate" value="" 
                             id="telefone" onkeyup="verifica_telefone(this.value, this.id); " maxlength="14">
                         </div>
                         <!-- Celular 1 -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 1</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 1*</label>
                             <input type="text" name="celular1" size="23" class="form-control validate" value="" 
                             id="celular1" onkeyup="verifica_telefone(this.value, this.id); " maxlength="14">
                         </div>
                         <!-- Celular 2 -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 2</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 2*</label>
                             <input type="text" name="celular2" size="23" class="form-control validate" value="" 
                             id="celular2" onblur="verifica_telefone(this.value, this.id); " maxlength="9">
                         </div>
                         <!-- Email -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1">Email</label>
+                            <label for="exampleFormControlInput1">Email*</label>
                             <input type="text" name="email" size="23" class="form-control validate"
                             id="email" onkeyup="verifica_email(this.value, this.id);">
                         </div>
