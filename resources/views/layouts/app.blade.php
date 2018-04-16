@@ -231,7 +231,7 @@
                 </a>
             </div>
             <div class="p-2">
-                <a class="nav-link js-scroll-trigger" href="#">
+                <a class="nav-link js-scroll-trigger" href="{{ route('user.create') }}">
                     <h4 class="blue">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         {{{ Auth::user()->name }}}
