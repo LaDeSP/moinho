@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Pessoa;
 use App\Colaborador;
 use App\Endereco;
-use App\TipoColaborador;
+use App\Role;
 use App\Contato;
+use App\User;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class colaboradorController extends Controller
@@ -22,7 +23,7 @@ class colaboradorController extends Controller
     public function index()
     {
         $colaborador = Colaborador::all();
-        $tipo = TipoColaborador::all();
+        $tipo = Role::all();
   
         
         return view('colaborador.index', compact('colaborador', 'tipo'));
@@ -41,7 +42,7 @@ class colaboradorController extends Controller
         }
         
         $colaborador = Colaborador::all();
-        $tipo = TipoColaborador::all();
+        $tipo = Role::all();
         
         return view('colaborador.create', compact('colaborador', 'tipo'));
     }
@@ -55,14 +56,29 @@ class colaboradorController extends Controller
      */
     public function store(Request $request)
     {
+
         $formulario = new Colaborador;
         $person = new Pessoa;
         $ende = new Endereco;
         $telefone = new Contato;
+        $user = new User;
       
         $person->nome = $request->nome;
         $person->cpf = $request->cpf;
         $person->data_nascimento = $request->data_nascimento;
+
+        $telefone->numero_fixo = $request->telefone;
+        $telefone->celular1 = $request->celular1;
+        $telefone->celular2 = $request->celular2;
+        $telefone->email = $request->email;
+        //$telefone->pessoa()->associate($person);
+        $telefone->save(['timestamps' => false]);
+
+        $user->name = $request->nome;
+        $user->email = $request->email;
+        $user->password = bcrypt('MC/01');
+        $user->save(['timestamps' => false]);
+
         $ende->rua = $request->rua;
         $ende->bairro = $request->bairro;
         $ende->numero = $request->numero;
@@ -72,19 +88,17 @@ class colaboradorController extends Controller
         $ende->estado = $request->uf;
         $ende->pais = $request->pais;
         $ende->save(['timestamps' => false]);
+
         $person->Endereco()->associate($ende);
+        $person->contato()->associate($telefone);
         $person->save(['timestamps' => false]);
-        $formulario->ano_de_ingresso = $request->ano_ingresso;
+
+        $formulario->ano_ingreco = $request->ano_ingresso;
         $formulario->area_atuacao = $request->area_atuacao;
         $formulario->tipo_colaborador_id = $request->tipo_colaborador;
         $formulario->pessoa()->associate($person);
+        $formulario->user()->associate($user);
         $formulario->save(['timestamps' => false]);
-        $telefone->numero_fixo = $request->telefone;
-        $telefone->celular1 = $request->celular1;
-        $telefone->celular2 = $request->celular2;
-        $telefone->email = $request->email;
-        $telefone->pessoa()->associate($person);
-        $telefone->save(['timestamps' => false]);
 
 
 

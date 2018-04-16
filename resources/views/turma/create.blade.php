@@ -34,9 +34,9 @@
                 </div>
             </div>
             <div class="form-group col-md-2">
-                <!-- Semestre da Turma -->
+                <!-- Periodo da Turma -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.semester');?>*</label>
-                <select name="turno" class="form-control">
+                <select name="periodo" class="form-control">
                     <option value="1"> 1º </option>
                     <option value="2"> 2º </option>
                 </select>

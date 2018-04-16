@@ -17,12 +17,6 @@ class Escola extends Model
     {
         return $this->belongsTo(Contato::class);
     }
-
-
-
     
-    
-
-
     public $timestamps = false;
 }

@@ -19,7 +19,7 @@
     {
         $query = DB::table('escolas')
             ->join('enderecos', 'enderecos.id', '=', 'escolas.endereco_id')
-            ->join('contatos', 'contatos.id', '=', 'escolas.contatos_id')
+            ->join('contatos', 'contatos.id', '=', 'escolas.contato_id')
             ->get();
         
         return $query; 

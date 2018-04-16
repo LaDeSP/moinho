@@ -53,12 +53,12 @@ class disciplinaController extends Controller
 
         $formulario->nome = $request->nome;
         $formulario->turno = $request->turno;
-        $formulario->sala_de_aula = $request->sala_de_aula;
+        $formulario->sala_aula = $request->sala_de_aula;
         $formulario->colaborador_id = $request->colaborador_id;
 
         $horario->dia_semana = $request->dia_semana;
         $horario->hora = $request->hora;
-    
+        
         $formulario->save(['timestamps' => false]);
         $horario->disciplina()->associate($formulario);
         $horario->save(['timestamps' => false]);

@@ -45,14 +45,14 @@
             margin-top: 14px;
         }
     </style>
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
     
 
     <form method= "POST" action="{{ route('turma_disciplina.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <input type="text" name="botao" value="{{ $help }}" id="SI" >
+        <input style="display: hidden" type="text" name="botao" value="{{ $help }}" id="SI" >
         <div class="col-md-4">
         <h1>Cadastrar Disciplinas da Turma {{ $help }} </h1>
         <table>

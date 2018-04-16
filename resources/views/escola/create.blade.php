@@ -186,8 +186,11 @@ use PHP\test;
 
     <br>
     <br>
-    @foreach(buscar_escola() as $value)
-        {{ $value }}
+    @foreach(buscar_escola() as $array)
+        @foreach($array as $value)
+            {{ $value }} 
+        @endforeach
+        <br>
     @endforeach
     
 @endsection

@@ -36,7 +36,7 @@
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Senha</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6" onkeyup="confirmar_password(this.value, 'password', 'password-confirm');">
                                 <input id="password" type="password" class="form-control validate" name="password" 
                                 onkeyup="verifica_password(this.value, this.id);" required>
 
