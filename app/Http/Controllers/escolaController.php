@@ -17,9 +17,9 @@ class escolaController extends Controller
      */
     public function index()
     {
-        $escolaa = Escola::all();
+        $escolas = Escola::all();
         
-        return view('escola.index', compact('escola'));
+        return view('escola.index', compact('escolas'));
     }
 
     /**
@@ -29,11 +29,13 @@ class escolaController extends Controller
      */
     public function create()
     {
+        $escolas = Escola::all();
+
         # Caso o usuário logado não tenha acesso a essa página, retorna um erro
         if(!Entrust::can('ver-escola')) {
             return abort(404);
         }
-        return view('escola.create');
+        return view('escola.create', compact('escolas'));
     }
 
     /**
@@ -95,7 +97,9 @@ class escolaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $escola = Escola::find($id);
+
+        return view('escola.edit', compact('escola'));
     }
 
     /**
@@ -107,7 +111,35 @@ class escolaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $escola = Escola::find($id);
+        $endereco = Endereco::find($escola -> endereco_id);
+        $contato = Contato::find($escola -> contato_id);
+
+        $endereco->rua = $request->rua;
+        $endereco->bairro = $request->bairro;
+        $endereco->numero = $request->numero;
+        $endereco->complemento = $request->complemento;
+        $endereco->cep = $request->cep;
+        $endereco->cidade = $request->cidade;
+        $endereco->estado = $request->estado;
+        $endereco->pais = $request->pais;
+        $endereco->save(['timestamps' => false]);
+        
+        //recriar relação escola e dados inscrição
+        $contato->numero_fixo = $request->telefone;
+        $contato->celular1 = $request->celular1;
+        $contato->celular2 = $request->celular2;
+        $contato->email = $request->email;
+        $contato->save(['timestamps' => false]);
+       
+
+        $escola->nome_fantasia = $request->nome_fantasia;
+        $escola->nome = $request->nome;
+        $escola->tipo = $request->tipo;
+
+        $escola->save(['timestamps' => false]);
+
+        return view('escola.create');
     }
 
     /**
