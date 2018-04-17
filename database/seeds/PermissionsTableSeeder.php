@@ -44,12 +44,24 @@ class PermissionsTableSeeder extends Seeder
         $ver_inscricao -> description = 'Permite ver as inscrições';
         $ver_inscricao -> save();
 
+        $criar_inscricao = new Permission();
+        $criar_inscricao -> name = 'criar-inscricao';
+        $criar_inscricao -> display_name = 'criar inscrição';
+        $criar_inscricao -> description = 'Permite criar inscrições';
+        $criar_inscricao -> save();
+
         #______________________--COLABORADOR--_____________________#
         $ver_colaborador = new Permission();
         $ver_colaborador -> name = 'ver-colaborador';
         $ver_colaborador -> display_name = 'Ver colaborador';
         $ver_colaborador -> description = 'Permite ver os colaboradores';
         $ver_colaborador -> save();
+
+        $criar_colaborador = new Permission();
+        $criar_colaborador -> name = 'criar-colaborador';
+        $criar_colaborador -> display_name = 'criar colaborador';
+        $criar_colaborador -> description = 'Permite criar os colaboradores';
+        $criar_colaborador -> save();
 
         #______________________--ESCOLA--_____________________#
         $ver_escola = new Permission();
@@ -92,9 +104,39 @@ class PermissionsTableSeeder extends Seeder
         # Atribuindo as permissões às funções
 
         $administrador = Role::where('name', '=', 'administrador') -> first();
-        $administrador -> attachPermissions(array($ver_colaborador, $ver_turma, 
+        $administrador -> attachPermissions(array($ver_colaborador, $criar_colaborador, $ver_turma, 
             $ver_matricula, $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
             $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao));
+
+        $diretor = Role::where('name', 'diretor') -> first();
+        $diretor -> attachPermissions(array(
+            $ver_colaborador, $ver_turma, $ver_matricula,
+            $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao
+        ));
+
+
+        $coordenador = Role::where('name', 'coordenador') -> first();
+        $coordenador -> attachPermissions(array(
+            $ver_participante
+        ));
+
+        $social = Role::where('name', 'social') -> first();
+        $social -> attachPermissions(array(
+            $ver_inscricao, $criar_inscricao, $ver_matricula,
+            $ver_turma, $ver_participante, $ver_colaborador
+        ));
+
+        $colaborador = Role::where('name', 'colaborador') -> first();
+        $colaborador -> attachPermissions(array(
+            $ver_participante
+        ));
+
+        $apoio = Role::where('name', 'apoio') -> first();
+        $apoio -> attachPermissions(array(
+            $ver_participante, $ver_turma, $ver_matricula,
+            $criar_matricula
+        ));
 
 
     }
