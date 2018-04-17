@@ -3,6 +3,7 @@ Permissões
 
 // Colaborador #done
 ver-colaborador
+criar-colaborador
 
 // Turma #done
 ver-turma
@@ -24,3 +25,4 @@ ver-participante
 
 //Inscrição #done
 ver-inscrição
+criar-inscrição
