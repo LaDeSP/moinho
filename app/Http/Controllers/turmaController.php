@@ -88,7 +88,9 @@ class turmaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $turma = Turma::find($id);
+
+        return view('turma.edit', compact('turma'));
     }
 
     /**
@@ -100,7 +102,17 @@ class turmaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $turma = Turma::find($id);
+
+        $turma->nome_turma_id = $request->turma;
+        $turma->turno = $request->turno;
+        $turma->ano = $request->ano;
+        $turma->periodo = $request->periodo;
+      
+    
+        $turma->save(['timestamps' => false]);
+
+        return view('turma.create');
     }
 
     /**
