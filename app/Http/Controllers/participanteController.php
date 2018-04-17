@@ -52,6 +52,26 @@ class participanteController extends Controller {
         return view('participante.create');
     }
 
+    public function edit($id)
+    {
+        $participante = Participante::find($id);
+
+        return view('participante.edit', compact('participante'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $participante = Participante::find($id);
+
+        $participante->serie = $request->serie;
+        $participante->sala_de_aula = $request->sala;
+        $participante->status = $request->status;
+
+        $participante->save(['timestamps' => false]);
+
+        return redirect()->back();
+    }
+
     public function ultimo_id()
     {
         //Arrumar a tabela participante -> colocar na coluna id auto_increment
