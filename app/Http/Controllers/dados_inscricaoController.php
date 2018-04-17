@@ -76,29 +76,30 @@ class dados_inscricaoController extends Controller
         $document = new Documento;
         $telefone = new Contato;
 
-        //$document2 = new Documento;
-        //$document3 = new Documento;
-        //$document4 = new Documento;
-        // criar view cadastrar escola pra ter campo com lista de escolas pra mostrar. 
-        // criar objeto do endereço pra colocar endereço tanto da escolaa quanto das pessoas
-        // contato tbm
+        
+        //Contato
+        $telefone->numero_fixo = $request->telefone;
+        $telefone->celular1 = $request->celular1;
+        $telefone->celular2 = $request->celular2;
+        $telefone->email = $request->email;
+        $telefone->save(['timestamps' => false]);
+        
+        //Pessoa
         $person->nome = $request->nome;
         $person->cpf = $request->cpf;
         $person->data_nascimento = $request->data_nascimento;
         
-
+        //Pessoa - Responsavel
         $pai->nome = $request->nomePai;
         $pai->cpf = $request->cpfPai;
         $pai->data_nascimento = $request->data_nascimentoPai;
         
-
+        //Pessoa - Responsavel 2
         $mae->nome = $request->nomeMae;
         $mae->cpf = $request->cpfMae;
         $mae->data_nascimento = $request->data_nascimentoMae;
         
-        //colocar barra de rolagem com escolas. olhar no git, nas views do hackaton
-       
-
+        //Endereço
         $ende->rua = $request->rua;
         $ende->bairro = $request->bairro;
         $ende->numero = $request->numero;
@@ -108,15 +109,25 @@ class dados_inscricaoController extends Controller
         $ende->estado = $request->uf;
         $ende->pais = $request->pais;
         $ende->save(['timestamps' => false]);
-            //SQLSTATE[HY000]: General error: 1364 Field 'Endereco_id' doesn't have a default value
+
+        //Chaves estrangeiras - Pessoa
         $person->endereco()->associate($ende);
+        $person->contato()->associate($telefone);
+
+        //Chaves estrangeiras - Responsavel 2
         $mae->endereco()->associate($ende);
+        $mae->contato()->associate($telefone);
+
+        //Chaves estrangeiras - Responsavel 1
         $pai->endereco()->associate($ende);
+        $pai->contato()->associate($telefone);
+
+        //Criando os registros
         $person->save(['timestamps' => false]);
         $pai->save(['timestamps' => false]);
         $mae->save(['timestamps' => false]);
-        //testar essas alterações depois de remover os index no BD. Daí, recriar a relação pessoa-endereço que tá bugadas e ver
 
+        //Criar os dados inscrição
         $formulario->turno = $request->turno;
         $formulario->turma = $request->turma;
         $formulario->observacoes = $request->observacoes;
@@ -131,26 +142,21 @@ class dados_inscricaoController extends Controller
         $formulario->escola_id = $request->escola;
         //$formulario->escola()->associate($escola_id);
         $formulario->dados_pessoais()->associate($person); //BO aqui
-        $formulario->responsavel()->associate($pai);
-        $formulario->responsavel()->associate($mae);
+        $formulario->responsavel1()->associate($pai);
+        $formulario->responsavel2()->associate($mae);
        
 
 
-        //$formulario->escola_id
-        //$formulario->dados_pessoais_id  tirar isso de nulo no banco. Colocar lista de escolas disponíveis 
-        //$formulario->mae_id
-        //$formulario->pai_id
+        //Criando o registro
         $formulario->save(['timestamps' => false]);
+
+        //Inscrição
         $insc->data_inscricao = $request->data_inscricao;
         $insc->data_avaliacao = $request->data_avaliacao;
         $insc->dados_inscricao()->associate($formulario);
         $insc->save(['timestamps' => false]);
-        $telefone->numero_fixo = $request->telefone;
-        $telefone->celular1 = $request->celular1;
-        $telefone->celular2 = $request->celular2;
-        $telefone->email = $request->email;
-        $telefone->pessoa()->associate($person);
-        $telefone->save(['timestamps' => false]);
+
+        
 
         $help = $insc->id;
         $documento_tipo = Documento_tipo::all();

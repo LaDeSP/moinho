@@ -13,7 +13,12 @@ class DadosInscricao extends Model
         return $this->belongsTo(Pessoa::class);
     }
 
-    public function responsavel()
+    public function responsavel1()
+    {
+        return $this->belongsTo(Pessoa::class);
+    }
+
+    public function responsavel2()
     {
         return $this->belongsTo(Pessoa::class);
     }

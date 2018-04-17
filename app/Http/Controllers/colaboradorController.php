@@ -62,6 +62,7 @@ class colaboradorController extends Controller
         $ende = new Endereco;
         $telefone = new Contato;
         $user = new User;
+        
       
         $person->nome = $request->nome;
         $person->cpf = $request->cpf;
@@ -99,6 +100,10 @@ class colaboradorController extends Controller
         $formulario->pessoa()->associate($person);
         $formulario->user()->associate($user);
         $formulario->save(['timestamps' => false]);
+        
+
+        $role = Role::where('id', $request->tipo_colaborador)->first();
+        $user->attachRole($role);
 
 
 

@@ -169,7 +169,7 @@ use PHP\test;
                         <!-- Turno -->
                         <div class="col-md-4">
                         <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?>*</label>
-                            <select name="turno" class="form-control validate">
+                            <select name="turno" class="form-control">
                                 <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
                                 <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
                            </select>
@@ -254,7 +254,7 @@ use PHP\test;
                         <!-- Escola -->
                         <div class="col-md-4">
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.school');?>*</label>
-                            <select name="escola" class="form-control validate">
+                            <select name="escola" class="form-control">
                                 @foreach($escola as $school) 
                                     <option value="{{ $school->id }}"> {{ $school->nome_fantasia }} </option>
                                 @endforeach
@@ -360,7 +360,7 @@ use PHP\test;
 
                         <!-- Submit -->
                         <div class="col-md-4">
-                            <button onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-danger" id="submit"><?php echo Lang::get('conteudo.add');?></button>
+                            <button onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-danger" id="submit" disabled><?php echo Lang::get('conteudo.add');?></button>
                         </div>
                     </div>
                 </div>
