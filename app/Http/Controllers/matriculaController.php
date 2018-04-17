@@ -95,7 +95,9 @@ class matriculaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $matricula = Matricula::find($id);
+
+        return view('matricula.edit', compact('matricula'));
     }
 
     /**
@@ -107,7 +109,15 @@ class matriculaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $matricula = Matricula::find($id);
+
+        $matricula->periodo = $request->periodo;
+        $matricula->inscricao_id = $request->inscricao_id;
+        $matricula->data = $request->data;
+        $matricula->status_matricula_id = $request->status;
+        $matricula->turma_id = $request->turma_id;
+    
+        $matricula->save(['timestamps' => false]);
     }
 
     /**
