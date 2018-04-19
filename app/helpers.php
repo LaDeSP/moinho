@@ -1,5 +1,15 @@
 <?php
 
+    function buscar_colaborador()
+    {
+        $query = DB::table('colaborador')
+            ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+            ->join('contatos', 'contatos.id', '=', 'pessoas.contato_id')
+            ->select('colaborador.*', 'pessoas.nome', 'contatos.numero_fixo', 'contatos.celular1', 'contatos.celular2', 'contatos.email')
+            ->get();
+        return $query;
+    }
+
     function buscar_matricula_pessoa($status)
     {
         $query = DB::table('matricula')
@@ -20,6 +30,7 @@
         $query = DB::table('escolas')
             ->join('enderecos', 'enderecos.id', '=', 'escolas.endereco_id')
             ->join('contatos', 'contatos.id', '=', 'escolas.contato_id')
+            ->select('*', 'escolas.id as escola_id')
             ->get();
         
         return $query; 
@@ -29,10 +40,10 @@
     {
         $query = DB::table('nome_turma')
             ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
-            ->select('nome_turma.nome_turma', 'turma.id', 'turma.ano', 'turma.turno')
+            ->select('nome_turma.nome_turma', 'turma.id', 'turma.ano', 'turma.turno', 'turma.periodo')
             ->get();
         //$query = json_encode($query); para funcionar com o php puro que o alan fez. do Laravel é assim. tava faltando campos no select tbm
-        $query = json_decode($query);
+        //$query = json_decode($query);
         return $query;
     }
 
