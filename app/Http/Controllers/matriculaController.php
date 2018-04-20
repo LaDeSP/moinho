@@ -55,8 +55,8 @@ class matriculaController extends Controller
     {
         $formulario = new Matricula;
         
-        //$formulario->turno = $request->turno;
-        $formulario->periodo = $request->periodo;
+        $formulario->turno = $request->turno;
+        //$formulario->periodo = $request->periodo;
         $formulario->inscricao_id = $request->inscricao_id;
         $formulario->data = $request->data;
         $formulario->status_matricula_id = $request->status;

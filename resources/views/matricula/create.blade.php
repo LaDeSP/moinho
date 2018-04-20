@@ -71,7 +71,7 @@
         @permission('ver-matriculas-regulares')
         <div class="col-md-6">
             <h4 class="text-success text-md-right">
-            <?php echo Lang::get('conteudo.listRegular'); ?>            
+                <?php echo Lang::get('conteudo.listRegular'); ?>            
             </h4>
             <div>
                 <center>
@@ -94,10 +94,11 @@
                     <table class="table table-striped">
                       <thead class="text-success">
                           <tr>
-                              <th > <?php echo Lang::get('conteudo.enrolment'); ?>  </th>
-                              <th ><?php echo Lang::get('validation.attributes.date'); ?> </th> 
+                              <!-- <th > <?php //echo Lang::get('conteudo.enrolment'); ?>  </th> -->
                               <th > <?php echo Lang::get('conteudo.participant'); ?> </th>
+                              <th ><?php echo Lang::get('validation.attributes.date'); ?> </th> 
                               <th ><?php echo Lang::get('conteudo.grade'); ?> </th>
+                              <th ></th>
                           </tr>
                       </thead>
                       <tbody class="panel-body regular">
@@ -109,10 +110,14 @@
                                   @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
                                     @foreach (buscar_turma($mat->turma_id) as $turma)
                                       @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
-                                        <td>{{ $mat->id }}</td>
-                                        <td>{{ $mat->data }}</td>
                                         <td>{{ $pessoa->nome}}</td>
+                                        <td>{{ $mat->data }}</td>
                                         <td>{{ $nometurma->nome_turma }} <br> {{ $turma->ano }}</td>
+                                        <td>
+                                            <a href="" id="{{ $mat->id }}">
+                                                <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
+                                            </a> 
+                                        </td>
                                       @endforeach
                                     @endforeach
                                   @endforeach
@@ -157,10 +162,11 @@
                     <table class="table table-striped">
                         <thead class="text-danger">
                             <tr>
-                                <th ><?php echo Lang::get('conteudo.enrolment'); ?> </th>
-                                <th ><?php echo Lang::get('validation.attributes.date'); ?></th>
+                                <!-- <th > <?php //echo Lang::get('conteudo.enrolment'); ?>  </th> -->
                                 <th > <?php echo Lang::get('conteudo.participant'); ?> </th>
+                                <th ><?php echo Lang::get('validation.attributes.date'); ?> </th> 
                                 <th ><?php echo Lang::get('conteudo.grade'); ?> </th>
+                                <th ></th>
                             </tr>
                         </thead>
                         <tbody class="panel-body inrregular" >
@@ -172,10 +178,14 @@
                                                 @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
                                                     @foreach (buscar_turma($mat->turma_id) as $turma)
                                                         @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
-                                                            <td>{{$mat->id }}</td>
-                                                            <td>{{ $mat->data }}</td>
-                                                            <td>{{ $pessoa->nome}}</td>
-                                                            <td>{{ $nometurma->nome_turma }} <br> {{ $turma->ano }}</td>
+                                                        <td>{{ $pessoa->nome}}</td>
+                                                        <td>{{ $mat->data }}</td>
+                                                        <td>{{ $nometurma->nome_turma }} <br> {{ $turma->ano }}</td>
+                                                        <td>
+                                                            <a href="" id="{{ $mat->id }}">
+                                                                <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
+                                                            </a> 
+                                                        </td>
                                                         @endforeach
                                                     @endforeach
                                                 @endforeach
