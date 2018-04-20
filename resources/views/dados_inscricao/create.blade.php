@@ -382,25 +382,29 @@ use PHP\test;
     <br>
     <br>
     <div class="list-group">
-        @foreach(busca_inscricao() as $array)
-            <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{ $array->nome }}</h5>
-                    <small>
-                        <a href="#" id="{{ $array->id }}">
-                            <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
-                        </a>
-                    </small>
+        <div class="row">
+            @foreach(busca_inscricao() as $array)
+                <div class="col-md-4">
+                    <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ $array->nome }}</h5>
+                            <small>
+                                <a href="#" id="{{ $array->id }}">
+                                    <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
+                                </a>
+                            </small>
+                        </div>
+                        <small>{{ $array->raca }}</small>
+                        <br>
+                        <small>{{ $array->turma }}</small>,
+                        <small>{{ ucfirst($array->turno) }}</small>,
+                        <small>{{ $array->serie }}</small>
+                        <br>
+                        <small>{{ $array->observacoes }}</small>
+                    </span>
                 </div>
-                <small>{{ $array->raca }}</small>
-                <br>
-                <small>{{ $array->turma }}</small>,
-                <small>{{ ucfirst($array->turno) }}</small>,
-                <small>{{ $array->serie }}</small>
-                <br>
-                <small>{{ $array->observacoes }}</small>
-            </span>
-        @endforeach
+            @endforeach
+        </div>
     </div>
     <br>
     <br>

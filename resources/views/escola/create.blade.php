@@ -187,23 +187,27 @@ use PHP\test;
     <br>
     <br>
     <div class="list-group">
-        @foreach(buscar_escola() as $array)
-            <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{ $array->nome }}</h5>
-                    <small>
-                        <a href="#" id="{{ $array->escola_id }}">
-                            <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
-                        </a>
-                    </small>
+        <div class="row">
+            @foreach(buscar_escola() as $array)
+                <div class="col-md-4">
+                    <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ $array->nome }}</h5>
+                            <small>
+                                <a href="#" id="{{ $array->escola_id }}">
+                                    <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
+                                </a>
+                            </small>
+                        </div>
+                        <small>Tipo: {{ $array->tipo }}</small>
+                        <br>
+                        <small>{{ $array->cidade }}</small>, 
+                        <small>{{ $array->rua }}</small>
+                        <small>{{ $array->numero }}</small>
+                    </span>
                 </div>
-                <small>Tipo: {{ $array->tipo }}</small>
-                <br>
-                <small>{{ $array->cidade }}</small>, 
-                <small>{{ $array->rua }}</small>
-                <small>{{ $array->numero }}</small>
-            </span>
-        @endforeach
+            @endforeach
+        </div>
     </div>
     <br>
     <br>

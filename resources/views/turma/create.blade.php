@@ -50,22 +50,26 @@
     <br>
     <br>
     <div class="list-group">
-        @foreach(busca_turma() as $array)
-            <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{ $array->nome_turma }}</h5>
-                    <small>
-                        <a href="#" id="{{ $array->id }}">
-                            <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
-                        </a>
-                    </small>
+        <div class="row">
+            @foreach(busca_turma() as $array)
+                <div class="col-md-4">
+                    <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ $array->nome_turma }}</h5>
+                            <small>
+                                <a href="#" id="{{ $array->id }}">
+                                    <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
+                                </a>
+                            </small>
+                        </div>
+                        <small>{{ $array->turno }}</small>,
+                        <small>{{ $array->ano }}</small>
+                        <br>
+                        <small>Periodo: {{ $array->periodo }}°</small>
+                    </span>
                 </div>
-                <small>{{ $array->turno }}</small>,
-                <small>{{ $array->ano }}</small>
-                <br>
-                <small>Periodo: {{ $array->periodo }}°</small>
-            </span>
-        @endforeach
+            @endforeach
+        </div>
     </div>
     <br>
     <br>
