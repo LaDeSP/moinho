@@ -83,12 +83,14 @@
                         </a>
                     </small>
                 </div>
-                <small>{{ $array->turno }}</small>,
+                <small>{{ ucfirst($array->turno) }}</small>,
                 <small>{{ $array->sala_aula }}</small>
                 <br>
                 <small>{{ $array->nome_colaborador }}</small>
             </span>
         @endforeach
     </div>
+    <br>
+    <br>
 @endsection
 

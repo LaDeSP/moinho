@@ -42,7 +42,7 @@
                 <!-- Inscrição -->
                 <label for="exampleFormControlInput1">  <?php echo Lang::get('conteudo.registration'); ?>*</label>
                 <select name="inscricao_id" class="form-control">
-                    @foreach(busca_inscricao() as $inscricao) 
+                    @foreach(busca_nome_inscrito() as $inscricao) 
                         <option value="{{ $inscricao->id }}"> {{ $inscricao->nome }} </option>
                     @endforeach
                 </select>

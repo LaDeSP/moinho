@@ -1,5 +1,16 @@
 <?php
 
+    function busca_inscricao()
+    {
+        $query = DB::table('pessoas')
+            ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
+            ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
+            ->select('pessoas.*', 'inscricao.id as inscricao_id', 'dados_inscricao.*')
+            ->get();
+        $query = json_decode($query);
+        return $query;
+    }
+
     function buscar_disciplina()
     {
         $query = DB::table('disciplina')
@@ -57,7 +68,7 @@
         return $query;
     }
 
-    function busca_inscricao()
+    function busca_nome_inscrito()
     {
         $query = DB::table('pessoas')
             ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')

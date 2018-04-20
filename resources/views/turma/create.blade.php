@@ -67,5 +67,7 @@
             </span>
         @endforeach
     </div>
+    <br>
+    <br>
 @endsection
 
