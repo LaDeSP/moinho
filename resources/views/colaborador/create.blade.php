@@ -227,26 +227,30 @@ use PHP\test;
     <br>
     <br>
     <div class="list-group">
-        @foreach(buscar_colaborador() as $array)
-            <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{ $array->nome }}</h5>
-                    <small>
-                        <a href="#" id="{{ $array->id }}">
-                            <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
-                        </a>
-                    </small>
+        <div class="row">
+            @foreach(buscar_colaborador() as $array)
+                <div class="col-md-4">
+                    <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ $array->nome }}</h5>
+                            <small>
+                                <a href="#" id="{{ $array->id }}">
+                                    <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
+                                </a>
+                            </small>
+                        </div>
+                        <small>{{ $array->area_atuacao }}</small>,
+                        <small>{{ $array->ano_ingreco }}</small>
+                        <br>
+                        <small>{{ $array->numero_fixo }}</small>,
+                        <small>{{ $array->celular1 }}</small>,
+                        <small>{{ $array->celular2 }}</small>
+                        <br>
+                        <small>{{ $array->email }}</small>
+                    </span>
                 </div>
-                <small>{{ $array->area_atuacao }}</small>,
-                <small>{{ $array->ano_ingreco }}</small>
-                <br>
-                <small>{{ $array->numero_fixo }}</small>,
-                <small>{{ $array->celular1 }}</small>,
-                <small>{{ $array->celular2 }}</small>
-                <br>
-                <small>{{ $array->email }}</small>
-            </span>
-        @endforeach
+            @endforeach
+        </div>
     </div>
     <br>
     <br>

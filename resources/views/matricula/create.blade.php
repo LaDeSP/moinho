@@ -1,29 +1,5 @@
 <script type="text/javascript">
-  function printDiv(divName) {
-    var printContents = document.getElementById(divName).innerHTML;
-    var originalContents = document.body.innerHTML;
-
-    document.body.innerHTML = printContents;
-
-    window.print();
-
-    document.body.innerHTML = originalContents;
-  }
-  function changeTable(target, id) {
-    var a = document.getElementById(id).value;
-    console.log(a);
-    $(target+' tr').hide();
-    if(a === 'all')
-    {
-        $(target+' tr').show();
-    }
-    else
-    {
-        $.each($(target+' [class^="'+a), function(key, value) {
-            $(value).show();
-        });
-    }
-  }
+  
 </script>
 
 @extends('layouts.app')

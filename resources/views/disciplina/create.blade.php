@@ -81,7 +81,7 @@
                             <h5 class="mb-1">{{ $array->nome }}</h5>
                             <small>
                                 <a href="#" id="{{ $array->id }}">
-                                    <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
+                                    <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
                                 </a>
                             </small>
                         </div>
