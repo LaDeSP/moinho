@@ -1,5 +1,15 @@
 <?php
 
+    function buscar_disciplina()
+    {
+        $query = DB::table('disciplina')
+            ->join('colaborador', 'colaborador.id', '=', 'disciplina.colaborador_id')
+            ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+            ->select('disciplina.*', 'pessoas.nome as nome_colaborador')
+            ->get();
+        return $query;
+    }
+
     function buscar_colaborador()
     {
         $query = DB::table('colaborador')
