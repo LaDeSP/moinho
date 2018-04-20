@@ -226,10 +226,25 @@ use PHP\test;
     </form>
     <br>
     <br>
+    <div class="row">
+        <div class="col-md-4">
+            <input
+                type="text"
+                class="form-control" 
+                value=""
+                placeholder="Pesquisa"
+                onchange="changeListGroup('.filtro', this.value);"
+            >
+            </input>  
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-danger" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+        </div>
+    </div>
     <div class="list-group">
         <div class="row">
             @foreach(buscar_colaborador() as $array)
-                <div class="col-md-4">
+                <div class="col-md-4 {{ $array->ano_ingreco }} {{ str_replace(' ', '_', $array->area_atuacao) }} {{ str_replace(' ', '_', $array->nome) }} filtro">
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome }}</h5>

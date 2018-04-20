@@ -49,10 +49,29 @@
     </form>
     <br>
     <br>
+    <div class="row">
+        <div class="col-md-4">
+            <input
+                type="text"
+                name="selecao_ano" 
+                id="selecao_ano_regular" 
+                class="form-control" 
+                value=""
+                placeholder="Pesquisa"
+                onchange="changeListGroup('.filtro', this.value);"
+            >
+            </input>  
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-warning" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+        </div>
+    </div>
     <div class="list-group">
-        <div class="row">
+        <div class="row lista">
             @foreach(busca_turma() as $array)
-                <div class="col-md-4">
+                <div 
+                    class="col-md-4 {{ $array->ano }} {{ str_replace(' ', '_', $array->nome_turma) }} filtro"
+                >
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome_turma }}</h5>
