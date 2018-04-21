@@ -404,7 +404,7 @@ use PHP\test;
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome }}</h5>
                             <small>
-                                <a href="#" id="{{ $array->id }}">
+                                <a href="{{ route('dados_inscricao.edit', $array->id)}}" id="{{ $array->id }}">
                                     <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
                                 </a>
                             </small>

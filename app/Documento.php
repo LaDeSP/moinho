@@ -5,7 +5,7 @@ use App\Documento_tipo;
 use App\Inscricao;
 class Documento extends Model
 {
-	protected $table = 'documento';
+	protected $table = 'documentos';
 
     public function documento_tipo()
     {

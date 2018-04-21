@@ -185,7 +185,16 @@ class dados_inscricaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $escola = Escola::all();
+        $inscricao = Inscricao::find($id);
+        $dados_inscricao = DadosInscricao::find($inscricao->dados_inscricao_id);
+        $dados_pessoais = Pessoa::find($dados_inscricao->dados_pessoais_id);
+        $responsavel1 =  Pessoa::find($dados_inscricao->responsavel1_id);
+        $responsavel2 =  Pessoa::find($dados_inscricao->responsavel2_id);
+        $endereco = Endereco::find($dados_pessoais->endereco_id);
+        $document = Documento::all();
+        $contato = Contato::find($dados_pessoais->contato_id);
+        return view('dados_inscricao.edit', compact('escola', 'contato', 'document', 'inscricao', 'endereco', 'dados_inscricao', 'dados_pessoais', 'responsavel1', 'responsavel2'));
     }
 
     /**
