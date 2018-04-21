@@ -98,8 +98,10 @@ class escolaController extends Controller
     public function edit($id)
     {
         $escola = Escola::find($id);
+        $contato = Contato::find($escola->contato_id);
+        $endereco = Endereco::find($escola->endereco_id);
 
-        return view('escola.edit', compact('escola'));
+        return view('escola.edit', compact('escola', 'contato', 'endereco'));
     }
 
     /**

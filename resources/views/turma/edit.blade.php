@@ -3,14 +3,7 @@
 @section('content')
 
 
-<div>
-    Edição Turma
-    <br>
-    {{ $turma->turno }}
-</div>
-
-
-<h1 class="text-warning"><?php echo Lang::get('conteudo.addClass');?></h1>
+<h1 class="text-warning"> Alterar Turma</h1>
 
 <form onkeyup="verifica_submit('validate');" method= "UPDATE" action="{{ route('turma.update', $id) }}" enctype="multipart/form-data">
     {{ csrf_field() }}
@@ -21,7 +14,13 @@
             <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?>*</label>
             <select name="turma" class="form-control">
                 @foreach($nome as $nome_turma) 
-                    <option value="{{ $turma->id }}"> {{ $nome_turma->nome_turma }} </option>
+                    <option 
+                        value="{{ $nome_turma->id }}"
+                        <?php
+                            if($turma->id === $nome_turma->id)
+                                echo("selected");
+                        ?>
+                    > {{ $nome_turma->nome_turma }} </option>
                 @endforeach
             </select> 
         </div>
@@ -59,7 +58,7 @@
         </div>
         <div class="col-md-4">
             <!-- Submit -->
-            <button type="submit" class="btn btn-outline-info" id="submit"><?php echo Lang::get('conteudo.add');?></button>
+            <button type="submit" class="btn btn-outline-info" id="submit"> Alterar </button>
         </div>
     </div>   
 </form>

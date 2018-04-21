@@ -201,6 +201,7 @@ use PHP\test;
             <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
         </div>
     </div>
+    <br>
     <div class="list-group">
         <div class="row">
             @foreach(buscar_escola() as $array)
@@ -209,7 +210,7 @@ use PHP\test;
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome }}</h5>
                             <small>
-                                <a href="#" id="{{ $array->escola_id }}">
+                                <a href="{{ route('escola.edit', $array->escola_id)}}">
                                     <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
                                 </a>
                             </small>
