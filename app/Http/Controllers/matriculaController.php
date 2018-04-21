@@ -41,7 +41,7 @@ class matriculaController extends Controller
         $matricula = Matricula::all();
         $inscricao_id = Inscricao::all();
         $turma_id = Turma::all();
-         $status = StatusMatricula::all();
+        $status = StatusMatricula::all();
         return view('matricula.create', compact('matricula', 'inscricao_id', 'turma_id', 'status'));
     }
 
@@ -96,8 +96,9 @@ class matriculaController extends Controller
     public function edit($id)
     {
         $matricula = Matricula::find($id);
+        $status = StatusMatricula::all();
 
-        return view('matricula.edit', compact('matricula'));
+        return view('matricula.edit', compact('matricula', 'status'));
     }
 
     /**
