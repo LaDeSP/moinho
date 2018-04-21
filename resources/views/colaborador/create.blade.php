@@ -233,7 +233,7 @@ use PHP\test;
                 class="form-control" 
                 value=""
                 placeholder="Pesquisa"
-                onchange="changeListGroup('.filtro', this.value);"
+                onKeyUp="changeListGroup('.filtro', this.value);"
             >
             </input>  
         </div>

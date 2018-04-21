@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.app')
 <style type="text/css">
         div.col-md-4{

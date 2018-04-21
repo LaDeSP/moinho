@@ -58,7 +58,7 @@
                 class="form-control" 
                 value=""
                 placeholder="Pesquisa"
-                onchange="changeListGroup('.filtro', this.value);"
+                onKeyUp="changeListGroup('.filtro', this.value);"
             >
             </input>  
         </div>
@@ -71,17 +71,18 @@
             @foreach(busca_turma() as $array)
                 <div 
                     class="col-md-4 {{ $array->ano }} {{ str_replace(' ', '_', $array->nome_turma) }} filtro"
+                    id="{{ $array->id }}"
                 >
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome_turma }}</h5>
                             <small>
-                                <a href="#" id="{{ $array->id }}">
+                                <a href="#">
                                     <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
                                 </a>
                             </small>
                         </div>
-                        <small>{{ $array->turno }}</small>,
+                        <small>{{ ucfirst($array->turno) }}</small>,
                         <small>{{ $array->ano }}</small>
                         <br>
                         <small>Periodo: {{ $array->periodo }}°</small>
