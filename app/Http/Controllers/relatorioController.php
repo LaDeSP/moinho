@@ -29,8 +29,8 @@ class relatorioController extends Controller {
     public function buscar_inscricao(){
         $query = DB::table('inscricao')
             ->join('dados_inscricao', 'inscricao.dados_inscricao_id', '=', 'dados_inscricao.id')
-            ->join('pessoa', function($join){
-                $join->on('pessoa.id', '=', 'dados_inscricao.dados_pessoais_id');
+            ->join('pessoas', function($join){
+                $join->on('pessoas.id', '=', 'dados_inscricao.dados_pessoais_id');
             })
             ->select('*', 'inscricao.id as id_inscricao')
             ->get();

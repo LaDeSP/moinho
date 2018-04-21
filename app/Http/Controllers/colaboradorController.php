@@ -182,7 +182,7 @@ class colaboradorController extends Controller
         }   
         fclose($file);          
         $headers = ['Content-Type' => 'application/csv'];
-        return response()->download($file_path,$filename,$headers ); 
+        return response()->download($file_path,$filename,$headers );
     }
     
 
@@ -194,9 +194,9 @@ class colaboradorController extends Controller
         }
 
         $query = DB::table('colaborador')
-            ->join('pessoa', 'pessoa.id', '=', 'colaborador.pessoa_id')
-            ->join('tipo_colaborador', 'tipo_colaborador.id', '=', 'colaborador.tipo_colaborador_id')
-            ->select('pessoa.*', 'colaborador.*', 'tipo_colaborador.nome as Atuacao');
+            ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+            ->join('roles', 'roles.id', '=', 'colaborador.tipo_colaborador_id')
+            ->select('pessoas.*', 'colaborador.*', 'roles.name as Atuacao');
         
         if(strcmp($column, '')){
             $query = $query->orderBy($column, $order)->get();
