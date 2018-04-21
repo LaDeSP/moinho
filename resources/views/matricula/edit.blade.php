@@ -33,7 +33,7 @@
                 name="data" 
                 size="23" 
                 id="data" 
-                class="form-control validate"
+                class="form-control validate is-valid"
                 onkeyup="verifica_vazio(this.value, this.id);"
             />
         </div>

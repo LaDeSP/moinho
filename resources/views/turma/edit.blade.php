@@ -42,7 +42,7 @@
         <div class="col-md-2">
             <!-- Ano da Turma -->
             <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.year'); ?>*</label>
-            <input type="year" value="{{ $turma->ano }}" id="ano" name="ano" size="23" class="form-control validate"
+            <input type="year" value="{{ $turma->ano }}" id="ano" name="ano" size="23" class="form-control validate is-valid"
             onkeyup="verifica_vazio(this.value, this.id);">
             <div class="invalid-feedback">
                 Por favor, digite o ano da turma
