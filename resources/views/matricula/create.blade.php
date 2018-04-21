@@ -87,9 +87,10 @@
                     </input>  
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+                    <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro1', 'all');" >Todos</button>
                 </div>
             </div>
+            <br>
             <div class="list-group" id="body_regular">
                 @foreach($matricula as $mat)
                     <div class="lista">
@@ -153,10 +154,10 @@
                     </input>  
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+                    <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro2', 'all');" >Todos</button>
                 </div>
             </div>
-            
+            <br>
             <div class="list-group" id="body_inrregular">
                 @foreach($matricula as $mat)
                     <div class="lista">
