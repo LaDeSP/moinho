@@ -633,7 +633,7 @@ use PHP\test;
     </form>
     <h1 class="text-info"> 
         Documentos 
-        <a href="">
+        <a href="{{ route('documento.edit', $inscricao->id)}}">
             <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
         </a>
     </h1>

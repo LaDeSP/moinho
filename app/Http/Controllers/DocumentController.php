@@ -82,7 +82,10 @@ class DocumentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $document = Document::where('inscricao_id', $id);
+        $document_types = DocumentType::all();
+
+        return view('documents.edit', compact('document', 'document_types'));
     }
 
     /**

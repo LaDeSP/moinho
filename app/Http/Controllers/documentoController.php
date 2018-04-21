@@ -46,7 +46,7 @@ class documentoController extends Controller
         
         $file = $request->file('documento');
         $document->url = $file->store('documento');
-        $document->numero_documento = $request->numero_documento;
+        $document->documento_numero = $request->numero_documento;
         $document->comentario = $request->comentario;
         $document->inscricao_id = $request->help;
         $document->documento_tipo_id = $request->doc_type; 
@@ -60,7 +60,7 @@ class documentoController extends Controller
         
         $file = $request->file('documento2');
         $document->url = $file->store('documento');
-        $document->numero_documento = $request->numero_documento;
+        $document->documento_numero = $request->numero_documento;
         $document->comentario = $request->comentario2;
         $document->inscricao_id  = $request->help;
         $document->documento_tipo_id = $request->doc_type2; 
@@ -74,7 +74,7 @@ class documentoController extends Controller
         
         $file = $request->file('documento3');
         $document->url = $file->store('documento');
-        $document->numero_documento = $request->numero_documento3;
+        $document->documento_numero = $request->numero_documento3;
         $document->comentario = $request->comentario3;
         $document->inscricao_id = $request->help;
         $document->documento_tipo_id = $request->doc_type3; 
@@ -101,7 +101,11 @@ class documentoController extends Controller
 
     public function edit($id)
     {
-        //
+        $documento_tipo = Documento_tipo::all();
+        $documento = Documento::where('inscricao_id', $id)->get();
+        $help = 1;
+
+        return view('documento.edit', compact('documento_tipo', 'documento', 'id'));
     }
     /**
      * Update the specified resource in storage.
