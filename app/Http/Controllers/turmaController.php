@@ -67,6 +67,19 @@ class turmaController extends Controller
         return view('turma_disciplina.create', compact('turma', 'nome', 'disciplina', 'help'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function intercept($card)
+    {
+        $turma = Turma::all();
+        $nome = NomeTurma::all();
+        return view('turma.create', compact('turma', 'nome'));
+    }
+
 
 
     /**
@@ -89,8 +102,9 @@ class turmaController extends Controller
     public function edit($id)
     {
         $turma = Turma::find($id);
+        $nome = NomeTurma::all();
 
-        return view('turma.edit', compact('turma'));
+        return view('turma.edit', compact('turma', 'nome', 'id'));
     }
 
     /**
@@ -112,7 +126,12 @@ class turmaController extends Controller
     
         $turma->save(['timestamps' => false]);
 
-        return view('turma.create');
+        return 'hello';
+    }
+
+    public function teste(Request $request)
+    {
+        return 'hello';
     }
 
     /**

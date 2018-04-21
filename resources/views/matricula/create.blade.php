@@ -114,7 +114,7 @@
                                         <td>{{ $mat->data }}</td>
                                         <td>{{ $nometurma->nome_turma }} <br> {{ $turma->ano }}</td>
                                         <td>
-                                            <a href="" id="{{ $mat->id }}">
+                                            <a href="{{ route('matricula.edit', $mat->id)}}">
                                                 <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
                                             </a> 
                                         </td>

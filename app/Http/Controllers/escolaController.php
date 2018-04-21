@@ -112,8 +112,8 @@ class escolaController extends Controller
     public function update(Request $request, $id)
     {
         $escola = Escola::find($id);
-        $endereco = Endereco::find($escola -> endereco_id);
-        $contato = Contato::find($escola -> contato_id);
+        $endereco = Endereco::find($escola->endereco_id);
+        $contato = Contato::find($escola->contato_id);
 
         $endereco->rua = $request->rua;
         $endereco->bairro = $request->bairro;

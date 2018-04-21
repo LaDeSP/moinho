@@ -77,7 +77,7 @@
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome_turma }}</h5>
                             <small>
-                                <a href="#">
+                                <a href="{{ route('turma.edit', $array->id)}}">
                                     <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
                                 </a>
                             </small>
