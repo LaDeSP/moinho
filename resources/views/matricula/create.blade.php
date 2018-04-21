@@ -73,63 +73,61 @@
             <h4 class="text-success text-md-right">
                 <?php echo Lang::get('conteudo.listRegular'); ?>            
             </h4>
-            <div>
-                <center>
-                    <select 
+            <div class="row">
+                <div class="col-md-8">
+                    <input
+                        type="text"
                         name="selecao_ano" 
                         id="selecao_ano_regular" 
                         class="form-control" 
-                        value="" 
-                        onchange="changeTable('.panel-body.regular', 'selecao_ano_regular');"
+                        value=""
+                        placeholder="Pesquisa"
+                        onKeyUp="changeListGroup('.filtro1', this.value);"
                     >
-                        <option value="all"> Todos </option>
-                        @foreach(data_matricula('Regular') as $data)
-                            <option value="{{ $data }}">{{ $data }} </option>
-                        @endforeach
-                    </select>
-                </center>
+                    </input>  
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+                </div>
             </div>
-            <div class="panel panel-danger" id="body_regular">
-                <div class="table-responsive-sm">
-                    <table class="table table-striped">
-                      <thead class="text-success">
-                          <tr>
-                              <!-- <th > <?php //echo Lang::get('conteudo.enrolment'); ?>  </th> -->
-                              <th > <?php echo Lang::get('conteudo.participant'); ?> </th>
-                              <th ><?php echo Lang::get('validation.attributes.date'); ?> </th> 
-                              <th ><?php echo Lang::get('conteudo.grade'); ?> </th>
-                              <th ></th>
-                          </tr>
-                      </thead>
-                      <tbody class="panel-body regular">
-                        @foreach($matricula as $mat)
-                          <tr class="{{$mat->data }}">
-                            @if($mat->status_matricula_id == 1)    
-                              @foreach(busca_inscricao2($mat->inscricao_id) as $inscricao)
-                              @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
-                                  @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
-                                    @foreach (buscar_turma($mat->turma_id) as $turma)
-                                      @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
-                                        <td>{{ $pessoa->nome}}</td>
-                                        <td>{{ $mat->data }}</td>
-                                        <td>{{ $nometurma->nome_turma }} <br> {{ $turma->ano }}</td>
-                                        <td>
-                                            <a href="{{ route('matricula.edit', $mat->id)}}">
-                                                <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
-                                            </a> 
-                                        </td>
-                                      @endforeach
+            <div class="list-group" id="body_regular">
+                @foreach($matricula as $mat)
+                    <div class="lista">
+                        @if($mat->status_matricula_id == 1)    
+                            @foreach(busca_inscricao2($mat->inscricao_id) as $inscricao)
+                                @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
+                                    @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
+                                        @foreach (buscar_turma($mat->turma_id) as $turma)
+                                            @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
+                                                <div 
+                                                    class="{{ date('d/m/Y', strtotime($mat->data)) }} {{ $turma->ano }} {{ str_replace(' ', '_', $pessoa->nome) }} {{ str_replace(' ', '_', $nometurma->nome_turma) }} filtro1"
+                                                    id="{{ $mat->id }}"
+                                                >
+                                                    <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                            <h5 class="mb-1">{{ $pessoa->nome }}</h5>
+                                                            <small>
+                                                                <a href="{{ route('matricula.edit', $mat->id)}}">
+                                                                    <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
+                                                                </a>
+                                                            </small>
+                                                        </div>
+                                                        <small>{{ ucfirst($nometurma->nome_turma) }}</small>,
+                                                        <small>{{ $turma->ano }}</small>
+                                                        <br>
+                                                        <small>Data: {{ date('d/m/Y', strtotime($mat->data)) }}</small>
+                                                    </span>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
                                     @endforeach
-                                  @endforeach
                                 @endforeach
-                              @endforeach
-                            @endif
-                          </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
-                </div> 
+                            @endforeach
+                        @endif
+                    </div>
+                @endforeach
             </div>
+            <br>
             <div><center><button onclick="printDiv('body_regular')" type="button" class="btn btn-outline-info"><?php echo Lang::get('conteudo.print'); ?></button></center></div>
             <br>
         </div>
@@ -139,65 +137,64 @@
         @permission('ver-matriculas-irregulares')
         <div class="col-md-6" style="text-align: left">
             <h4 class="text-danger">
-            <?php echo Lang::get('conteudo.listIrregular'); ?> 
-            </h4>
-            <div>
-                <center>
-                    <select 
+                <?php echo Lang::get('conteudo.listIrregular'); ?>
+            </h4> 
+            <div class="row">
+                <div class="col-md-8">
+                    <input
+                        type="text"
                         name="selecao_ano" 
-                        id="selecao_ano_inrregular" 
+                        id="selecao_ano_regular" 
                         class="form-control" 
-                        value="" 
-                        onchange="changeTable('.panel-body.inrregular', 'selecao_ano_inrregular');"
+                        value=""
+                        placeholder="Pesquisa"
+                        onKeyUp="changeListGroup('.filtro2', this.value);"
                     >
-                        <option value="all"> Todos </option>
-                        @foreach(data_matricula('Afastado') as $data)
-                            <option value="{{ $data }}">{{ $data }} </option>
-                        @endforeach
-                    </select>
-                </center>
+                    </input>  
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+                </div>
             </div>
-            <div class="panel panel-danger" id="body_inrregular">
-                <div class="table-responsive-sm">
-                    <table class="table table-striped">
-                        <thead class="text-danger">
-                            <tr>
-                                <!-- <th > <?php //echo Lang::get('conteudo.enrolment'); ?>  </th> -->
-                                <th > <?php echo Lang::get('conteudo.participant'); ?> </th>
-                                <th ><?php echo Lang::get('validation.attributes.date'); ?> </th> 
-                                <th ><?php echo Lang::get('conteudo.grade'); ?> </th>
-                                <th ></th>
-                            </tr>
-                        </thead>
-                        <tbody class="panel-body inrregular" >
-                            @foreach($matricula as $mat)
-                                <tr class="{{ $mat->data }}">
-                                    @if($mat->status_matricula_id != 1)    
-                                        @foreach(busca_inscricao2($mat->inscricao_id) as $inscricao)<!-- logica é essa. só colocar os campos certos pra impressão e deu-->
-                                            @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
-                                                @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
-                                                    @foreach (buscar_turma($mat->turma_id) as $turma)
-                                                        @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
-                                                        <td>{{ $pessoa->nome}}</td>
-                                                        <td>{{ $mat->data }}</td>
-                                                        <td>{{ $nometurma->nome_turma }} <br> {{ $turma->ano }}</td>
-                                                        <td>
-                                                            <a href="" id="{{ $mat->id }}">
-                                                                <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
-                                                            </a> 
-                                                        </td>
-                                                        @endforeach
-                                                    @endforeach
-                                                @endforeach
+            
+            <div class="list-group" id="body_inrregular">
+                @foreach($matricula as $mat)
+                    <div class="lista">
+                        @if($mat->status_matricula_id != 1)    
+                            @foreach(busca_inscricao2($mat->inscricao_id) as $inscricao)<!-- logica é essa. só colocar os campos certos pra impressão e deu-->
+                                @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
+                                    @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
+                                        @foreach (buscar_turma($mat->turma_id) as $turma)
+                                            @foreach (buscar_nometurma($turma->nome_turma_id) as $nometurma)
+                                            <div 
+                                                class="{{ date('d/m/Y', strtotime($mat->data)) }} {{ $turma->ano }} {{ str_replace(' ', '_', $pessoa->nome) }} {{ str_replace(' ', '_', $nometurma->nome_turma) }} filtro2"
+                                                id="{{ $mat->id }}"
+                                            >
+                                                <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                                                    <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1">{{ $pessoa->nome }}</h5>
+                                                        <small>
+                                                            <a href="{{ route('matricula.edit', $mat->id)}}">
+                                                                <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
+                                                            </a>
+                                                        </small>
+                                                    </div>
+                                                    <small>{{ ucfirst($nometurma->nome_turma) }}</small>,
+                                                    <small>{{ $turma->ano }}</small>
+                                                    <br>
+                                                    <small>Data: {{ date('d/m/Y', strtotime($mat->data)) }}</small>
+                                                </span>
+                                            </div>
                                             @endforeach
                                         @endforeach
-                                    @endif
-                                </tr>
+                                    @endforeach
+                                @endforeach
                             @endforeach
-                        </tbody>
-                    </table>
-                </div> 
+                        @endif
+                    </div>
+                @endforeach
             </div>
+            <br>
             <div><center><button onclick="printDiv('body_inrregular')" type="button" class="btn btn-outline-info"><?php echo Lang::get('conteudo.print'); ?></button></center></div>
             <br>
         </div>
