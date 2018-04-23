@@ -43,9 +43,6 @@ use PHP\test;
 
 @section('content')
     <h1 class="text-info"> Alterar Inscrição </h1>
-    <div style="margin-bottom: 20px">
-        <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.inscriptionReport');?></a>
-    </div>
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('dados_inscricao.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
@@ -421,7 +418,10 @@ use PHP\test;
                         <!-- Observações -->
                         <div class="col-md-12">
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?>*</label>
-                            <textarea name="observacoes" rows="5"></textarea>
+                            <textarea 
+                                name="observacoes" 
+                                rows="5"
+                            >{{ $dados_inscricao->observacoes }}</textarea>
                         </div>
                         
                     </div>
@@ -633,18 +633,20 @@ use PHP\test;
     </form>
     <h1 class="text-info"> 
         Documentos 
-        <a href="{{ route('documento.edit', $inscricao->id)}}">
-            <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
-        </a>
     </h1>
+    <div class="text-right">
+      <a href="{{ route('documento.edit', $inscricao->id)}}">
+        <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
+      </a>
+    </div>
+    <br>
     <div class="row">
         @foreach($document as $documento)
             @if($documento->inscricao_id === $inscricao->id)
-            <div class="col-md-6">
-                <iframe src="/document/{{ $documento->url }}" height="500" width="100%"></iframe>
-            </div>
+                <div class="col-md-12">
+                    <iframe src="/document/{{ $documento->url }}" height="500" width="100%"></iframe>
+                </div>
             @endif
-            <br>
         @endforeach
     </div>
     <br>

@@ -171,11 +171,19 @@ class dados_inscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   /* public function show($id)
+    public function show($id)
     {
-        $documents = Document::where('organization_id', $id)->get();
-        return view('organizations.show', compact('documents'));
-    }*/
+        $escola = Escola::all();
+        $inscricao = Inscricao::find($id);
+        $dados_inscricao = DadosInscricao::find($inscricao->dados_inscricao_id);
+        $dados_pessoais = Pessoa::find($dados_inscricao->dados_pessoais_id);
+        $responsavel1 =  Pessoa::find($dados_inscricao->responsavel1_id);
+        $responsavel2 =  Pessoa::find($dados_inscricao->responsavel2_id);
+        $endereco = Endereco::find($dados_pessoais->endereco_id);
+        $document = Documento::all();
+        $contato = Contato::find($dados_pessoais->contato_id);
+        return view('dados_inscricao.show', compact('id', 'escola', 'contato', 'document', 'inscricao', 'endereco', 'dados_inscricao', 'dados_pessoais', 'responsavel1', 'responsavel2'));
+    }
 
     /**
      * Show the form for editing the specified resource.

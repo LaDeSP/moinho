@@ -407,6 +407,9 @@ use PHP\test;
                                 <a href="{{ route('dados_inscricao.edit', $array->id)}}" id="{{ $array->id }}">
                                     <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
                                 </a>
+                                <a href="{{ route('dados_inscricao.show', $array->id)}}" id="{{ $array->id }}">
+                                    <i class="fa fa-eye icon text-info" aria-hidden="true"></i>
+                                </a>
                             </small>
                         </div>
                         <small>{{ $array->raca }}</small>
