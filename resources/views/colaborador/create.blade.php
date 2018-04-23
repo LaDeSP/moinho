@@ -252,6 +252,9 @@ use PHP\test;
                                 <a href="{{ route('colaborador.edit', $array->id)}}">
                                     <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
                                 </a>
+                                <a href="{{ route('colaborador.show', $array->id)}}">
+                                    <i class="fa fa-eye icon text-danger" aria-hidden="true"></i>
+                                </a>
                             </small>
                         </div>
                         <small>{{ $array->area_atuacao }}</small>,

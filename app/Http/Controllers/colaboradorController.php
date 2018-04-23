@@ -119,11 +119,17 @@ class colaboradorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   /* public function show($id)
+    public function show($id)
     {
-        $documents = Document::where('organization_id', $id)->get();
-        return view('organizations.show', compact('documents'));
-    }*/
+        $colaborador = Colaborador::find($id);
+        $pessoa = Pessoa::find($colaborador->pessoa_id);
+        $endereco = Endereco::find($pessoa->endereco_id);
+        $contato = Contato::find($pessoa->contato_id);
+        $user = User::find($colaborador->user_id);
+        $tipo = Role::all();
+
+        return view('colaborador.show', compact('id', 'tipo', 'colaborador', 'pessoa', 'endereco', 'contato', 'user'));
+    }
 
     /**
      * Show the form for editing the specified resource.

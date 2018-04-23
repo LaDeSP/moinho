@@ -43,12 +43,6 @@ use PHP\test;
 @section('content')
     <h1 class="text-danger"> Alterar Colaborador </h1>
 
-    <!-- Relatório -->
-    <div style="margin-bottom: 20px">
-        <!-- Adicionar filtros -->
-        <a href="{{ url('/relatorio_colaborador')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.employeeReport'); ?> </a>
-    </div>
-
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('colaborador.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
