@@ -80,6 +80,9 @@
                                 <a href="{{ route('turma.edit', $array->id)}}">
                                     <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
                                 </a>
+                                <a href="{{ route('turma.show', $array->id)}}">
+                                    <i class="fa fa-eye icon text-warning" aria-hidden="true"></i>
+                                </a>
                             </small>
                         </div>
                         <small>{{ ucfirst($array->turno) }}</small>,

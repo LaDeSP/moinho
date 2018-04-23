@@ -90,7 +90,10 @@ class turmaController extends Controller
      */
     public function show($id)
     {
-        //
+        $turma = Turma::find($id);
+        $nome = NomeTurma::all();
+
+        return view('turma.show', compact('turma', 'nome', 'id'));
     }
 
     /**
