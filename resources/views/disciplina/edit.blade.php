@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-info"><?php echo Lang::get('conteudo.registerDiscipline'); ?></h1>
+    <h1 class="text-info"> Alterar Disciplina </h1>
 
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('disciplina.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}

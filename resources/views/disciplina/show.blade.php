@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-info"><?php echo Lang::get('conteudo.registerDiscipline'); ?></h1>
+    <h1 class="text-info"> Visualizar Disciplina</h1>
+    <div class="text-right">
+        <a href="{{ route('disciplina.edit', $id)}}">
+            <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
+        </a>
+    </div>
 
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('disciplina.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -116,10 +121,5 @@
             </div>
         </div>
     </form>
-    <div class="text-right">
-        <a href="{{ route('disciplina.edit', $id)}}">
-            <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
-        </a>
-    </div>
 @endsection
 
