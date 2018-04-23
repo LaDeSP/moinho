@@ -86,7 +86,11 @@ class escolaController extends Controller
      */
     public function show($id)
     {
-        //
+        $escola = Escola::find($id);
+        $contato = Contato::find($escola->contato_id);
+        $endereco = Endereco::find($escola->endereco_id);
+
+        return view('escola.show', compact('escola', 'contato', 'endereco', 'id'));
     }
 
     /**

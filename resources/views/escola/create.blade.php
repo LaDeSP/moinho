@@ -213,6 +213,9 @@ use PHP\test;
                                 <a href="{{ route('escola.edit', $array->escola_id)}}">
                                     <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
                                 </a>
+                                <a href="{{ route('escola.show', $array->escola_id)}}">
+                                    <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
+                                </a>
                             </small>
                         </div>
                         <small>Tipo: {{ $array->tipo }}</small>
