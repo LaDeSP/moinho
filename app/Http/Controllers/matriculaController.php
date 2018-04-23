@@ -83,7 +83,10 @@ class matriculaController extends Controller
      */
     public function show($id)
     {
-        //
+        $matricula = Matricula::find($id);
+        $status = StatusMatricula::all();
+
+        return view('matricula.show', compact('matricula', 'status', 'id'));
     }
    
 

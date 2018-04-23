@@ -110,7 +110,10 @@
                                                             <small>
                                                                 @permission('criar-matricula')
                                                                     <a href="{{ route('matricula.edit', $mat->id)}}">
-                                                                        <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
+                                                                        <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
+                                                                    </a>
+                                                                    <a href="{{ route('matricula.show', $mat->id)}}">
+                                                                        <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
                                                                     </a>
                                                                 @endpermission
                                                             </small>
@@ -177,9 +180,14 @@
                                                     <div class="d-flex w-100 justify-content-between">
                                                         <h5 class="mb-1">{{ $pessoa->nome }}</h5>
                                                         <small>
-                                                            <a href="{{ route('matricula.edit', $mat->id)}}">
-                                                                <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
-                                                            </a>
+                                                            @permission('criar-matricula')
+                                                                <a href="{{ route('matricula.edit', $mat->id)}}">
+                                                                    <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
+                                                                </a>
+                                                                <a href="{{ route('matricula.show', $mat->id)}}">
+                                                                    <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
+                                                                </a>
+                                                            @endpermission
                                                         </small>
                                                     </div>
                                                     <small>{{ ucfirst($nometurma->nome_turma) }}</small>,
