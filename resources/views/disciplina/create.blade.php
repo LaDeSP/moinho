@@ -100,6 +100,9 @@
                                 <a href="{{ route('disciplina.edit', $array->id)}}">
                                     <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
                                 </a>
+                                <a href="{{ route('disciplina.show', $array->id)}}">
+                                    <i class="fa fa-eye icon text-info" aria-hidden="true"></i>
+                                </a>
                             </small>
                         </div>
                         <small>{{ ucfirst($array->turno) }}</small>,

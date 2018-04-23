@@ -75,7 +75,11 @@ class disciplinaController extends Controller
      */
     public function show($id)
     {
-        //
+        $disciplina = Disciplina::find($id);
+        $horario = Horario::where('disciplina_id', $id)->first();
+        $colaborador = Colaborador::all();
+
+        return view('disciplina.show', compact('disciplina', 'horario', 'colaborador', 'id'));
     }
 
     /**
