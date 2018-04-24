@@ -145,7 +145,7 @@ class escolaController extends Controller
 
         $escola->save(['timestamps' => false]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
     /**

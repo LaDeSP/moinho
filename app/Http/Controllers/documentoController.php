@@ -103,9 +103,9 @@ class documentoController extends Controller
     {
         $documento_tipo = Documento_tipo::all();
         $documento = Documento::where('inscricao_id', $id)->get();
-        $help = 1;
+        $help = $id;
 
-        return view('documento.edit', compact('documento_tipo', 'documento', 'id'));
+        return view('documento.edit', compact('documento_tipo', 'documento', 'help'));
     }
     /**
      * Update the specified resource in storage.

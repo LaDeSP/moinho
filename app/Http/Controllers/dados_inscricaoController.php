@@ -216,15 +216,15 @@ class dados_inscricaoController extends Controller
     {
         $dadosInscricao = DadosInscricao::findOrFail($id);
         $person = Pessoa::findOrFail($dadosInscricao->dados_pessoais_id);
-        $pai = Pessoa::findOrFail($responsavel1);
-        $mae = Pessoa::findOrFail($responsavel2);
+        $pai = Pessoa::findOrFail($dadosInscricao->responsavel1_id);
+        $mae = Pessoa::findOrFail($dadosInscricao->responsavel2_id);
         $ende = Endereco::findOrFail($person->endereco_id);
-        $insc = Inscricao::find($dadosInscricao->dados_inscricao_id);
+        $insc = Inscricao::findOrFail($dadosInscricao->id);
         $contato = Contato::findOrFail($person->contato_id);
 
         
         //Contato
-        $contato->numero_fixo = $request->contato;
+        $contato->numero_fixo = $request->telefone;
         $contato->celular1 = $request->celular1;
         $contato->celular2 = $request->celular2;
         $contato->email = $request->email;
@@ -286,7 +286,7 @@ class dados_inscricaoController extends Controller
         $insc->save(['timestamps' => false]);
 
 
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
     /**

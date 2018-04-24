@@ -7,7 +7,7 @@
 
 @section('content')
     <h1 class="text-info">Alterar Documentos</h1>
-
+    {{dd($documento)}}
     <form onkeyup="verifica_submit('validate');"  method= "POST" action="{{ route('documento.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="text" name="help" value="{{ $id }}" id="SI" style="display: none" >
