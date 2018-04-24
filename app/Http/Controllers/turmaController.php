@@ -50,9 +50,13 @@ class turmaController extends Controller
     public function store(Request $request)
     {
         $formulario = new Turma;
-        
+        $nome_turma = new NomeTurma;
 
-        $formulario->nome_turma_id = $request->turma;
+        $nome_turma -> nome_turma = $request->turma;
+
+        $nome_turma -> save();
+
+        $formulario->nome_turma_id = $nome_turma -> id;
         $formulario->turno = $request->turno;
         $formulario->ano = $request->ano;
         $formulario->periodo = $request->periodo;

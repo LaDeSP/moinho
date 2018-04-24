@@ -10,11 +10,8 @@
             <div class="col-md-4">
                 <!-- Nome da Turma -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name'); ?>*</label>
-                <select name="turma" class="form-control">
-                    @foreach($nome as $turma) 
-                        <option value="{{ $turma->id }}"> {{ $turma->nome_turma }} </option>
-                    @endforeach
-                </select> 
+                <input id="nome" type="text" name="turma" class="form-control validate"
+                onkeyup="verifica_vazio(this.value, this.id);">
             </div>
             <div class="col-md-3 mb-3">
                 <!-- Turno da Turma -->
