@@ -215,7 +215,7 @@
                 <a class="nav-link js-scroll-trigger" href="/auth/logout">
                     <h4 class="red">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        Sair
+                        <?php echo Lang::get('conteudo.logOut');?>
                     </h4>
                 </a>
             </div>
