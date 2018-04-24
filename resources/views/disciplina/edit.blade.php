@@ -3,7 +3,8 @@
 @section('content')
     <h1 class="text-info"> Alterar Disciplina </h1>
 
-    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('disciplina.store') }}" enctype="multipart/form-data">
+    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('disciplina.update') }}" enctype="multipart/form-data">
+        <input name="_method" type="hidden" value="PUT">
         {{ csrf_field() }}
         <div class="row">
             <!-- Dados Disciplina -->

@@ -214,7 +214,79 @@ class dados_inscricaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dadosInscricao = DadosInscricao::findOrFail($id);
+        $person = Pessoa::findOrFail($dadosInscricao->dados_pessoais_id);
+        $pai = Pessoa::findOrFail($responsavel1);
+        $mae = Pessoa::findOrFail($responsavel2);
+        $ende = Endereco::findOrFail($person->endereco_id);
+        $insc = Inscricao::find($dadosInscricao->dados_inscricao_id);
+        $contato = Contato::findOrFail($person->contato_id);
+
+        
+        //Contato
+        $contato->numero_fixo = $request->contato;
+        $contato->celular1 = $request->celular1;
+        $contato->celular2 = $request->celular2;
+        $contato->email = $request->email;
+        $contato->save(['timestamps' => false]);
+        
+        //Pessoa
+        $person->nome = $request->nome;
+        $person->cpf = $request->cpf;
+        $person->data_nascimento = $request->data_nascimento;
+        
+        //Pessoa - Responsavel
+        $pai->nome = $request->nomePai;
+        $pai->cpf = $request->cpfPai;
+        $pai->data_nascimento = $request->data_nascimentoPai;
+        
+        //Pessoa - Responsavel 2
+        $mae->nome = $request->nomeMae;
+        $mae->cpf = $request->cpfMae;
+        $mae->data_nascimento = $request->data_nascimentoMae;
+        
+        //Endereço
+        $ende->rua = $request->rua;
+        $ende->bairro = $request->bairro;
+        $ende->numero = $request->numero;
+        $ende->complemento = $request->complemento;
+        $ende->cep = $request->cep;
+        $ende->cidade = $request->cidade;
+        $ende->estado = $request->uf;
+        $ende->pais = $request->pais;
+        $ende->save(['timestamps' => false]);
+
+        //Criando os registros
+        $person->save(['timestamps' => false]);
+        $pai->save(['timestamps' => false]);
+        $mae->save(['timestamps' => false]);
+
+        //Criar os dados inscrição
+        $dadosInscricao->turno = $request->turno;
+        $dadosInscricao->turma = $request->turma;
+        $dadosInscricao->observacoes = $request->observacoes;
+        $dadosInscricao->transporte = $request->transporte;
+        $dadosInscricao->profissao = $request->profissao;
+        $dadosInscricao->raca = $request->raca;
+        $dadosInscricao->religiao = $request->religiao;
+        $dadosInscricao->renda = $request->renda;
+        $dadosInscricao->qtd_residencia = $request->qtd_residencia;
+        $dadosInscricao->beneficio_social = $request->beneficio_social;
+        $dadosInscricao->serie = $request->serie;
+        $dadosInscricao->escola_id = $request->escola;
+       
+
+
+        //Criando o registro
+        $dadosInscricao->save(['timestamps' => false]);
+
+        //Inscrição
+        $insc->data_inscricao = $request->data_inscricao;
+        $insc->data_avaliacao = $request->data_avaliacao;
+        $insc->save(['timestamps' => false]);
+
+
+        return view('home');
     }
 
     /**

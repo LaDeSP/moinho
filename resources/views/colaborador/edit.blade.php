@@ -43,7 +43,8 @@ use PHP\test;
 @section('content')
     <h1 class="text-danger"> Alterar Colaborador </h1>
 
-    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('colaborador.store') }}" enctype="multipart/form-data">
+    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('colaborador.update', $colaborador->id) }}" enctype="multipart/form-data">
+        <input name="_method" type="hidden" value="PUT">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
             <div class="carousel-inner" >

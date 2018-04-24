@@ -145,7 +145,7 @@ class escolaController extends Controller
 
         $escola->save(['timestamps' => false]);
 
-        return view('escola.create');
+        return redirect()->back();
     }
 
     /**

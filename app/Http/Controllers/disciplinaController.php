@@ -106,7 +106,21 @@ class disciplinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $disciplina = Disciplina::findOrFail($id);
+        $horario = Horario::where('disciplina_id', $disciplina->id);
+
+        $disciplina->nome = $request->nome;
+        $disciplina->turno = $request->turno;
+        $disciplina->sala_aula = $request->sala_de_aula;
+        $disciplina->colaborador_id = $request->colaborador_id;
+
+        $horario->dia_semana = $request->dia_semana;
+        $horario->hora = $request->hora;
+        
+        $disciplina->save(['timestamps' => false]);
+        $horario->save(['timestamps' => false]);
+
+        return view('home');
     }
 
     /**

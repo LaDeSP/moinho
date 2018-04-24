@@ -122,6 +122,8 @@ class matriculaController extends Controller
         $matricula->turma_id = $request->turma_id;
     
         $matricula->save(['timestamps' => false]);
+
+        return view('home');
     }
 
     /**

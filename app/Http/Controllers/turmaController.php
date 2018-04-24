@@ -104,10 +104,10 @@ class turmaController extends Controller
      */
     public function edit($id)
     {
-        $turma = Turma::find($id);
+        $turma = Turma::findOrFail($id);
         $nome = NomeTurma::all();
 
-        return view('turma.edit', compact('turma', 'nome', 'id'));
+        return view('turma.edit', compact('turma', 'nome'));
     }
 
     /**
@@ -119,7 +119,7 @@ class turmaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $turma = Turma::find($id);
+        $turma = Turma::findOrFail($id);
 
         $turma->nome_turma_id = $request->turma;
         $turma->turno = $request->turno;
@@ -129,7 +129,8 @@ class turmaController extends Controller
     
         $turma->save(['timestamps' => false]);
 
-        return 'hello';
+        return view('home');
+
     }
 
     public function teste(Request $request)
