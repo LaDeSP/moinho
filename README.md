@@ -36,6 +36,11 @@ Gere uma nova chave
 php artisan key:generate
 ```
 
+Gere as migrations
+```
+php artisan migrate --seed
+```
+
 , inicie o servidor
 ```
 php artisan serve
