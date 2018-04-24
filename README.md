@@ -41,12 +41,8 @@ Gere as migrations
 php artisan migrate --seed
 ```
 
-, inicie o servidor
+Inicie o servidor
 ```
 php artisan serve
 ```
 
-E para gerar o banco de dados
-```
-php artisan migrate --seed
-```
