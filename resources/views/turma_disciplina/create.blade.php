@@ -24,7 +24,7 @@
             //document.getElementById("divResultado").innerHTML = JSON.stringify(array);
 
       //  }
-        document.getElementById("divResultado").innerHTML = "<h1>Disciplinas Selecionadas:</h1>" + "\n" + disciplina.join("<br>");
+        document.getElementById("divResultado").innerHTML = "<h1 class='text-warning'>Disciplinas Selecionadas</h1>" + "\n" + disciplina.join("<br>");
     }
 
     /*function tamanh(){
@@ -34,7 +34,7 @@
     function teste(){
         document.getElementById('test').value=array;
     }
-
+    
 
     
 
@@ -48,44 +48,36 @@
 @extends('layouts.app')
 
 @section('content')
-    
 
+    
     <form method= "POST" action="{{ route('turma_disciplina.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <input style="display: hidden" type="text" name="botao" value="{{ $help }}" id="SI" >
-        <div class="col-md-4">
-        <h1>Cadastrar Disciplinas da Turma {{ $help }} </h1>
-        <table>
-            <tr>
-                <td><label>Disciplina: </label></td>
-                <td><select name="disciplinaaa" id="disciplinaaa" class="form-control">
-                    @foreach($disciplina as $materias) 
-                        <option value="{{ $materias->id }}"> {{ $materias->nome }} </option>
-                    @endforeach
-                    </select></td>
-                     <td><button onclick="do_bom();" type="button" class="btn btn-primary">Adicionar</button></td>
-            </tr>
-           <!-- <tr>
-                <td><button onclick="do_bom();" type="button" class="btn btn-primary">Adicionar</button></td>
-            </tr>-->
-            <tr>
-                <td><input type="submit" name="testando" value="Submit" id="test" onclick="teste();" class="btn-success"></td>
-            </tr>
-        </table>
-
-
+        <div class="row">
+            <input style="display: none" type="text" name="botao" value="{{ $help }}" id="SI" />
+                <div class="col-md-6">
+                    <h1 class="text-warning">Adicionar Disciplinas</h1>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="exampleFormControlInput1">Disciplina</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select name="disciplinaaa" id="disciplinaaa" class="form-control">
+                                @foreach($disciplina as $materias) 
+                                    <option value="{{ $materias->id }}"> {{ $materias->nome }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button onclick="do_bom();" type="button" class="btn btn-outline-success">Acrescentar</button>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="submit" name="testando" value="Adicionar" id="test" onclick="teste();" class="btn btn-outline-success">
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-6" id="divResultado">   
+            </div>
         </div>
-        <div class="col-md-4" id="divResultado">
-        
-        </div>
-
-       
-      
-        
-    
-       
-
-        
     </form>
 @endsection
 

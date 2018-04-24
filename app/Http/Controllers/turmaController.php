@@ -106,8 +106,12 @@ class turmaController extends Controller
     {
         $turma = Turma::findOrFail($id);
         $nome = NomeTurma::all();
-
-        return view('turma.edit', compact('turma', 'nome'));
+        $turmaDisciplina = TurmaDisciplina::where('turma_id', $id)->get();
+        $disciplinas = [];
+        foreach($turmaDisciplina as $td){
+            $disciplinas[] = Disciplina::findOrFail($td->disciplina_id);
+        }
+        return view('turma.edit', compact('turmaDisciplina', 'turma', 'nome', 'disciplinas'));
     }
 
     /**
@@ -129,7 +133,7 @@ class turmaController extends Controller
     
         $turma->save(['timestamps' => false]);
 
-        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
+        return view('home');
 
     }
 
