@@ -109,7 +109,7 @@ class turmaController extends Controller
     public function edit($id)
     {
         $turma = Turma::findOrFail($id);
-        $nome = NomeTurma::all();
+        $nome = NomeTurma::findOrFail($turma -> nome_turma_id);
         $turmaDisciplina = TurmaDisciplina::where('turma_id', $id)->get();
         $disciplinas = [];
         foreach($turmaDisciplina as $td){
@@ -128,16 +128,19 @@ class turmaController extends Controller
     public function update(Request $request, $id)
     {
         $turma = Turma::findOrFail($id);
+        $nome_turma = NomeTurma::findOrFail($turma -> nome_turma_id);
 
-        $turma->nome_turma_id = $request->turma;
+        $turma->nome_turma_id = $nome_turma -> id;
         $turma->turno = $request->turno;
         $turma->ano = $request->ano;
         $turma->periodo = $request->periodo;
       
+        $nome_turma -> nome_turma = $request -> turma;
     
+        $nome_turma -> save(['timestamps' => false]);
         $turma->save(['timestamps' => false]);
 
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
 
     }
 
