@@ -158,7 +158,50 @@ class colaboradorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $colaborador = Colaborador::findOrFail($id);
+        $person = Pessoa::findOrFail($colaborador->pessoa_id);
+        $ende = Endereco::findOrFail($person->endereco_id);
+        $telefone = Contato::findOrFail($person->contato_id);
+        $user = User::findOrFail($person->user_id);
+        
+      
+        $person->nome = $request->nome;
+        $person->cpf = $request->cpf;
+        $person->data_nascimento = $request->data_nascimento;
+
+        $telefone->numero_fixo = $request->telefone;
+        $telefone->celular1 = $request->celular1;
+        $telefone->celular2 = $request->celular2;
+        $telefone->email = $request->email;
+        $telefone->save(['timestamps' => false]);
+
+        $user->name = $request->nome;
+        $user->email = $request->email;
+        $user->save(['timestamps' => false]);
+
+        $ende->rua = $request->rua;
+        $ende->bairro = $request->bairro;
+        $ende->numero = $request->numero;
+        $ende->complemento = $request->complemento;
+        $ende->cep = $request->cep;
+        $ende->cidade = $request->cidade;
+        $ende->estado = $request->uf;
+        $ende->pais = $request->pais;
+        $ende->save(['timestamps' => false]);
+
+        $person->save(['timestamps' => false]);
+
+        $colaborador->ano_ingreco = $request->ano_ingresso;
+        $colaborador->area_atuacao = $request->area_atuacao;
+        $colaborador->tipo_colaborador_id = $request->tipo_colaborador;
+        $colaborador->save(['timestamps' => false]);
+        
+
+        $role = Role::where('id', $request->tipo_colaborador)->first();
+        $user->attachRole($role);
+
+
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
     /**
