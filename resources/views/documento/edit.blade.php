@@ -15,15 +15,26 @@
             <div class="col-md-3">
                 <!-- Numero do Documento -->
                 <label for="exampleFormControlInput1">Número*</label>
-                <input 
-                    type="text" 
-                    name="numero_documento" 
-                    size="23" 
-                    value="{{ $documento[0]->documento_numero }}"
-                    id="numero_documento" 
-                    class="form-control validate is-valid"
-                    onkeyup="verifica_vazio(this.value, this.id);"
-                />
+                @if( count($documento) != 0 )
+                    <input 
+                        type="text" 
+                        name="numero_documento" 
+                        size="23" 
+                        value="{{ $documento[0]->documento_numero }}"
+                        id="numero_documento" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @else
+                    <input 
+                        type="text" 
+                        name="numero_documento" 
+                        size="23" 
+                        id="numero_documento" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @endif
                 <div class="invalid-feedback">
                     Por favor, digite o numero do documento
                 </div>
@@ -36,8 +47,9 @@
                         <option 
                             value="{{ $doc_type->id }}"
                             <?php
-                                if($doc_type->id === $documento[0]->documento_tipo_id)
-                                    echo "selected";
+                                if(count($documento) != 0)
+                                    if($doc_type->id === $documento[0]->documento_tipo_id)
+                                        echo "selected";
                             ?>
                         > {{ $doc_type->nome }} </option>
                     @endforeach
@@ -51,15 +63,26 @@
             <div class="col-md-11">
                 <!-- Anotação -->
                 <label for="exampleFormControlInput1">Anotação*</label>
-                <input 
-                    type="text" 
-                    name="comentario" 
-                    size="23" 
-                    value="{{ $documento[0]->comentario }}" 
-                    id="comentario" 
-                    class="form-control validate is-valid"
-                    onkeyup="verifica_vazio(this.value, this.id);"
-                />
+                @if( count($documento) != 0 )
+                    <input 
+                        type="text" 
+                        name="comentario" 
+                        size="23" 
+                        value="{{ $documento[0]->comentario }}" 
+                        id="comentario" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @else
+                    <input 
+                        type="text" 
+                        name="comentario" 
+                        size="23"
+                        id="comentario" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @endif
                 <div class="invalid-feedback">
                     Por favor, digite alguma anotação
                 </div>
@@ -69,15 +92,26 @@
             <div class="col-md-3">
                 <!-- Numero do Documento -->
                 <label for="exampleFormControlInput1">Número*</label>
-                <input 
-                    type="text" 
-                    name="numero_documento2" 
-                    size="23" 
-                    value="{{ $documento[1]->documento_numero }}" 
-                    id="numero_documento2" 
-                    class="form-control validate is-valid"
-                    onkeyup="verifica_vazio(this.value, this.id);"
-                />
+                @if( count($documento) > 1 )
+                    <input 
+                        type="text" 
+                        name="numero_documento2" 
+                        size="23" 
+                        value="{{ $documento[1]->documento_numero }}" 
+                        id="numero_documento2" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @else
+                    <input 
+                        type="text" 
+                        name="numero_documento2" 
+                        size="23"  
+                        id="numero_documento2" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @endif
                 <div class="invalid-feedback">
                     Por favor, digite o numero do documento
                 </div>
@@ -90,8 +124,9 @@
                         <option 
                             value="{{ $doc_type->id }}"
                             <?php
-                                if($doc_type->id === $documento[1]->documento_tipo_id)
-                                    echo "selected";
+                                if(count($documento) != 0)
+                                    if($doc_type->id === $documento[1]->documento_tipo_id)
+                                        echo "selected";
                             ?>
                         > {{ $doc_type->nome }} </option>
                     @endforeach
@@ -105,15 +140,26 @@
             <div class="col-md-11">
                 <!-- Anotação -->
                 <label for="exampleFormControlInput1">Anotação*</label>
-                <input 
-                    type="text" 
-                    name="comentario2" 
-                    size="23" 
-                    value="{{ $documento[1]->comentario }}"  
-                    id="comentario2" 
-                    class="form-control validate is-valid"
-                    onkeyup="verifica_vazio(this.value, this.id);"
-                />
+                @if( count($documento) > 1 )
+                    <input 
+                        type="text" 
+                        name="comentario2" 
+                        size="23" 
+                        value="{{ $documento[1]->comentario }}"  
+                        id="comentario2" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @else
+                    <input 
+                        type="text" 
+                        name="comentario2" 
+                        size="23" 
+                        id="comentario2" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @endif
                 <div class="invalid-feedback">
                     Por favor, digite alguma anotação
                 </div>
@@ -123,15 +169,26 @@
             <div class="col-md-3">
                 <!-- Numero do Documento -->
                 <label for="exampleFormControlInput1">Número*</label>
-                <input 
-                    type="text" 
-                    name="numero_documento3" 
-                    size="23" 
-                    value="{{ $documento[2]->documento_numero }}"  
-                    id="numero_documento3" 
-                    class="form-control validate is-valid"
-                    onkeyup="verifica_vazio(this.value, this.id);"
-                />
+                @if( count($documento) > 2 )
+                    <input 
+                        type="text" 
+                        name="numero_documento3" 
+                        size="23" 
+                        value="{{ $documento[2]->documento_numero }}"  
+                        id="numero_documento3" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @else
+                    <input 
+                        type="text" 
+                        name="numero_documento3" 
+                        size="23" 
+                        id="numero_documento3" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @endif
                 <div class="invalid-feedback">
                     Por favor, digite o numero do documento
                 </div>
@@ -144,8 +201,9 @@
                         <option 
                             value="{{ $doc_type->id }}"
                             <?php
-                                if($doc_type->id === $documento[2]->documento_tipo_id)
-                                    echo "selected";
+                                if(count($documento) != 0)
+                                    if($doc_type->id === $documento[2]->documento_tipo_id)
+                                        echo "selected";
                             ?>
                         > {{ $doc_type->nome }} </option>
                     @endforeach
@@ -159,15 +217,26 @@
             <div class="col-md-11">
                 <!-- Anotação -->
                 <label for="exampleFormControlInput1">Anotação*</label>
-                <input 
-                    type="text" 
-                    name="comentario3" 
-                    size="23" 
-                    value="{{ $documento[2]->comentario }}"  
-                    id="comentario3" 
-                    class="form-control validate is-valid"
-                    onkeyup="verifica_vazio(this.value, this.id);"
-                />
+                @if( count($documento) > 2 )
+                    <input 
+                        type="text" 
+                        name="comentario3" 
+                        size="23" 
+                        value="{{ $documento[2]->comentario }}"  
+                        id="comentario3" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @else
+                    <input 
+                        type="text" 
+                        name="comentario3" 
+                        size="23"  
+                        id="comentario3" 
+                        class="form-control validate is-valid"
+                        onkeyup="verifica_vazio(this.value, this.id);"
+                    />
+                @endif
                 <div class="invalid-feedback">
                     Por favor, digite alguma anotação
                 </div>
