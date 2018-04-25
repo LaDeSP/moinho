@@ -347,13 +347,13 @@ use PHP\test;
                         <div class="col-md-4">
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 1*</label>
                             <input type="text" name="celular1" size="23" class="form-control validate" value="" 
-                            id="celular1" onkeyup="verifica_telefone(this.value, this.id); " maxlength="14">
+                            id="celular1" onkeyup="verifica_telefone(this.value, this.id); " maxlength="16">
                         </div>
                         <!-- Celular 2 -->
                         <div class="col-md-4">
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 2*</label>
                             <input type="text" name="celular2" size="23" class="form-control validate" value="" 
-                            id="celular2" onblur="verifica_telefone(this.value, this.id); " maxlength="9">
+                            id="celular2" onblur="verifica_telefone(this.value, this.id); " maxlength="16">
                         </div>
                         <!-- Email -->
                         <div class="col-md-4">

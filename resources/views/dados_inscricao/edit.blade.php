@@ -582,7 +582,7 @@ use PHP\test;
                                 value="{{ $contato->celular1 }}" 
                                 id="celular1" 
                                 onkeyup="verifica_telefone(this.value, this.id);" 
-                                maxlength="15"
+                                maxlength="16"
                             />
                         </div>
                         <!-- Celular 2 -->
@@ -596,7 +596,7 @@ use PHP\test;
                                 value="{{ $contato->celular2 }}" 
                                 id="celular2" 
                                 onblur="verifica_telefone(this.value, this.id);" 
-                                maxlength="15"
+                                maxlength="16"
                             />
                         </div>
                         <!-- Email -->
