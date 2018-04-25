@@ -96,8 +96,13 @@ class turmaController extends Controller
     {
         $turma = Turma::find($id);
         $nome = NomeTurma::all();
+        $turmaDisciplina = TurmaDisciplina::where('turma_id', $id)->get();
+        $disciplinas = [];
+        foreach($turmaDisciplina as $td){
+            $disciplinas[] = Disciplina::findOrFail($td->disciplina_id);
+        }
 
-        return view('turma.show', compact('turma', 'nome', 'id'));
+        return view('turma.show', compact('turma', 'nome', 'id', 'disciplinas', 'turmaDisciplina'));
     }
 
     /**

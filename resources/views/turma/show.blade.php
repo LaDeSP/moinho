@@ -64,4 +64,21 @@
     </div>   
 </form>
 
+<section>
+    @if(count($disciplinas) != 0)
+        <h1 class="text-warning"> Disciplinas Adicionadas</h1>
+    @endif
+    <div class="row">
+        @foreach($disciplinas as $disciplina)
+        <div class="col-md-3">
+            <span class="list-group-item list-group-item-action flex-column align-items-start ">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ $disciplina->nome }}</h5>
+                </div>
+            </span>
+        </div>
+        @endforeach
+    </div>
+</section>
+
 @endsection
