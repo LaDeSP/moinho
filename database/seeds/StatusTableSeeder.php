@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Status;
+use App\StatusMatricula;
 
 class StatusTableSeeder extends Seeder
 {
@@ -12,23 +12,23 @@ class StatusTableSeeder extends Seeder
      */
     public function run()
     {
-        $regular = new Status();
+        $regular = new StatusMatricula();
         $regular -> status = 'Regular';
         $regular -> save();
 
-        $irregular = new Status();
+        $irregular = new StatusMatricula();
         $irregular -> status = 'Irregular';
         $irregular -> save();
 
-        $afastado = new Status();
+        $afastado = new StatusMatricula();
         $afastado -> status = 'Afastado';
         $afastado -> save();
 
-        $egresso = new Status();
+        $egresso = new StatusMatricula();
         $egresso -> status = 'Egresso';
         $egresso -> save();
 
-        $outro = new Status();
+        $outro = new StatusMatricula();
         $outro -> status = 'Outro';
         $outro -> save();
     }
