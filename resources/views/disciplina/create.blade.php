@@ -20,8 +20,8 @@
                 <!-- Turno da Disciplina -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?>*</label>
                 <select name="turno" class="form-control">
-                    <option value="morning"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
-                    <option value="afternoon"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
+                    <option value="Matutino"> <?php echo Lang::get('validation.attributes.morning');?>  </option>
+                    <option value="Vespertino"> <?php echo Lang::get('validation.attributes.afternoon');?> </option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -50,11 +50,11 @@
                 <!-- Dia da Semana da Disciplina -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.dayWeek'); ?>*</label>
                 <select name="dia_semana" class="form-control">
-                    <option value="monday"> <?php echo Lang::get('conteudo.monday'); ?> </option>
-                    <option value="tuesday"> <?php echo Lang::get('conteudo.tuesday'); ?> </option>
-                    <option value="wednesday"> <?php echo Lang::get('conteudo.wednesday'); ?> </option>
-                    <option value="thursday"> <?php echo Lang::get('conteudo.thursday'); ?></option>
-                    <option value="friday"> <?php echo Lang::get('conteudo.friday'); ?> </option>
+                    <option value="Segunda-Feira"> <?php echo Lang::get('conteudo.monday'); ?> </option>
+                    <option value="Terça-Feira"> <?php echo Lang::get('conteudo.tuesday'); ?> </option>
+                    <option value="Quarta-Feira"> <?php echo Lang::get('conteudo.wednesday'); ?> </option>
+                    <option value="Quinta-Feira"> <?php echo Lang::get('conteudo.thursday'); ?></option>
+                    <option value="Sexta-Feira"> <?php echo Lang::get('conteudo.friday'); ?> </option>
                 </select>
             </div>
             <div class="col-md-4">

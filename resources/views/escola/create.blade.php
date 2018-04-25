@@ -74,10 +74,11 @@ use PHP\test;
                 <!-- Tipo da Escola -->
                 <label for="exampleFormControlInput1">Tipo*</label>
                 <select name="tipo" id="Tipo" class="form-control" require>
-                    <option value="Particular">Particular</option>
-                    <option value="Federal">Federal</option>
-                    <option value="Estadual">Estadual</option>
-                    <option value="Municipal">Municipal</option>
+                      <option value="Municipal">Municipal</option>
+                      <option value="Estadual">Estadual</option>
+                      <option value="Particular">Particular</option>
+                      <option value="Federal">Federal</option>
+                      <option value="Outro">Outro...</option>
                 </select>
             </div>
 
