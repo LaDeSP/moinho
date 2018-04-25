@@ -115,7 +115,8 @@ class matriculaController extends Controller
     {
         $matricula = Matricula::find($id);
 
-        $matricula->periodo = $request->periodo;
+        $matricula->turno = $request->turno;
+        
         $matricula->inscricao_id = $request->inscricao_id;
         $matricula->data = $request->data;
         $matricula->status_matricula_id = $request->status;
