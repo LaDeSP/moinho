@@ -39,7 +39,7 @@
                 <select name="colaborador_id" class="form-control">
                     @foreach($colaborador as $professor) 
                         @foreach(busca_pessoa($professor->pessoa_id) as $nome)
-                            @if($professor->id === 5)
+                            @if($professor->tipo_colaborador_id == 5)
                                 <option value="{{ $professor->id }}"> {{ $nome->nome }} </option>
                             @endif
                         @endforeach
