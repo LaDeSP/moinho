@@ -48,6 +48,14 @@ class ForeignKeys extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
+        Schema::table('frequencias', function (Blueprint $table) {
+            $table->foreign('disciplina_id')->references('id')->on('disciplina');
+        });
+
+        Schema::table('frequencias', function (Blueprint $table) {
+            $table->foreign('aluno_id')->references('id')->on('pessoas');
+        });
+
 
     }
     /**
@@ -59,6 +67,10 @@ class ForeignKeys extends Migration
     {
         Schema::table('colaborador', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+        });
+
+        Schema::table('frequencias', function (Blueprint $table) {
+            $table->dropForeign(['aluno_id', 'disciplina_id']);
         });
         
         Schema::table('dados_inscricao', function (Blueprint $table){
