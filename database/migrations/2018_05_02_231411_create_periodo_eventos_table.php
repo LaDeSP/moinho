@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventosTable extends Migration
+class CreatePeriodoEventosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateEventosTable extends Migration
      */
     public function up()
     {
-        Schema::create('eventos', function (Blueprint $table) {
+        Schema::create('periodo_evento', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->text('descricao')->nullable();
             $table->timestamps();
-            $table->unsignedInteger('colaborador_id');
+
+            $table->unsignedInteger('periodo_id');
+            $table->unsignedInteger('evento_id');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateEventosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eventos');
+        Schema::dropIfExists('periodo_evento');
     }
 }
