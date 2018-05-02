@@ -48,6 +48,22 @@ class ForeignKeys extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
+        //Novos
+
+        Schema::table('eventos', function (Blueprint $table) {
+            $table->foreign('colaborador_id')->references('id')->on('colaborador');
+        });
+
+        Schema::table('evento_situacao', function (Blueprint $table) {
+            $table->foreign('evento_id')->references('id')->on('eventos');
+            $table->foreign('situacao_id')->references('id')->on('situacoes');
+        });
+
+        Schema::table('pessoa_evento', function (Blueprint $table) {
+            $table->foreign('evento_id')->references('id')->on('eventos');
+            $table->foreign('pessoa_id')->references('id')->on('pessoas');
+        });
+
 
     }
     /**
