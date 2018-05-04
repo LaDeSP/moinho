@@ -11,6 +11,7 @@ use App\Endereco;
 use App\Role;
 use App\Contato;
 use App\User;
+use App\Role_user;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class colaboradorController extends Controller
@@ -162,7 +163,7 @@ class colaboradorController extends Controller
         $person = Pessoa::findOrFail($colaborador->pessoa_id);
         $ende = Endereco::findOrFail($person->endereco_id);
         $telefone = Contato::findOrFail($person->contato_id);
-        $user = User::findOrFail($person->user_id);
+        $user = User::findOrFail($colaborador->user_id);
         
       
         $person->nome = $request->nome;
@@ -198,7 +199,7 @@ class colaboradorController extends Controller
         
 
         $role = Role::where('id', $request->tipo_colaborador)->first();
-        $user->attachRole($role);
+        $user->roles()->sync($role);
 
 
         return redirect()->back()->with('message', 'Alteração realizada com sucesso!');

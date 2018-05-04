@@ -5,7 +5,7 @@
 
 <h1 class="text-warning"> Alterar Turma</h1>
 
-<form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('turma.update', $turma->id) }}" enctype="multipart/form-data">
+<form onkeyup="verifica_submit('validate');" method="POST" action="{{ route('turma.update', $turma->id) }}" enctype="multipart/form-data">
 
     {{ csrf_field() }}
     <input name="_method" type="hidden" value="PUT">

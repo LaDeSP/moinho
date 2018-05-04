@@ -41,11 +41,18 @@ use PHP\test;
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-danger"> Alterar Colaborador </h1>
+    <h1 class="text-warning"> Alterar Colaborador</h1>
 
-    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('colaborador.update', $colaborador->id) }}" enctype="multipart/form-data">
-        <input name="_method" type="hidden" value="PUT">
+    <form 
+        onkeyup="verifica_submit('validate');" 
+        method="POST" 
+        action="{{ route('colaborador.update', $colaborador->id) }}" 
+        enctype="multipart/form-data"
+    >
+
         {{ csrf_field() }}
+        <input name="_method" type="hidden" value="PUT">
+
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
             <div class="carousel-inner" >
                 <div class="carousel-item active">
@@ -347,9 +354,6 @@ use PHP\test;
                 <span class="sr-only">Next</span>
             </a>
         </div>
-   
-
-        
-    </form> 
+    </form>
 @endsection
 

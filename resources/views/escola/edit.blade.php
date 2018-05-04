@@ -46,10 +46,15 @@ use PHP\test;
 @section('content')
     <h1 class="text-success"> Alterar Escola </h1>
 
-    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('escola.update', $escola->id) }}" enctype="multipart/form-data" class="needs-validation" novalidate>
-
+    <form 
+        onkeyup="verifica_submit('validate');" 
+        method="POST" 
+        action="{{ route('escola.update', $escola->id) }}" 
+        enctype="multipart/form-data" 
+        class="needs-validation" 
+        novalidate
+    >
         <input name="_method" type="hidden" value="PUT">
-
         {{ csrf_field() }}
         <div class="row">
             <!-- Dados Escola -->
