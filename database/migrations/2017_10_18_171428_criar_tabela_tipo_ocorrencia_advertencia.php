@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaNomeAdvertencias extends Migration
+class CriarTabelaTipoOcorrenciaAdvertencia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CriarTabelaNomeAdvertencias extends Migration
      */
     public function up()
     {
-        Schema::create('nome_advertencia', function (Blueprint $table) {
+        Schema::create('tipo_ocorrencia_advertencia', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
         });
@@ -26,6 +26,6 @@ class CriarTabelaNomeAdvertencias extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nome_advertencia');
+        Schema::dropIfExists('tipo_ocorrencia_advertencia');
     }
 }

@@ -15,11 +15,17 @@ class CriarTabelaAdvertencias extends Migration
     {
         Schema::create('advertencia', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dd/mm/yyyy');
-            $table->string('tipo_abuso');
-            $table->string('agressor');
+            $table->date('data_advertencia'); //data da advertencia
+
+            $table->string('agressor')->nullable(); //não obrigatório
+            $table->boolean('responsavel_assina'); 
+            $table->string('observacao')->nullable(); //texto não obrigatório 
+           
+            $table->string('colaborador'); //nome do colaborador que gerou a ocorrência
             $table->integer('ocorrencia_id')->unsigned();
-            $table->integer('nome_advertencia_id')->unsigned();
+            $table->integer('tipo_ocorrencia_advertencia')->unsigned();
+             
+            
         });
     }
 
