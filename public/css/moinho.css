@@ -216,3 +216,11 @@ textarea {
 .icon {
     font-size: 25px;
 }
+
+select{
+    margin-bottom: 10px;
+}
+
+button{
+    margin-bottom: 10px;
+}

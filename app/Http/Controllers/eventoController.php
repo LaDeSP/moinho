@@ -7,6 +7,7 @@ use App\Evento;
 use App\Colaborador;
 use App\Evento_situacao;
 use App\Situacao;
+use App\Pessoa;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class eventoController extends Controller
@@ -19,7 +20,8 @@ class eventoController extends Controller
     public function index()
     {
         $colaboradores = Colaborador::all();
-        return view('evento.index', compact('colaboradores'));
+        $situacoes = Situacao::all();
+        return view('evento.index', compact('colaboradores', 'situacoes'));
     }
 
     /**
@@ -30,8 +32,13 @@ class eventoController extends Controller
     public function create()
     {
         $colaboradores = Colaborador::all();
+        $situacoes = Situacao::all();
 
-        return view('evento.create', compact('colaboradores'));
+        foreach($colaboradores as $colaborador){
+            $pessoas[$colaborador->id] = Pessoa::find($colaborador->pessoa_id);
+        }
+
+        return view('evento.create', compact('colaboradores', 'situacoes', 'pessoas'));
     }
 
     /**
@@ -42,7 +49,10 @@ class eventoController extends Controller
      */
     public function store(Request $request)
     {
-
+        $evento = new Evento;
+        //$evento_situacao = new Evento_situacao;
+        $evento->nome = $request->nome;
+        return redirect()->back()->with('message', 'Evento adicionado com sucesso!');
     }
 
     /**
