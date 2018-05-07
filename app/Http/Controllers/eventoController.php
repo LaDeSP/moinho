@@ -8,6 +8,8 @@ use App\Colaborador;
 use App\Evento_situacao;
 use App\Situacao;
 use App\Pessoa;
+use App\Periodo_evento;
+use App\Periodo;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class eventoController extends Controller
@@ -50,8 +52,30 @@ class eventoController extends Controller
     public function store(Request $request)
     {
         $evento = new Evento;
-        //$evento_situacao = new Evento_situacao;
+        $evento_situacao = new Evento_situacao;
+        
         $evento->nome = $request->nome;
+        $evento->descricao = $request->descricao;
+        $evento->colaborador_id = $request->colaborador;
+        $evento->save(['timestamps' => false]);
+
+        $evento_situacao->evento()->associate($evento);
+        $evento_situacao->situacao_id = $request->situacao;
+        $evento_situacao->save();
+
+        for($i = 0; $i < count($request->evento_in); $i++){
+            $periodo = new Periodo;
+            $periodo->inicio = $request->evento_in[ $i ];
+            $periodo->fim = $request->evento_out[ $i ];
+            $periodo->save();
+
+            $evento_periodo = new Periodo_evento;
+            $evento_periodo->evento()->associate($evento);
+            $evento_periodo->periodo()->associate($periodo);
+            $evento_periodo->save();
+        }
+
+
         return redirect()->back()->with('message', 'Evento adicionado com sucesso!');
     }
 

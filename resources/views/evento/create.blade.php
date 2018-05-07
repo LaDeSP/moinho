@@ -5,6 +5,7 @@
     <h1 class="text-success"> Adicionar Evento </h1>
 
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('evento.store') }}" enctype="multipart/form-data">
+        {{ csrf_field() }}
         <div class="row">    
             <div class="col-md-5">
                 <!-- Nome do Evento -->
@@ -29,6 +30,10 @@
                         <option value="{{ $situacoe->id }}"> {{ $situacoe->nome }} </option>
                     @endforeach
                 </select>
+            </div>
+            <div class="col-md-12">
+                <label for="exampleFormControlInput1"> Descrição </label>
+                <textarea name="descricao" rows="5"></textarea>
             </div>
             <div class="col-md-12">
                 <!-- Horario do evento -->
@@ -65,13 +70,13 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <button type="button" onClick="teste('evento_inicio', 'evento_fim')" class="btn btn-outline-success" >Inserir Data e Horário</button>
+                        <button type="button" onClick="inserir('evento_inicio', 'evento_fim')" class="btn btn-outline-success" >Inserir Data e Horário</button>
                     </div>
 
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-outline-danger" id="submit" disabled><?php echo Lang::get('conteudo.add');?></button>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-md-12">
