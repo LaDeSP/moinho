@@ -191,7 +191,7 @@
                         </a>
                     </li>
                     @endpermission
-
+                    
 
                     <!--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('NomeTurma.create')}}">Nova Turma</a></li>-->
                     <!-- Colocar tudo no tela de Matricula
@@ -199,7 +199,20 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('lista_matriculas_irregulares.index')}}">Matriculas Irregulares</a></li>
                     -->
                 @endif
-               
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{{ route('ocorrencia.create')}}">
+                        <h4 class="red">
+                        <i class="fa fa-commenting" aria-hidden="true"></i> Ocorrencia
+                        </h4>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{{ route('advertencia.create')}}">
+                        <h4 class="yellow">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Advertencia
+                        </h4>
+                    </a>
+                </li>
             </div>
         </ul>
       </div>

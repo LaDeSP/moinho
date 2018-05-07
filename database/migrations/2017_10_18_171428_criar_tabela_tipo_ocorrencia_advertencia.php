@@ -16,6 +16,7 @@ class CriarTabelaTipoOcorrenciaAdvertencia extends Migration
         Schema::create('tipo_ocorrencia_advertencia', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
+            $table->timestamps();
         });
     }
 

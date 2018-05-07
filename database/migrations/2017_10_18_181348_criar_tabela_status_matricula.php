@@ -16,6 +16,7 @@ class CriarTabelaStatusMatricula extends Migration
         Schema::create('status_matricula', function (Blueprint $table) {
             $table->increments('id');
             $table->string('status');
+            
         });
     }
 

@@ -186,16 +186,40 @@
         return $query;
     }
     function home(){
-           $query = DB::table('pessoas')
-        ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
-        ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
-        ->select(DB::raw('inscricao.data_avaliacao, pessoas.nome, inscricao.id, pessoas.cpf, DATEDIFF(inscricao.data_avaliacao, CURDATE()) AS Dias'))  
-        ->orderBy('Dias')
-        ->get();
+        $query = DB::table('pessoas')
+            ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
+            ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
+            ->select(DB::raw('inscricao.data_avaliacao, pessoas.nome, inscricao.id, pessoas.cpf, DATEDIFF(inscricao.data_avaliacao, CURDATE()) AS Dias'))  
+            ->orderBy('Dias')
+            ->get();
         return $query;
     }
 
 
+    function mostrar_ocorrencia($id)
+    {
+        $query = DB::table('ocorrencia')
+            ->join('colaborador', 'ocorrencia.colaborador_id', '=', 'colaborador.id')
+            ->join('tipo_ocorrencia_advertencia', 'tipo_ocorrencia_advertencia.id', '=', 'ocorrencia.tipo_ocorrencia_advertencia')
+            ->join('pessoas','pessoas.id','=','colaborador.pessoa_id')
+            ->join('users','users.id','=','colaborador.user_id')
+            ->select('*', 'ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
+            ->where('colaborador.user_id','=',$id)
+            ->orderByDesc('ocorrencia.data_ocorrencia')
+            ->get();
+        return $query; 
+    }
 
-
+    function mostrar_advertencia()
+    {
+        $query = DB::table('ocorrencia')
+            ->join('colaborador', 'ocorrencia.colaborador_id', '=', 'colaborador.id')
+            ->join('tipo_ocorrencia_advertencia', 'tipo_ocorrencia_advertencia.id', '=', 'ocorrencia.tipo_ocorrencia_advertencia')
+            ->join('pessoas','pessoas.id','=','colaborador.pessoa_id')
+            ->join('users','users.id','=','colaborador.user_id')
+            ->select('*', 'ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
+            ->orderByDesc('ocorrencia.data_ocorrencia')
+            ->get();
+        return $query; 
+    }
     //'nome_turma.*', 

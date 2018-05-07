@@ -15,11 +15,13 @@ class CriarTabelaOcorrencias extends Migration
     {
         Schema::create('ocorrencia', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('motivo');
+            $table->text('motivo');
             $table->date('data_ocorrencia');
+                             
             $table->integer('participante_id')->unsigned();
             $table->integer('colaborador_id')->unsigned();
             $table->integer('tipo_ocorrencia_advertencia')->unsigned();
+            $table->timestamps();
         });
     }
 

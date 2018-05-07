@@ -40,8 +40,9 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::resource('documento', 'documentoController');
     Route::resource('participante', 'participanteController');
     Route::resource('user', 'userController');
-   
-    
+    Route::resource('ocorrencia','OcorrenciaController');
+    Route::resource('advertencia','AdvertenciaController');
+
     
     //Get
     Route::get('mostra_regulares', 'listar_matriculasController@index');
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('auth/logout', 'Auth\LoginController@logout');
     Route::get('turma/teste', 'turmaController@teste');
+    
     
     
     //Relatórios

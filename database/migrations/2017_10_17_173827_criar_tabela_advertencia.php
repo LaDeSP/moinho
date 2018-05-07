@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaAdvertencias extends Migration
+class CriarTabelaAdvertencia extends Migration
 {
     /**
      * Run the migrations.
@@ -20,8 +20,8 @@ class CriarTabelaAdvertencias extends Migration
             $table->string('agressor')->nullable(); //não obrigatório
             $table->boolean('responsavel_assina'); 
             $table->string('observacao')->nullable(); //texto não obrigatório 
-           
-            $table->string('colaborador'); //nome do colaborador que gerou a ocorrência
+            $table->timestamps();
+            $table->string('colaborador'); //nome do colaborador que gerou a advertencia ou id
             $table->integer('ocorrencia_id')->unsigned();
             $table->integer('tipo_ocorrencia_advertencia')->unsigned();
              
