@@ -114,13 +114,13 @@
                 @if(!Auth::guest())
                     <li class="nav-item ">
                         <a class="js-scroll-trigger" href="{{ route('home')}}">
-                        <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
+                            <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger"href="{{ route('home')}}">
                             <h4 class="yellow">
-                            <i class="fa fa-home" aria-hidden="true"></i><?php echo Lang::get('conteudo.home');?> 
+                                <i class="fa fa-home" aria-hidden="true"></i><?php echo Lang::get('conteudo.home');?> 
                             </h4>
                         </a>
                     </li>
@@ -130,7 +130,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('dados_inscricao.create')}}">
                             <h4 class="blue">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo Lang::get('conteudo.registration');?> 
+                                <i class="fa fa-sign-in" aria-hidden="true"></i> <?php echo Lang::get('conteudo.registration');?> 
                             </h4>
                         </a>
                     </li>
@@ -141,7 +141,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('matricula.create')}}">
                             <h4 class="green">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i><?php echo Lang::get('conteudo.enrolment');?> 
+                                <i class="fa fa-user-plus" aria-hidden="true"></i><?php echo Lang::get('conteudo.enrolment');?> 
                             </h4>
                         </a>
                     </li>
@@ -153,7 +153,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('colaborador.create')}}">
                             <h4 class="red">
-                            <i class="fa fa-handshake-o" aria-hidden="true"></i> <?php echo Lang::get('conteudo.contributors');?> 
+                                <i class="fa fa-handshake-o" aria-hidden="true"></i> <?php echo Lang::get('conteudo.contributors');?> 
                             </h4>
                         </a>
                     </li>
@@ -164,7 +164,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('turma.create')}}">
                             <h4 class="yellow">
-                            <i class="fa fa-list" aria-hidden="true"></i>  <?php echo Lang::get('conteudo.grade');?> 
+                                <i class="fa fa-list" aria-hidden="true"></i>  <?php echo Lang::get('conteudo.grade');?> 
                             </h4>
                         </a>
                     </li>
@@ -175,7 +175,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('escola.create')}}">
                             <h4 class="green">
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> <?php echo Lang::get('conteudo.school');?> 
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i> <?php echo Lang::get('conteudo.school');?> 
                             </h4>
                         </a>
                     </li>
@@ -186,7 +186,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('disciplina.create')}}">
                             <h4 class="blue">
-                            <i class="fa fa-book" aria-hidden="true"></i> <?php echo Lang::get('conteudo.schoolSubject');?> 
+                                <i class="fa fa-book" aria-hidden="true"></i> <?php echo Lang::get('conteudo.schoolSubject');?> 
                             </h4>
                         </a>
                     </li>
@@ -202,14 +202,21 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{{ route('ocorrencia.create')}}">
                         <h4 class="red">
-                        <i class="fa fa-commenting" aria-hidden="true"></i> Ocorrencia
+                            <i class="fa fa-commenting" aria-hidden="true"></i> Ocorrencia
                         </h4>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{{ route('advertencia.create')}}">
                         <h4 class="yellow">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Advertencia
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Advertencia
+                        </h4>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{{ route('evento.create')}}">
+                        <h4 class="green">
+                            <i class="fa fa-calendar" aria-hidden="true"></i> Evento
                         </h4>
                     </a>
                 </li>

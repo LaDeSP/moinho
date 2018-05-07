@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::resource('user', 'userController');
     Route::resource('ocorrencia','OcorrenciaController');
     Route::resource('advertencia','AdvertenciaController');
+    Route::resource('evento','eventoController');
 
     
     //Get
