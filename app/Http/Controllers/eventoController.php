@@ -10,6 +10,7 @@ use App\Situacao;
 use App\Pessoa;
 use App\Periodo_evento;
 use App\Periodo;
+use DB;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class eventoController extends Controller
@@ -21,9 +22,27 @@ class eventoController extends Controller
      */
     public function index()
     {
-        $colaboradores = Colaborador::all();
-        $situacoes = Situacao::all();
-        return view('evento.index', compact('colaboradores', 'situacoes'));
+        $todos_eventos = Evento::all();
+        foreach($todos_eventos as $evento){
+            $eventos[$evento->id] = $evento;
+        }
+        $todos_evento_situacao = Evento_situacao::all();
+        foreach($todos_evento_situacao as $evento_situacoes){
+            $evento_situacao[$evento_situacoes->id] = $evento_situacoes;
+        }
+        $todas_situacoes = Situacao::all();
+        foreach($todas_situacoes as $situacao){
+            $situacoes[$situacao->id] = $situacao;
+        }
+        $todos_evento_periodo = Periodo_evento::all();
+        foreach($todos_evento_periodo as $evento_periodos){
+            $evento_periodo[$evento_periodos->id] = $evento_periodos;
+        }
+        $todos_periodos = Periodo::all();
+        foreach($todos_periodos as $periodo){
+            $periodos[$periodo->id] = $periodo;
+        }
+        return view('evento.index', compact('eventos', 'evento_situacao', 'situacoes', 'evento_periodo', 'periodos'));
     }
 
     /**
@@ -35,12 +54,26 @@ class eventoController extends Controller
     {
         $colaboradores = Colaborador::all();
         $situacoes = Situacao::all();
-
         foreach($colaboradores as $colaborador){
             $pessoas[$colaborador->id] = Pessoa::find($colaborador->pessoa_id);
         }
 
-        return view('evento.create', compact('colaboradores', 'situacoes', 'pessoas'));
+        $eventos = DB::table('evento_situacao')
+            ->join('eventos', 'eventos.id', '=', 'evento_situacao.evento_id')
+            ->join('situacoes', 'situacoes.id', '=', 'evento_situacao.situacao_id')
+            ->join('periodo_evento', 'eventos.id', '=', 'periodo_evento.evento_id')
+            ->join('periodos', 'periodos.id', '=', 'periodo_evento.periodo_id')
+            ->select('eventos.id',
+                    'eventos.nome as nome_evento', 
+                    'eventos.descricao as descricao_evento', 
+                    'situacoes.nome as situacao', 
+                    'evento_situacao.observacao as observacao',
+                    'periodos.inicio as inicio',
+                    'periodos.fim as fim')
+            ->orderBy('periodos.inicio', 'desc')
+            ->get();
+
+        return view('evento.create', compact('colaboradores', 'pessoas', 'eventos', 'situacoes'));
     }
 
     /**
@@ -63,16 +96,18 @@ class eventoController extends Controller
         $evento_situacao->situacao_id = $request->situacao;
         $evento_situacao->save();
 
-        for($i = 0; $i < count($request->evento_in); $i++){
-            $periodo = new Periodo;
-            $periodo->inicio = $request->evento_in[ $i ];
-            $periodo->fim = $request->evento_out[ $i ];
-            $periodo->save();
-
-            $evento_periodo = new Periodo_evento;
-            $evento_periodo->evento()->associate($evento);
-            $evento_periodo->periodo()->associate($periodo);
-            $evento_periodo->save();
+        if(isset($request->evento_in)){
+            for($i = 0; $i < count($request->evento_in); $i++){
+                $periodo = new Periodo;
+                $periodo->inicio = $request->evento_in[ $i ];
+                $periodo->fim = $request->evento_out[ $i ];
+                $periodo->save();
+    
+                $evento_periodo = new Periodo_evento;
+                $evento_periodo->evento()->associate($evento);
+                $evento_periodo->periodo()->associate($periodo);
+                $evento_periodo->save();
+            }
         }
 
 
@@ -87,7 +122,29 @@ class eventoController extends Controller
      */
     public function show($id)
     {
-        
+        $colaboradores = Colaborador::all();
+        $situacoes = Situacao::all();
+        foreach($colaboradores as $colaborador){
+            $pessoas[$colaborador->id] = Pessoa::find($colaborador->pessoa_id);
+        }
+
+        $evento = Evento::find($id);
+        $evento_situacao = Evento_situacao::where('evento_id', $id)->first();
+        $evento_periodo = Periodo_evento::where('evento_id', $id)->get();
+        $situacao = Situacao::find($evento_situacao->situacao_id);
+        foreach($evento_periodo as $eve_per){
+            $periodos[] = Periodo::find($eve_per->periodo_id);
+        }
+        return view('evento.show', compact(
+            'colaboradores',
+            'situacoes',
+            'pessoas',
+            'evento',
+            'evento_situacao',
+            'evento_periodo',
+            'situacao',
+            'periodos'
+        ));
     }
 
     /**
@@ -98,7 +155,7 @@ class eventoController extends Controller
      */
     public function edit($id)
     {
-        
+        return view('evento.edit');
     }
 
     /**

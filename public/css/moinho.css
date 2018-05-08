@@ -224,3 +224,15 @@ select{
 button{
     margin-bottom: 10px;
 }
+
+.list-group{
+    margin-left: 10px;
+}
+
+.container .btn{
+    margin-bottom: 10px;    
+}
+
+span .links{
+    text-align: left
+}
