@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -132,14 +131,20 @@
                                 break;
                         }
                     ?>
-                    <p class="mb-1"> {{ $evento->descricao_evento }} </p>
-                    <p class="mb-1"> {{ $evento->observacao }} </p>
-                    <small> 
+                    <p class="mb-1">
                         {{ date('d/m/Y h:i', strtotime($evento->inicio)) }}
                         
                         às
                         
-                        {{ date('d/m/Y h:i', strtotime($evento->fim)) }} 
+                        {{ date('d/m/Y h:i', strtotime($evento->fim)) }}
+                    </p>
+                    <small> 
+                        
+                        {{ $evento->descricao_evento }}
+                    </small>
+                    <br>
+                    <small>
+                        {{ $evento->observacao }}
                     </small>
                     <br>
                 </span>

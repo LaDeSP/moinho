@@ -72,20 +72,27 @@
 <script src="/vendor/jquery/jquery.min.js"></script>
 
 <script>
-    var periodos = [];
-    @foreach($periodos as $periodo)
-        periodos.push({
-            id: {{ $periodo->id }},
-            inicio: '{{ $periodo->inicio }}',
-            fim: '{{ $periodo->fim }}'
-        });
-    @endforeach
-
-    console.log(periodos);
-
     $(document).ready(function(){
+
+        var periodos = [];
+        @foreach($periodos as $periodo)
+            nova_entrada = new Date( '{{ $periodo->inicio }}' );
+            nova_entrada = nova_entrada.getDate()+`/`+( nova_entrada.getMonth()+1 )+`/`+nova_entrada.getFullYear()+' '+nova_entrada.getHours()+':'+nova_entrada.getMinutes();
+            nova_saida = new Date( '{{ $periodo->fim }}' );
+            nova_saida = nova_saida.getDate()+`/`+( nova_saida.getMonth()+1 )+`/`+nova_saida.getFullYear()+' '+nova_saida.getHours()+':'+nova_saida.getMinutes();
+            periodos.push({
+                id: {{ $periodo->id }},
+                inicio: nova_entrada,
+                fim: nova_saida,
+                entrada: '{{ $periodo->fim }}',
+                saida: '{{ $periodo->inicio }}'
+            });
+        @endforeach
+
+        //console.log(periodos);
+
         for(i = 0; i < {{ count($periodos) }}; i++){
-            inserir_criados(periodos[i].inicio, periodos[i].fim);   
+            inserir_criados(periodos[i].entrada, periodos[i].saida, 0);   
         }
     });
     
