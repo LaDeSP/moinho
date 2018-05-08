@@ -73,6 +73,9 @@ return[
 'hour'=>'Hora',
 'addPartipant'=>'Adicionar Participante',
 'participantReport'=> 'Download - Relatório do Participante',
+//Turno
+'morning' => 'matutino',
+'afternoon' => 'vespertino',
 //menu Idioma
 'spanish'=>'Espanhol',
 'portuguese'=>'Português-BR',

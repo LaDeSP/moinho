@@ -82,7 +82,7 @@
                                 </a>
                             </small>
                         </div>
-                        <small>{{ ucfirst($array->turno) }}</small>,
+                        <small>{{ ucfirst( Lang::get('conteudo.'.$array->turno) ) }}</small>,
                         <small>{{ $array->ano }}</small>
                         <br>
                         <small>Periodo: {{ $array->periodo }}°</small>

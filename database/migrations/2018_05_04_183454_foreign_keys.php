@@ -80,6 +80,30 @@ class ForeignKeys extends Migration
             $table->foreign('ocorrencia_id')->references('id')->on('ocorrencia');
         });
 
+        Schema::table('matricula',function(Blueprint $table){
+            $table->foreign('status_matricula_id')->references('id')->on('status_matricula');
+            $table->foreign('inscricao_id')->references('id')->on('inscricao');
+            $table->foreign('turma_id')->references('id')->on('turma');
+        });
+
+        Schema::table('turma',function(Blueprint $table){
+            $table->foreign('nome_turma_id')->references('id')->on('nome_turma');
+        });
+
+        Schema::table('disciplina',function(Blueprint $table){
+            $table->foreign('colaborador_id')->references('id')->on('colaborador');
+        });
+
+        Schema::table('turma_disciplina',function(Blueprint $table){
+            $table->foreign('turma_id')->references('id')->on('turma');
+            $table->foreign('disciplina_id')->references('id')->on('disciplina');            
+        });
+
+        Schema::table('participante_evento',function(Blueprint $table){
+            $table->foreign('evento_id')->references('id')->on('eventos');
+            $table->foreign('participante_id')->references('id')->on('participante');            
+        });
+
     }
     /**
      * Reverse the migrations.
