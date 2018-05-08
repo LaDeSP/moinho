@@ -155,7 +155,30 @@ class eventoController extends Controller
      */
     public function edit($id)
     {
-        return view('evento.edit');
+        $colaboradores = Colaborador::all();
+        $situacoes = Situacao::all();
+        foreach($colaboradores as $colaborador){
+            $pessoas[$colaborador->id] = Pessoa::find($colaborador->pessoa_id);
+        }
+
+        $evento = Evento::find($id);
+        $evento_situacao = Evento_situacao::where('evento_id', $id)->first();
+        $evento_periodo = Periodo_evento::where('evento_id', $id)->get();
+        $situacao = Situacao::find($evento_situacao->situacao_id);
+        foreach($evento_periodo as $eve_per){
+            $periodos[] = Periodo::find($eve_per->periodo_id);
+        }
+        return view('evento.edit', compact(
+            'colaboradores',
+            'situacoes',
+            'pessoas',
+            'evento',
+            'evento_situacao',
+            'evento_periodo',
+            'situacao',
+            'periodos',
+            'id'
+        ));
     }
 
     /**
@@ -167,7 +190,19 @@ class eventoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $evento = Evento::find($id);
+        $evento_situacao = Evento_situacao::where('evento_id', $id)->first();
         
+        $evento->nome = $request->nome;
+        $evento->descricao = $request->descricao;
+        $evento->colaborador_id = $request->colaborador;
+        $evento->save(['timestamps' => false]);
+
+        $evento_situacao->evento()->associate($evento);
+        $evento_situacao->situacao_id = $request->situacao;
+        $evento_situacao->save();
+
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
     /**
