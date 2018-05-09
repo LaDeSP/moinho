@@ -52,7 +52,10 @@ class eventoController extends Controller
      */
     public function create()
     {
-        $colaboradores = Colaborador::all();
+        $todos_colaboradores = Colaborador::all();
+        foreach($todos_colaboradores as $colaborador){
+            $colaboradores[$colaborador->id] = $colaborador;
+        }
         $situacoes = Situacao::all();
         foreach($colaboradores as $colaborador){
             $pessoas[$colaborador->id] = Pessoa::find($colaborador->pessoa_id);
@@ -69,7 +72,9 @@ class eventoController extends Controller
                     'situacoes.nome as situacao', 
                     'evento_situacao.observacao as observacao',
                     'periodos.inicio as inicio',
-                    'periodos.fim as fim')
+                    'periodos.fim as fim',
+                    'eventos.colaborador_id'
+                )
             ->orderBy('periodos.inicio', 'asc')
             ->get();
 

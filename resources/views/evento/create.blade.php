@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-md-5">
                             <!-- Colaborador do Evento -->
-                            <label for="exampleFormControlInput1"> Colaborador* </label>
+                            <label for="exampleFormControlInput1"> Responsável* </label>
                             <select name="colaborador" class="form-control">
                                 @foreach($colaboradores as $colaborador)
                                     <option value="{{ $colaborador->id }}"> {{ $pessoas[$colaborador->id]->nome }} - {{ $colaborador->area_atuacao }} </option>
@@ -133,16 +133,29 @@
             </input>  
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-danger" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+            <button type="submit" class="btn btn-outline-danger" onClick="changePesquisa('.filtro', '');" >Todos</button>
+        </div>
+        <div class="col-md-6" id="info">
+            <h3>
+                Eventos >
+            </h3>
+        </div>
+        <div class="col-md-3 text-center">
+            <button 
+                type="submit"
+                id="meus_eventos"
+                class="btn btn-outline-info" 
+                onClick="changeUser('.filtro', '{{ Auth::user()->name }}', this.id);" 
+            >Meus Eventos</button>
         </div>
         @foreach($situacoes as $situacoe)
-        <div class="col-md-2">
+        <div class="col-md-3 text-center">
             <button 
                 type="submit"
                 <?php
                     switch($situacoe->nome){
                         case 'Agendado':
-                            echo 'class="btn btn-outline-info"';
+                            echo 'class="btn btn-outline-primary"';
                             break;
                         case 'Cancelado':
                             echo 'class="btn btn-outline-danger"';
@@ -152,14 +165,14 @@
                             break;
                     }
                 ?>
-                onClick="changeListGroup('.filtro', '{{ $situacoe->nome }}');" 
+                onClick="changePesquisa('.filtro', '{{ $situacoe->nome }}');" 
             >{{ $situacoe->nome }}</button>
         </div>
         @endforeach
     </div>
     <div class="row">
         @foreach($eventos as $evento)
-            <div class="col-md-4 {{ $evento->situacao }} {{ $evento->nome_evento }} {{ date('d/m/Y h:i', strtotime($evento->fim)) }} {{ date('d/m/Y h:i', strtotime($evento->inicio)) }} filtro">
+            <div class="col-md-4 {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome }} {{ $evento->situacao }} {{ $evento->nome_evento }} {{ date('d/m/Y h:i', strtotime($evento->fim)) }} {{ date('d/m/Y h:i', strtotime($evento->inicio)) }} filtro">
                 <span href="#" class=" list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"> {{ $evento->nome_evento }} </h5>
@@ -175,7 +188,7 @@
                     <?php
                         switch($evento->situacao){
                             case 'Agendado':
-                                echo "<small class='text-info'>".$evento->situacao."</small>";
+                                echo "<small class='text-primary'>".$evento->situacao."</small>";
                                 break;
                             case 'Cancelado':
                                 echo "<small class='text-danger'>".$evento->situacao."</small>";
@@ -192,18 +205,15 @@
                         
                         {{ date('d/m/Y h:i', strtotime($evento->fim)) }}
                     </p>
-                    <small> 
-                        
+                    <small>
+                        Responsável: {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome  }}
+                        <br>
                         {{ $evento->descricao_evento }}
                     </small>
                     <br>
                     <small>
                         {{ $evento->observacao }}
                     </small>
-                    <br>
-                    <a class="text-danger" href="#" style="font-size: 30px">
-                        <span aria-hidden="true">&times;</span>
-                    </a>
                 </span>
             </div>
         @endforeach
