@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Disciplina;
 use App\Colaborador;
 use App\Horario;
+use DB;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class disciplinaController extends Controller
@@ -35,9 +36,19 @@ class disciplinaController extends Controller
         if(!Entrust::can('ver-disciplina')) {
             return abort(404);
         }
-        $disciplina = Disciplina::all();
-        $colaborador = Colaborador::all();
-        return view('disciplina.create', compact('disciplina', 'colaborador'));
+        $disciplinas = DB::table('disciplina')
+            ->join('colaborador', 'colaborador.id', '=', 'disciplina.colaborador_id')
+            ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+            ->join('horario', 'disciplina.id', 'horario.disciplina_id')
+            ->select(
+                'disciplina.*', 
+                'pessoas.nome as nome_colaborador', 
+                'horario.dia_semana', 
+                'horario.hora'
+            )
+            ->get();
+        $colaboradores = Colaborador::all();
+        return view('disciplina.create', compact('disciplinas', 'colaboradores'));
     }
 
     /**

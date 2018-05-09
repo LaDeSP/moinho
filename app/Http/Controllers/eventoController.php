@@ -70,7 +70,7 @@ class eventoController extends Controller
                     'evento_situacao.observacao as observacao',
                     'periodos.inicio as inicio',
                     'periodos.fim as fim')
-            ->orderBy('periodos.inicio', 'desc')
+            ->orderBy('periodos.inicio', 'asc')
             ->get();
 
         return view('evento.create', compact('colaboradores', 'pessoas', 'eventos', 'situacoes'));
@@ -86,6 +86,10 @@ class eventoController extends Controller
     {
         $evento = new Evento;
         $evento_situacao = new Evento_situacao;
+
+        if(!isset($request->evento_in)){
+            return redirect()->back()->with('error', 'Nenhum horário adicionado!');
+        }
         
         $evento->nome = $request->nome;
         $evento->descricao = $request->descricao;
@@ -196,11 +200,49 @@ class eventoController extends Controller
         $evento->nome = $request->nome;
         $evento->descricao = $request->descricao;
         $evento->colaborador_id = $request->colaborador;
-        $evento->save(['timestamps' => false]);
+        //$evento->save(['timestamps' => false]);
 
         $evento_situacao->evento()->associate($evento);
         $evento_situacao->situacao_id = $request->situacao;
-        $evento_situacao->save();
+        //$evento_situacao->save();
+
+        $evento_periodos = Periodo_evento::where('evento_id', $id)->get();
+        foreach($evento_periodos as $evento_periodo){
+            $value = Periodo::find( $evento_periodo->periodo_id );
+            $periodos[ $value->id ] = $value;
+        }
+
+        if( isset($request->periodo_id) ){
+            for( $i = 0; $i < count( $request->periodo_id ); $i++ ){
+                if( $request->periodo_id[ $i ] > 0 ){
+                    unset( $periodos[ $request->periodo_id[ $i ] ] );
+                    $periodo = Periodo::find( $request->periodo_id[ $i ] );
+                    $evento_periodo = Periodo_evento::where('periodo_id', $request->periodo_id[ $i ])->first();
+                } else{
+                    $periodo = new Periodo;
+                    $evento_periodo = new Periodo_evento;
+                }
+                    $periodo->inicio = $request->evento_in[ $i ];
+                    $periodo->fim = $request->evento_out[ $i ];
+                    //dd($request->evento_in);
+                    $periodo->save();
+        
+                    $evento_periodo->evento()->associate($evento);
+                    $evento_periodo->periodo()->associate($periodo);
+                    $evento_periodo->save();
+            }
+        }
+
+        foreach( $periodos as $periodo ){
+            Periodo_evento::where('periodo_id', $periodo->id)->delete();
+            $periodo->delete();
+        }
+        
+        
+        //dd($request->periodo_id);
+        //dd($periodos);
+        //$evento_periodos[0]->delete();
+
 
         return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }

@@ -3,6 +3,24 @@
 @section('content')
     <h1 class="text-success"> Adicionar Evento </h1>
 
+    @if( \Session::has('message') )
+        <h3 class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ \Session::get('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+    @endif
+
+    @if( \Session::has('error') )
+        <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ \Session::get('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+    @endif
+
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('evento.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
@@ -104,8 +122,44 @@
     <br>
     <h3 class="text-success"> Eventos </h3>
     <div class="row">
+        <div class="col-md-4">
+            <input
+                type="text"
+                class="form-control" 
+                value=""
+                placeholder="Pesquisa"
+                onKeyUp="changeListGroup('.filtro', this.value);"
+            >
+            </input>  
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-danger" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+        </div>
+        @foreach($situacoes as $situacoe)
+        <div class="col-md-2">
+            <button 
+                type="submit"
+                <?php
+                    switch($situacoe->nome){
+                        case 'Agendado':
+                            echo 'class="btn btn-outline-info"';
+                            break;
+                        case 'Cancelado':
+                            echo 'class="btn btn-outline-danger"';
+                            break;
+                        case 'Realizado':
+                            echo 'class="btn btn-outline-success"';
+                            break;
+                    }
+                ?>
+                onClick="changeListGroup('.filtro', '{{ $situacoe->nome }}');" 
+            >{{ $situacoe->nome }}</button>
+        </div>
+        @endforeach
+    </div>
+    <div class="row">
         @foreach($eventos as $evento)
-            <div class="col-md-4">
+            <div class="col-md-4 {{ $evento->situacao }} {{ $evento->nome_evento }} {{ date('d/m/Y h:i', strtotime($evento->fim)) }} {{ date('d/m/Y h:i', strtotime($evento->inicio)) }} filtro">
                 <span href="#" class=" list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"> {{ $evento->nome_evento }} </h5>
@@ -147,6 +201,9 @@
                         {{ $evento->observacao }}
                     </small>
                     <br>
+                    <a class="text-danger" href="#" style="font-size: 30px">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
                 </span>
             </div>
         @endforeach

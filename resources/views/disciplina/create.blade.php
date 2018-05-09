@@ -37,7 +37,7 @@
                 <!-- Professor da Disciplina -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.teacher'); ?>*</label>
                 <select name="colaborador_id" class="form-control">
-                    @foreach($colaborador as $professor) 
+                    @foreach($colaboradores as $professor) 
                         @foreach(busca_pessoa($professor->pessoa_id) as $nome)
                             @if($professor->tipo_colaborador_id == 5)
                                 <option value="{{ $professor->id }}"> {{ $nome->nome }} </option>
@@ -91,7 +91,7 @@
     </div>
     <div class="list-group">
         <div class="row">
-            @foreach(buscar_disciplina() as $array)
+            @foreach($disciplinas as $array)
                 <div class="col-md-4 {{ $array->sala_aula }} {{  str_replace(' ', '_', $array->nome) }} {{  str_replace(' ', '_', $array->nome_colaborador) }} filtro">
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
@@ -105,6 +105,9 @@
                                 </a>
                             </small>
                         </div>
+                        <small>{{ ucfirst($array->dia_semana) }}</small>,
+                        <small>{{ $array->hora }}</small>
+                        <br>
                         <small>{{ ucfirst($array->turno) }}</small>,
                         <small>{{ $array->sala_aula }}</small>
                         <br>
