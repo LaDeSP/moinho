@@ -72,7 +72,7 @@ class ForeignKeys extends Migration
         Schema::table('ocorrencia', function (Blueprint $table){
           $table->foreign('tipo_ocorrencia_advertencia')->references('id')->on('tipo_ocorrencia_advertencia');
            $table->foreign('colaborador_id')->references('id')->on('colaborador');
-           $table->foreign('participante_id')->references('id')->on('participante');
+           $table->foreign('participante_id')->references('id')->on('matricula');
         });
 
         Schema::table('advertencia',function(Blueprint $table){

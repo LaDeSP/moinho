@@ -35,13 +35,12 @@ use PHP\test;
             <label for="exampleFormControlInput1">
                 <?php echo Lang::get('validation.attributes.name'); ?> do participante
             </label>
-            <input type="text" name="participante_id" size="23" class="form-control validate"
-            id="nome" value="{{$ocorrencia->participante_id}}" >
-
-            @foreach(busca_nome_inscrito() as $inscricao) 
-            <option value="{{ $inscricao->id }}"> {{ $inscricao->nome }} </option>
-        @endforeach 
-        </div>
+         <input type="text" name="nomeParticipante" size="23" class="form-control validate"
+        id="nome" value=" <?php 
+        $teste = busca_ocorrencia_participante($id);
+        echo $teste->nome;
+   ?>" Disabled>
+        </div>        
         <div class="col-md-4">
       
             <label for="exampleFormControlInput1">Tipo</label>
@@ -69,7 +68,7 @@ use PHP\test;
             </div>
         </div>
         <div class="col-md-4">
-            <label for="exampleFormControlInput1">Nome do Colaborador:  {{$pessoa->nome}} </label>
+            <label for="exampleFormControlInput1">Registrado por:  {{$pessoa->nome}} </label>
             <input type="text" name="Colaborador" size="23" class="form-control validate"
             id="Colaborador" value="{{$colaborador->id}}" hidden> 
         </div>

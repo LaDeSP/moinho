@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Ocorrencia;
 use App\Colaborador;
-use App\Participante;
+use App\Matricula;
 use App\statusOcorrenciaAdvertencia;
 use App\Pessoa;
 
@@ -21,9 +21,9 @@ class OcorrenciaController extends Controller
         //
         $ocorrencia = Ocorrencia::All();
         $colaborador= Colaborador::All();
-        $participante= Participante::All();
+        $matricula= Matricula::All();
         $tipo = statusOcorrenciaAdvertencia::All();
-        return view('ocorrencia.index', compact('tipo'));
+        return view('ocorrencia.index', compact('tipo','matricula','colaborador','ocorrencia'));
 
     }
 
@@ -36,7 +36,7 @@ class OcorrenciaController extends Controller
     {
         $tipo = statusOcorrenciaAdvertencia::All();
         $ocorrencia= Ocorrencia::All();
-        return view('ocorrencia.create', compact('tipo'));
+        return view('ocorrencia.create', compact('tipo','ocorrencia'));
     }
 
     /**
@@ -50,7 +50,7 @@ class OcorrenciaController extends Controller
         //
         $formulario = new Ocorrencia; 
         $colaborador = new Colaborador;
-        $participante = new Participante;
+        $matricula = new Matricula;
         $tipo = statusOcorrenciaAdvertencia::All();
 
             $formulario->motivo = $request->motivo;
@@ -117,13 +117,16 @@ class OcorrenciaController extends Controller
         //
         $ocorrencia = Ocorrencia::find($id);
         $colaborador = Colaborador::find($ocorrencia->colaborador_id);
+        $participante = Matricula::find($ocorrencia->participante_id);
+        
         $tipo = statusOcorrenciaAdvertencia::All();
         
             $ocorrencia->motivo = $request->motivo; //atualizando a descrição do motivo advertencia
             $ocorrencia->data_ocorrencia = $request->data; //atualiza a data da ocorrencia
-            $ocorrencia->participante_id = $request->participante_id; //nome do participante que na verdade será id
+            $ocorrencia->participante_id = $ocorrencia->participante_id; //nome do participante que na verdade será id
             $colaborador = Colaborador::where('user_id', auth()->user()->id)->first(); //encontra o usuário no BD
             $ocorrencia->colaborador_id =  $colaborador->id;  //armazena o ususario na ocorrencia
+            
             $ocorrencia->tipo_ocorrencia_advertencia = $request->tipo; 
             
             $ocorrencia->save();

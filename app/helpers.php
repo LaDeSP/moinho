@@ -196,15 +196,21 @@
     }
 
 
-    function mostrar_ocorrencia($id)
+    function mostrar_ocorrencia($id) //mostra as ocorrencias QUE ususario logado registrou
     {
+        
         $query = DB::table('ocorrencia')
             ->join('colaborador', 'ocorrencia.colaborador_id', '=', 'colaborador.id')
             ->join('tipo_ocorrencia_advertencia', 'tipo_ocorrencia_advertencia.id', '=', 'ocorrencia.tipo_ocorrencia_advertencia')
-            ->join('pessoas','pessoas.id','=','colaborador.pessoa_id')
             ->join('users','users.id','=','colaborador.user_id')
-            ->select('*', 'ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
+            ->join('matricula','matricula.inscricao_id','=','ocorrencia.participante_id')
+            ->join('inscricao','inscricao.dados_inscricao_id','=','matricula.inscricao_id')
+            ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
+            ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+            ->select('*','ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
+              
             ->where('colaborador.user_id','=',$id)
+           // ->where('matricula.data','=',)
             ->orderByDesc('ocorrencia.data_ocorrencia')
             ->get();
         return $query; 
@@ -219,6 +225,47 @@
             ->join('users','users.id','=','colaborador.user_id')
             ->select('*', 'ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
             ->orderByDesc('ocorrencia.data_ocorrencia')
+            ->get();
+        return $query; 
+    }
+    function busca_participante()
+    {
+        $query = DB::table('matricula')
+        ->join('inscricao','inscricao.id','=','matricula.inscricao_id')
+        ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
+        ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+         //->join('matricula','participante.matricula_id','=','matricula.id')
+       
+        ->get();
+        return $query;
+    }
+  
+    function busca_ocorrencia_participante($id)
+    {
+        $query = DB::table('matricula')
+        ->join('ocorrencia','ocorrencia.participante_id','=','matricula.id')
+        ->join('inscricao','inscricao.id','=','matricula.inscricao_id')
+        ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
+        ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+        ->select('*','pessoas.nome as nome')
+        ->where('ocorrencia.id','=',$id)
+        //->join('matricula','participante.matricula_id','=','matricula.id')
+        ->first();
+        return $query;
+    }
+    function mostrar_ocorrencias() //mostra as ocorrencias para o setor reponsavel
+    {
+        $query = DB::table('ocorrencia')
+            ->join('colaborador', 'ocorrencia.colaborador_id', '=', 'colaborador.id')
+            ->join('tipo_ocorrencia_advertencia', 'tipo_ocorrencia_advertencia.id', '=', 'ocorrencia.tipo_ocorrencia_advertencia')
+            ->join('users','users.id','=','colaborador.user_id')
+            ->join('matricula','matricula.inscricao_id','=','ocorrencia.participante_id')
+            ->join('inscricao','inscricao.dados_inscricao_id','=','matricula.inscricao_id')
+            ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
+            ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+            ->select('*','ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
+            ->orderByDesc('ocorrencia.data_ocorrencia')
+            ->where('ocorrencia.tipo_ocorrencia_advertencia','<>','4')
             ->get();
         return $query; 
     }
