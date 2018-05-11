@@ -61,7 +61,7 @@
             </div>
             <div class="col-md-12">
                 <label for="exampleFormControlInput1"> Descrição </label>
-                <textarea name="descricao" rows="3" >{{ $evento->descricao }}</textarea>
+                <textarea class="form-control" name="descricao" rows="3" >{{ $evento->descricao }}</textarea>
             </div>
             <div class="col-sm-4">
                 <!-- Data Participante -->

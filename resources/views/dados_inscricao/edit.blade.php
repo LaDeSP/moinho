@@ -420,6 +420,7 @@ use PHP\test;
                         <div class="col-md-12">
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?>*</label>
                             <textarea 
+                                class="form-control"
                                 name="observacoes" 
                                 rows="5"
                             >{{ $dados_inscricao->observacoes }}</textarea>

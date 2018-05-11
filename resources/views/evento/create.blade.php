@@ -53,14 +53,14 @@
                         </div>
                         <div class="col-md-12">
                             <label for="exampleFormControlInput1"> Descrição </label>
-                            <textarea name="descricao" rows="3"></textarea>
+                            <textarea class="form-control" name="descricao" rows="3"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-sm-4">
-                            <!-- Data Participante -->
+                        <div class="col-sm-6 col-md-3">
+                            <!-- Data Inicio Evento -->
                             <input 
                                 type="datetime-local" 
                                 name="evento_inicio" 
@@ -73,12 +73,12 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-1">
+                        <div class="col-sm-6 col-md-1">
                             <div style="margin-top: 10px; text-align: center">às</div>
                         </div>
 
-                        <div class="col-sm-4">
-                            <!-- Data Participante -->
+                        <div class="col-sm-6 col-md-3">
+                            <!-- Data Fim Evento -->
                             <input 
                                 type="datetime-local" 
                                 name="evento_fim" 
@@ -90,7 +90,7 @@
                                 Por favor, digite uma data e horário para o evento
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <button type="button" onClick="inserir('evento_inicio', 'evento_fim')" class="btn btn-outline-success" >Inserir Data e Horário</button>
                         </div>
 
@@ -132,14 +132,6 @@
             >
             </input>  
         </div>
-        <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-danger" onClick="changePesquisa('.filtro', '');" >Todos</button>
-        </div>
-        <div class="col-md-6" id="info">
-            <h3>
-                Eventos >
-            </h3>
-        </div>
         <div class="col-md-3 text-center">
             <button 
                 type="submit"
@@ -147,6 +139,14 @@
                 class="btn btn-outline-info" 
                 onClick="changeUser('.filtro', '{{ Auth::user()->name }}', this.id);" 
             >Meus Eventos</button>
+        </div>
+        <div class="col-md-5" id="info">
+            <h3>
+                Eventos >
+            </h3>
+        </div>
+        <div class="col-md-3 text-center">
+            <button type="submit" class="btn btn-outline-danger" onClick="changePesquisa('.filtro', '');" >Todos</button>
         </div>
         @foreach($situacoes as $situacoe)
         <div class="col-md-3 text-center">
@@ -217,5 +217,26 @@
                 </span>
             </div>
         @endforeach
+        
     </div>
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+                <span class="page-link">
+                    2
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
 @endsection

@@ -205,11 +205,11 @@ class eventoController extends Controller
         $evento->nome = $request->nome;
         $evento->descricao = $request->descricao;
         $evento->colaborador_id = $request->colaborador;
-        //$evento->save(['timestamps' => false]);
+        $evento->save(['timestamps' => false]);
 
         $evento_situacao->evento()->associate($evento);
         $evento_situacao->situacao_id = $request->situacao;
-        //$evento_situacao->save();
+        $evento_situacao->save();
 
         $evento_periodos = Periodo_evento::where('evento_id', $id)->get();
         foreach($evento_periodos as $evento_periodo){

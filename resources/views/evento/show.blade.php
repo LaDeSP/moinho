@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-12">
                 <label for="exampleFormControlInput1"> Descrição </label>
-                <textarea name="descricao" rows="3" readonly>{{ $evento->descricao }}</textarea>
+                <textarea class="form-control" name="descricao" rows="3" readonly>{{ $evento->descricao }}</textarea>
             </div>
 
             <div class="col-md-12">

@@ -261,7 +261,7 @@ use PHP\test;
                         <!-- Observações -->
                         <div class="col-md-12">
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?>*</label>
-                            <textarea name="observacoes" rows="5"></textarea>
+                            <textarea class="form-control" name="observacoes" rows="5"></textarea>
                         </div>
                         
                     </div>

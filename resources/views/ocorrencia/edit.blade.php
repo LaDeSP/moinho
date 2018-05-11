@@ -75,7 +75,7 @@ use PHP\test;
             
                     <div class="col-md-12">
                         <label for="exampleFormControlInput1">Motivo</label>
-                        <textarea name="motivo" rows="5" > {{$ocorrencia->motivo}}</textarea>
+                        <textarea class="form-control" name="motivo" rows="5" > {{$ocorrencia->motivo}}</textarea>
         </div>
         <div class="col-md-3">
             <!-- Submit -->
