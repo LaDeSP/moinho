@@ -101,6 +101,30 @@ class PermissionsTableSeeder extends Seeder
         $ver_matriculas_irregulares -> description = 'Permite ver as matricula irregulares de alunos';
         $ver_matriculas_irregulares -> save();
 
+        #____________________________--Ocorrencias--____________________________#
+        $ver_ocorrencias = new Permission();
+        $ver_ocorrencias -> name = 'ver-ocorrencias';
+        $ver_ocorrencias -> display_name= 'Ver ocorrencias geradas pelo Colaborador';
+        $ver_ocorrencias -> description = 'Permite ver ocorrencias geradas';
+        $ver_ocorrencias ->save();
+
+        $criar_ocorrencias = new Permission();
+        $criar_ocorrencias -> name = 'criar-ocorrencias';
+        $criar_ocorrencias -> display_name= 'Criar ocorrencias de Alunos';
+        $criar_ocorrencias -> description = 'Permite criar ocorrencias para estudantes';
+        $criar_ocorrencias ->save();
+
+        $criar_ocorrencias = new Permission();
+        $criar_ocorrencias -> name = 'editar-ocorrencias';
+        $criar_ocorrencias -> display_name= 'Editar ocorrencias de Alunos';
+        $criar_ocorrencias -> description = 'Permite editar as ocorrencias estudantes';
+        $criar_ocorrencias ->save();
+
+        $excluir_ocorrencias = new Permission();
+        $excluir_ocorrencias -> name = 'excluir-ocorrencias';
+        $excluir_ocorrencias -> display_name= 'Excluir ocorrencias de Alunos';
+        $excluir_ocorrencias -> description = 'Permite excluir as ocorrencias estudantes';
+        $excluir_ocorrencias ->save();
         # Atribuindo as permissões às funções
 
         $administrador = Role::where('name', '=', 'administrador') -> first();
@@ -112,7 +136,8 @@ class PermissionsTableSeeder extends Seeder
         $diretor -> attachPermissions(array(
             $ver_colaborador, $ver_turma, $ver_matricula,
             $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao,
+            
         ));
 
 
