@@ -61,6 +61,13 @@ class eventoController extends Controller
             $pessoas[$colaborador->id] = Pessoa::find($colaborador->pessoa_id);
         }
 
+        $cont = 1;
+
+        $count = DB::table('periodo_evento')
+            ->join('periodos', 'periodos.id', '=', 'periodo_evento.periodo_id')
+            ->whereYear('periodos.fim', '>=', date('Y'))
+            ->count();
+
         $eventos = DB::table('evento_situacao')
             ->join('eventos', 'eventos.id', '=', 'evento_situacao.evento_id')
             ->join('situacoes', 'situacoes.id', '=', 'evento_situacao.situacao_id')
@@ -75,10 +82,12 @@ class eventoController extends Controller
                     'periodos.fim as fim',
                     'eventos.colaborador_id'
                 )
+            ->whereYear('periodos.fim', '>=', date('Y'))
             ->orderBy('periodos.inicio', 'asc')
             ->get();
+        
 
-        return view('evento.create', compact('colaboradores', 'pessoas', 'eventos', 'situacoes'));
+        return view('evento.create', compact('cont', 'count', 'colaboradores', 'pessoas', 'eventos', 'situacoes'));
     }
 
     /**

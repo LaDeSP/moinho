@@ -172,7 +172,14 @@
     </div>
     <div class="row">
         @foreach($eventos as $evento)
-            <div class="col-md-4 {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome }} {{ $evento->situacao }} {{ $evento->nome_evento }} {{ date('d/m/Y h:i', strtotime($evento->fim)) }} {{ date('d/m/Y h:i', strtotime($evento->inicio)) }} filtro">
+            <div
+                <?php
+                    if($cont >= 13){
+                        echo " style='display: none' ";
+                    }
+                ?>
+                class="col-md-4 {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome }} {{ $evento->situacao }} {{ $evento->nome_evento }} {{ date('d/m/Y h:i', strtotime($evento->fim)) }} {{ date('d/m/Y h:i', strtotime($evento->inicio)) }} filtro"
+            >
                 <span href="#" class=" list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"> {{ $evento->nome_evento }} </h5>
@@ -216,27 +223,20 @@
                     </small>
                 </span>
             </div>
+            <?php
+                $cont++;
+            ?>
         @endforeach
         
     </div>
-    <nav aria-label="...">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <span class="page-link">Previous</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active">
-                <span class="page-link">
-                    2
-                    <span class="sr-only">(current)</span>
-                </span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
+    <nav aria-label="..." id='pagination'>
     </nav>
 @endsection
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        //paginacao( 20, 1 );
+        paginacao( {{ $count }}, 12 );
+    });
+</script>
