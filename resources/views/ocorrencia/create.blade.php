@@ -25,17 +25,15 @@ use PHP\test;
             <div class="col-md-4">
                
                 <!-- Inscrição -->
-                <label for="exampleFormControlInput1">  <?php echo Lang::get('conteudo.registration'); ?>*</label>
+                <label for="exampleFormControlInput1"> Participante*</label>
                 <select name="participante_id" class="form-control">
                     @foreach(busca_participante() as $participante) 
                         <option value="{{ $participante->dados_inscricao_id }}"> {{ $participante->nome }} </option>
                     @endforeach
                  
                 </select>
-                 
             </div>
             <div class="col-md-4">
-          
                 <label for="exampleFormControlInput1">Tipo*</label>
                     <select name="tipo" class="form-control">
                         @foreach($tipo as $ti) 
@@ -71,23 +69,24 @@ use PHP\test;
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
                             <small>
+                                
                                 <a href="{{ route('ocorrencia.edit', $array->ocorrencia_id)}}">
                                     <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
                                 </a>
+                            
                                 <a href="{{ route('ocorrencia.show', $array->ocorrencia_id)}}">
                                     <i class="fa fa-eye icon text-danger" aria-hidden="true"></i>
                                 </a>
+                           
                             </small>
                         </div>
                         <small>Ocorrencia: {{ $array->status}}</small>
-                        <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>
+                        <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>                                                    
                     </span>
                 </div>                         
                 @endforeach
             </div>
-         <?php 
-      echo auth()->user()->id;
-         ?>
         </div>
+
         @endsection
 </form>

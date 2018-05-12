@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\statusOcorrenciaAdvertencia;
 use App\Participante;
 use App\Ocorrencia;
+use App\Advertencia;
 use App\Colaborador;
+use App\Matricula;
 use App\RoleUser;
 use App\Role;
 use Auth;
@@ -26,8 +28,8 @@ class AdvertenciaController extends Controller
         $colaborador= Colaborador::All();
         $participante= Participante::All();
         $tipo = statusOcorrenciaAdvertencia::All();
-        return view('advertencia.index', compact('tipo'));
-
+        return view('advertencia.index', compact('tipo', 'role', 'user_id'));
+       
     }
 
     /**
@@ -55,8 +57,35 @@ class AdvertenciaController extends Controller
     public function store(Request $request)
     {
         //
-    }
+        $formulario = new Advertencia; 
+        $colaborador = new Colaborador;
+        $matricula = new Matricula;
+        $advertencia= new Advertencia;
+        $tipo = statusOcorrenciaAdvertencia::All();
 
+        $role_user = RoleUser::where('user_id', Auth::user()->id )->first();
+        $role = Role::find($role_user->role_id);
+
+        $colaborador = Colaborador::where('user_id', auth()->user()->id)->first();
+        $formulario->colaborador =  $colaborador->id; //colaborador que esta gerando advertencia
+        $formulario->data_advertencia = $request->data; //data da avertência
+        $formulario->responsavel_assina =  $request->responsavel; //chamar responsavel
+        $formulario->observacao = $request->observacao;
+        $formulario->tipo_ocorrencia_advertencia=$request->tipo;
+        $formulario->ocorrencia_id = 20;
+
+        $formulario->save();
+
+        return view('advertencia.create', compact('tipo','role','user_id'),[
+            'message' => 'Advertencia gerada com sucesso'
+        ]);
+
+
+    }
+    public function gerar(Request $request)
+    {
+        return view('advertencia.gerar');
+    }
     /**
      * Display the specified resource.
      *

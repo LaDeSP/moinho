@@ -11,28 +11,78 @@ use PHP\test;
     @extends('layouts.app')
 
 @section('content')
+    <style>
+    input[type="radio"] {
+        -ms-transform: scale(1.4); /* IE 9 */
+        -webkit-transform: scale(1.4); /* Chrome, Safari, Opera */
+        transform: scale(1.4);
+    }
+    </style> 
+
+<form method= "POST" action="{{ route('advertencia.store') }}" enctype="multipart/form-data" novalidate>
+    {{ csrf_field() }}
     <div class="cold-m-8">
         <h1 class="text-warning">Advertência</h1>
-
-        <div class="col-md-4">
-            
-            <label for="exampleFormControlInput1">Tipo*</label>
-                <select name="tipo" class="form-control">
-                    @foreach($tipo as $ti) 
-                        <option value="{{ $ti->id }}"> {{ $ti->nome }}</option>
-                    @endforeach
-                </select>
-                <!-- 
-                    @foreach(busca_nome_inscrito() as $inscricao) 
-                        <option value="{{ $inscricao->id }}"> {{ $inscricao->nome }} </option>
-                    @endforeach 
-                -->           
-               
-                
+        @if( isset($message) )
+        <h3 class="alert alert-success">
+                {{ $message }}
+        </h3>
+    @endif
+        <div class="row">
+            <div class="col-md-4">
+                <label for="exampleFormControlInput1">Tipo*</label>
+                    <select name="tipo" class="form-control">
+                        @foreach($tipo as $ti) 
+                            <option value="{{ $ti->id }}"> {{ $ti->nome }}</option>
+                        @endforeach
+                    </select>                
+            </div>
+            <div class="col-md-4">
+                <!-- Data da Advertência -->
+            <label for="exampleFormControlInput1">Data da Advertência*</label>
+                        <input type="date" name="data" size="23" class="form-control"
+                        id="data">
+                        <div class="invalid-feedback">
+                            Por favor, digite a data da advertência
+                        </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                    <!-- Nome do Agressor -->
+                    <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor <small>(opcional)</small></label>
+                    <input type="text" name="nome" value="" id="nome" size="23" class="form-control validate"
+                    onkeyup="verifica_vazio(this.value, this.id);">
+            </div>
+        <div class="col-md-4">
+            <!-- Chamar Responsável -->
+            <label for="exampleFormControlInput1">Chamar Responsável*</label>
+                <div class="form-check" >
+                    <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios1" value="1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                        Sim
+                        </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios2" value="0">
+                        <label class="form-check-label" for="exampleRadios2">
+                        Não
+                        </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                    <label for="exampleFormControlInput1">Observação: <small>(opcional)</small></label>
+                    <textarea name="observacao" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="col-md-2">
+                <button type="submit" class="btn btn-outline-warning" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
+            </div>
+        
         <div class="list-group">
-            <div class="row">
-                
+            <div class="row">        
                 @foreach(mostrar_ocorrencias() as $array)
                     @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4)
                         <div class="col-md-4 {{ $array->participante_id }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->colaborador_id) }} filtro">
@@ -81,5 +131,6 @@ use PHP\test;
             </div>
         </div>
     </div>
+    
 @endsection
 

@@ -130,37 +130,37 @@ class PermissionsTableSeeder extends Seeder
         $administrador = Role::where('name', '=', 'administrador') -> first();
         $administrador -> attachPermissions(array($ver_colaborador, $criar_colaborador, $ver_turma, 
             $ver_matricula, $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao));
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias));
 
         $diretor = Role::where('name', 'diretor') -> first();
         $diretor -> attachPermissions(array(
             $ver_colaborador, $ver_turma, $ver_matricula,
             $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao,
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias
             
         ));
 
 
         $coordenador = Role::where('name', 'coordenador') -> first();
         $coordenador -> attachPermissions(array(
-            $ver_participante
+            $ver_participante,$ver_ocorrencias
         ));
 
         $social = Role::where('name', 'social') -> first();
         $social -> attachPermissions(array(
             $ver_inscricao, $criar_inscricao, $ver_matricula,
-            $ver_turma, $ver_participante, $ver_colaborador
+            $ver_turma, $ver_participante, $ver_colaborador,$ver_ocorrencias
         ));
 
         $colaborador = Role::where('name', 'colaborador') -> first();
         $colaborador -> attachPermissions(array(
-            $ver_participante
+            $ver_participante, $ver_ocorrencias
         ));
 
         $apoio = Role::where('name', 'apoio') -> first();
         $apoio -> attachPermissions(array(
             $ver_participante, $ver_turma, $ver_matricula,
-            $criar_matricula
+            $criar_matricula,$ver_ocorrencias
         ));
 
 
