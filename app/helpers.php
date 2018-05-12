@@ -204,13 +204,15 @@
             ->join('tipo_ocorrencia_advertencia', 'tipo_ocorrencia_advertencia.id', '=', 'ocorrencia.tipo_ocorrencia_advertencia')
             ->join('users','users.id','=','colaborador.user_id')
             ->join('matricula','matricula.inscricao_id','=','ocorrencia.participante_id')
-            ->join('inscricao','inscricao.dados_inscricao_id','=','matricula.inscricao_id')
+            ->join('inscricao', function ($join) {
+                $join->on('matricula.inscricao_id', '=', 'inscricao.id')
+                     ->whereYear('matricula.data', '=', date('Y'));
+            })
             ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
             ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
             ->select('*','ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
-              
+            ->whereYear('ocorrencia.data_ocorrencia', '=', date('Y'))
             ->where('colaborador.user_id','=',$id)
-           // ->where('matricula.data','=',)
             ->orderByDesc('ocorrencia.data_ocorrencia')
             ->get();
         return $query; 
@@ -235,7 +237,8 @@
         ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
         ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
          //->join('matricula','participante.matricula_id','=','matricula.id')
-       
+         ->whereYear('data',date('Y'))
+
         ->get();
         return $query;
     }
@@ -244,11 +247,16 @@
     {
         $query = DB::table('matricula')
         ->join('ocorrencia','ocorrencia.participante_id','=','matricula.id')
-        ->join('inscricao','inscricao.id','=','matricula.inscricao_id')
+        //->join('inscricao','inscricao.id','=','matricula.inscricao_id')
+        ->join('inscricao', function ($join) {
+            $join->on('matricula.inscricao_id', '=', 'inscricao.id')
+                 ->whereYear('matricula.data', '=', date('Y'));
+        })
         ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
         ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
         ->select('*','pessoas.nome as nome')
         ->where('ocorrencia.id','=',$id)
+        
         //->join('matricula','participante.matricula_id','=','matricula.id')
         ->first();
         return $query;
@@ -260,13 +268,47 @@
             ->join('tipo_ocorrencia_advertencia', 'tipo_ocorrencia_advertencia.id', '=', 'ocorrencia.tipo_ocorrencia_advertencia')
             ->join('users','users.id','=','colaborador.user_id')
             ->join('matricula','matricula.inscricao_id','=','ocorrencia.participante_id')
-            ->join('inscricao','inscricao.dados_inscricao_id','=','matricula.inscricao_id')
+            ->join('inscricao', function ($join) {
+                $join->on('matricula.inscricao_id', '=', 'inscricao.id')
+                     ->whereYear('matricula.data', '=', date('Y'));
+            })
             ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
             ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
             ->select('*','ocorrencia.id as ocorrencia_id','tipo_ocorrencia_advertencia.nome as status','pessoas.nome as nome_colaborador')
+            ->whereYear('ocorrencia.data_ocorrencia',date('Y'))
             ->orderByDesc('ocorrencia.data_ocorrencia')
-            ->where('ocorrencia.tipo_ocorrencia_advertencia','<>','4')
+            
             ->get();
         return $query; 
+    }
+
+    function test(){
+        
+   
+
+        $data = DB::table('matricula')
+                   // ->join('inscricao','inscricao.id','=','matricula.inscricao_id')
+                    ->join('inscricao', function ($join) {
+                        $join->on('matricula.inscricao_id', '=', 'inscricao.id')
+                             ->whereYear('matricula.data', '=', date('Y'));
+                    })
+          //  ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
+            //->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+            //->whereYear('data',$ano)
+            
+            //SELECT EXTRACT(DAY FROM CURDATE()) AS DIA, EXTRACT(MONTH FROM CURDATE()) AS MES, EXTRACT(YEAR FROM CURDATE()) AS ANO;
+            //
+            //->join('inscricao','matricula.inscricao_id','=','inscricao.id')
+            //->select(DB::raw('*')
+            //->groupBy('inscricao_id')
+            //->select('matricula.*')
+            //->max('data');
+            //->groupBy('inscricao_id')
+            //->orderByDesc('data')
+            //->SELECT('*')
+
+            ->get();
+        return $data;
+    
     }
     //'nome_turma.*', 

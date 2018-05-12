@@ -7,7 +7,9 @@ use App\statusOcorrenciaAdvertencia;
 use App\Participante;
 use App\Ocorrencia;
 use App\Colaborador;
-
+use App\RoleUser;
+use App\Role;
+use Auth;
 
 
 
@@ -37,8 +39,11 @@ class AdvertenciaController extends Controller
     {
         //
         $tipo = statusOcorrenciaAdvertencia::All();
-        $ocorrencia= Ocorrencia::All();
-        return view('advertencia.create', compact('tipo'));
+        $user_id = Auth::user()->id;
+        $ocorrencia = Ocorrencia::All();
+        $role_user = RoleUser::where('user_id', Auth::user()->id )->first();
+        $role = Role::find($role_user->role_id);
+        return view('advertencia.create', compact('tipo', 'role', 'user_id'));
     }
 
     /**

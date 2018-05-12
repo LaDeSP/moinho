@@ -80,14 +80,14 @@ use PHP\test;
                             </small>
                         </div>
                         <small>Ocorrencia: {{ $array->status}}</small>
-                        <small>Data:  {{  $array->data_ocorrencia }}</small>
+                        <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>
                     </span>
                 </div>                         
                 @endforeach
-         
-
             </div>
-          
+         <?php 
+      echo auth()->user()->id;
+         ?>
         </div>
         @endsection
 </form>
