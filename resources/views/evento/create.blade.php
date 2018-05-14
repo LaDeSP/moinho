@@ -45,7 +45,12 @@
                         <div class="col-md-2">
                             <!-- Situação do Evento -->
                             <label for="exampleFormControlInput1"> Situação* </label>
-                            <select name="situacao" class="form-control">
+                            <select 
+                                name="situacao" 
+                                class="form-control" 
+                                id="situacao"
+                                onchange="criar_observacao(this.value)"
+                            >
                                 @foreach($situacoes as $situacoe)
                                     <option value="{{ $situacoe->id }}"> {{ $situacoe->nome }} </option>
                                 @endforeach
@@ -54,6 +59,9 @@
                         <div class="col-md-12">
                             <label for="exampleFormControlInput1"> Descrição </label>
                             <textarea class="form-control" name="descricao" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-12" id="observacao">
+                            
                         </div>
                     </div>
                 </div>
@@ -221,6 +229,7 @@
                     <small>
                         {{ $evento->observacao }}
                     </small>
+                    <br>
                     
                     <a href="/evento/remove/{{ $evento->id }}" title="Excluir Evento">
                         <span class="text-danger destroy" aria-hidden="true">&times;</span>

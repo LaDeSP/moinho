@@ -114,6 +114,7 @@ class eventoController extends Controller
         $evento->save(['timestamps' => false]);
 
         $evento_situacao->evento()->associate($evento);
+        $evento_situacao->observacao = $request->observacao;
         $evento_situacao->situacao_id = $request->situacao;
         $evento_situacao->save();
 
