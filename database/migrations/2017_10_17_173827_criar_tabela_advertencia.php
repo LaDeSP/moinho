@@ -19,7 +19,7 @@ class CriarTabelaAdvertencia extends Migration
 
             $table->string('agressor')->nullable(); //não obrigatório
             $table->boolean('responsavel_assina'); 
-            $table->string('observacao')->nullable(); //texto não obrigatório 
+            $table->text('observacao')->nullable(); //texto não obrigatório 
             $table->timestamps();
             $table->string('colaborador'); //nome do colaborador que gerou a advertencia ou id
             $table->integer('ocorrencia_id')->unsigned();
