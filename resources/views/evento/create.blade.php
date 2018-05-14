@@ -178,7 +178,7 @@
                         echo " style='display: none' ";
                     }
                 ?>
-                class="col-md-4 {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome }} {{ $evento->situacao }} {{ $evento->nome_evento }} {{ date('d/m/Y h:i', strtotime($evento->fim)) }} {{ date('d/m/Y h:i', strtotime($evento->inicio)) }} filtro"
+                class="isvalid col-md-4 {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome }} {{ $evento->situacao }} {{ $evento->nome_evento }} {{ date('d/m/Y h:i', strtotime($evento->fim)) }} {{ date('d/m/Y h:i', strtotime($evento->inicio)) }} filtro"
             >
                 <span href="#" class=" list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">

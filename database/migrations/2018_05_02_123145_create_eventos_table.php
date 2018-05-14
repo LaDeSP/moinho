@@ -17,6 +17,7 @@ class CreateEventosTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->text('descricao')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
             $table->unsignedInteger('colaborador_id');
         });
