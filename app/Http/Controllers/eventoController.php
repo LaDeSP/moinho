@@ -65,7 +65,9 @@ class eventoController extends Controller
 
         $count = DB::table('periodo_evento')
             ->join('periodos', 'periodos.id', '=', 'periodo_evento.periodo_id')
+            ->join('eventos', 'eventos.id', '=', 'periodo_evento.evento_id')
             ->whereYear('periodos.fim', '>=', date('Y'))
+            ->where('eventos.status', '=', '0')
             ->count();
 
         $eventos = DB::table('evento_situacao')
@@ -83,6 +85,7 @@ class eventoController extends Controller
                     'eventos.colaborador_id'
                 )
             ->whereYear('periodos.fim', '>=', date('Y'))
+            ->where('eventos.status', '=', '0')
             ->orderBy('periodos.inicio', 'asc')
             ->get();
         
@@ -269,6 +272,19 @@ class eventoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $evento = Evento::find($id);
+
+        $evento->status = 1;
+
+        return redirect()->back()->with('message', 'Exclusão realizada com sucesso!');
+    }
+
+
+    public function remove($id)
+    {
+        $evento = Evento::find($id);
+        $evento->status = 1;
+        $evento->save();
+        return redirect()->back()->with('message', 'Exclusão realizada com sucesso!');
     }
 }

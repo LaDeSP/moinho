@@ -170,11 +170,11 @@
         </div>
         @endforeach
     </div>
-    <div class="row">
+    <div class="row" id="eventos">
         @foreach($eventos as $evento)
             <div
                 <?php
-                    if($cont >= 13){
+                    if($cont >= 25){
                         echo " style='display: none' ";
                     }
                 ?>
@@ -221,6 +221,10 @@
                     <small>
                         {{ $evento->observacao }}
                     </small>
+                    
+                    <a href="/evento/remove/{{ $evento->id }}" title="Excluir Evento">
+                        <span class="text-danger destroy" aria-hidden="true">&times;</span>
+                    </a>
                 </span>
             </div>
             <?php
@@ -237,6 +241,6 @@
 <script>
     $(document).ready(function(){
         //paginacao( 20, 1 );
-        paginacao( {{ $count }}, 12 );
+        paginacao( {{ $count }}, 24 );
     });
 </script>

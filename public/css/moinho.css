@@ -236,3 +236,11 @@ button{
 span .links{
     text-align: left
 }
+
+a:link{ 
+    text-decoration:none; 
+} 
+
+.destroy{
+    font-size: 30px;
+}
