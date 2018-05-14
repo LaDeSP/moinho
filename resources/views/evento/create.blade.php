@@ -60,8 +60,9 @@
                             <label for="exampleFormControlInput1"> Descrição </label>
                             <textarea class="form-control" name="descricao" rows="3"></textarea>
                         </div>
-                        <div class="col-md-12" id="observacao">
-                            
+                        <div class="col-md-12" id="observacao" style="display: none">
+                            <label for="exampleFormControlInput1"> Observação </label>
+                            <textarea class="form-control" name="observacao" rows="3"></textarea>
                         </div>
                     </div>
                 </div>

@@ -47,7 +47,12 @@
             <div class="col-md-2">
                 <!-- Situação do Evento -->
                 <label for="exampleFormControlInput1"> Situação* </label>
-                <select name="situacao" class="form-control" >
+                <select 
+                    name="situacao" 
+                    class="form-control" 
+                    id="situacao" 
+                    onchange="criar_observacao(this.value)"
+                >
                     @foreach($situacoes as $situacoe)
                         <option 
                             value="{{ $situacoe->id }}"
@@ -59,9 +64,21 @@
                     @endforeach
                 </select>
             </div>
+            <!-- Descrição -->
             <div class="col-md-12">
                 <label for="exampleFormControlInput1"> Descrição </label>
                 <textarea class="form-control" name="descricao" rows="3" >{{ $evento->descricao }}</textarea>
+            </div>
+            <!-- Observação -->
+            <div 
+                class="col-md-12" 
+                id="observacao" 
+                @if($evento_situacao->situacao_id != 2)
+                    style="display: none"
+                @endif
+            >
+                <label for="exampleFormControlInput1"> Observação </label>
+                <textarea class="form-control" name="observacao" rows="3"> {{ $evento_situacao->observacao }} </textarea>
             </div>
             <div class="col-sm-4">
                 <!-- Data Participante -->
