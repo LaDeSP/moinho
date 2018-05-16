@@ -94,7 +94,7 @@
             <div class="list-group" id="body_regular">
                 @foreach($matricula as $mat)
                     <div class="lista">
-                        @if($mat->status_matricula_id == 1)    
+                        @if($mat->status_matricula_id == 1 && date('Y', strtotime($mat->data)) >= date('Y'))    
                             @foreach(busca_inscricao2($mat->inscricao_id) as $inscricao)
                                 @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
                                     @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)
@@ -166,7 +166,7 @@
             <div class="list-group" id="body_inrregular">
                 @foreach($matricula as $mat)
                     <div class="lista">
-                        @if($mat->status_matricula_id != 1)    
+                        @if($mat->status_matricula_id != 1 && date('Y', strtotime($mat->data)) >= date('Y'))    
                             @foreach(busca_inscricao2($mat->inscricao_id) as $inscricao)<!-- logica é essa. só colocar os campos certos pra impressão e deu-->
                                 @foreach(busca_dados($inscricao->dados_inscricao_id) as $dados)
                                     @foreach (busca_pessoa($dados->dados_pessoais_id) as $pessoa)

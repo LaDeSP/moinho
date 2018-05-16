@@ -105,7 +105,7 @@ use PHP\test;
                             <button type="submit" class="btn btn-outline-danger" href="{{ route('advertencia.create', $array->ocorrencia_id)}}" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
                         </div>
                     @endif
-                    @if($role->name === 'social' && $array->tipo_ocorrencia_advertencia === 4)
+                    @if($role->name === 'social')
                         <div class="col-md-4 {{ $array->participante_id }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->colaborador_id) }} filtro">
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                 <div class="d-flex w-100 justify-content-between">
