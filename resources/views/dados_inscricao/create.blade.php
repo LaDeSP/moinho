@@ -1,6 +1,7 @@
 <?php 
 
 use PHP\test;
+$cont = 1;
 ?>
 
 <html>
@@ -399,7 +400,14 @@ use PHP\test;
     <div class="list-group">
         <div class="row">
             @foreach(busca_inscricao() as $array)
-                <div class="col-md-4 {{ $array->serie }} {{ $array->turma }} {{ $array->raca }} {{ str_replace(' ', '_', $array->nome) }} filtro">
+                <div
+                    <?php
+                        if($cont >= 25){
+                            echo " style='display: none' ";
+                        }
+                    ?> 
+                    class="col-md-4 {{ $array->serie }} {{ $array->turma }} {{ $array->raca }} {{ str_replace(' ', '_', $array->nome) }} filtro"
+                >
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome }}</h5>
@@ -421,9 +429,14 @@ use PHP\test;
                         <small>{{ $array->observacoes }}</small>
                     </span>
                 </div>
+                <?php
+                    $cont++;
+                ?>
             @endforeach
         </div>
     </div>
+    <nav aria-label="..." id='pagination'>
+    </nav>
     <br>
     <br>
 @endsection

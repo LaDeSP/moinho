@@ -1,3 +1,7 @@
+<?php
+$cont = 1;
+?>
+
 @extends('layouts.app')
 
 @section('content')
@@ -100,7 +104,14 @@
     <div class="list-group">
         <div class="row">
             @foreach($disciplinas as $array)
-                <div class="col-md-4 {{ $array->sala_aula }} {{  str_replace(' ', '_', $array->nome) }} {{  str_replace(' ', '_', $array->nome_colaborador) }} filtro">
+                <div 
+                    <?php
+                        if($cont >= 25){
+                            echo " style='display: none' ";
+                        }
+                    ?>
+                    class="col-md-4 {{ $array->sala_aula }} {{  str_replace(' ', '_', $array->nome) }} {{  str_replace(' ', '_', $array->nome_colaborador) }} filtro"
+                >
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome }}</h5>
@@ -122,9 +133,14 @@
                         <small>{{ $array->nome_colaborador }}</small>
                     </span>
                 </div>
+                <?php
+                    $cont++;
+                ?>
             @endforeach
         </div>
     </div>
+    <nav aria-label="..." id='pagination'>
+    </nav>
     <br>
     <br>
 @endsection

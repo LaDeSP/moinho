@@ -1,3 +1,7 @@
+<?php
+    $cont = 1;
+?>
+
 @extends('layouts.app')
 
 @section('content')
@@ -76,6 +80,11 @@
         <div class="row lista">
             @foreach(busca_turma() as $array)
                 <div 
+                    <?php
+                        if($cont >= 25){
+                            echo " style='display: none' ";
+                        }
+                    ?>  
                     class="col-md-4 {{ $array->ano }} {{ str_replace(' ', '_', $array->nome_turma) }} filtro"
                     id="{{ $array->id }}"
                 >
@@ -97,9 +106,14 @@
                         <small>Periodo: {{ $array->periodo }}°</small>
                     </span>
                 </div>
+                <?php
+                    $cont++;
+                ?>  
             @endforeach
         </div>
     </div>
+    <nav aria-label="..." id='pagination'>
+    </nav>
     <br>
     <br>
 @endsection

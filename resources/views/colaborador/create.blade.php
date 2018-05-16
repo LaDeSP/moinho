@@ -1,6 +1,7 @@
 <?php 
 
 use PHP\test;
+$cont = 1;
 ?>
 
 <html>
@@ -245,7 +246,14 @@ use PHP\test;
         <div class="row">
             @foreach(buscar_colaborador() as $array)
                 @if($array->status != 1)
-                    <div class="col-md-4 isvalid {{ $array->ano_ingreco }} {{ str_replace(' ', '_', $array->area_atuacao) }} {{ str_replace(' ', '_', $array->nome) }} filtro">
+                    <div
+                        <?php
+                            if($cont >= 25){
+                                echo " style='display: none' ";
+                            }
+                        ?>  
+                        class="col-md-4 isvalid {{ $array->ano_ingreco }} {{ str_replace(' ', '_', $array->area_atuacao) }} {{ str_replace(' ', '_', $array->nome) }} filtro"
+                    >
                         <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">{{ $array->nome }}</h5>
@@ -272,10 +280,15 @@ use PHP\test;
                             </a>
                         </span>
                     </div>
+                    <?php
+                        $cont++;
+                    ?>  
                 @endif
             @endforeach
         </div>
     </div>
+    <nav aria-label="..." id='pagination'>
+    </nav>
     <br>
     <br>
 
