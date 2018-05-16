@@ -30,12 +30,13 @@ class escolaController extends Controller
     public function create()
     {
         $escolas = Escola::all();
+        $count = Escola::all()->count();
 
         # Caso o usuário logado não tenha acesso a essa página, retorna um erro
         if(!Entrust::can('ver-escola')) {
             return abort(404);
         }
-        return view('escola.create', compact('escolas'));
+        return view('escola.create', compact('count', 'escolas'));
     }
 
     /**

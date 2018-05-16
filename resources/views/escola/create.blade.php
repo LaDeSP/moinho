@@ -97,9 +97,9 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Celular 2 da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  2*</label>
-                <input type="text" name="celular2" size="23" class="form-control validate" value="" 
-                id="celular2" onkeyup="verifica_telefone(this.value, this.id); "  maxlength="15" require>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?>  2</label>
+                <input type="text" name="celular2" size="23" class="form-control " value="" 
+                id="celular2"  maxlength="15" require>
             </div>
             <div class="col-md-3">
                 <!-- Email da Escola -->
@@ -144,9 +144,9 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Complemento da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
-                <input value="" type="text" name="complemento" size="23" class="form-control validate"
-                id="complemento" onkeyup="verifica_vazio(this.value, this.id); " require>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
+                <input value="" type="text" name="complemento" size="23" class="form-control"
+                id="complemento" require>
                 <div class="invalid-feedback">
                     Por favor, digite o complemento
                 </div>
@@ -199,7 +199,7 @@ use PHP\test;
             </input>  
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+            <button type="submit" class="btn btn-outline-success" onClick="changePesquisa('.filtro', '');" >Todos</button>
         </div>
     </div>
     <br>
@@ -233,3 +233,11 @@ use PHP\test;
     <br>
 @endsection
 
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        //paginacao( 20, 1 );
+        paginacao( {{ $count }}, 24 );
+    });
+</script>
