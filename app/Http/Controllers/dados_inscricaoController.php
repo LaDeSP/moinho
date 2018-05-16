@@ -44,6 +44,7 @@ class dados_inscricaoController extends Controller
             return abort(404);
 
         $dados_inscricao = DadosInscricao::all();
+        $count = DadosInscricao::all()->count();
         $escola = Escola::all();
         $documento_tipo = Documento_tipo::all();
         $documento_tipo2 = Documento_tipo::all();
@@ -51,7 +52,7 @@ class dados_inscricaoController extends Controller
         $contato = Contato::all();
 
 
-        return view('dados_inscricao.create', compact('dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3', 'contato'));
+        return view('dados_inscricao.create', compact('count', 'dados_inscricao', 'escola', 'documento_tipo', 'documento_tipo2', 'documento_tipo3', 'contato'));
     }
 
     public function pesquisa($cpf){

@@ -42,6 +42,7 @@ use PHP\test;
 @extends('layouts.app')
 
 @section('content')
+    {{$count}}
     <h1 class="text-info"><?php echo Lang::get('conteudo.addInscription');?></h1>
     <div style="margin-bottom: 20px">
         <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.inscriptionReport');?></a>
@@ -303,9 +304,9 @@ use PHP\test;
                         </div>
                         <!-- Complemento -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
-                            <input type="text" name="complemento" size="23" class="form-control validate"
-                            id="compĺemento" onkeyup="verifica_vazio(this.value, this.id);">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
+                            <input type="text" name="complemento" size="23" class="form-control"
+                            id="compĺemento">
                             <div class="invalid-feedback">
                                 Por favor, digite o complemento
                             </div>
@@ -351,9 +352,9 @@ use PHP\test;
                         </div>
                         <!-- Celular 2 -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 2*</label>
-                            <input type="text" name="celular2" size="23" class="form-control validate" value="" 
-                            id="celular2" onblur="verifica_telefone(this.value, this.id); " maxlength="16">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 2</label>
+                            <input type="text" name="celular2" size="23" class="form-control" value="" 
+                            id="celular2" maxlength="16">
                         </div>
                         <!-- Email -->
                         <div class="col-md-4">
@@ -393,7 +394,7 @@ use PHP\test;
             </input>  
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-info" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+            <button type="submit" class="btn btn-outline-info" onClick="changePesquisa('.filtro', '');" >Todos</button>
         </div>
     </div>
     <div class="list-group">
@@ -428,3 +429,10 @@ use PHP\test;
     <br>
 @endsection
 
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        paginacao( {{$count}} , 24 );
+    });
+</script>

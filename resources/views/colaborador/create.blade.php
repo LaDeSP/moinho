@@ -286,7 +286,6 @@ use PHP\test;
 
 <script>
     $(document).ready(function(){
-        //paginacao( 20, 1 );
         paginacao( {{$count}} , 24 );
     });
 </script>
