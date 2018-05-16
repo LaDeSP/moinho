@@ -287,4 +287,23 @@ class colaboradorController extends Controller
         
         return $arquivo;
     }
+
+    /*
+        Exclusão virtual do colaborador
+    */
+
+    public function remove($id)
+    {
+        $colaborador = Colaborador::find($id);
+        $colaborador->status = 1;
+
+        $user = User::find( $colaborador->user_id );
+        $user->password = '0';
+        $user->save();
+
+        $colaborador->save();
+
+
+        return redirect()->back()->with('message', 'Exclusão realizada com sucesso!');
+    }
 }

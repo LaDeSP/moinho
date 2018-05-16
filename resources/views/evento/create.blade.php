@@ -193,10 +193,10 @@
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"> {{ $evento->nome_evento }} </h5>
                         <small> 
-                            <a href="{{ route('evento.edit', $evento->id)}}">
+                            <a href="{{ route('evento.edit', $evento->id)}}" title="Alterar Evento">
                                 <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
                             </a>
-                            <a href="{{ route('evento.show', $evento->id)}}">
+                            <a href="{{ route('evento.show', $evento->id)}}" title="Visualizar Evento">
                                 <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
                             </a>
                         </small>

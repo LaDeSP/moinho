@@ -244,29 +244,35 @@ use PHP\test;
     <div class="list-group">
         <div class="row">
             @foreach(buscar_colaborador() as $array)
-                <div class="col-md-4 {{ $array->ano_ingreco }} {{ str_replace(' ', '_', $array->area_atuacao) }} {{ str_replace(' ', '_', $array->nome) }} filtro">
-                    <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ $array->nome }}</h5>
-                            <small>
-                                <a href="{{ route('colaborador.edit', $array->id)}}">
-                                    <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
-                                </a>
-                                <a href="{{ route('colaborador.show', $array->id)}}">
-                                    <i class="fa fa-eye icon text-danger" aria-hidden="true"></i>
-                                </a>
-                            </small>
-                        </div>
-                        <small>{{ $array->area_atuacao }}</small>,
-                        <small>{{ $array->ano_ingreco }}</small>
-                        <br>
-                        <small>{{ $array->numero_fixo }}</small>,
-                        <small>{{ $array->celular1 }}</small>,
-                        <small>{{ $array->celular2 }}</small>
-                        <br>
-                        <small>{{ $array->email }}</small>
-                    </span>
-                </div>
+                @if($array->status != 1)
+                    <div class="col-md-4 {{ $array->ano_ingreco }} {{ str_replace(' ', '_', $array->area_atuacao) }} {{ str_replace(' ', '_', $array->nome) }} filtro">
+                        <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ $array->nome }}</h5>
+                                <small>
+                                    <a href="{{ route('colaborador.edit', $array->id)}}">
+                                        <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="{{ route('colaborador.show', $array->id)}}">
+                                        <i class="fa fa-eye icon text-danger" aria-hidden="true"></i>
+                                    </a>
+                                </small>
+                            </div>
+                            <small>{{ $array->area_atuacao }}</small>,
+                            <small>{{ $array->ano_ingreco }}</small>
+                            <br>
+                            <small>{{ $array->numero_fixo }}</small>,
+                            <small>{{ $array->celular1 }}</small>,
+                            <small>{{ $array->celular2 }}</small>
+                            <br>
+                            <small>{{ $array->email }}</small>
+                            <br>
+                            <a href="/colaborador/remove/{{ $array->id }}" title="Excluir Colaborador">
+                                <span class="text-danger destroy" aria-hidden="true">&times;</span>
+                            </a>
+                        </span>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>
