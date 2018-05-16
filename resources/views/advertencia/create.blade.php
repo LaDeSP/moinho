@@ -58,13 +58,13 @@ use PHP\test;
             <!-- Chamar Responsável -->
             <label for="exampleFormControlInput1">Chamar Responsável*</label>
                 <div class="form-check" >
-                    <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios1" value="1" checked>
+                    <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios1" value="1" >
                         <label class="form-check-label" for="exampleRadios1">
                         Sim
                         </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios2" value="0">
+                    <input class="form-check-input" type="radio" name="responsavel" checked id="exampleRadios2" value="0">
                         <label class="form-check-label" for="exampleRadios2">
                         Não
                         </label>

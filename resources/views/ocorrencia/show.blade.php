@@ -18,7 +18,6 @@ use PHP\test;
         </a>
     </div>
 
-
 <form method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
     {{ csrf_field() }}
     <div class="row">
@@ -38,7 +37,6 @@ use PHP\test;
         </div>
       
         <div class="col-md-4">
-      
             <label for="exampleFormControlInput1">Tipo</label>
                 <select name="tipo" class="form-control" disabled>
                         @foreach($t as $tipo_geral) 
@@ -71,7 +69,11 @@ use PHP\test;
                         <label for="exampleFormControlInput1">Motivo</label>
                         <textarea class="form-control" name="motivo" rows="5" disabled> {{$ocorrencia->motivo}}</textarea>
         </div>
-
+    </div>
+    <div class="text-right">
+        <a href="/advertencia/remove/{{ $id }}">
+            <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
+        </a>
     </div>
     @endsection
 </form>

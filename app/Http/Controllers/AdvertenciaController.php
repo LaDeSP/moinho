@@ -72,7 +72,7 @@ class AdvertenciaController extends Controller
         $formulario->responsavel_assina =  $request->responsavel; //chamar responsavel
         $formulario->observacao = $request->observacao;
         $formulario->tipo_ocorrencia_advertencia=$request->tipo;
-        $formulario->ocorrencia_id = 20;
+        $formulario->ocorrencia_id = 1;
 
         $formulario->save();
 

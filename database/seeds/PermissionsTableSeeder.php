@@ -136,7 +136,7 @@ class PermissionsTableSeeder extends Seeder
         $diretor -> attachPermissions(array(
             $ver_colaborador, $ver_turma, $ver_matricula,
             $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias, $excluir_ocorrencias
             
         ));
 
