@@ -39,10 +39,11 @@ class matriculaController extends Controller
         }
 
         $matricula = Matricula::all();
+        $count = Matricula::all()->count(); //Terá que ser mudado, pois existe mais de uma lista
         $inscricao_id = Inscricao::all();
         $turma_id = Turma::all();
         $status = StatusMatricula::all();
-        return view('matricula.create', compact('matricula', 'inscricao_id', 'turma_id', 'status'));
+        return view('matricula.create', compact('count', 'matricula', 'inscricao_id', 'turma_id', 'status'));
     }
 
     /**

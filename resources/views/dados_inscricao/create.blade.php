@@ -42,7 +42,6 @@ use PHP\test;
 @extends('layouts.app')
 
 @section('content')
-    {{$count}}
     <h1 class="text-info"><?php echo Lang::get('conteudo.addInscription');?></h1>
     <div style="margin-bottom: 20px">
         <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.inscriptionReport');?></a>

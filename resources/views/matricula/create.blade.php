@@ -159,7 +159,7 @@
                     </input>  
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-outline-success" onClick="changeListGroup('.filtro2', 'all');" >Todos</button>
+                    <button type="submit" class="btn btn-outline-success" onClick="changePesquisa('.filtro2', 'all');" >Todos</button>
                 </div>
             </div>
             <br>
@@ -213,3 +213,11 @@
     </div>
 </section>
 @endsection
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        paginacao( {{$count}} , 24 );
+    });
+</script>
