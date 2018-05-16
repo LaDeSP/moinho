@@ -94,9 +94,9 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Celular 2 do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2*</label>
-                            <input type="text" name="celular2" size="23" class="form-control validate" 
-                            id="celular2" onkeyup="verifica_telefone(this.value, this.id); " maxlength="15">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2</label>
+                            <input type="text" name="celular2" size="23" class="form-control" 
+                            id="celular2" maxlength="15">
                         </div>
                         
                     </div>
