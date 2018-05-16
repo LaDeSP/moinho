@@ -6,7 +6,7 @@
             ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
             ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
             ->select('pessoas.*', 'inscricao.id as inscricao_id', 'dados_inscricao.*')
-          //  ->whereYear('ocorrencia.data_ocorrencia', '=', date('Y'))
+            ->whereYear('inscricao.data_inscricao', '=', date('Y'))
             ->get();
         $query = json_decode($query);
         return $query;
@@ -63,6 +63,7 @@
         $query = DB::table('nome_turma')
             ->join('turma', 'nome_turma.id', '=', 'turma.nome_turma_id')
             ->select('nome_turma.nome_turma', 'turma.id', 'turma.ano', 'turma.turno', 'turma.periodo')
+            ->where('turma.ano', '>=', date('Y'))
             ->get();
         //$query = json_encode($query); para funcionar com o php puro que o alan fez. do Laravel é assim. tava faltando campos no select tbm
         //$query = json_decode($query);
