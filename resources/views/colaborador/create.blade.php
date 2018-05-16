@@ -238,14 +238,14 @@ use PHP\test;
             </input>  
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-danger" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+            <button type="submit" class="btn btn-outline-danger" onClick="changePesquisa('.filtro', '');" >Todos</button>
         </div>
     </div>
     <div class="list-group">
         <div class="row">
             @foreach(buscar_colaborador() as $array)
                 @if($array->status != 1)
-                    <div class="col-md-4 {{ $array->ano_ingreco }} {{ str_replace(' ', '_', $array->area_atuacao) }} {{ str_replace(' ', '_', $array->nome) }} filtro">
+                    <div class="col-md-4 isvalid {{ $array->ano_ingreco }} {{ str_replace(' ', '_', $array->area_atuacao) }} {{ str_replace(' ', '_', $array->nome) }} filtro">
                         <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">{{ $array->nome }}</h5>
@@ -278,5 +278,15 @@ use PHP\test;
     </div>
     <br>
     <br>
+
+    
 @endsection
 
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        //paginacao( 20, 1 );
+        paginacao( {{$count}} , 24 );
+    });
+</script>

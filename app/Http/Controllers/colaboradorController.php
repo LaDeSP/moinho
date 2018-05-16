@@ -43,9 +43,10 @@ class colaboradorController extends Controller
         }
         
         $colaborador = Colaborador::all();
+        $count = Colaborador::where('status', 0)->count();
         $tipo = Role::all();
         
-        return view('colaborador.create', compact('colaborador', 'tipo'));
+        return view('colaborador.create', compact('colaborador', 'tipo', 'count'));
     }
 
    
