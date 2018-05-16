@@ -6,6 +6,7 @@
             ->join('dados_inscricao', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')
             ->join('inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
             ->select('pessoas.*', 'inscricao.id as inscricao_id', 'dados_inscricao.*')
+          //  ->whereYear('ocorrencia.data_ocorrencia', '=', date('Y'))
             ->get();
         $query = json_decode($query);
         return $query;

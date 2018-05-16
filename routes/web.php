@@ -59,6 +59,8 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('turma/teste', 'turmaController@teste');
     Route::get('/advertencia/gerar', 'AdvertenciaController@gerar');
     Route::get('/evento/remove/{id}', 'eventoController@remove');
+    Route::get('/advertencia/remove/{id}', 'OcorrenciaController@remove');
+
     
     
     

@@ -8,6 +8,7 @@ use App\Colaborador;
 use App\Matricula;
 use App\statusOcorrenciaAdvertencia;
 use App\Pessoa;
+use App\Advertencia;
 
 class OcorrenciaController extends Controller
 {
@@ -145,6 +146,28 @@ class OcorrenciaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //EXCLUSÃO DA OCORRÊNCIA PERMANENTE
+        $ocorrencia = Ocorrencia::find($id)->delete();
+
+        return view('ocorrencia.create', compact('tipo'),[
+            'message' => 'Ocorrencia excluída com sucesso'
+        ]);
+
+        //$aluno = new Aluno();
+        //$result = $aluno->find($id)->delete();
+    }
+
+    public function remove($id)
+    {
+        $ocorrencia = Ocorrencia::find($id);
+
+        $advertencia = Advertencia::where("ocorrencia_id", $id)->delete();
+
+        $ocorrencia = $ocorrencia->delete();
+        $tipo = statusOcorrenciaAdvertencia::All();
+
+        return view('ocorrencia.create', compact('tipo'),[
+            'message' => 'Ocorrencia excluída com sucesso'
+        ]);
     }
 }
