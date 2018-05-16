@@ -47,9 +47,10 @@ class disciplinaController extends Controller
                 'horario.hora'
             )
             ->get();
+        $count = DB::table('disciplina')->count();
         $colaboradores = Colaborador::where('status', 0)->get();
         $countColaboradores = Colaborador::where('status', 0)->where('tipo_colaborador_id', 5)->count();
-        return view('disciplina.create', compact('countColaboradores', 'disciplinas', 'colaboradores'));
+        return view('disciplina.create', compact('count', 'countColaboradores', 'disciplinas', 'colaboradores'));
     }
 
     /**

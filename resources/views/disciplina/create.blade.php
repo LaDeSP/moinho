@@ -94,7 +94,7 @@
             </input>  
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-info" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+            <button type="submit" class="btn btn-outline-info" onClick="changePesquisa('.filtro', '');" >Todos</button>
         </div>
     </div>
     <div class="list-group">
@@ -129,3 +129,11 @@
     <br>
 @endsection
 
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        //paginacao( 20, 1 );
+        paginacao( {{ $count }}, 24 );
+    });
+</script>
