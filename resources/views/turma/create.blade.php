@@ -3,6 +3,15 @@
 @section('content')
     <h1 class="text-warning"><?php echo Lang::get('conteudo.addClass');?></h1>
 
+    @if( $disciplinas == 0 )
+        <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
+            Nenhuma disciplina ainda cadastrada
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+    @endif
+
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('turma.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
@@ -60,7 +69,7 @@
             </input>  
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-warning" onClick="changeListGroup('.filtro', 'all');" >Todos</button>
+            <button type="submit" class="btn btn-outline-warning" onClick="changePesquisa('.filtro', '');" >Todos</button>
         </div>
     </div>
     <div class="list-group">
@@ -95,3 +104,10 @@
     <br>
 @endsection
 
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        paginacao( {{$count}} , 24 );
+    });
+</script>

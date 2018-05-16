@@ -37,8 +37,10 @@ class turmaController extends Controller
             return abort(404);
         }
         $turma = Turma::all();
+        $disciplinas = Disciplina::all()->count();
+        $count = Turma::all()->count();
         $nome = NomeTurma::all();
-        return view('turma.create', compact('turma', 'nome'));
+        return view('turma.create', compact('disciplinas', 'count', 'turma', 'nome'));
     }
 
     /**

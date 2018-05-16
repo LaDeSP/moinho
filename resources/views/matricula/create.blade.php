@@ -159,7 +159,7 @@
                     </input>  
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-outline-success" onClick="changePesquisa('.filtro2', 'all');" >Todos</button>
+                    <button type="submit" class="btn btn-outline-success" onClick="changePesquisa('.filtro2', '');" >Todos</button>
                 </div>
             </div>
             <br>

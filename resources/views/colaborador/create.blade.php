@@ -139,9 +139,9 @@ use PHP\test;
                         </div>
                         <div class="col-md-3">
                             <!-- Complemento -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
-                            <input type="text" name="complemento" size="20" class="form-control validate"
-                            id="complemento" onkeyup="verifica_vazio(this.value, this.id);">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
+                            <input type="text" name="complemento" size="20" class="form-control"
+                            id="complemento">
                             <div class="invalid-feedback">
                                 Por favor, digite o complemento
                             </div>

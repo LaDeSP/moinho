@@ -2,6 +2,14 @@
 
 @section('content')
     <h1 class="text-info"><?php echo Lang::get('conteudo.registerDiscipline'); ?></h1>
+    @if( $countColaboradores == 0 )
+        <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
+            Nenhum professor ainda cadastrada
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+    @endif
 
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('disciplina.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}

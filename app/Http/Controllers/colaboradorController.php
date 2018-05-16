@@ -42,7 +42,7 @@ class colaboradorController extends Controller
             return abort(404);
         }
         
-        $colaborador = Colaborador::all();
+        $colaborador = Colaborador::where('status', 0)->get();
         $count = Colaborador::where('status', 0)->count();
         $tipo = Role::all();
         
