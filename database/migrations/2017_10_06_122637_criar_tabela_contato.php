@@ -17,7 +17,7 @@ class CriarTabelaContato extends Migration
             $table->increments('id');
             $table->string('numero_fixo');
             $table->string('celular1');
-            $table->string('celular2');
+            $table->string('celular2')->nullable();
             $table->string('email');
             $table->timestamps();
         });

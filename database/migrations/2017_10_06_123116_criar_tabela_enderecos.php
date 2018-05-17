@@ -18,7 +18,7 @@ class CriarTabelaEnderecos extends Migration
             $table->string('rua');
             $table->string('bairro');
             $table->string('numero');
-            $table->string('complemento');
+            $table->string('complemento')->nullable();
             $table->string('cep');
             $table->string('cidade');
             $table->string('estado');

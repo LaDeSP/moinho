@@ -17,7 +17,7 @@ class CriarTabelaDadosInscricao extends Migration
             $table->increments('id');
             $table->string('turno');
             $table->string('turma');
-            $table->string('observacoes');
+            $table->text('observacoes')->nullable();
             $table->string('transporte');
             $table->string('profissao');
             $table->string('raca');
@@ -29,7 +29,7 @@ class CriarTabelaDadosInscricao extends Migration
             $table->integer('escola_id')->unsigned();
             $table->integer('dados_pessoais_id')->unsigned();
             $table->integer('responsavel1_id')->unsigned();
-            $table->integer('responsavel2_id')->unsigned();
+            $table->integer('responsavel2_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
