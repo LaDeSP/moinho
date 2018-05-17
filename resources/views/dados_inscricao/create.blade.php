@@ -261,8 +261,8 @@ $cont = 1;
                         </div>
                         <!-- Observações -->
                         <div class="col-md-12">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?>*</label>
-                            <textarea class="form-control" name="observacoes" rows="5"></textarea>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?></label>
+                            <textarea class="form-control" name="observacoes" rows="3"></textarea>
                         </div>
                         
                     </div>

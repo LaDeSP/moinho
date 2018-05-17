@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::resource('ocorrencia','OcorrenciaController');
     Route::resource('advertencia','AdvertenciaController');
     Route::resource('evento','eventoController');
+    Route::resource('evento/participante','eventoParticipanteController');
 
     
     //Get
@@ -61,6 +62,11 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/evento/remove/{id}', 'eventoController@remove');
     Route::get('/advertencia/remove/{id}', 'OcorrenciaController@remove');
     Route::get('/colaborador/remove/{id}', 'colaboradorController@remove');
+    //Route::get('/evento/participante/{id}', 'eventoController@participante');
+
+    //Post
+    //Route::post('/evento/participante/{id}', 'eventoController@addParticipante');
+
 
     
     

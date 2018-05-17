@@ -39,11 +39,16 @@ class matriculaController extends Controller
         }
 
         $matricula = Matricula::all();
-        $count = Matricula::all()->count(); //Terá que ser mudado, pois existe mais de uma lista
+        $count = Matricula::whereYear('data', '>=', date('Y'))->count(); //Terá que ser mudado, pois existe mais de uma lista
         $inscricao_id = Inscricao::all();
         $turma_id = Turma::all();
-        $status = StatusMatricula::all();
-        return view('matricula.create', compact('count', 'matricula', 'inscricao_id', 'turma_id', 'status'));
+        $todos_status = StatusMatricula::all();
+        $cont = 1;
+        foreach($todos_status as $value){
+            $status[ $value->id ] = $value;
+        }
+
+        return view('matricula.create', compact('cont', 'count', 'matricula', 'inscricao_id', 'turma_id', 'status'));
     }
 
     /**
@@ -66,7 +71,7 @@ class matriculaController extends Controller
         $formulario->save(['timestamps' => false]);
 
 
-        return view('home');
+        return redirect()->back()->with('message', 'Matricula adicionada com sucesso!');
     }
 
    /* public function ajaxprod(){

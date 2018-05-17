@@ -232,7 +232,7 @@
                     </small>
                     <br>
                     
-                    <a href="/evento/remove/{{ $evento->id }}" title="Excluir Evento">
+                    <a href="/evento/remove/{{ $evento->id }} " title="Excluir Evento">
                         <span class="text-danger destroy" aria-hidden="true">&times;</span>
                     </a>
                 </span>

@@ -131,9 +131,8 @@ class eventoController extends Controller
                 $evento_periodo->save();
             }
         }
-
-
-        return redirect()->back()->with('message', 'Evento adicionado com sucesso!');
+        return redirect('evento/participante/'.$evento->id.'/edit');
+        //return redirect()->back()->with('message', 'Evento adicionado com sucesso!');
     }
 
     /**
@@ -287,5 +286,31 @@ class eventoController extends Controller
         $evento->status = 1;
         $evento->save();
         return redirect()->back()->with('message', 'Exclusão realizada com sucesso!');
+    }
+
+
+    public function participante($id)
+    {
+        $colaboradores = DB::table('colaborador')
+        ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+        ->select('*', 'pessoas.id as id')
+        ->get();
+        $inscritos = DB::table('inscricao')
+        ->join('dados_inscricao', 'dados_inscricao.id', '=', 'inscricao.dados_inscricao_id')
+        ->join('pessoas', 'pessoas.id', '=', 'dados_inscricao.dados_pessoais_id')        
+        ->select('*', 'pessoas.id as id')
+        ->get();
+
+        //$pessoas = array_merge($colaboradores, $inscritos);
+        return view('evento.participante', compact(
+            'id',
+            'colaboradores',
+            'inscritos'
+        ));
+    }
+
+    public function addParticipante($request, $id)
+    {
+        return view('home');
     }
 }
