@@ -131,7 +131,7 @@ class ForeignKeys extends Migration
         Schema::table('escolas', function (Blueprint $table){
             $table->dropForeign(['contato_id']);
         });
-        Schema::table('documento', function (Blueprint $table){
+        Schema::table('documentos', function (Blueprint $table){
             $table->dropForeign(['documento_tipo_id', 'inscricao_id']);
         });
     }

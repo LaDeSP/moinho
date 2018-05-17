@@ -11,6 +11,7 @@ use App\Colaborador;
 use App\Matricula;
 use App\RoleUser;
 use App\Role;
+use App\Pessoa;
 use Auth;
 
 
@@ -27,8 +28,9 @@ class AdvertenciaController extends Controller
         $ocorrencia = Ocorrencia::All();
         $colaborador= Colaborador::All();
         $participante= Participante::All();
+        $advertencia = Advertencia::All();
         $tipo = statusOcorrenciaAdvertencia::All();
-        return view('advertencia.index', compact('tipo', 'role', 'user_id'));
+        return view('advertencia.index', compact('tipo', 'role', 'user_id','advertencia','ocorrencia'));
        
     }
 
@@ -43,9 +45,10 @@ class AdvertenciaController extends Controller
         $tipo = statusOcorrenciaAdvertencia::All();
         $user_id = Auth::user()->id;
         $ocorrencia = Ocorrencia::All();
+        $advertencia = Advertencia::All();
         $role_user = RoleUser::where('user_id', Auth::user()->id )->first();
         $role = Role::find($role_user->role_id);
-        return view('advertencia.create', compact('tipo', 'role', 'user_id'));
+        return view('advertencia.create', compact('tipo', 'role', 'user_id','advertencia','ocorrencia'));
     }
 
     /**
@@ -72,7 +75,7 @@ class AdvertenciaController extends Controller
         $formulario->responsavel_assina =  $request->responsavel; //chamar responsavel
         $formulario->observacao = $request->observacao;
         $formulario->tipo_ocorrencia_advertencia=$request->tipo;
-        $formulario->ocorrencia_id = 1;
+        $formulario->ocorrencia_id = $request->ocorrencia_id;
 
         $formulario->save();
 
@@ -95,6 +98,15 @@ class AdvertenciaController extends Controller
     public function show($id)
     {
         //
+        $advertencia = Advertencia::find($id);
+        $colaborador = Colaborador::find($advertencia->colaborador);
+        $tipo = statusOcorrenciaAdvertencia::find($advertencia->tipo_ocorrencia_advertencia); //o tipo da ocorrencia visitada
+        $nomeAdvertencia = statusOcorrenciaAdvertencia::find($tipo->id);
+        $t= statusOcorrenciaAdvertencia::All(); //todos os tipos armazenados em t
+        $pessoa = Pessoa::find($colaborador->pessoa_id);
+
+        return view('advertencia.show',compact('advertencia','id','tipo','nomeAdvertencia','t','colaborador','pessoa'));
+
     }
 
     /**

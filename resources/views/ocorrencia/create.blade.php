@@ -1,6 +1,8 @@
 <?php 
 
 use PHP\test;
+$data = date("Y/m/d");
+$data = str_replace("/","-",$data); 
 ?>
 
 <html>
@@ -18,13 +20,10 @@ use PHP\test;
         </h3>
     @endif
 
-    <form method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" novalidate>
+    <form onkeyup="verifica_submit('validate');"  method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
         <div class="row">
-          
             <div class="col-md-4">
-               
-                <!-- Inscrição -->
                 <label for="exampleFormControlInput1"> Participante*</label>
                 <select name="participante_id" class="form-control">
                     @foreach(busca_participante() as $participante) 
@@ -43,28 +42,43 @@ use PHP\test;
                                       
             </div>
             <div class="col-md-4">
-                 <!-- Data de Inscrição -->
                 <label for="exampleFormControlInput1">Data da Ocorrência</label>
-                            <input type="date" name="data" size="23" class="form-control"
-                            id="data">
+                            <input type="date" name="data" size="23" class="form-control is-valid validate" onkeyup="verifica_vazio(this.value, this.id);" 
+                            id="data" value="{{$data}}" >
                             <div class="invalid-feedback">
-                                Por favor, digite a data de inscricao
-                </div>
+                                Por favor, digite a data da ocorrência
+                            </div>
             </div>
             <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Motivo</label>
-                            <textarea name="motivo" rows="5"></textarea>
+                            <label for="exampleFormControlInput1" >Motivo*</label>
+                            <textarea name="motivo" rows="5"  class="form-control"  required></textarea>
             </div>
             <div class="col-md-2">
-                <button type="submit" class="btn btn-outline-danger" onClick="changeListGroup('.filtro', 'all');" >Gerar Ocorrência</button>
+                <button type="submit"  id="submit" class="btn btn-outline-danger" onClick="changeListGroup('.filtro', 'all');" disabled>Gerar Ocorrência</button>
             </div>
         </div>
+    </form>
         <br>
+        <div class="row">
+                <div class="col-md-4">
+                    <input
+                        type="text"
+                        class="form-control" 
+                        value=""
+                        placeholder="Pesquisa"
+                        onKeyUp="changeListGroup('.filtro', this.value);"
+                    >
+                    </input>  
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-outline-danger" disabled onClick="changePesquisa('.filtro', '');" >Todos</button>
+                </div>
+            </div>
+
         <div class="list-group">
             <div class="row">
-              
-                @foreach(mostrar_ocorrencia(auth()->user()->id) as $array)
-                <div class="col-md-4 {{ $array->participante_id }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->colaborador_id) }} filtro">
+                 @foreach(mostrar_ocorrencia(auth()->user()->id) as $array)
+                <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
@@ -77,7 +91,6 @@ use PHP\test;
                                 <a href="{{ route('ocorrencia.show', $array->ocorrencia_id)}}">
                                     <i class="fa fa-eye icon text-danger" aria-hidden="true"></i>
                                 </a>
-                           
                             </small>
                         </div>
                         <small>Ocorrencia: {{ $array->status}}</small>
@@ -89,4 +102,3 @@ use PHP\test;
         </div>
 
         @endsection
-</form>

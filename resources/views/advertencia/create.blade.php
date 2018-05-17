@@ -1,6 +1,10 @@
 <?php 
 
 use PHP\test;
+
+$data = date("Y/m/d");
+$data = str_replace("/","-",$data);
+  
 ?>
 
 <html>
@@ -19,7 +23,7 @@ use PHP\test;
     }
     </style> 
 
-<form method= "POST" action="{{ route('advertencia.store') }}" enctype="multipart/form-data" novalidate>
+<form method= "POST" onkeyup="verifica_submit('validate');"  action="{{ route('advertencia.store') }}" enctype="multipart/form-data" novalidate>
     {{ csrf_field() }}
     <div class="cold-m-8">
         <h1 class="text-warning">Advertência</h1>
@@ -29,6 +33,21 @@ use PHP\test;
         </h3>
     @endif
         <div class="row">
+                <div class="col-md-4">
+                <label for="exampleFormControlInput1">Ocorrência*</label>
+                    <select name="ocorrencia_id" class="form-control">
+                            @foreach(listar_ocorrencias() as $array)
+                                @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4)
+                                    <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</option>
+                                
+                                @endif
+                                @if($role->name === 'social')
+                                <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</option>
+                                @endif
+                            @endforeach
+                    </select>                
+            </div>
+            
             <div class="col-md-4">
                 <label for="exampleFormControlInput1">Tipo*</label>
                     <select name="tipo" class="form-control">
@@ -40,19 +59,18 @@ use PHP\test;
             <div class="col-md-4">
                 <!-- Data da Advertência -->
             <label for="exampleFormControlInput1">Data da Advertência*</label>
-                        <input type="date" name="data" size="23" class="form-control"
-                        id="data">
-                        <div class="invalid-feedback">
-                            Por favor, digite a data da advertência
-                        </div>
+                        <input type="date" name="data" size="23"  class="form-control validate is-valid" 
+            id="data" value="{{$data}}" onkeyup="verifica_vazio(this.value, this.id);" >
+                <div class="invalid-feedback">
+                    Por favor, digite a data da advertência
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                     <!-- Nome do Agressor -->
-                    <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor <small>(opcional)</small></label>
-                    <input type="text" name="nome" value="" id="nome" size="23" class="form-control validate"
-                    onkeyup="verifica_vazio(this.value, this.id);">
+                    <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small>(opcional)</small></label>
+                    <input type="text" name="nome" value="" id="nome" size="23" class="form-control">
             </div>
         <div class="col-md-4">
             <!-- Chamar Responsável -->
@@ -78,23 +96,26 @@ use PHP\test;
             </div>
         </div>
         <div class="col-md-2">
-                <button type="submit" class="btn btn-outline-warning" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
+                <button type="submit" class="btn btn-outline-info" id="submit" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
             </div>
-        
+        </form>    
+        <!-- fim do formulario -->
+
         <div class="list-group">
             <div class="row">        
-                @foreach(mostrar_ocorrencias() as $array)
+                
+                @foreach(mostrar_advertencias() as $array)
                     @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4)
                         <div class="col-md-4 {{ $array->participante_id }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->colaborador_id) }} filtro">
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
                                     <small>
-                                        <a href="{{ route('ocorrencia.edit', $array->ocorrencia_id)}}">
-                                            <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
+                                        <a href="{{ route('advertencia.edit', $array->advertencia_id)}}">
+                                            <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
                                         </a>
-                                        <a href="{{ route('ocorrencia.show', $array->ocorrencia_id)}}">
-                                            <i class="fa fa-eye icon text-danger" aria-hidden="true"></i>
+                                        <a href="{{ route('advertencia.show', $array->advertencia_id)}}">
+                                            <i class="fa fa-eye icon text-warning" aria-hidden="true"></i>
                                         </a>
                                     </small>
                                 </div>
@@ -102,7 +123,6 @@ use PHP\test;
                                 <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>
                             </span>
                             <br>
-                            <button type="submit" class="btn btn-outline-danger" href="{{ route('advertencia.create', $array->ocorrencia_id)}}" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
                         </div>
                     @endif
                     @if($role->name === 'social')
@@ -111,11 +131,11 @@ use PHP\test;
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
                                     <small>
-                                        <a href="{{ route('ocorrencia.edit', $array->ocorrencia_id)}}">
-                                            <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
+                                        <a href="{{ route('advertencia.edit', $array->advertencia_id)}}">
+                                            <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
                                         </a>
-                                        <a href="{{ route('ocorrencia.show', $array->ocorrencia_id)}}">
-                                            <i class="fa fa-eye icon text-danger" aria-hidden="true"></i>
+                                        <a href="{{ route('advertencia.show', $array->advertencia_id)}}">
+                                            <i class="fa fa-eye icon text-warning" aria-hidden="true"></i>
                                         </a>
                                     </small>
                                 </div>
@@ -123,7 +143,6 @@ use PHP\test;
                                 <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>
                             </span>
                             <br>
-                            <button type="submit" class="btn btn-outline-danger" href="{{ route('advertencia.create', $array->ocorrencia_id)}}" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
                         </div>
                     @endif
                             
@@ -132,5 +151,6 @@ use PHP\test;
         </div>
     </div>
     
+   
 @endsection
 

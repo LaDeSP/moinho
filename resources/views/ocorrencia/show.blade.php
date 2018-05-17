@@ -17,8 +17,6 @@ use PHP\test;
             <i class="fa fa-pencil icon text-danger" aria-hidden="true"></i>
         </a>
     </div>
-
-<form method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
     {{ csrf_field() }}
     <div class="row">
       
@@ -68,13 +66,16 @@ use PHP\test;
                     <div class="col-md-12">
                         <label for="exampleFormControlInput1">Motivo</label>
                         <textarea class="form-control" name="motivo" rows="5" disabled> {{$ocorrencia->motivo}}</textarea>
-        </div>
+            </div>
     </div>
+   <!-- permission('excluir-ocorrencias') -->
     <div class="text-right">
         <a href="/advertencia/remove/{{ $id }}">
             <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
         </a>
     </div>
-    @endsection
+    <!-- endpermission -->
 </form>
+    @endsection
+
 
