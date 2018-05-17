@@ -2,6 +2,7 @@
 
 @section('content')
     <h1 class="text-success"> Adicionar Evento </h1>
+    {{ dd(getColumn()) }}
 
     @if( \Session::has('message') )
         <h3 class="alert alert-success alert-dismissible fade show" role="alert">

@@ -311,4 +311,9 @@
         return $query; 
     }
 
+    function getColumn(){
+        $table = DB::select('DESCRIBE users');
+        return $table;
+    }
+
     //'nome_turma.*', 
