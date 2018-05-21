@@ -74,9 +74,9 @@ $cont = 1;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Participante -->
-                            <label for="exampleFormControlInput1">CPF*</label>
-                            <input name="cpf" type="text" id="cpf" value="" size="23" maxlength="14" class="form-control validate" 
-                            onkeyup="verifica_cpf(this.value, this.id);" />
+                            <label for="exampleFormControlInput1">CPF</label>
+                            <input name="cpf" type="text" id="cpf" value="" size="23" maxlength="14" class="form-control" 
+                            onkeyup="verifica_cpf_participante(this.value, this.id);" />
                         </div>
 
                         <!-- Pular Linha -->
@@ -295,9 +295,9 @@ $cont = 1;
                         </div>
                         <!-- Número -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
-                            <input type="text" name="numero" size="23" class="form-control validate"
-                            id="numero" onkeyup="verifica_vazio(this.value, this.id);">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
+                            <input type="text" name="numero" size="23" class="form-control"
+                            id="numero">
                             <div class="invalid-feedback">
                                 Por favor, digite o numero
                             </div>

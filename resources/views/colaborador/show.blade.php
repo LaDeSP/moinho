@@ -137,7 +137,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Celular 2 do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2</label>
                             <input 
                                 type="text" 
                                 name="celular2" 
@@ -207,7 +207,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-3">
                             <!-- Número do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                             <input 
                                 type="text" 
                                 name="numero" 
@@ -224,7 +224,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-3">
                             <!-- Complemento -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                             <input 
                                 type="text" 
                                 name="complemento" 

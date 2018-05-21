@@ -131,9 +131,9 @@ $cont = 1;
                         </div>
                         <div class="col-md-3">
                             <!-- Número do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
-                            <input type="text" name="numero" size="20" class="form-control validate"
-                            id="numero" onkeyup="verifica_vazio(this.value, this.id);">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
+                            <input type="text" name="numero" size="20" class="form-control"
+                            id="numero">
                             <div class="invalid-feedback">
                                 Por favor, digite o numero da residência
                             </div>

@@ -241,16 +241,14 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Numero da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                 <input 
                     value="{{ $endereco->numero }}"  
                     type="text" 
                     name="numero" 
                     size="23" 
-                    class="form-control validate is-valid"
+                    class="form-control"
                     id="numero" 
-                    onkeyup="verifica_vazio(this.value, this.id);" 
-                    require
                 />
                 <div class="invalid-feedback">
                     Por favor, digite o numero da escola
@@ -258,16 +256,14 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Complemento da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                 <input 
                     value="{{ $endereco->complemento }}" 
                     type="text" 
                     name="complemento" 
                     size="23" 
-                    class="form-control validate is-valid"
+                    class="form-control"
                     id="complemento" 
-                    onkeyup="verifica_vazio(this.value, this.id);" 
-                    require
                 />
                 <div class="invalid-feedback">
                     Por favor, digite o complemento

@@ -113,9 +113,9 @@ use PHP\test;
                                 name="telefone" 
                                 value="{{ $contato->numero_fixo }}"
                                 size="23" 
-                                class="form-control validate is-valid" 
-                                id="telefone" 
+                                class="form-control is-valid validate" 
                                 onkeyup="verifica_telefone(this.value, this.id);" 
+                                id="telefone" 
                                 maxlength="15"
                             />
                         </div>
@@ -135,15 +135,14 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Celular 2 do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell'); ?> 2</label>
                             <input 
                                 type="text" 
                                 name="celular2" 
                                 value="{{ $contato->celular2 }}"
                                 size="23" 
-                                class="form-control validate is-valid" 
+                                class="form-control" 
                                 id="celular2" 
-                                onkeyup="verifica_telefone(this.value, this.id);" 
                                 maxlength="15"
                             />
                         </div>
@@ -201,15 +200,14 @@ use PHP\test;
                         </div>
                         <div class="col-md-3">
                             <!-- Número do Colaborador -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                             <input 
                                 type="text" 
                                 name="numero" 
                                 value="{{ $endereco->numero }}"
                                 size="20" 
-                                class="form-control validate is-valid"
+                                class="form-control"
                                 id="numero" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
                             />
                             <div class="invalid-feedback">
                                 Por favor, digite o numero da residência
@@ -217,15 +215,14 @@ use PHP\test;
                         </div>
                         <div class="col-md-3">
                             <!-- Complemento -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                             <input 
                                 type="text" 
                                 name="complemento" 
                                 value="{{ $endereco->complemento }}"
                                 size="20" 
-                                class="form-control validate is-valid"
+                                class="form-control"
                                 id="complemento" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
                             />
                             <div class="invalid-feedback">
                                 Por favor, digite o complemento
@@ -337,6 +334,9 @@ use PHP\test;
                                     >{{ ucfirst($tipo_col->name) }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-8">
+                            
                         </div>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-outline-success" id="submit"> Alterar </button>

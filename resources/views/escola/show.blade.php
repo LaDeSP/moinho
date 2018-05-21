@@ -239,7 +239,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Numero da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                 <input 
                     value="{{ $endereco->numero }}"  
                     type="text" 
@@ -256,7 +256,7 @@ use PHP\test;
             </div>
             <div class="col-md-3">
                 <!-- Complemento da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                 <input 
                     value="{{ $endereco->complemento }}" 
                     type="text" 

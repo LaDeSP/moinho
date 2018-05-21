@@ -85,7 +85,7 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Participante -->
-                            <label for="exampleFormControlInput1">CPF*</label>
+                            <label for="exampleFormControlInput1">CPF</label>
                             <input 
                                 name="cpf" 
                                 type="text" 
@@ -93,8 +93,8 @@ use PHP\test;
                                 value="{{ $dados_pessoais->cpf }}" 
                                 size="23" 
                                 maxlength="14" 
-                                class="form-control validate is-valid" 
-                                onkeyup="verifica_cpf(this.value, this.id);" 
+                                class="form-control" 
+                                onkeyup="verifica_cpf_participante(this.value, this.id);" 
                             />
                         </div>
 
@@ -479,15 +479,14 @@ use PHP\test;
                         </div>
                         <!-- Número -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
                             <input 
                                 type="text" 
                                 name="numero" 
                                 value="{{ $endereco->numero }}"
                                 size="23" 
-                                class="form-control validate is-valid"
+                                class="form-control"
                                 id="numero" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
                             />
                             <div class="invalid-feedback">
                                 Por favor, digite o numero
@@ -495,15 +494,14 @@ use PHP\test;
                         </div>
                         <!-- Complemento -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.complement');?></label>
                             <input 
                                 type="text" 
                                 name="complemento" 
                                 value="{{ $endereco->complemento }}"
                                 size="23" 
-                                class="form-control validate is-valid"
+                                class="form-control"
                                 id="compĺemento" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
                             />
                             <div class="invalid-feedback">
                                 Por favor, digite o complemento
@@ -588,15 +586,14 @@ use PHP\test;
                         </div>
                         <!-- Celular 2 -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 2*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cell');?> 2</label>
                             <input 
                                 type="text" 
                                 name="celular2" 
                                 size="23" 
-                                class="form-control validate is-valid" 
+                                class="form-control" 
                                 value="{{ $contato->celular2 }}" 
                                 id="celular2" 
-                                onblur="verifica_telefone(this.value, this.id);" 
                                 maxlength="16"
                             />
                         </div>
