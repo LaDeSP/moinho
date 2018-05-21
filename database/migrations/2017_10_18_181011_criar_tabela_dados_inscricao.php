@@ -19,7 +19,7 @@ class CriarTabelaDadosInscricao extends Migration
             $table->string('turma');
             $table->text('observacoes')->nullable();
             $table->string('transporte');
-            $table->string('profissao');
+            $table->string('profissao')->nullable();
             $table->string('raca');
             $table->string('religiao');
             $table->float('renda')->unsigned();

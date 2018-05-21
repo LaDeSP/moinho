@@ -112,7 +112,7 @@ $cont = 1;
             <!-- Localização da Escola -->
             <div class="col-md-3">
                 <!-- CEP da Escola -->
-                <label for="exampleFormControlInput1">CEP</label>
+                <label for="exampleFormControlInput1">CEP*</label>
                 <input name="cep" type="text" id="cep" value="" size="23" maxlength="9"
                 onkeyup="pesquisacep(this.value, this.id);" class="form-control validate" require/>
             </div>
@@ -136,9 +136,9 @@ $cont = 1;
             </div>
             <div class="col-md-3">
                 <!-- Numero da Escola -->
-                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?>*</label>
-                <input value="" type="text" name="numero" size="23" class="form-control validate"
-                id="numero" onkeyup="verifica_vazio(this.value, this.id); " require/>
+                <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.number');?></label>
+                <input value="" type="text" name="numero" size="23" class="form-control"
+                id="numero"/>
                 <div class="invalid-feedback">
                     Por favor, digite o numero da escola
                 </div>

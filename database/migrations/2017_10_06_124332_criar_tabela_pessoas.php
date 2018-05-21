@@ -16,8 +16,8 @@ class CriarTabelaPessoas extends Migration
         Schema::create('pessoas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->string('cpf');
-            $table->string('data_nascimento');
+            $table->string('cpf')->nullable();
+            $table->string('data_nascimento')->nullable();
             $table->integer('endereco_id')->unsigned();
             $table->integer('contato_id')->unsigned();
             $table->timestamps();
