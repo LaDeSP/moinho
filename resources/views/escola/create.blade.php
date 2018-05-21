@@ -213,7 +213,7 @@ $cont = 1;
                             echo " style='display: none' ";
                         }
                     ?> 
-                    class="col-md-4 {{ $array->tipo }} {{ str_replace(' ', '_', $array->cidade) }} {{ str_replace(' ', '_', $array->nome) }} filtro"
+                    class="isvalid col-md-4 {{ $array->tipo }} {{ str_replace(' ', '_', $array->cidade) }} {{ str_replace(' ', '_', $array->nome) }} filtro"
                 >
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
@@ -251,6 +251,6 @@ $cont = 1;
 <script>
     $(document).ready(function(){
         //paginacao( 20, 1 );
-        paginacao( {{ $count }}, 24 );
+        paginacao( {{ $count }}, 1 );
     });
 </script>
