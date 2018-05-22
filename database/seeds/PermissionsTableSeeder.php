@@ -114,17 +114,43 @@ class PermissionsTableSeeder extends Seeder
         $criar_ocorrencias -> description = 'Permite criar ocorrencias para estudantes';
         $criar_ocorrencias ->save();
 
-        $criar_ocorrencias = new Permission();
-        $criar_ocorrencias -> name = 'editar-ocorrencias';
-        $criar_ocorrencias -> display_name= 'Editar ocorrencias de Alunos';
-        $criar_ocorrencias -> description = 'Permite editar as ocorrencias estudantes';
-        $criar_ocorrencias ->save();
+        $editar_ocorrencias = new Permission();
+        $editar_ocorrencias -> name = 'editar-ocorrencias';
+        $editar_ocorrencias -> display_name= 'Editar ocorrencias de Alunos';
+        $editar_ocorrencias -> description = 'Permite editar as ocorrencias estudantes';
+        $editar_ocorrencias ->save();
 
         $excluir_ocorrencias = new Permission();
         $excluir_ocorrencias -> name = 'excluir-ocorrencias';
         $excluir_ocorrencias -> display_name= 'Excluir ocorrencias de Alunos';
         $excluir_ocorrencias -> description = 'Permite excluir as ocorrencias estudantes';
         $excluir_ocorrencias ->save();
+
+        #____________________________--Advertências--____________________________#
+        $ver_advertencias = new Permission();
+        $ver_advertencias -> name = 'ver-advertencias';
+        $ver_advertencias -> display_name= 'Ver advertencias geradas pelo Colaborador';
+        $ver_advertencias -> description = 'Permite ver advertencias geradas';
+        $ver_advertencias ->save();
+
+        $criar_advertencias = new Permission();
+        $criar_advertencias -> name = 'criar-advertencias';
+        $criar_advertencias -> display_name= 'Criar advertencias de Alunos';
+        $criar_advertencias -> description = 'Permite criar advertencias para estudantes';
+        $criar_advertencias ->save();
+
+        $editar_advertencias = new Permission();
+        $editar_advertencias -> name = 'editar-advertencias';
+        $editar_advertencias -> display_name= 'Editar advertencias de Alunos';
+        $editar_advertencias -> description = 'Permite editar as advertencias estudantes';
+        $editar_advertencias ->save();
+
+        $excluir_advertencias = new Permission();
+        $excluir_advertencias -> name = 'excluir-advertencias';
+        $excluir_advertencias -> display_name= 'Excluir advertencias de Alunos';
+        $excluir_advertencias -> description = 'Permite excluir as advertencias estudantes';
+        $excluir_advertencias ->save();
+
         # Atribuindo as permissões às funções
 
         $administrador = Role::where('name', '=', 'administrador') -> first();
@@ -136,20 +162,19 @@ class PermissionsTableSeeder extends Seeder
         $diretor -> attachPermissions(array(
             $ver_colaborador, $ver_turma, $ver_matricula,
             $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias, $excluir_ocorrencias
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $excluir_ocorrencias, $ver_ocorrencias, $ver_advertencias, $excluir_advertencias
             
         ));
 
-
         $coordenador = Role::where('name', 'coordenador') -> first();
         $coordenador -> attachPermissions(array(
-            $ver_participante,$ver_ocorrencias
+            $ver_participante,$ver_ocorrencias, $ver_advertencias
         ));
 
         $social = Role::where('name', 'social') -> first();
         $social -> attachPermissions(array(
             $ver_inscricao, $criar_inscricao, $ver_matricula,
-            $ver_turma, $ver_participante, $ver_colaborador,$ver_ocorrencias
+            $ver_turma, $ver_participante, $ver_colaborador,$ver_ocorrencias, $excluir_ocorrencias, $ver_advertencias
         ));
 
         $colaborador = Role::where('name', 'colaborador') -> first();

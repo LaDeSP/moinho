@@ -198,6 +198,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('listar_matriculas.index')}}">Matriculas Regulares</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ route('lista_matriculas_irregulares.index')}}">Matriculas Irregulares</a></li>
                     -->
+                    @permission('ver-ocorrencias')
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('ocorrencia.create')}}">
                             <h4 class="red">
@@ -205,6 +206,8 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
+
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('advertencia.create')}}">
                             <h4 class="yellow">

@@ -58,9 +58,11 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('auth/logout', 'Auth\LoginController@logout');
     Route::get('turma/teste', 'turmaController@teste');
-    Route::get('/advertencia/gerar', 'AdvertenciaController@gerar');
+
     Route::get('/evento/remove/{id}', 'eventoController@remove');
-    Route::get('/advertencia/remove/{id}', 'OcorrenciaController@remove');
+    Route::get('/ocorrencia/remove/{id}', 'OcorrenciaController@remove');
+    Route::get('/advertencia/remove/{id}', 'AdvertenciaController@remove');
+
     Route::get('/colaborador/remove/{id}', 'colaboradorController@remove');
     //Route::get('/evento/participante/{id}', 'eventoController@participante');
 

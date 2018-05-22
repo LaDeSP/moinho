@@ -241,15 +241,18 @@
         return $query;
     }
   
-    function busca_ocorrencia_participante($id) //LISTA AS OCORRÊNCIAS GERADAS PELO COLABORADOR LOGADO
+    function busca_ocorrencia_participante($id) //LISTA AS OCORRÊNCIAS do participante
     {
         $query = DB::table('matricula')
         ->join('ocorrencia','ocorrencia.participante_id','=','matricula.id')
         //->join('inscricao','inscricao.id','=','matricula.inscricao_id')
-        ->join('inscricao','matricula.inscricao_id', '=', 'inscricao.id')
+        ->join('colaborador','colaborador.id','=','ocorrencia.colaborador_id')
+         ->join('users','users.id','=','colaborador.user_id')
+         ->join('inscricao','matricula.inscricao_id', '=', 'inscricao.id')
         ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
         ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
-        ->select('*','pessoas.nome as nome')
+        ->join('tipo_ocorrencia_advertencia','tipo_ocorrencia_advertencia.id','ocorrencia.tipo_ocorrencia_advertencia')
+        ->select('*','pessoas.nome as nome','tipo_ocorrencia_advertencia.nome as tipo')
         ->whereYear('ocorrencia.data_ocorrencia', '=', date('Y'))
         ->where('ocorrencia.id','=',$id)
         //->join('matricula','participante.matricula_id','=','matricula.id')
@@ -315,5 +318,17 @@
         $table = DB::select('DESCRIBE users');
         return $table;
     }
+
+    //function procurar_colaborador($id) //encontrar o colaborador pelo user_id que registrou 
+   // {
+     //   $query = DB::table('colaborador')
+         //   ->join('users','users.id','=','colaborador.user_id')
+       //     ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+           // ->join('contatos', 'contatos.id', '=', 'pessoas.contato_id')
+       //     ->select('*','colaborador.*','pessoas.nome as nomeColaborador')
+       //     ->where('colaborador.user_id','=',$id)
+       //     ->get();
+       // return $query;
+   // }
 
     //'nome_turma.*', 

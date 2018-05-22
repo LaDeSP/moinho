@@ -146,15 +146,7 @@ class OcorrenciaController extends Controller
      */
     public function destroy($id)
     {
-        //EXCLUSÃO DA OCORRÊNCIA PERMANENTE
-        $ocorrencia = Ocorrencia::find($id)->delete();
-
-        return view('ocorrencia.create', compact('tipo'),[
-            'message' => 'Ocorrencia excluída com sucesso'
-        ]);
-
-        //$aluno = new Aluno();
-        //$result = $aluno->find($id)->delete();
+        //
     }
 
     public function remove($id)
@@ -164,10 +156,11 @@ class OcorrenciaController extends Controller
         $advertencia = Advertencia::where("ocorrencia_id", $id)->delete();
 
         $ocorrencia = $ocorrencia->delete();
+
         $tipo = statusOcorrenciaAdvertencia::All();
 
         return view('ocorrencia.create', compact('tipo'),[
-            'message' => 'Ocorrencia excluída com sucesso'
+            'message' => 'Ocorrencia e Advertência excluída com sucesso'
         ]);
     }
 }

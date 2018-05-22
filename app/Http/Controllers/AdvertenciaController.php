@@ -117,7 +117,15 @@ class AdvertenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $advertencia = Advertencia::find($id);
+        $colaborador = Colaborador::find($advertencia->colaborador);
+        $tipo = statusOcorrenciaAdvertencia::find($advertencia->tipo_ocorrencia_advertencia); //o tipo da ocorrencia visitada
+        $nomeAdvertencia = statusOcorrenciaAdvertencia::find($tipo->id);
+        $t= statusOcorrenciaAdvertencia::All(); //todos os tipos armazenados em t
+        $pessoa = Pessoa::find($colaborador->pessoa_id);
+
+        return view('advertencia.edit',compact('advertencia','id','tipo','nomeAdvertencia','t','colaborador','pessoa'));
+
     }
 
     /**
@@ -129,7 +137,29 @@ class AdvertenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ocorrencia = Ocorrencia::All();
+        $advertencia = Advertencia::All();
+
+        $tipo = statusOcorrenciaAdvertencia::All();
+        $role_user = RoleUser::where('user_id', Auth::user()->id )->first();
+        $role = Role::find($role_user->role_id);
+      
+        $advertenc = Advertencia::find($id);
+
+        $advertenc->ocorrencia_id = $advertenc->ocorrencia_id;
+        $advertenc->tipo_ocorrencia_advertencia = $request->tipo;
+        $advertenc->data_advertencia = $request->data;
+        $advertenc->agressor = $request->agressor;
+        $advertenc->responsavel_assina = $request->responsavel;
+        $advertenc->observacao = $request->observacao;
+
+        $advertenc->save();
+
+
+        return view('advertencia.create', compact('tipo','role','user_id','advertencia', 'ocorrencia'),[
+            'message' => 'Advertencia gerada com sucesso'
+        ]);
+
     }
 
     /**
@@ -141,5 +171,21 @@ class AdvertenciaController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function remove($id)
+    {
+        $ocorrencia = Ocorrencia::All();
+        $advertencia = Advertencia::All();
+        $tipo = statusOcorrenciaAdvertencia::All();
+        $role_user = RoleUser::where('user_id', Auth::user()->id )->first();
+        $role = Role::find($role_user->role_id);
+
+        $advertencia = Advertencia::where("id", $id)->delete();
+      
+        $tipo = statusOcorrenciaAdvertencia::All();
+
+        return view('advertencia.create', compact('tipo','role','user_id','advertencia', 'ocorrencia'),[
+            'message' => 'Advertência excluída com sucesso'
+        ]);
     }
 }

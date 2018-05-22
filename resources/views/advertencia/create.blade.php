@@ -4,7 +4,7 @@ use PHP\test;
 
 $data = date("Y/m/d");
 $data = str_replace("/","-",$data);
-  
+
 ?>
 
 <html>
@@ -59,20 +59,22 @@ $data = str_replace("/","-",$data);
             <div class="col-md-4">
                 <!-- Data da Advertência -->
             <label for="exampleFormControlInput1">Data da Advertência*</label>
-                        <input type="date" name="data" size="23"  class="form-control validate is-valid" 
+                        <input type="date" name="data" size="23"  class="form-control validate" 
             id="data" value="{{$data}}" onkeyup="verifica_vazio(this.value, this.id);" >
                 <div class="invalid-feedback">
                     Por favor, digite a data da advertência
                 </div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-md-4">
                     <!-- Nome do Agressor -->
                     <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small>(opcional)</small></label>
                     <input type="text" name="nome" value="" id="nome" size="23" class="form-control">
             </div>
-        <div class="col-md-4">
+
+            <div class="col-md-4">
             <!-- Chamar Responsável -->
             <label for="exampleFormControlInput1">Chamar Responsável*</label>
                 <div class="form-check" >
@@ -96,17 +98,32 @@ $data = str_replace("/","-",$data);
             </div>
         </div>
         <div class="col-md-2">
-                <button type="submit" class="btn btn-outline-info" id="submit" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
+                <button disabled type="submit" class="btn btn-outline-danger" id="submit" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
             </div>
         </form>    
-        <!-- fim do formulario -->
+        <!-- fim do formulario --><br>
+        <div class="row">
+            <div class="col-md-4">
+                <input
+                    type="text"
+                    class="form-control" 
+                    value=""
+                    placeholder="Pesquisa"
+                    onKeyUp="changeListGroup('.filtro', this.value);"
+                >
+                </input>  
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-outline-danger" disabled onClick="changePesquisa('.filtro', '');" >Todos</button>
+            </div>
+        </div>
 
         <div class="list-group">
             <div class="row">        
                 
                 @foreach(mostrar_advertencias() as $array)
+                <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
                     @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4)
-                        <div class="col-md-4 {{ $array->participante_id }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->colaborador_id) }} filtro">
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
@@ -120,13 +137,12 @@ $data = str_replace("/","-",$data);
                                     </small>
                                 </div>
                                 <small>Ocorrencia: {{ $array->status }}</small>
-                                <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>
+                                <small>Data:   {{ date('d/m/Y', strtotime($array->data_advertencia)) }}</small>
                             </span>
                             <br>
                         </div>
                     @endif
                     @if($role->name === 'social')
-                        <div class="col-md-4 {{ $array->participante_id }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->colaborador_id) }} filtro">
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
@@ -140,7 +156,7 @@ $data = str_replace("/","-",$data);
                                     </small>
                                 </div>
                                 <small>Ocorrencia: {{ $array->status }}</small>
-                                <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>
+                                <small>Data:   {{ date('d/m/Y', strtotime($array->data_advertencia)) }}</small>
                             </span>
                             <br>
                         </div>
@@ -149,7 +165,8 @@ $data = str_replace("/","-",$data);
                 @endforeach
             </div>
         </div>
-    </div>
+   
+</div>
     
    
 @endsection

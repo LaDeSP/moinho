@@ -57,6 +57,7 @@ $data = str_replace("/","-",$data);
                 <button type="submit"  id="submit" class="btn btn-outline-danger" onClick="changeListGroup('.filtro', 'all');" disabled>Gerar Ocorrência</button>
             </div>
         </div>
+        
     </form>
         <br>
         <div class="row">
@@ -73,7 +74,7 @@ $data = str_replace("/","-",$data);
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-outline-danger" disabled onClick="changePesquisa('.filtro', '');" >Todos</button>
                 </div>
-            </div>
+        </div>
 
         <div class="list-group">
             <div class="row">

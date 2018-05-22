@@ -42,7 +42,6 @@ use PHP\test;
    ?>" Disabled>
         </div>        
         <div class="col-md-4">
-      
             <label for="exampleFormControlInput1">Tipo</label>
                 <select name="tipo" class="form-control" >
                         @foreach($t as $tipo_geral) 

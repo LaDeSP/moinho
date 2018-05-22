@@ -1,6 +1,7 @@
 <?php 
 
 use PHP\test;
+
 ?>
 
 <html>
@@ -18,6 +19,7 @@ use PHP\test;
             <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
         </a>
     </div>
+    <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('escola.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
         <div class="row">
             <div class="col-md-4">
                 <label for="exampleFormControlInput1">
@@ -88,31 +90,35 @@ use PHP\test;
                 <div class="row">
                     <div class="col-md-12">
                             <label for="exampleFormControlInput1">Observação: <small>(opcional)</small></label>
-                            <textarea name="observacao" rows="5" disabled></textarea>
+                    <textarea name="observacao" rows="5" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
                 <div class="text-right">
-                        <a href="{{ route('advertencia.edit', $id)}}">
-                            <i class="fa fa-trash icon text-warning" aria-hidden="true"></i>
-                        </a>
-                    </div>
+                    <a href="/advertencia/remove/{{ $id }}">
+                        <i class="fa fa-trash icon text-warning" aria-hidden="true"></i>
+                    </a>
+                </div>
 
-        <h3 class="text-danger"> Ocorrência associada </h3>
-            <div class="row">
-                <div class="col-md-4">
-                Data da ocorrencia: 
-                </div>
-                <div class="col-md-4">
-                        Tipo:
-                </div>
-                <div class="col-md-4">
-                Motivo:
-                </div>
-                
-                <div class="col-md-4">
-                        Ocorrência gerada por:
-                        </div>
-            </div>
-    </div>
-@endsection
+               <?php $ocorrencia = busca_ocorrencia_participante($advertencia->ocorrencia_id); ?> 
+
+               <h3 class="text-danger"> Ocorrência associada </h3>
+               <!-- Imprimir a ocorrência que resultou na advertência -->
+                   <div class="row">
+                       <div class="col-md-4">
+                       Data da ocorrencia: {{ date('d/m/Y', strtotime($ocorrencia->data_ocorrencia))}}
+                       </div>
+                       <div class="col-md-2">
+                               Tipo: {{$ocorrencia->tipo}}
+                       </div>
+                       <div class="col-md-4">
+                               Ocorrência gerada por: {{$ocorrencia->name}}
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-8">
+                           Motivo: {{$ocorrencia->motivo}}
+                       </div>
+                   </div>    
+           </div>
+        @endsection
 
