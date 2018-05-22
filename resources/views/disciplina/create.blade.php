@@ -127,7 +127,16 @@ $cont = 1;
                         <small>{{ ucfirst($array->dia_semana) }}</small>,
                         <small>{{ $array->hora }}</small>
                         <br>
-                        <small>{{ ucfirst($array->turno) }}</small>,
+                        <small>
+                            <?php
+                                if(strcmp($array->turno, `morning`)  == 0  ||  strcmp($array->turno, `afternoon`) == 0){
+                                    echo ucfirst( Lang::get('conteudo.'.$array->turno) );
+                                }
+                                else{
+                                    echo ucfirst($array->turno);
+                                }
+                            ?>
+                        </small>,
                         <small>{{ $array->sala_aula }}</small>
                         <br>
                         <small>{{ $array->nome_colaborador }}</small>
