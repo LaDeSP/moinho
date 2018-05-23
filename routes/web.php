@@ -45,8 +45,12 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::resource('evento','eventoController');
     Route::resource('evento/participante','eventoParticipanteController');
 
-    
     //Get
+        //Paginas
+    Route::get('evento/add/participantes/{id}', 'eventoParticipanteController@edit');
+    Route::get('evento/edit/participantes/{id}', 'eventoParticipanteController@index');
+
+        //Funções
     Route::get('mostra_regulares', 'listar_matriculasController@index');
     Route::get('mostra_irregulares', 'lista_matriculas_irregularesController@index');
     Route::get('/matricula', 'listar_matriculasController@matricula');

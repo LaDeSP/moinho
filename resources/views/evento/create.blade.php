@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="text-success"> Adicionar Evento </h1>
-    {{ dd(getColumn()) }}
+    
 
     @if( \Session::has('message') )
         <h3 class="alert alert-success alert-dismissible fade show" role="alert">
@@ -194,11 +194,14 @@
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"> {{ $evento->nome_evento }} </h5>
                         <small> 
-                            <a href="{{ route('evento.edit', $evento->id)}}" title="Alterar Evento">
+                            <a href="{{ route('evento.edit', $evento->id) }}" title="Alterar Evento">
                                 <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
                             </a>
-                            <a href="{{ route('evento.show', $evento->id)}}" title="Visualizar Evento">
+                            <a href="{{ route('evento.show', $evento->id) }}" title="Visualizar Evento">
                                 <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
+                            </a>
+                            <a href="/evento/participante/{{ $evento->id }}/edit" title="Participantes">
+                                <i class="fa fa-user icon text-success" aria-hidden="true"></i>
                             </a>
                         </small>
                     </div>
