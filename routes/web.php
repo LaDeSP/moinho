@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::resource('participante', 'participanteController');
     Route::resource('user', 'userController');
     Route::resource('ocorrencia','OcorrenciaController');
+    Route::resource('frequencia','frequenciaController');
     Route::resource('advertencia','AdvertenciaController');
     Route::resource('evento','eventoController');
     Route::resource('evento/participante','eventoParticipanteController');
@@ -62,10 +63,13 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('auth/logout', 'Auth\LoginController@logout');
     Route::get('turma/teste', 'turmaController@teste');
+   
 
     Route::get('/evento/remove/{id}', 'eventoController@remove');
     Route::get('/ocorrencia/remove/{id}', 'OcorrenciaController@remove');
     Route::get('/advertencia/remove/{id}', 'AdvertenciaController@remove');
+
+    Route::get('/frequencia/ajaxDisciplina', 'frequenciaController@ajaxDisciplina');
 
     Route::get('/colaborador/remove/{id}', 'colaboradorController@remove');
     //Route::get('/evento/participante/{id}', 'eventoController@participante');
@@ -74,7 +78,8 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     //Route::post('/evento/participante/{id}', 'eventoController@addParticipante');
 
 
-    
+   
+
     
     
     //Relatórios

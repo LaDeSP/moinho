@@ -156,7 +156,7 @@ class PermissionsTableSeeder extends Seeder
         $administrador = Role::where('name', '=', 'administrador') -> first();
         $administrador -> attachPermissions(array($ver_colaborador, $criar_colaborador, $ver_turma, 
             $ver_matricula, $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias));
+            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias, $ver_advertencias, $excluir_advertencias));
 
         $diretor = Role::where('name', 'diretor') -> first();
         $diretor -> attachPermissions(array(
@@ -168,7 +168,7 @@ class PermissionsTableSeeder extends Seeder
 
         $coordenador = Role::where('name', 'coordenador') -> first();
         $coordenador -> attachPermissions(array(
-            $ver_participante,$ver_ocorrencias, $ver_advertencias
+            $ver_participante,$ver_ocorrencias
         ));
 
         $social = Role::where('name', 'social') -> first();
@@ -187,7 +187,6 @@ class PermissionsTableSeeder extends Seeder
             $ver_participante, $ver_turma, $ver_matricula,
             $criar_matricula,$ver_ocorrencias
         ));
-
-
+        
     }
 }

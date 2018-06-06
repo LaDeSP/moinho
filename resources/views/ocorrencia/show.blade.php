@@ -68,11 +68,13 @@ use PHP\test;
                         <textarea class="form-control" name="motivo" rows="5" disabled> {{$ocorrencia->motivo}}</textarea>
             </div>
     </div>
+    @permission('excluir-ocorrencias')
     <div class="text-right">
         <a href="/ocorrencia/remove/{{ $id }}">
             <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
         </a>
     </div>
+    @endpermission
 </form>
     @endsection
 

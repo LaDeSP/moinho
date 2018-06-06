@@ -332,3 +332,32 @@
    // }
 
     //'nome_turma.*', 
+   function buscar_turma_colaborador($id) //buscar a turma do colaborador
+    {
+        $query = DB::table('disciplina')
+            ->join('colaborador', 'colaborador.id', '=', 'disciplina.colaborador_id')
+            ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+            ->join('turma_disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
+            ->join('turma','turma.id','=','turma_disciplina.turma_id')
+            ->join('nome_turma','nome_turma.id','=','turma.nome_turma_id')
+            ->where('disciplina.colaborador_id','=',$id)
+            ->where('turma.ano', '=', date('Y'))
+            ->get();
+        return $query;
+    }
+
+    function buscar_disciplina_colaborador($id, $turma) //buscar as disciplinas do colaborador na turma
+    {
+        $query = DB::table('disciplina')
+        ->join('colaborador', 'colaborador.id', '=', 'disciplina.colaborador_id')
+        ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
+        ->join('turma_disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
+        ->join('turma','turma.id','=','turma_disciplina.turma_id')
+        ->join('nome_turma','nome_turma.id','=','turma.nome_turma_id')
+        ->select('*','disciplina.*')
+        ->where('disciplina.colaborador_id','=',$id)
+        ->where('turma.id','=',$turma)
+        
+        ->get();
+        return $query;
+    }

@@ -420,20 +420,7 @@ INSERT INTO `pessoa` (`id`, `nome`, `cpf`, `data_nascimento`, `Endereco_id`) VAL
 (193, 'Joanna Souza', '53255325353', '2017-11-27', 87),
 (194, 'Joao', '44343323253', '2017-11-26', 87);
 
--- --------------------------------------------------------
 
---
--- Estrutura da tabela `presenca`
---
-
-CREATE TABLE `presenca` (
-  `id` int(11) NOT NULL,
-  `data` date DEFAULT NULL,
-  `presenca` varchar(45) DEFAULT NULL,
-  `justificativa` varchar(1000) DEFAULT NULL,
-  `participante_id` int(11) NOT NULL,
-  `disciplina_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -708,13 +695,6 @@ ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Endereco_id` (`Endereco_id`);
 
---
--- Indexes for table `presenca`
---
-ALTER TABLE `presenca`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_presenca_participante1_idx` (`participante_id`),
-  ADD KEY `fk_presenca_disciplina1_idx` (`disciplina_id`);
 
 --
 -- Indexes for table `responsavel_evento`
@@ -956,14 +936,6 @@ ALTER TABLE `participante_evento`
 ALTER TABLE `pessoa`
   ADD CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`Endereco_id`) REFERENCES `Endereco` (`id`);
 
---
--- Limitadores para a tabela `presenca`
---
-ALTER TABLE `presenca`
-  ADD CONSTRAINT `fk_presenca_participante1` FOREIGN KEY (`participante_id`) REFERENCES `participante` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `presenca_ibfk_1` FOREIGN KEY (`disciplina_id`) REFERENCES `disciplina` (`id`);
-
---
 -- Limitadores para a tabela `responsavel_evento`
 --
 ALTER TABLE `responsavel_evento`

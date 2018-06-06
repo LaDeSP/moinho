@@ -124,7 +124,14 @@
                             </h4>
                         </a>
                     </li>
-
+                    <!-- Link para estudantes/participantes-->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('frequencia.create')}}">
+                            <h4 class="green">
+                                <i class="fa fa-graduation-cap" aria-hidden="true"></i> Frequência 
+                            </h4>
+                        </a>
+                    </li>
                     @permission('ver-inscricao')
                     <!-- Link para inscrição-->
                     <li class="nav-item">
@@ -175,7 +182,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('escola.create')}}">
                             <h4 class="green">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i> <?php echo Lang::get('conteudo.school');?> 
+                                <i class="fa fa-university" aria-hidden="true"></i> <?php echo Lang::get('conteudo.school');?> 
                             </h4>
                         </a>
                     </li>
@@ -207,7 +214,8 @@
                         </a>
                     </li>
                     @endpermission
-
+                    
+                    @permission('ver-advertencias')
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('advertencia.create')}}">
                             <h4 class="yellow">
@@ -215,7 +223,7 @@
                             </h4>
                         </a>
                     </li>
-
+                    @endpermission
                     @endif
                
                 <li class="nav-item">

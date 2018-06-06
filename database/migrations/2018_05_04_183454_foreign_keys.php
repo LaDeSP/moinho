@@ -49,7 +49,7 @@ class ForeignKeys extends Migration
         });
 
         //Novos
-
+       
         Schema::table('eventos', function (Blueprint $table) {
             $table->foreign('colaborador_id')->references('id')->on('colaborador');
         });
@@ -79,6 +79,10 @@ class ForeignKeys extends Migration
             $table->foreign('tipo_ocorrencia_advertencia')->references('id')->on('tipo_ocorrencia_advertencia');
             $table->foreign('ocorrencia_id')->references('id')->on('ocorrencia');
         });
+        
+        Schema::table('disciplina',function(Blueprint $table){
+            $table->foreign('colaborador_id')->references('id')->on('colaborador');
+        });
 
         Schema::table('matricula',function(Blueprint $table){
             $table->foreign('status_matricula_id')->references('id')->on('status_matricula');
@@ -89,15 +93,19 @@ class ForeignKeys extends Migration
         Schema::table('turma',function(Blueprint $table){
             $table->foreign('nome_turma_id')->references('id')->on('nome_turma');
         });
-
-        Schema::table('disciplina',function(Blueprint $table){
-            $table->foreign('colaborador_id')->references('id')->on('colaborador');
-        });
+      
 
         Schema::table('turma_disciplina',function(Blueprint $table){
             $table->foreign('turma_id')->references('id')->on('turma');
             $table->foreign('disciplina_id')->references('id')->on('disciplina');            
         });
+
+        Schema::table('frequencia',function(Blueprint $table){
+            $table->foreign('disciplina_id')->references('id')->on('disciplina');    
+            $table->foreign('participante_id')->references('id')->on('matricula');
+
+        }); 
+
 
     }
     /**
@@ -134,5 +142,6 @@ class ForeignKeys extends Migration
         Schema::table('documentos', function (Blueprint $table){
             $table->dropForeign(['documento_tipo_id', 'inscricao_id']);
         });
+        
     }
 }

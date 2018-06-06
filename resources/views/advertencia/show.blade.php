@@ -93,12 +93,14 @@ use PHP\test;
                     <textarea name="observacao" rows="5" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
+                @permission('excluir-advertencias')
+
                 <div class="text-right">
                     <a href="/advertencia/remove/{{ $id }}">
                         <i class="fa fa-trash icon text-warning" aria-hidden="true"></i>
                     </a>
                 </div>
-
+                @endpermission
                <?php $ocorrencia = busca_ocorrencia_participante($advertencia->ocorrencia_id); ?> 
 
                <h3 class="text-danger"> Ocorrência associada </h3>

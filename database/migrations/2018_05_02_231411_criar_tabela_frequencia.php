@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaPresencas extends Migration
+class CriarTabelaFrequencia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CriarTabelaPresencas extends Migration
      */
     public function up()
     {
-        Schema::create('presenca', function (Blueprint $table) {
+        Schema::create('frequencia', function (Blueprint $table) {
             $table->increments('id');
             $table->date('data');
-            $table->string('presenca');
-            $table->string('justificativa');
-            $table->integer('participante_id')->unsigned;
-            $table->integer('disciplina_id')->unsigned;
+            $table->boolean('presenca');
+            $table->string('justificativa')->nullable();;
+            $table->unsignedInteger('participante_id')->unsigned; //vai referenciar matricula.id
+            $table->unsignedInteger('disciplina_id')->unsigned;
         });
+
+        
     }
 
     /**
@@ -30,6 +32,6 @@ class CriarTabelaPresencas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presenca');
+        Schema::dropIfExists('frequencia');
     }
 }
