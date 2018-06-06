@@ -106,6 +106,21 @@ class ForeignKeys extends Migration
 
         }); 
 
+        //Incio Relatórios
+        Schema::table('relatorio_role',function(Blueprint $table){
+            $table->foreign('relatorio_id')->references('id')->on('relatorios');
+            $table->foreign('role_id')->references('id')->on('roles');            
+        });
+
+        Schema::table('juntar',function(Blueprint $table){
+            $table->foreign('relatorio_id')->references('id')->on('relatorios');
+        });
+
+        Schema::table('coluna',function(Blueprint $table){
+            $table->foreign('relatorio_id')->references('id')->on('relatorios');
+        });
+        //Fim Relatórios
+
 
     }
     /**
