@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Coluna extends Migration
+class Tipos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class Coluna extends Migration
      */
     public function up()
     {
-        Schema::create('coluna', function (Blueprint $table) {
+        Schema::create('tipos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('coluna');
             $table->string('nome');
-            $table->string('tabela');
-            $table->timestamps();
+            $table->string('input');
+            $table->string('tipo')->nullable();;
 
-            $table->unsignedInteger('relatorio_id');
-            $table->unsignedInteger('tipo_id'); //Gerar o tipo primeiro que a coluna
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ class Coluna extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coluna');
+        Schema::dropIfExists('tipos');
     }
 }

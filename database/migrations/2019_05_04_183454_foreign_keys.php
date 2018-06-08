@@ -118,6 +118,11 @@ class ForeignKeys extends Migration
 
         Schema::table('coluna',function(Blueprint $table){
             $table->foreign('relatorio_id')->references('id')->on('relatorios');
+            $table->foreign('tipo_id')->references('id')->on('tipos');
+        });
+
+        Schema::table('condicoes',function(Blueprint $table){
+            $table->foreign('tipo_id')->references('id')->on('tipos');
         });
         //Fim Relatórios
 

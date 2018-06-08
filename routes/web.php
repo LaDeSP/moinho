@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::resource('advertencia','AdvertenciaController');
     Route::resource('evento','eventoController');
     Route::resource('evento/participante','eventoParticipanteController');
+    Route::resource('relatorio','RelatorioController');
 
     //Get
         //Paginas
@@ -82,7 +83,14 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
 
     
     
-    //Relatórios
+    #______________________--Relatórios--_____________________#
+
+    //Novos
+    //Route::get('/reports', 'RelatorioController@getReports');
+    Route::get('/reports/{id}/column', 'RelatorioController@getColumns');
+    Route::get('/reports/{id}/condition', 'RelatorioController@getConditions');
+
+    //Antigos, excluir depois de concluir a implementação dos relatórios
     Route::get('/relatorio_inscricao', 'relatorioController@export');
     Route::get('/relatorio_participante', 'participanteController@export');
     Route::get('/relatorio_colaborador', 'colaboradorController@export');
