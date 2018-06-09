@@ -38,10 +38,10 @@ class JoinTableSeeder extends Seeder
 
             #Inner join Pessoas
                 $join                     = new Juntar();
-                $join->tabela1            = 'pessoa_evento';
-                $join->tabela2            = 'pessoas';
-                $join->coluna1            = 'pessoa_id';
-                $join->coluna2            = 'id';
+                $join->tabela1            = 'pessoas';
+                $join->tabela2            = 'pessoa_evento';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'pessoa_id';
                 $join->condicao           = '=';
 
                 #Associar a query
@@ -62,14 +62,27 @@ class JoinTableSeeder extends Seeder
 
             #Inner join Situação
                 $join                     = new Juntar();
-                $join->tabela1            = 'evento_situacao';
-                $join->tabela2            = 'situacoes';
-                $join->coluna1            = 'situacao_id';
-                $join->coluna2            = 'id';
+                $join->tabela1            = 'situacoes';
+                $join->tabela2            = 'evento_situacao';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'situacao_id';
                 $join->condicao           = '=';
 
                 #Associar a query
                 $join->relatorio()->associate($relatorio_evento);
                 $join->save();
+
+        #______________________--Relatório Colaborador--_____________________#
+        #Inner join Pessoa_evento
+        $join                     = new Juntar();
+        $join->tabela1            = 'pessoas';
+        $join->tabela2            = 'colaborador';
+        $join->coluna1            = 'id';
+        $join->coluna2            = 'pessoa_id';
+        $join->condicao           = '=';
+
+        #Associar a query
+        $join->relatorio()->associate($relatorio_colaborador);
+        $join->save();
     }
 }

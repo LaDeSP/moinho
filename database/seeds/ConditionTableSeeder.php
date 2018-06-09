@@ -23,6 +23,9 @@ class ConditionTableSeeder extends Seeder
             #______________________--Tinyint--_____________________#
             $tipo_tinyint = Tipos::where('nome', '=', 'tinyint') -> first();
 
+            #______________________--Int--_____________________#
+            $tipo_int = Tipos::where('nome', '=', 'int') -> first();
+
             #______________________--Date--_____________________#
             $tipo_date = Tipos::where('nome', '=', 'date') -> first();
 
@@ -39,7 +42,7 @@ class ConditionTableSeeder extends Seeder
         #1
         $condition = new Condicao;
         $condition->nome = 'Igual a';
-        $condition->condicao = '=';
+        $condition->condicao = 'REGEXP';
         $condition->tipo()->associate($tipo_string);
         $condition->save();
 
@@ -77,6 +80,35 @@ class ConditionTableSeeder extends Seeder
         $condition->nome = 'Menor que';
         $condition->condicao = '<';
         $condition->tipo()->associate($tipo_date);
+        $condition->save();
+
+        # Int
+        #1
+        $condition = new Condicao;
+        $condition->nome = 'Igual a';
+        $condition->condicao = '=';
+        $condition->tipo()->associate($tipo_int);
+        $condition->save();
+
+        #2
+        $condition = new Condicao;
+        $condition->nome = 'Diferente de';
+        $condition->condicao = '!=';
+        $condition->tipo()->associate($tipo_int);
+        $condition->save();
+
+        #3
+        $condition = new Condicao;
+        $condition->nome = 'Maior que';
+        $condition->condicao = '>';
+        $condition->tipo()->associate($tipo_int);
+        $condition->save();
+
+        #4
+        $condition = new Condicao;
+        $condition->nome = 'Menor que';
+        $condition->condicao = '<';
+        $condition->tipo()->associate($tipo_int);
         $condition->save();
     }
 }

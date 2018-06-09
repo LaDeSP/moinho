@@ -57,5 +57,11 @@ class TypeTableSeeder extends Seeder
         $type->tipo         = "day";
         $type->input        = "date"; 
         $type->save();
+
+        #8
+        $type               = new Tipos;
+        $type->nome         = "int";
+        $type->input        = "number";        
+        $type->save();
     }
 }

@@ -180,6 +180,12 @@ return [
         
         // Entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
+
+        /**
+         * Snappy PDF
+         * Export HTML to Pdf
+         */
+        Barryvdh\Snappy\ServiceProvider::class
     ],
 
     /*
@@ -232,6 +238,13 @@ return [
 
         //Entrust
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+
+        /**
+         * Snappy PDF
+         * Export HTML to Pdf
+         */
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 

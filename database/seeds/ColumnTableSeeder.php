@@ -33,6 +33,9 @@ class ColumnTableSeeder extends Seeder
 
             #______________________--Tinyint--_____________________#
             $tipo_tinyint = Tipos::where('nome', '=', 'tinyint') -> first();
+            
+            #______________________--Int--_____________________#
+            $tipo_int = Tipos::where('nome', '=', 'int') -> first();
 
             #______________________--Date--_____________________#
             $tipo_date = Tipos::where('nome', '=', 'date') -> first();
@@ -83,13 +86,50 @@ class ColumnTableSeeder extends Seeder
 
         #______________________--Relatório Colaborador--_____________________#
             #Colunas da tabela Colaborador
+
             #1
+            $coluna = new Coluna;
+            $coluna->coluna = 'nome';
+            $coluna->nome = 'Nome do Colaborador';
+            $coluna->tabela = 'pessoas';
+            $coluna->relatorio()->associate($relatorio_colaborador);
+            $coluna->tipo()->associate($tipo_string);
+            $coluna->save();
+
+            #2
+            $coluna = new Coluna;
+            $coluna->coluna = 'ano_ingreco';
+            $coluna->nome = 'Ano de Ingresso';
+            $coluna->tabela = 'colaborador';
+            $coluna->relatorio()->associate($relatorio_colaborador);
+            $coluna->tipo()->associate($tipo_int);
+            $coluna->save();
+
+            #3
             $coluna = new Coluna;
             $coluna->coluna = 'area_atuacao';
             $coluna->nome = 'Aréa de Atuação';
             $coluna->tabela = 'colaborador';
             $coluna->relatorio()->associate($relatorio_colaborador);
             $coluna->tipo()->associate($tipo_string);
+            $coluna->save();
+
+            #4
+            $coluna = new Coluna;
+            $coluna->coluna = 'cpf';
+            $coluna->nome = 'CPF do Colaborador';
+            $coluna->tabela = 'pessoas';
+            $coluna->relatorio()->associate($relatorio_colaborador);
+            $coluna->tipo()->associate($tipo_string);
+            $coluna->save();
+
+            #4
+            $coluna = new Coluna;
+            $coluna->coluna = 'data_nascimento';
+            $coluna->nome = 'Data de Nascimento do Colaborador';
+            $coluna->tabela = 'pessoas';
+            $coluna->relatorio()->associate($relatorio_colaborador);
+            $coluna->tipo()->associate($tipo_date);
             $coluna->save();
 
             # continuar a colocar as outras colunas

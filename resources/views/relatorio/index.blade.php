@@ -14,7 +14,17 @@
 
 @section('content')
 
+@if( \Session::has('error') )
+    <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ \Session::get('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h3>
+@endif
+
 <h1> Relatórios </h1>
+<label for="" class="text-secondary"> Escolha um relatório para poder gera-ló.</label>
 <div class="row">
     <select class="form-control col-md-4" name="report" id="report">
         <option value="vazio">Selecione o tipo de relatório</option>
@@ -23,12 +33,29 @@
         @endforeach
     </select>
 </div>
+
 <div id="selects" class="row">
 </div>
-<form action="" id="form">
-    <h4> Filtros </h1>
-    <div class"list-group" id="list">
-        
+
+<div id="campos" class="row">
+</div>
+
+<form method= "POST" action="/reports/create" enctype="multipart/form-data" class="row">
+    {{ csrf_field() }}
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-outline-danger " id="generate_report" disabled> Gerar Relatório em Csv </button>    
+    </div>   
+    <div class="col-md-6">
+        <h4> Filtros </h4>
+        <label for="" class="text-secondary">Se não houver nenhum filtro adicionado, o relatório será gerado sem filtros.</label>        
+        <div class"list-group" id="list"> 
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4> Campos </h4>
+        <label for="" class="text-secondary" >Se não houver nenhum campo adicionado, todos os campos apareceram no relatório. A ordem altera o relatório.</label>
+        <div class"list-group" id="listCampos">
+        </div>
     </div>
 </form>
 
@@ -44,30 +71,51 @@
             id = e.target.value;
             if(id != 'vazio'){
                 if($('#column').length){
-                    console.log('sim');
                     excluir('column');
-                    $('#list').empty();
                 }
+                $('#list').empty();
+                $('#listCampos').empty();
                 select = `
+                    <label for="" class="text-secondary col-md-12"> Selecione algum campo para poder criar um filtro.</label>
                     <select class="form-control col-md-3" name="column" id="column">
                         <option value="vazio"> Selecione o campo </option>
                     </select>
                 `;
                 $('#selects').empty();
                 $('#selects').append(select);
+                $('#list').append('<input name="id_report" class="col-md-3 form-control d-none" value="'+id+'" type="number"/>');                
                 $.get('/reports/'+id+'/column', function(data, status){
-                    //console.log(data);
+                    element = $('#column');
                     data.forEach(function(item, index){
-                        //console.log(item);
-                        $('#column').append('<option value="'+item.id+'">'+item.nome+'</option>')
+                        element.append('<option value="'+item.id+'">'+item.nome+'</option>')
                     });
                 });
+
+                select = `
+                    <label for="" class="text-secondary col-md-12"> Selecione todos os campos que deseja no relatório.</label>
+                    <br>
+                    <select class="form-control col-md-3" name="select" id="select">
+                        <option value="vazio"> Selecione o campo </option>
+                    </select>
+                `;
+                $('#campos').empty();
+                $('#campos').append(select);
+                $.get('/reports/'+id+'/column', function(data, status){
+                    element = $('#select');
+                    data.forEach(function(item, index){
+                        element.append('<option value="'+item.id+'">'+item.nome+'</option>')
+                    });
+                });
+                $('#campos').append(`<button id="addCampo" type="submit" class="btn btn-outline-success"> Adicionar </button>`);                
             }
             else{
                 $('#selects').empty();
                 $('#list').empty();
+                $('#listCampos').empty();
+                $('#campos').empty();
             }
         });
+
         $(document).on('change', '#column', function(e){
             id = e.target.value;
             if(id != 'vazio'){
@@ -101,6 +149,7 @@
                 excluir('add');                
             }
         });
+
         $('#selects').on('change', function(e){
             condition = $('#condition');
             input = $('#input');
@@ -118,20 +167,56 @@
                 }            
             }
         });
+
+        $('#report').on('change', function(e){
+            condition = $('#report');
+            if(condition.val() != 'vazio'){
+                add = $('#generate_report');
+                add.removeAttr('disabled');
+                add.removeClass('btn-outline-danger');
+                add.addClass('btn-outline-success');
+            } else{
+                if($('#report').length){
+                    add = $('#generate_report');                    
+                    add.attr('disabled', '');
+                    add.removeClass('btn-outline-success');
+                    add.addClass('btn-outline-danger');
+                }            
+            }
+        });
+
         $(document).on('click', '#add', function(e){
             condition = $('#condition option:selected');
             input = $('#input');
             column = $('#column option:selected');
-            console.log(condition.val());
-            console.log(condition.text());
-            console.log(input.val());
-            //Verificar se ja existe um filtro igual
+            data = input.val();
+            if(input.attr('type') == 'date'){
+                data = new Date(data);
+                data = data.getDate()+`/`+( data.getMonth()+1 )+`/`+data.getFullYear();
+            }
             $('#list').append(`
                 <div class="list-group-item list-group-item-action" id="`+cont+`">
-                    `+column.text()+` `+condition.text()+` `+input.val()+` 
+                    `+column.text()+` `+condition.text()+` `+data+` 
                     <button onclick="excluir('`+cont+`')" class="btn btn-outline-danger float-right">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </button>
+                    <input name="id_conlumn[]" class="col-md-3 form-control d-none" value="`+column.val()+`" type="number"/>
+                    <input name="id_condition[]" class="col-md-3 form-control d-none" value="`+condition.val()+`" type="number"/>
+                    <input name="input_condition[]" class="col-md-3 form-control d-none" value="`+input.val()+`" type="text"/>
+                </div>
+            `);
+            cont++;
+        });
+
+        $(document).on('click', '#addCampo', function(e){
+            select = $('#select option:selected');
+            $('#listCampos').append(`
+                <div class="list-group-item list-group-item-action" id="select`+cont+`">
+                    `+select.text()+` 
+                    <button onclick="excluir('select`+cont+`')" class="btn btn-outline-danger float-right">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <input name="id_select[]" class="col-md-3 form-control d-none" value="`+select.val()+`" type="number"/>
                 </div>
             `);
             cont++;

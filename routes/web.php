@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     //Route::get('/reports', 'RelatorioController@getReports');
     Route::get('/reports/{id}/column', 'RelatorioController@getColumns');
     Route::get('/reports/{id}/condition', 'RelatorioController@getConditions');
+    Route::post('/reports/create', 'RelatorioController@create');
 
     //Antigos, excluir depois de concluir a implementação dos relatórios
     Route::get('/relatorio_inscricao', 'relatorioController@export');
