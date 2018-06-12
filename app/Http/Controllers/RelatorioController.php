@@ -76,10 +76,9 @@ class RelatorioController extends Controller
             for( $i = 0; $i < count($request->id_conlumn); $i++ ){
                 $column = Coluna::find($request->id_conlumn[$i]);
                 $condition = Condicao::find($request->id_condition[$i]);
-                //input_condition[$i]
                 $coluna = $column->tabela.'.'.$column->coluna;
                 $condicao = $condition->condicao;
-                //dd($coluna.' '.$condicao.' '.$request->input_condition[$i]);
+                dd($coluna.' '.$condicao.' '.$request->input_condition[$i]);
                 $query = $query->where($coluna, $condicao, $request->input_condition[$i]);
             }
         }
@@ -94,8 +93,10 @@ class RelatorioController extends Controller
         $data = date('d/m/Y');
 
         $data = date('d/m/Y');
-        return view('relatorio.pdf', compact('query', 'columns', 'report_name', 'dataReport', 'data'));
-        //return $this->export($query, $report->nome);
+        if($request->tipo_relatorio == 1)
+            return view('relatorio.pdf', compact('query', 'columns', 'report_name', 'dataReport', 'data'));
+        if($request->tipo_relatorio == 0)
+            return $this->export($query, $report->nome);
     }
 
     /**

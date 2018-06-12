@@ -17,7 +17,6 @@ class Tipos extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('input');
-            $table->string('tipo')->nullable();;
 
             $table->timestamps();
         });

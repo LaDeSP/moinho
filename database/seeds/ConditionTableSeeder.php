@@ -28,87 +28,178 @@ class ConditionTableSeeder extends Seeder
 
             #______________________--Date--_____________________#
             $tipo_date = Tipos::where('nome', '=', 'date') -> first();
-
-            #______________________--Date Year--_____________________#
-            $tipo_date_year = Tipos::where('tipo', '=', 'year') -> first();
-
-            #______________________--Date Month--_____________________#
-            $tipo_date_month = Tipos::where('tipo', '=', 'month') -> first();
-            
-            #______________________--Date day--_____________________#
-            $tipo_date_day = Tipos::where('tipo', '=', 'day') -> first();
         
         # String
-        #1
-        $condition = new Condicao;
-        $condition->nome = 'Igual a';
-        $condition->condicao = 'REGEXP';
-        $condition->tipo()->associate($tipo_string);
-        $condition->save();
+            #1
+            $condition = new Condicao;
+            $condition->nome = 'Igual a';
+            $condition->condicao = 'REGEXP';
+            $condition->tipo()->associate($tipo_string);
+            $condition->save();
 
-        #2
-        $condition = new Condicao;
-        $condition->nome = 'Diferente de';
-        $condition->condicao = '!=';
-        $condition->tipo()->associate($tipo_string);
-        $condition->save();
+            #2
+            $condition = new Condicao;
+            $condition->nome = 'Diferente de';
+            $condition->condicao = '!=';
+            $condition->tipo()->associate($tipo_string);
+            $condition->save();
 
         # Date
-        #1
-        $condition = new Condicao;
-        $condition->nome = 'Igual a';
-        $condition->condicao = '=';
-        $condition->tipo()->associate($tipo_date);
-        $condition->save();
+            # Normal
+                # 1
+                $condition = new Condicao;
+                $condition->nome = 'Igual a';
+                $condition->condicao = '=';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
 
-        #2
-        $condition = new Condicao;
-        $condition->nome = 'Diferente de';
-        $condition->condicao = '!=';
-        $condition->tipo()->associate($tipo_date);
-        $condition->save();
+                #2
+                $condition = new Condicao;
+                $condition->nome = 'Diferente de';
+                $condition->condicao = '!=';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
 
-        #3
-        $condition = new Condicao;
-        $condition->nome = 'Maior que';
-        $condition->condicao = '>';
-        $condition->tipo()->associate($tipo_date);
-        $condition->save();
+                #3
+                $condition = new Condicao;
+                $condition->nome = 'Maior que';
+                $condition->condicao = '>';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
 
-        #4
-        $condition = new Condicao;
-        $condition->nome = 'Menor que';
-        $condition->condicao = '<';
-        $condition->tipo()->associate($tipo_date);
-        $condition->save();
+                #4
+                $condition = new Condicao;
+                $condition->nome = 'Menor que';
+                $condition->condicao = '<';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+            /*
+            ** Pode não ser necessario
+            # Year
+                # 1
+                $condition = new Condicao;
+                $condition->nome = 'Igual ao ano';
+                $condition->especial = 0;
+                $condition->condicao = 'YEAR($table) =';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #2
+                $condition = new Condicao;
+                $condition->nome = 'Diferente do ano';
+                $condition->especial = 0;
+                $condition->condicao = 'YEAR($table) !=';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #3
+                $condition = new Condicao;
+                $condition->nome = 'Maior que o ano';
+                $condition->especial = 0;
+                $condition->condicao = 'YEAR($table) >';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #4
+                $condition = new Condicao;
+                $condition->nome = 'Menor que o ano';
+                $condition->especial = 0;
+                $condition->condicao = 'YEAR($table) <';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+            # Month
+                # 1
+                $condition = new Condicao;
+                $condition->nome = 'Igual ao mês';
+                $condition->especial = 0;
+                $condition->condicao = 'MONTH($table) =';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #2
+                $condition = new Condicao;
+                $condition->nome = 'Diferente do mês';
+                $condition->especial = 0;
+                $condition->condicao = 'MONTH($table) !=';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #3
+                $condition = new Condicao;
+                $condition->nome = 'Maior que o mês';
+                $condition->especial = 0;
+                $condition->condicao = 'MONTH($table) >';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #4
+                $condition = new Condicao;
+                $condition->nome = 'Menor que o mês';
+                $condition->especial = 0;
+                $condition->condicao = 'MONTH($table) <';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+            # DAY
+                # 1
+                $condition = new Condicao;
+                $condition->nome = 'Igual ao dia';
+                $condition->especial = 0;
+                $condition->condicao = 'DAY($table) =';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #2
+                $condition = new Condicao;
+                $condition->nome = 'Diferente do dia';
+                $condition->especial = 0;
+                $condition->condicao = 'DAY($table) !=';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #3
+                $condition = new Condicao;
+                $condition->nome = 'Maior que o dia';
+                $condition->especial = 0;
+                $condition->condicao = 'DAY($table) >';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+
+                #4
+                $condition = new Condicao;
+                $condition->nome = 'Menor que o dia';
+                $condition->especial = 0;
+                $condition->condicao = 'DAY($table) <';
+                $condition->tipo()->associate($tipo_date);
+                $condition->save();
+            */
 
         # Int
-        #1
-        $condition = new Condicao;
-        $condition->nome = 'Igual a';
-        $condition->condicao = '=';
-        $condition->tipo()->associate($tipo_int);
-        $condition->save();
+            #1
+            $condition = new Condicao;
+            $condition->nome = 'Igual a';
+            $condition->condicao = '=';
+            $condition->tipo()->associate($tipo_int);
+            $condition->save();
 
-        #2
-        $condition = new Condicao;
-        $condition->nome = 'Diferente de';
-        $condition->condicao = '!=';
-        $condition->tipo()->associate($tipo_int);
-        $condition->save();
+            #2
+            $condition = new Condicao;
+            $condition->nome = 'Diferente de';
+            $condition->condicao = '!=';
+            $condition->tipo()->associate($tipo_int);
+            $condition->save();
 
-        #3
-        $condition = new Condicao;
-        $condition->nome = 'Maior que';
-        $condition->condicao = '>';
-        $condition->tipo()->associate($tipo_int);
-        $condition->save();
+            #3
+            $condition = new Condicao;
+            $condition->nome = 'Maior que';
+            $condition->condicao = '>';
+            $condition->tipo()->associate($tipo_int);
+            $condition->save();
 
-        #4
-        $condition = new Condicao;
-        $condition->nome = 'Menor que';
-        $condition->condicao = '<';
-        $condition->tipo()->associate($tipo_int);
-        $condition->save();
+            #4
+            $condition = new Condicao;
+            $condition->nome = 'Menor que';
+            $condition->condicao = '<';
+            $condition->tipo()->associate($tipo_int);
+            $condition->save();
     }
 }

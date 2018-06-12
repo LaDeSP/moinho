@@ -42,8 +42,14 @@
 
 <form method= "POST" action="/reports/create" enctype="multipart/form-data" class="row">
     {{ csrf_field() }}
-    <div class="col-md-12">
-        <button type="submit" class="btn btn-outline-danger " id="generate_report" disabled> Gerar Relatório em Csv </button>    
+    <div class="col-md-3">
+        <select class="form-control" name="tipo_relatorio" id="tipo_relatorio" style="display: inline">
+            <option value="0"> CSV </option>
+            <option value="1"> PDF </option>
+        </select>
+    </div>
+    <div class="col-md-8">
+        <button type="submit" class="btn btn-outline-danger " id="generate_report" disabled> Gerar Relatório </button>    
     </div>   
     <div class="col-md-6">
         <h4> Filtros </h4>

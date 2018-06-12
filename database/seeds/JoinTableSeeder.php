@@ -73,16 +73,40 @@ class JoinTableSeeder extends Seeder
                 $join->save();
 
         #______________________--Relatório Colaborador--_____________________#
-        #Inner join Pessoa_evento
-        $join                     = new Juntar();
-        $join->tabela1            = 'pessoas';
-        $join->tabela2            = 'colaborador';
-        $join->coluna1            = 'id';
-        $join->coluna2            = 'pessoa_id';
-        $join->condicao           = '=';
+            #Inner join Pessoa
+                $join                     = new Juntar();
+                $join->tabela1            = 'pessoas';
+                $join->tabela2            = 'colaborador';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'pessoa_id';
+                $join->condicao           = '=';
 
-        #Associar a query
-        $join->relatorio()->associate($relatorio_colaborador);
-        $join->save();
+                #Associar a query
+                $join->relatorio()->associate($relatorio_colaborador);
+                $join->save();
+
+            #Inner join Endereco
+                $join                     = new Juntar();
+                $join->tabela1            = 'enderecos';
+                $join->tabela2            = 'pessoas';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'endereco_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_colaborador);
+                $join->save();
+
+            #Inner join Contato
+                $join                     = new Juntar();
+                $join->tabela1            = 'contatos';
+                $join->tabela2            = 'pessoas';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'contato_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_colaborador);
+                $join->save();
     }
 }

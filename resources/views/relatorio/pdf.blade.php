@@ -38,7 +38,7 @@
         #titulo{
             display: inline;
         }
-        #relatorio{
+        .relatorio{
             text-align: center;
         }
     </style>
@@ -63,8 +63,10 @@
     <input id="nomeRelatorio" type="text" class="d-none" value="{{ $report_name }}"/>
     <input id="dataRelatorio" type="text" class="d-none" value="{{ $data }}"/>
     <div id="renderPDF">
-        <h2 id="relatorio">
+        <h2 class="relatorio">
             <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
+        </h2>
+        <h2 class="relatorio">
             Relatório: {{ $report_name }}
         </h2>
         <h3>

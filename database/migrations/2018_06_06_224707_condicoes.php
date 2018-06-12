@@ -17,6 +17,7 @@ class Condicoes extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('condicao');
+            $table->boolean('especial')->default(1);
             
             $table->timestamps();
 
