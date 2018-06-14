@@ -319,45 +319,18 @@
         return $table;
     }
 
-    //function procurar_colaborador($id) //encontrar o colaborador pelo user_id que registrou 
-   // {
-     //   $query = DB::table('colaborador')
-         //   ->join('users','users.id','=','colaborador.user_id')
-       //     ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
-           // ->join('contatos', 'contatos.id', '=', 'pessoas.contato_id')
-       //     ->select('*','colaborador.*','pessoas.nome as nomeColaborador')
-       //     ->where('colaborador.user_id','=',$id)
-       //     ->get();
-       // return $query;
-   // }
-
-    //'nome_turma.*', 
-   function buscar_turma_colaborador($id) //buscar a turma do colaborador
+   
+   function buscar_turma_colaborador($id) //buscar a turma que o colaborador ministra as aulas
     {
-        $query = DB::table('disciplina')
-            ->join('colaborador', 'colaborador.id', '=', 'disciplina.colaborador_id')
-            ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
-            ->join('turma_disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
-            ->join('turma','turma.id','=','turma_disciplina.turma_id')
-            ->join('nome_turma','nome_turma.id','=','turma.nome_turma_id')
-            ->where('disciplina.colaborador_id','=',$id)
-            ->where('turma.ano', '=', date('Y'))
-            ->get();
-        return $query;
-    }
-
-    function buscar_disciplina_colaborador($id, $turma) //buscar as disciplinas do colaborador na turma
-    {
-        $query = DB::table('disciplina')
-        ->join('colaborador', 'colaborador.id', '=', 'disciplina.colaborador_id')
-        ->join('pessoas', 'pessoas.id', '=', 'colaborador.pessoa_id')
-        ->join('turma_disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
-        ->join('turma','turma.id','=','turma_disciplina.turma_id')
-        ->join('nome_turma','nome_turma.id','=','turma.nome_turma_id')
-        ->select('*','disciplina.*')
+        $query = DB::table('nome_turma')
+        ->join('turma','nome_turma.id','=','turma.nome_turma_id')
+        ->join('turma_disciplina','turma_disciplina.turma_id','=','turma.id')
+        ->select(DB::raw('turma_disciplina.turma_id as td, turma_id, nome_turma'))
+        ->groupBy('turma_id')
+        ->join('disciplina','disciplina.id','=','turma_disciplina.disciplina_id') 
         ->where('disciplina.colaborador_id','=',$id)
-        ->where('turma.id','=',$turma)
-        
+        ->where('turma.ano', '=', date('Y'))
         ->get();
+
         return $query;
     }

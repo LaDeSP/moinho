@@ -15,6 +15,10 @@ use App\Turma;
 use App\Disciplina;
 use App\TurmaDisciplina;
 
+use App\Frequencia;
+
+use DB;
+
 class frequenciaController extends Controller
 {
     /**
@@ -54,9 +58,34 @@ class frequenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $colaborador = Colaborador::where('user_id', auth()->user()->id)->first();
 
+        if(!isset($request->matricula)){
+            return view('frequencia.create', compact('colaborador'),[
+                'error' => 'Error ao gerar frequência!'
+            ]);
+        }
+
+        //data, presenca, justificativa, participante_id, disciplina_id
+        for($i = 0; $i < count($request->justificativa); $i++){
+            $frequencia = new Frequencia;
+
+            $frequencia->presenca = $request->presenca[$i];
+            $frequencia->disciplina_id = $request->disci; //disciplina
+            $frequencia->participante_id = $request->matricula[$i]; //matricula
+            $frequencia->justificativa = $request->justificativa[$i];
+            $frequencia->data = $request->data; //data da chamada
+
+            $frequencia->save();
+        }
+        return view('frequencia.create', compact('colaborador'),[
+            'message' => 'Frequência gerada com sucesso!'
+        ]);
+
+        //$frequencia->save();
+
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -102,11 +131,50 @@ class frequenciaController extends Controller
         //
     }
 
-    public function ajaxDisciplina(){
-        $turma = Input::get('turma_id'); //peguei o id da turma
-        $turma_disciplina = TurmaDisciplina::where('turma_id','=',$turma); //buscar em turma_disciplina o id
-        //encontrar as disciplinas
-        $disciplinas = Disciplina::where('id', '=', $turma_disciplina->disciplina_id)->get();
-        return response()->json($disciplinas);
+    public function ajaxDisciplina($id){ //passando a turma
+        
+       // $query = DB::table('disciplina')
+        //->join('turma_disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
+        //->join('turma','turma.id','=','turma_disciplina.turma_id')
+        //->where('turma_disciplina.turma_id','=',$id)
+        //->where('turma.ano', '=', date('Y'))
+        //->get();
+        
+        $query = DB::table('disciplina')
+        ->join('turma_disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
+        ->join('turma','turma.id','=','turma_disciplina.turma_id')
+        ->where('turma_disciplina.turma_id','=',$id)
+        ->where('turma.ano', '=', date('Y'))
+        ->get();
+        
+        return response()->json($query);
+      // return Response::json($disciplina);
       }
+      public function ajaxParticipantes($turma, $disciplina)
+    {
+        // listar todos os matriculados regular turma e disciplina.
+        $regular = 1;
+
+        $query = DB::table('matricula')
+        ->join('turma','matricula.turma_id','=','turma.id')
+        ->join('turma_disciplina','turma_disciplina.turma_id','=','turma.id')
+        ->join('disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
+        ->join('inscricao','inscricao.id','=','matricula.inscricao_id')
+        ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
+        ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+        ->join('status_matricula', 'status_matricula.id', '=', 'matricula.status_matricula_id')
+        ->select('pessoas.nome','matricula.id as matricula','status_matricula.status','disciplina.id as disciplina_id','disciplina.nome as disciplina','turma.id as turma')
+        ->where('turma_disciplina.turma_id','=',$turma) //filtro turma
+        ->where('disciplina.id','=',$disciplina) //filtro disciplina
+        ->where('matricula.status_matricula_id','=',$regular)//matricula regular        
+        ->where('turma.ano', '=', date('Y'))
+        ->get();
+           
+        return response()->json($query);
+
+    }
+    public function post(Request $request){
+       
+        $data= $request->data;
+    }
 }

@@ -9,4 +9,6 @@ class Frequencia extends Model
     //
     protected $table = 'frequencia';
 
+    public $timestamps = false;
+
 }
