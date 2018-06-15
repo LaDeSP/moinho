@@ -15,8 +15,11 @@ class ReportRoleTableSeeder extends Seeder
     public function run()
     {
         # Buscando os Relatórios
-            #______________________--Evento--_____________________#
-            $relatorio_evento = Relatorio::where('nome', '=', 'Evento') -> first();
+            #______________________--Participantes do Evento--_____________________#
+            $relatorio_participante_evento = Relatorio::where('nome', '=', 'Participantes do Evento') -> first();
+
+            #______________________--Evento e Períodos--_____________________#
+            $relatorio_evento_periodo = Relatorio::where('nome', '=', 'Eventos e Períodos') -> first();
 
             #______________________--Participante--_____________________#
             $relatorio_participante = Relatorio::where('nome', '=', 'Participante') -> first();
@@ -29,10 +32,16 @@ class ReportRoleTableSeeder extends Seeder
             #______________________--Administrador--_____________________# 
             $role = Role::where('name', '=', 'administrador') -> first();
 
-            #Inserindo o evento
+            #Inserindo o participante evento
             $relatorio_role = new Relatorio_Role;
             $relatorio_role->role()->associate($role);
-            $relatorio_role->relatorio()->associate($relatorio_evento);
+            $relatorio_role->relatorio()->associate($relatorio_participante_evento);
+            $relatorio_role->save();
+
+            #Inserindo o evento periodo
+            $relatorio_role = new Relatorio_Role;
+            $relatorio_role->role()->associate($role);
+            $relatorio_role->relatorio()->associate($relatorio_evento_periodo);
             $relatorio_role->save();
 
             #Inserindo o participante

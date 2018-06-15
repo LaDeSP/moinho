@@ -112,7 +112,7 @@ class colaboradorController extends Controller
         
 
 
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
     /**

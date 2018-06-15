@@ -79,8 +79,7 @@ class documentoController extends Controller
         $document->inscricao_id = $request->help;
         $document->documento_tipo_id = $request->doc_type3; 
         $document->save(['timestamps' => false]);
-        return view('home');
-    }
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');    }
     /**
      * Display the specified resource.
      *

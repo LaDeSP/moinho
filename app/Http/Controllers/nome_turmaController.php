@@ -49,7 +49,7 @@ class nome_turmaController extends Controller
         $formulario->save(['timestamps' => false]);
 
 
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
     /**

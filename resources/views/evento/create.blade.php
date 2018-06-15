@@ -227,12 +227,6 @@
                     </p>
                     <small>
                         Responsável: {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome  }}
-                        <br>
-                        {{ $evento->descricao_evento }}
-                    </small>
-                    <br>
-                    <small>
-                        {{ $evento->observacao }}
                     </small>
                     <br>
                     

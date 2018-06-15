@@ -311,6 +311,6 @@ class eventoController extends Controller
 
     public function addParticipante($request, $id)
     {
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 }

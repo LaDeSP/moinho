@@ -77,7 +77,7 @@ class disciplinaController extends Controller
         $horario->save(['timestamps' => false]);
 
 
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
     /**
