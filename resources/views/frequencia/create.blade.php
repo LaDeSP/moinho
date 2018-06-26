@@ -27,7 +27,7 @@ $data = str_replace("/","-",$data);
                 {{ $error }}
         </h3>
         @endif
-<form id="formRecebimento" method="POST" >
+<form id="formRecebimento" method="POST" novalidate >
         {{ csrf_field() }}
 
     <div class="row">
@@ -46,24 +46,28 @@ $data = str_replace("/","-",$data);
                     <option value="0" disable="true" selected="true"> </option>
                 </select>
             </div>
+            <div class="col-md-4">
+               
+
+            <label for="exampleFormControlInput1">Data da Frequência*</label>
+                        <input type="date" name="data" size="23"  class="form-control validate" 
+            id="data" value="{{$data}}" onkeyup="verifica_vazio(this.value, this.id);" >
+                <div class="invalid-feedback">
+                    Por favor, digite a data da Frequência.
+                </div>
+            </div>
+
             <div class="col-md-2"><br>
-                <button type="submit" class="btn btn-outline-danger" id="pesquisar" disabled >Pesquisar</button>
+                <button type="submit" class="btn btn-outline-danger"  id="pesquisar" >Pesquisar</button>
             </div>
         </div>
     </form>
 
     <form id="salvarFrequencia" method="POST" action="{{ route('frequencia.store') }}" enctype="multipart/form-data" novalidate >
         {{ csrf_field() }}
-            <div class="col-md-4">
-                    <label for="exampleFormControlInput1" hidden="hidden" id="disci">Disciplina</label>
+        <label for="exampleFormControlInput1" id="nova" ></label>
+        <label for="exampleFormControlInput1" id="disc"></label>
 
-                <label for="exampleFormControlInput1">Data da Frequência*</label>
-                            <input type="date" name="data" size="23"  class="form-control validate" 
-                id="data" value="{{$data}}" onkeyup="verifica_vazio(this.value, this.id);" >
-                    <div class="invalid-feedback">
-                        Por favor, digite a data da Frequência.
-                    </div>
-                </div>
     <table class="table" id="tabelaAluno" >
             <thead class="table-success">
               <tr>
@@ -100,22 +104,25 @@ $data = str_replace("/","-",$data);
 <script type="text/javascript">
   
         $(document).ready(function(){  
-        $('#turma').on('change', function(e){
-                       
-                console.log(e);
-                var turma_id = e.target.value;
-            $.get('/frequencia/ajaxDisciplina/' + turma_id ,function(data){
-                
-          $('#disciplina').empty();
-          $('#disciplina').append('<option value="0" disable="true" selected="true"> </option>');
-         
 
-                console.log(data)
+        $('#turma').on('change', function(e){ //se mudar turma ativa aqui
+            $('#disciplina').append('<option value="0" disable="true" selected="true"> </option>');
+
+                  var turma_id = e.target.value;
+
+                console.log(turma_id);
+            $.get('/frequencia/ajaxDisciplina/' + turma_id ,function(data){
+
+                $('#disciplina').empty();
+                $('#disciplina').append('<option value="0" disable="true" selected="true"> </option>');
+         
                 $.each(data, function(index, disciplina){
                    $('#disciplina').append('<option value="'+ disciplina.disciplina_id +'">'+ disciplina.nome +'</option>');
                 })
+                
             });
         });
+
 
     });    
     
@@ -124,34 +131,15 @@ $data = str_replace("/","-",$data);
             var disciplina = document.getElementById("disciplina").value; //disciplina
             var turma = document.getElementById("turma").value; //turma
 
+                console.log(disciplina);
+
+
             if(disciplina != 0 && turma != 0)
             {
+
                 //if(!document.getElementById('pesquisar').disabled) 
                 document.getElementById('pesquisar').disabled=false;  
                 
-                $(document).ready(function(){  
-                    $('#formRecebimento').submit(function(e){
-                        e.preventDefault();
-                        var form = $(this);
-                        $.get('/frequencia/ajaxParticipantes/' + turma + disciplina ,function(data){
-                            $('#disci').empty();
-                            $('#disci').append('<input type="text" name="disci" value="'+ disciplina+'"/>')
-
-                            console.log(data);               
-                            $('#formRecebimento').empty();
-                            
-                            $.each(data, function(index, frequencia){
-                                 $('#matricula').append('<input value='+ frequencia.matricula +' name="matricula[]" class="d-none">'+ frequencia.matricula +'<br></input> ');
-                                 $('#nome').append(''+ frequencia.nome +'<br></input>');
-                                 $('#presenca').append('<input value="'+frequencia.matricula+'" class="freq" type="checkbox" >  <label for="presenca"></label> <br>');
-                                 $('#justificativa').append('<textarea name="justificativa[]" class="just" id_matricula="'+frequencia.matricula+'" rows="1" type="text" > </textarea>  <label for="justificativa"></label>');
-                                 $('#presenca').append('<input name="presenca[]" id="'+frequencia.matricula+'presenca" value="0" type="text" class="d-none"/>');
-                            })
-
-                        });
-                    });
-                });  
-                           
             }
             else
             {
@@ -160,7 +148,39 @@ $data = str_replace("/","-",$data);
             }
            
         }         
-    
+
+        $(document).ready(function(){  
+
+            $('#formRecebimento').submit(function(e){
+                var disciplina = document.getElementById("disciplina").value; //disciplina
+                var turma = document.getElementById("turma").value; //turma
+                data =  document.getElementById("data").value;
+
+                    $('#nova').append('<input name="novaData" type="text" value="'+data+'" hidden>');            
+                    $('#disc').append('<input type="text" name="disci" value="'+ disciplina +'"hidden>');
+
+
+                        e.preventDefault();
+                                        $('#formRecebimento').empty();
+
+                        $.get('/frequencia/ajaxParticipantes/' + turma + disciplina ,function(data){
+
+                            $.each(data, function(index, frequencia){
+
+                                 $('#matricula').append('<input value='+ frequencia.matricula +' name="matricula[]" class="d-none">'+ frequencia.matricula +'<br></input> ');
+                                 $('#nome').append(''+ frequencia.nome +'<br></input>');
+                                 $('#presenca').append('<input value="'+frequencia.matricula+'" class="freq" type="checkbox" >  <label for="presenca"></label> <br>');
+                                 $('#justificativa').append('<textarea name="justificativa[]" class="just" id_matricula="'+frequencia.matricula+'" rows="1" type="text" > </textarea>  <label for="justificativa"></label>');
+                                 $('#presenca').append('<input name="presenca[]" id="'+frequencia.matricula+'presenca" value="0" type="text" class="d-none"/>');
+                            });
+                           
+                        });
+                    });
+        });  
+
+        
+        
+        
    // });
    $(document).on('change', '.freq', function(e){
         console.log(e.target.value+'presenca');
@@ -178,6 +198,9 @@ $data = str_replace("/","-",$data);
        
     });
 
-    
+
+          
+       
+   
 </script>
 

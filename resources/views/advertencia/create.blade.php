@@ -136,12 +136,13 @@ $data = str_replace("/","-",$data);
                                         </a>
                                     </small>
                                 </div>
-                                <small>Ocorrencia: {{ $array->status }}</small>
+                                <small>Advertência: {{ $array->status }}</small>
                                 <small>Data:   {{ date('d/m/Y', strtotime($array->data_advertencia)) }}</small>
                             </span>
                             <br>
-                        </div>
+                       
                     @endif
+                
                     @if($role->name === 'social')
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                 <div class="d-flex w-100 justify-content-between">
@@ -159,9 +160,8 @@ $data = str_replace("/","-",$data);
                                 <small>Data:   {{ date('d/m/Y', strtotime($array->data_advertencia)) }}</small>
                             </span>
                             <br>
-                        </div>
                     @endif
-                            
+                </div>                            
                 @endforeach
             </div>
         </div>

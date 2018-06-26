@@ -16,8 +16,9 @@ class CriarTabelaFrequencia extends Migration
         Schema::create('frequencia', function (Blueprint $table) {
             $table->increments('id');
             $table->date('data');
-            $table->boolean('presenca');
-            $table->string('justificativa')->nullable();;
+            $table->boolean('frequencia');
+            $table->string('justificativa')->nullable();
+            $table->integer('quantidade')->nullable();;
             $table->unsignedInteger('participante_id')->unsigned; //vai referenciar matricula.id
             $table->unsignedInteger('disciplina_id')->unsigned;
         });

@@ -209,7 +209,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('ocorrencia.create')}}">
                             <h4 class="red">
-                                <i class="fa fa-commenting" aria-hidden="true"></i> Ocorrencia
+                                <i class="fa fa-commenting" aria-hidden="true"></i> Ocorrência
                             </h4>
                         </a>
                     </li>
@@ -219,7 +219,7 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('advertencia.create')}}">
                             <h4 class="yellow">
-                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Advertencia
+                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Advertência
                             </h4>
                         </a>
                     </li>

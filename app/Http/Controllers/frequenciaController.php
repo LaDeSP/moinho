@@ -66,15 +66,19 @@ class frequenciaController extends Controller
             ]);
         }
 
+        $data_frequencia = $request->novaData;
+        $disciplina_id=$request->disci;
+       
+
         //data, presenca, justificativa, participante_id, disciplina_id
         for($i = 0; $i < count($request->justificativa); $i++){
             $frequencia = new Frequencia;
 
             $frequencia->presenca = $request->presenca[$i];
-            $frequencia->disciplina_id = $request->disci; //disciplina
+            $frequencia->disciplina_id = $disciplina_id; //disciplina
             $frequencia->participante_id = $request->matricula[$i]; //matricula
             $frequencia->justificativa = $request->justificativa[$i];
-            $frequencia->data = $request->data; //data da chamada
+            $frequencia->data = $data_frequencia; //data da chamada
 
             $frequencia->save();
         }
