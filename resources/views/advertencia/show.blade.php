@@ -127,7 +127,7 @@ use PHP\test;
                    </div>    
            </div>
              
-           <div class="col-md-10" id="pdf">
+           <div class="col-md-10" id="pdf" hidden>
                <div class="row">
                     <table id="print" style="width:80%; height:20%;" >
                             <tr>
