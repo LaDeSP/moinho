@@ -22,6 +22,13 @@
         </button>
     </h3>
 @endif
+<div class="row">
+    <a class="nav-link js-scroll-trigger col-md-2" href="{{ route('evento.create')}}">
+        <h4 class="blue">
+            <i class="fa fa-angle-left" aria-hidden="true"></i> Voltar
+        </h4>
+    </a>
+</div>
 <section>
     <h4 class="text-success"> Pessoas </h4>
     <div class="col-md-4">

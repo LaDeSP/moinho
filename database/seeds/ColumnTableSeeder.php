@@ -15,8 +15,11 @@ class ColumnTableSeeder extends Seeder
     public function run()
     {
         # Buscando os Relatórios
-            #______________________--Evento--_____________________#
-            $relatorio_evento = Relatorio::where('nome', '=', 'Evento') -> first();
+            #______________________--Participantes do Evento--_____________________#
+            $relatorio_participante_evento = Relatorio::where('nome', '=', 'Participantes do Evento') -> first();
+
+            #______________________--Evento e Períodos--_____________________#
+            $relatorio_evento_periodo = Relatorio::where('nome', '=', 'Eventos e Períodos') -> first();
 
             #______________________--Participante--_____________________#
             $relatorio_participante = Relatorio::where('nome', '=', 'Participante') -> first();
@@ -40,14 +43,14 @@ class ColumnTableSeeder extends Seeder
             #______________________--Date--_____________________#
             $tipo_date = Tipos::where('nome', '=', 'date') -> first();
         
-        #______________________--Relatório Evento--_____________________#
+        #______________________--Relatório Participante Evento --_____________________#
             #Pessoas
                 #1
                 $coluna = new Coluna;
                 $coluna->coluna = 'nome';
                 $coluna->nome = 'Nome do Colaborador';
                 $coluna->tabela = 'pessoas';
-                $coluna->relatorio()->associate($relatorio_evento);
+                $coluna->relatorio()->associate($relatorio_participante_evento);
                 $coluna->tipo()->associate($tipo_string);
                 $coluna->save();
 
@@ -56,7 +59,7 @@ class ColumnTableSeeder extends Seeder
                 $coluna->coluna = 'cpf';
                 $coluna->nome = 'CPF do Colaborador';
                 $coluna->tabela = 'pessoas';
-                $coluna->relatorio()->associate($relatorio_evento);
+                $coluna->relatorio()->associate($relatorio_participante_evento);
                 $coluna->tipo()->associate($tipo_string);
                 $coluna->save();
 
@@ -65,7 +68,7 @@ class ColumnTableSeeder extends Seeder
                 $coluna->coluna = 'data_nascimento';
                 $coluna->nome = 'Data de Nascimento do Colaborador';
                 $coluna->tabela = 'pessoas';
-                $coluna->relatorio()->associate($relatorio_evento);
+                $coluna->relatorio()->associate($relatorio_participante_evento);
                 $coluna->tipo()->associate($tipo_date);
                 $coluna->save();
 
@@ -75,7 +78,7 @@ class ColumnTableSeeder extends Seeder
                 $coluna->coluna = 'nome';
                 $coluna->nome = 'Nome do Evento';
                 $coluna->tabela = 'eventos';
-                $coluna->relatorio()->associate($relatorio_evento);
+                $coluna->relatorio()->associate($relatorio_participante_evento);
                 $coluna->tipo()->associate($tipo_string);
                 $coluna->save();
 
@@ -84,7 +87,7 @@ class ColumnTableSeeder extends Seeder
                 $coluna->coluna = 'descricao';
                 $coluna->nome = 'Descrição do Evento';
                 $coluna->tabela = 'eventos';
-                $coluna->relatorio()->associate($relatorio_evento);
+                $coluna->relatorio()->associate($relatorio_participante_evento);
                 $coluna->tipo()->associate($tipo_string);
                 $coluna->save();
 
@@ -92,13 +95,84 @@ class ColumnTableSeeder extends Seeder
                 #6
                 $coluna = new Coluna;
                 $coluna->coluna = 'nome';
-                $coluna->nome = 'Sitiação do Evento';
+                $coluna->nome = 'Situação do Evento';
                 $coluna->tabela = 'situacoes';
-                $coluna->relatorio()->associate($relatorio_evento);
+                $coluna->relatorio()->associate($relatorio_participante_evento);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+            
+            #Evento Situação
+                #7
+                $coluna = new Coluna;
+                $coluna->coluna = 'observacao';
+                $coluna->nome = 'Observações do Evento';
+                $coluna->tabela = 'evento_situacao';
+                $coluna->relatorio()->associate($relatorio_participante_evento);
                 $coluna->tipo()->associate($tipo_string);
                 $coluna->save();
 
-                # continuar a colocar as outras colunas
+                # verificar se há mais colunas para colocar
+
+        #______________________--Relatório Evento Periodos--_____________________#
+            #Colunas da tabela Evento
+                #1
+                $coluna = new Coluna;
+                $coluna->coluna = 'nome';
+                $coluna->nome = 'Nome do Evento';
+                $coluna->tabela = 'eventos';
+                $coluna->relatorio()->associate($relatorio_evento_periodo);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #2
+                $coluna = new Coluna;
+                $coluna->coluna = 'descricao';
+                $coluna->nome = 'Descrição do Evento';
+                $coluna->tabela = 'eventos';
+                $coluna->relatorio()->associate($relatorio_evento_periodo);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+            #Situacoes
+                #3
+                $coluna = new Coluna;
+                $coluna->coluna = 'nome';
+                $coluna->nome = 'Situação do Evento';
+                $coluna->tabela = 'situacoes';
+                $coluna->relatorio()->associate($relatorio_evento_periodo);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+            
+            #Periodos
+                #4
+                $coluna = new Coluna;
+                $coluna->coluna = 'inicio';
+                $coluna->nome = 'Início do Período';
+                $coluna->tabela = 'periodos';
+                $coluna->relatorio()->associate($relatorio_evento_periodo);
+                $coluna->tipo()->associate($tipo_date);
+                $coluna->save();
+
+                #5
+                $coluna = new Coluna;
+                $coluna->coluna = 'fim';
+                $coluna->nome = 'Fim do Período';
+                $coluna->tabela = 'periodos';
+                $coluna->relatorio()->associate($relatorio_evento_periodo);
+                $coluna->tipo()->associate($tipo_date);
+                $coluna->save();
+            
+            #Evento Situação
+                #6
+                $coluna = new Coluna;
+                $coluna->coluna = 'observacao';
+                $coluna->nome = 'Observação sobre o Evento';
+                $coluna->tabela = 'evento_situacao';
+                $coluna->relatorio()->associate($relatorio_evento_periodo);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+            # verificar se há mais colunas para colocar
 
         #______________________--Relatório Participante--_____________________#
             #Colunas da tabela Inscrição

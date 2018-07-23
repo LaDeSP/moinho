@@ -92,7 +92,6 @@ class RelatorioController extends Controller
         $dataReport = date('d/m/Y h:i');
         $data = date('d/m/Y');
 
-        $data = date('d/m/Y');
         if($request->tipo_relatorio == 1)
             return view('relatorio.pdf', compact('query', 'columns', 'report_name', 'dataReport', 'data'));
         if($request->tipo_relatorio == 0)

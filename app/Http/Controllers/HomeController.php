@@ -32,7 +32,7 @@ class HomeController extends Controller
         ->orderBy('Dias_para_expirar')
         ->get();*/
      
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
         
     }
 }

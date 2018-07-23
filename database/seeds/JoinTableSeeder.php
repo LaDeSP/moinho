@@ -14,8 +14,11 @@ class JoinTableSeeder extends Seeder
     public function run()
     {
         # Buscando os Relatórios
-            #______________________--Evento--_____________________#
-            $relatorio_evento = Relatorio::where('nome', '=', 'Evento') -> first();
+            #______________________--Participantes do Evento--_____________________#
+            $relatorio_participante_evento = Relatorio::where('nome', '=', 'Participantes do Evento') -> first();
+
+            #______________________--Evento e Períodos--_____________________#
+            $relatorio_evento_periodo = Relatorio::where('nome', '=', 'Eventos e Períodos') -> first();
 
             #______________________--Participante--_____________________#
             $relatorio_participante = Relatorio::where('nome', '=', 'Participante') -> first();
@@ -23,7 +26,7 @@ class JoinTableSeeder extends Seeder
             #______________________--Colaborador--_____________________#
             $relatorio_colaborador = Relatorio::where('nome', '=', 'Colaborador') -> first();
 
-        #______________________--Relatório Evento--_____________________#
+        #______________________--Relatório Participante Evento--_____________________#
             #Inner join Pessoa_evento
                 $join                     = new Juntar();
                 $join->tabela1            = 'pessoa_evento';
@@ -33,7 +36,7 @@ class JoinTableSeeder extends Seeder
                 $join->condicao           = '=';
 
                 #Associar a query
-                $join->relatorio()->associate($relatorio_evento);
+                $join->relatorio()->associate($relatorio_participante_evento);
                 $join->save();
 
             #Inner join Pessoas
@@ -45,7 +48,7 @@ class JoinTableSeeder extends Seeder
                 $join->condicao           = '=';
 
                 #Associar a query
-                $join->relatorio()->associate($relatorio_evento);
+                $join->relatorio()->associate($relatorio_participante_evento);
                 $join->save();
             
             #Inner join Evento_situacao
@@ -57,7 +60,7 @@ class JoinTableSeeder extends Seeder
                 $join->condicao           = '=';
 
                 #Associar a query
-                $join->relatorio()->associate($relatorio_evento);
+                $join->relatorio()->associate($relatorio_participante_evento);
                 $join->save();
 
             #Inner join Situação
@@ -69,7 +72,56 @@ class JoinTableSeeder extends Seeder
                 $join->condicao           = '=';
 
                 #Associar a query
-                $join->relatorio()->associate($relatorio_evento);
+                $join->relatorio()->associate($relatorio_participante_evento);
+                $join->save();
+
+        #______________________--Relatório Evento Periodo--_____________________#
+            #Inner join Periodo_Evento
+                $join                     = new Juntar();
+                $join->tabela1            = 'periodo_evento';
+                $join->tabela2            = 'eventos';
+                $join->coluna1            = 'evento_id';
+                $join->coluna2            = 'id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_evento_periodo);
+                $join->save();
+
+            #Inner join Periodo_Evento
+                $join                     = new Juntar();
+                $join->tabela1            = 'periodos';
+                $join->tabela2            = 'periodo_evento';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'periodo_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_evento_periodo);
+                $join->save();
+
+            #Inner join Evento_situacao
+                $join                     = new Juntar();
+                $join->tabela1            = 'evento_situacao';
+                $join->tabela2            = 'eventos';
+                $join->coluna1            = 'evento_id';
+                $join->coluna2            = 'id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_evento_periodo);
+                $join->save();
+
+            #Inner join Situação
+                $join                     = new Juntar();
+                $join->tabela1            = 'situacoes';
+                $join->tabela2            = 'evento_situacao';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'situacao_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_evento_periodo);
                 $join->save();
 
         #______________________--Relatório Colaborador--_____________________#

@@ -80,7 +80,7 @@ class turma_disciplinaController extends Controller
        
 
 
-        return view('home');
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
    
