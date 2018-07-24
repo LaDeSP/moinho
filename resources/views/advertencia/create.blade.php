@@ -33,22 +33,24 @@ $data = str_replace("/","-",$data);
         </h3>
     @endif
         <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
+                      
                 <label for="exampleFormControlInput1">Ocorrência*</label>
                     <select name="ocorrencia_id" class="form-control">
                             @foreach(listar_ocorrencias() as $array)
-                                @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4)
-                                    <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</option>
+                           
+                                @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4) <!-- GARANTE QUE A OCORRÊNCIA DO TIPO ABUSO NÃO APAREÇA PARA O ADM -->
+                    <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }} ({{$array->status}})</option>
                                 
                                 @endif
                                 @if($role->name === 'social')
-                                <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</option>
+                                <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia))}} ({{$array->status}})</option>
                                 @endif
                             @endforeach
                     </select>                
             </div>
             
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <label for="exampleFormControlInput1">Tipo*</label>
                     <select name="tipo" class="form-control">
                         @foreach($tipo as $ti) 
@@ -56,7 +58,7 @@ $data = str_replace("/","-",$data);
                         @endforeach
                     </select>                
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <!-- Data da Advertência -->
             <label for="exampleFormControlInput1">Data da Advertência*</label>
                         <input type="date" name="data" size="23"  class="form-control validate" 
@@ -121,29 +123,34 @@ $data = str_replace("/","-",$data);
         <div class="list-group">
             <div class="row">        
                 
-                @foreach(mostrar_advertencias() as $array)
-                <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
-                    @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4)
+                    @if($role->name === 'administrador')
+                        @foreach(mostrar_advertencias() as $array)
+                            <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
+     
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
-                                    <small>
-                                        <a href="{{ route('advertencia.edit', $array->advertencia_id)}}">
-                                            <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="{{ route('advertencia.show', $array->advertencia_id)}}">
-                                            <i class="fa fa-eye icon text-warning" aria-hidden="true"></i>
-                                        </a>
-                                    </small>
-                                </div>
-                                <small>Advertência: {{ $array->status }}</small>
-                                <small>Data:   {{ date('d/m/Y', strtotime($array->data_advertencia)) }}</small>
-                            </span>
-                            <br>
-                       
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
+                                        <small>
+                                            <a href="{{ route('advertencia.edit', $array->advertencia_id)}}">
+                                                <i class="fa fa-pencil icon text-warning" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="{{ route('advertencia.show', $array->advertencia_id)}}">
+                                                <i class="fa fa-eye icon text-warning" aria-hidden="true"></i>
+                                            </a>
+                                        </small>
+                                    </div>
+                                    <small>Advertência: {{ $array->status }}</small>
+                                    <small>Data:   {{ date('d/m/Y', strtotime($array->data_advertencia)) }}</small>
+                                </span>
+                                <br>
+                            </div>
+                            @endforeach
                     @endif
                 
                     @if($role->name === 'social')
+                    @foreach(mostrar_advertencias_social() as $array)
+                            <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
+     
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
@@ -160,13 +167,14 @@ $data = str_replace("/","-",$data);
                                 <small>Data:   {{ date('d/m/Y', strtotime($array->data_advertencia)) }}</small>
                             </span>
                             <br>
-                    @endif
-                </div>                            
-                @endforeach
+                            </div>
+                            @endforeach
+                    @endif 
+                                           
+                
             </div>
         </div>
    
-</div>
     
    
 @endsection

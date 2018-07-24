@@ -58,11 +58,11 @@ $data = str_replace("/","-",$data);
             </div>
 
             <div class="col-md-2"><br>
-                <button type="submit" class="btn btn-outline-danger"  id="pesquisar" >Pesquisar</button>
+                <button type="submit" class="btn btn-outline-danger" disabled onclick="verificar();" id="pesquisar" >Pesquisar</button>
             </div>
         </div>
     </form>
-
+<div class="frequencia" id ="frequencia" style="visibility: hidden">
     <form id="salvarFrequencia" method="POST" action="{{ route('frequencia.store') }}" enctype="multipart/form-data" novalidate >
         {{ csrf_field() }}
         <label for="exampleFormControlInput1" id="nova" ></label>
@@ -97,13 +97,14 @@ $data = str_replace("/","-",$data);
         
 
 <br>
-
+</div>
 @endsection
 
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
   
-        $(document).ready(function(){  
+     
+  $(document).ready(function(){  
 
         $('#turma').on('change', function(e){ //se mudar turma ativa aqui
             $('#disciplina').append('<option value="0" disable="true" selected="true"> </option>');
@@ -122,10 +123,10 @@ $data = str_replace("/","-",$data);
                 
             });
         });
+    });
 
 
-    });    
-    
+   
 
     function habilitaBtn () {
             var disciplina = document.getElementById("disciplina").value; //disciplina
@@ -136,22 +137,47 @@ $data = str_replace("/","-",$data);
 
             if(disciplina != 0 && turma != 0)
             {
+                document.getElementById('pesquisar').disabled=false;  
 
                 //if(!document.getElementById('pesquisar').disabled) 
-                document.getElementById('pesquisar').disabled=false;  
+              
+
                 
             }
             else
             {
                 //if(document.getElementById('pesquisar').disabled) 
                 document.getElementById('pesquisar').disabled=true;
-            }
-           
-        }         
 
+            }
+        }         
+    function verificar(){
+
+            var disciplina = document.getElementById("disciplina").value; //disciplina
+            var data = document.getElementById("data").value; //turma
+            console.log(data);
+            console.log(disciplina);
+            //antes de gerar a lista, precisamos validar se já existe lançamento
+            $.get('/frequencia/ajaxVerifica/' + data+disciplina ,function(data){            
+                
+                if(data == 1) //imprime quando a consulta retorna vazio
+                    console.log("NOVO LANÇAMENTO");
+                else{
+                    
+                    console.log("Já existe consulta, vai para view editar");
+                    console.log(data[0].frequencia_id);
+                    window.location.href = "/frequencia/\""+data[0].frequencia_id+"\"edit";
+
+
+                }
+            });
+
+    }
         $(document).ready(function(){  
 
             $('#formRecebimento').submit(function(e){
+                document.getElementById('frequencia').style.visibility = 'visible';  
+
                 var disciplina = document.getElementById("disciplina").value; //disciplina
                 var turma = document.getElementById("turma").value; //turma
                 data =  document.getElementById("data").value;

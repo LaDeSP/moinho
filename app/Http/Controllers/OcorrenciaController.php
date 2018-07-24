@@ -79,11 +79,11 @@ class OcorrenciaController extends Controller
         $ocorrencia = Ocorrencia::find($id);
         $colaborador = Colaborador::find($ocorrencia->colaborador_id);
         $tipo = statusOcorrenciaAdvertencia::find($ocorrencia->tipo_ocorrencia_advertencia); //o tipo da ocorrencia visitada
-        $nomeOcorrencia = statusOcorrenciaAdvertencia::find($tipo->id);
+       // $nomeOcorrencia = statusOcorrenciaAdvertencia::find($tipo->id);
         $pessoa = Pessoa::find($colaborador->pessoa_id);
         $t= statusOcorrenciaAdvertencia::All(); //todos os tipos armazenados em t
 
-        return view('ocorrencia.show',compact('id','t','ocorrencia','colaborador','nomeOcorrencia','pessoa'));
+        return view('ocorrencia.show',compact('t','ocorrencia','tipo','pessoa'));
     }
 
     /**
@@ -102,7 +102,7 @@ class OcorrenciaController extends Controller
         $pessoa = Pessoa::find($colaborador->pessoa_id);
         $t= statusOcorrenciaAdvertencia::All(); //todos os tipos armazenados em t
 
-        return view('ocorrencia.edit',compact('id','t','ocorrencia','colaborador','nomeOcorrencia','pessoa'));
+        return view('ocorrencia.edit',compact('t','ocorrencia','colaborador','tipo','pessoa'));
   
     }
 

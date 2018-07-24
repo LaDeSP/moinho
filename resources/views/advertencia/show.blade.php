@@ -13,7 +13,10 @@ use PHP\test;
 @extends('layouts.app')
 
 @section('content')
+<?php 
 
+                 $ocorrencia = busca_ocorrencia_participante($advertencia->ocorrencia_id);
+?>
 <h1 class="text-warning"> Visualizar Advertência </h1>
     <div class="text-right">
         <a href="{{ route('advertencia.edit', $id)}}">
@@ -23,16 +26,14 @@ use PHP\test;
     <form onkeyup="verifica_submit('validate');" id="myForm" method= "POST" action="{{ route('escola.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
         <div class="row">
             <div class="col-md-4">
+                
                 <label for="exampleFormControlInput1">
                     <?php echo Lang::get('validation.attributes.name'); ?> do participante
                 </label>
                         <input type="text" name="participante_id" size="23" class="form-control validate"
-                    id="nome" value="{{$id}}" hidden="hidden" disabled> <!-- id da ocorrencia (ocorrencia.id) -->
+                    id="nome" value="{{$advertencia->ocorrencia_id}}" disabled hidden> <!-- id da ocorrencia (ocorrencia.id) -->
                         <input type="text" name="nomeParticipante" size="23" class="form-control validate"
-                        id="nome" value=" <?php 
-                        $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
-                        echo $teste->nome;
-                ?>" Disabled>
+                        id="nome" value="{{$ocorrencia[0]->nome_participante}}" Disabled>
             </div>
             <div class="col-md-4">
                     <label for="exampleFormControlInput1">Tipo</label>
@@ -41,7 +42,7 @@ use PHP\test;
                                 <option 
                                     value="{{ $tipo_geral->id }}"
                                     <?php
-                                        if($nomeAdvertencia->id === $tipo_geral->id)
+                                        if($advertencia->tipo_ocorrencia_advertencia === $tipo_geral->id)
                                             echo("selected");
                                     ?>
                                 > {{ $tipo_geral->nome}} </option>
@@ -93,7 +94,7 @@ use PHP\test;
                     </div>
                 <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Motivo: <small>(opcional)</small></label>
+                            <label for="exampleFormControlInput1">Observação: <small>(opcional)</small></label>
                     <textarea name="observacao" rows="5" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
@@ -104,75 +105,157 @@ use PHP\test;
                         <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
                     </a>
                 </div>
+    
                 @endpermission
-               <?php $ocorrencia = busca_ocorrencia_participante($advertencia->ocorrencia_id); ?> 
-
+            </form>
+               
+            <div class="col-md-10">
                <h3 class="text-danger"> Ocorrência associada </h3>
                <!-- Imprimir a ocorrência que resultou na advertência -->
                    <div class="row">
                        <div class="col-md-4">
-                       Data da ocorrencia: {{ date('d/m/Y', strtotime($ocorrencia->data_ocorrencia))}}
+                       Data da ocorrencia: {{ date('d/m/Y', strtotime($ocorrencia[0]->data_ocorrencia))}}
                        </div>
                        <div class="col-md-2">
-                               Tipo: {{$ocorrencia->tipo}}
+                               Tipo: {{$ocorrencia[0]->tipo}}
                        </div>
                        <div class="col-md-4">
-                               Ocorrência gerada por: {{$ocorrencia->name}}
+                        <!-- Encontrar o colaborador que gerou a ocorrencia -->
+                        <?php $teste = busca_colaborador_gerou_ocorrencia($advertencia->ocorrencia_id);
+                        ?>
+                               Ocorrência gerada por: {{$teste[0]->nome }}
                        </div>
                    </div>
                    <div class="row">
                        <div class="col-md-8">
-                           Motivo: {{$ocorrencia->motivo}}
+                           Motivo: {{$ocorrencia[0]->motivo_ocorrencia}}
                        </div>
                    </div>    
            </div>
-             
-           <div class="col-md-10" id="pdf" hidden>
-               <div class="row">
-                    <table id="print" style="width:80%; height:20%;" >
-                            <tr>
-                              <th> 
-                        <div class="row" >
-                            <div style="text-align:center" class="col-md-9">
-                                    <h2> Termo de Advertência </h2>
-                            </div>
-                            <div style="text-align:right" class="col-md-3">
-                            <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
-
-                        </div>
-                        <div class="row">
-                                <div class="col-md-12">
-                                    Sres. Pais ou Responsáveis,<br>
-                                    <p style="text-align:justify">
-                                    O Instituto Moinho Cultural Sul – Americano comunica que a participante <b>{{$teste->nome}} </b>
-                                    está ADVERTIDA/O e necessitamos de vossa presença para tratarmos de tal assunto. 
-                                    Participante recebeu orientações por/pela(o) <b>coordenação</b>. 
-                                    Informamos que a entrada do(a) mesmo(a) fica condicionada a <b>assinatura e presença dos responsáveis.</b> 
-                                
-                                    </p><br>
-                                    <p style="text-align:center">
-                                            Ciente, _______________________________________________________________.
-                                    </p>
-                                    <p >
+           <div class="col-md-10" id="pdf" >
+                <div class="row">
+                     <table id="print" style="width:80%; height:20%;" >
+                             <tr>
+                               <th> 
+                         <div class="row" >
+                             <div style="text-align:center" class="col-md-9">
+                                     <h2> Termo de Advertência 1</h2>
+                             </div>
+                             <div style="text-align:right" class="col-md-3">
+                             <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
+ 
+                         </div>
+                         <div class="row">
+                                 <div class="col-md-12">
+                                   <p>  Sres. Pais ou Responsáveis,</p>
+                                   <p style="text-align:justify">
+                                        O Instituto Moinho Cultural Sul – Americano comunica que a/o participante <b>{{$ocorrencia[0]->nome_participante}} </b>
+                                        está ADVERTIDA/O e necessitamos de vossa presença para tratarmos de tal assunto. 
+                                        Participante recebeu orientações por/pela(o) <b>coordenação</b>. Informamos que a entrada do(a) mesmo(a) fica 
+                                        condicionada a <b>assinatura e presença dos responsáveis</b>. 
+                                        </p> 
+                                   <p style="text-align:center">
+                                             Ciente, _______________________________________________________________.
+                                     </p>
+                                     <p >
                                             Maiores informações: 3231-8436 / 9988-4338
                                     </p>
-                                    <p style="text-align:center">
-                                            <b>Instituto Moinho Cultural Sul - Americano</b><br>
-                                            Corumbá, {{ date('d/m/Y', strtotime($advertencia->data_advertencia)) }}.
+                                     <p style="text-align:center">
+                                             <b>Instituto Moinho Cultural Sul - Americano</b><br>
+                                             Corumbá, {{ date('d/m/Y', strtotime($advertencia->data_advertencia)) }}.
+                                     </p>
+                                 </div>
+                         </div>
+                      </th>
+                   </tr>
+                 </table>
+                </div>
+       
+                <div class="row">
+                     <table id="print" style="width:80%; height:20%;" >
+                             <tr>
+                               <th> 
+                         <div class="row" >
+                             <div style="text-align:center" class="col-md-9">
+                                     <h2> Termo de Advertência 2 </h2>
+                             </div>
+                             <div style="text-align:right" class="col-md-3">
+                             <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
+ 
+                         </div>
+                         <div class="row">
+                                 <div class="col-md-12">
+                                   <p>  Sres. Pais ou Responsáveis,</p>
+                                     <p style="text-align:justify">
+                                    Fica advertido nesta data <b>{{ date('d/m/Y', strtotime($advertencia->data_advertencia)) }}</b>, o participante <b>{{$ocorrencia[0]->nome_participante}}</b>,
+                                    motivo {{$advertencia->observacao}} Pedimos a sua colaboração.
+                                   
+                                     </p><br>
+                                     <p style="text-align:center">
+                                             Ciente, _______________________________________________________________.
+                                     </p>
+                                     <p >
+                                            Maiores informações: 3231-8436 / 9988-4338
                                     </p>
-                                </div>
-                        </div>
-                     </th>
-                  </tr>
-                </table>
-               </div>
-           </div>
+                                     <p style="text-align:center">
+                                             <b>Instituto Moinho Cultural Sul - Americano</b><br>
+                                             Corumbá, {{ date('d/m/Y', strtotime($advertencia->data_advertencia)) }}.
+                                     </p>
+                                 </div>
+                         </div>
+                      </th>
+                   </tr>
+                 </table>
+                </div>
+                    <div class="row">
+                         <table id="print" style="width:80%; height:20%;" >
+                                 <tr>
+                                   <th> 
+                             <div class="row" >
+                                 <div style="text-align:center" class="col-md-9">
+                                         <h2> Termo de Advertência 4 </h2>
+                                 </div>
+                                 <div style="text-align:right" class="col-md-3">
+                                 <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
+     
+                             </div>
+                             <div class="row">
+                                     <div class="col-md-12">
+                                       <p>  Sres. Pais ou Responsáveis,</p>
+                                       <p style="text-align:justify">
+                                            O Instituto Moinho Cultural Sul – Americano comunica que a participante <b>{{$ocorrencia[0]->nome_participante}}</b>
+                                            está advertida/o por descumprir as regras da Instituição. Participante recebeu orientações por/pela(o) <b>Coordenação</b>. Estamos
+                                            disposição para maiores esclarecimentos. <b>Não é necessária a presença, apenas a assinatura de ciência</b>
+                                            </p> 
+                                       <p style="text-align:center">
+                                                 Ciente, _______________________________________________________________.
+                                         </p>
+                                         <p >
+                                                Maiores informações: 3231-8436 / 9988-4338
+                                        </p>
+                                         <p style="text-align:center">
+                                                 <b>Instituto Moinho Cultural Sul - Americano</b><br>
+                                                 Corumbá, {{ date('d/m/Y', strtotime($advertencia->data_advertencia)) }}.
+                                         </p>
+                                     </div>
+                             </div>
+                          </th>
+                       </tr>
+                     </table>
+                    </div>
+           </div>                
         @endsection
         <style>
                 table, th, td {
                 border: 1px solid black;
                 border-collapse: collapse;
                 padding: 20px 20px 20px 20px;
+            }
+            p{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12pt;
+                font-weight: normal;
+                color: black;
             }
 
             #print{

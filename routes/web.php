@@ -72,13 +72,14 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
 
     Route::get('frequencia/ajaxDisciplina/{id}', 'frequenciaController@ajaxDisciplina');
     Route::get('frequencia/ajaxParticipantes/{turma}{disciplina}', 'frequenciaController@ajaxParticipantes');
+    Route::get('frequencia/ajaxVerifica/{data}{disciplina}', 'frequenciaController@ajaxVerifica');
+
     Route::get('frequencia/post', 'frequenciaController@post');
 
     
     Route::get('/colaborador/remove/{id}', 'colaboradorController@remove');
     //Route::get('/evento/participante/{id}', 'eventoController@participante');
 
-    //Post
     //Route::post('/evento/participante/{id}', 'eventoController@addParticipante');
 
 

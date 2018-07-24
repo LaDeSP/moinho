@@ -23,7 +23,7 @@ $data = str_replace("/","-",$data);
     <form onkeyup="verifica_submit('validate');"  method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label for="exampleFormControlInput1"> Participante*</label>
                 <select name="participante_id" class="form-control">
                     @foreach(busca_participante() as $participante) 
@@ -32,7 +32,7 @@ $data = str_replace("/","-",$data);
                  
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="exampleFormControlInput1">Tipo*</label>
                     <select name="tipo" class="form-control">
                         @foreach($tipo as $ti) 
@@ -41,7 +41,7 @@ $data = str_replace("/","-",$data);
                     </select>
                                       
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="exampleFormControlInput1">Data da Ocorrência</label>
                             <input type="date" name="data" size="23" class="form-control is-valid validate" onkeyup="verifica_vazio(this.value, this.id);" 
                             id="data" value="{{$data}}" >

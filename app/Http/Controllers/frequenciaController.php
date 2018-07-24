@@ -110,6 +110,9 @@ class frequenciaController extends Controller
     public function edit($id)
     {
         //
+        $freque = Frequencia::find($id);
+        return view('frequencia.edit',compact('freque'));
+
     }
 
     /**
@@ -177,6 +180,23 @@ class frequenciaController extends Controller
         return response()->json($query);
 
     }
+    public function ajaxVerifica($data, $disciplina){
+      
+
+        $query = DB::table('frequencia')
+        ->join('disciplina','frequencia.disciplina_id','=','disciplina.id')
+        ->where('frequencia.disciplina_id','=',$disciplina)
+        ->where('frequencia.data','=',$data)
+        ->select('*', 'frequencia.id as frequencia_id')
+        ->get();
+     
+        if($query->isEmpty()) //esta vazio, não há data e id da disciplina lançada no sistema
+            return response()->json(1);
+           
+            return response()->json($query);            
+                    
+    }
+
     public function post(Request $request){
        
         $data= $request->data;
