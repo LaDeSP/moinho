@@ -124,9 +124,7 @@ class frequenciaController extends Controller
         ->get();
 
 
-        return view('frequencia.edit',compact('freque','query'),[
-            'message' => 'Frequência EDITADA com sucesso!'
-        ]);
+        return view('frequencia.edit',compact('freque','query'));
 
     }
 
@@ -139,23 +137,42 @@ class frequenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //falta passar colaborador
         if(!isset($request->id_frequencia)){
             return view('frequencia.create',[
                 'error' => 'Error ao ATUALIZAR frequência!'
             ]);
         }
+        $freque = Frequencia::find($id); //busco a data e disciplina pelo id passado na função
+
 
         for($i = 0; $i < count($request->justificativa); $i++){
-           echo($request->id_frequencia[$i]);
-           echo($request->presenca[$i]); //matricula
-           echo($request->justificativa[$i]);
-          
+           //echo("<br>Id da frequencia:");echo($request->id_frequencia[$i]);echo("<br>");
+          // echo("Matricula_id:");echo($request->id_matricula[$i]);echo("<br>");
+          // echo("presença:");echo($request->presenca[$i]);echo("<br>");
+          // dd($request->presenca[$i]); //matricula
+          // echo("justificativa:");echo($request->justificativa[$i]);echo("<br>");
+          // echo("----------------------");
+            
+            $frequencia = Frequencia::find($request->id_frequencia[$i]); //encontro o id da frequencia
+            //AGORA SETA OS VALORES
+            $frequencia->frequencia = $request->presenca[$i];
+            $frequencia->disciplina_id = $freque->disciplina_id; //id da disciplina
+            $frequencia->participante_id = $request->id_matricula[$i]; //id da matricula
+            $frequencia->justificativa = $request->justificativa[$i]; //justificativa
+            $frequencia->data = $freque->data; //data da chamada
+
+            $frequencia->save();
         }
-        //if(!isset($request->matricula)){
-        //    return view('frequencia.create', compact('colaborador'),[
-        //        'error' => 'Error ao atualizar frequência!'
-        //    ]);
-        //}
+        
+        $role_user = RoleUser::where('user_id', Auth::user()->id )->first();
+        $role = Role::find($role_user->role_id);
+        $colaborador = Colaborador::where('user_id', auth()->user()->id)->first();
+
+        return view('frequencia.create', compact('colaborador'),[
+            'message' => 'Frequência EDITADA com sucesso!'
+        ]);
+
        
     }
 
