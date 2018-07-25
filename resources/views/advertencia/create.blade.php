@@ -40,7 +40,7 @@ $data = str_replace("/","-",$data);
                             @foreach(listar_ocorrencias() as $array)
                            
                                 @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4) <!-- GARANTE QUE A OCORRÊNCIA DO TIPO ABUSO NÃO APAREÇA PARA O ADM -->
-                    <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }} ({{$array->status}})</option>
+                    <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }} ({{$array->status}}) ({{$array->motivo}})</option>
                                 
                                 @endif
                                 @if($role->name === 'social')

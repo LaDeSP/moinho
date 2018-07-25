@@ -94,9 +94,7 @@ $data = str_replace("/","-",$data);
                 <button type="submit" class="btn btn-outline-danger"> Salvar</button>
             </div> 
         </form>
-        
-
-<br>
+    <br>
 </div>
 @endsection
 
@@ -166,7 +164,7 @@ $data = str_replace("/","-",$data);
                     
                     console.log("Já existe consulta, vai para view editar");
                     console.log(data[0].frequencia_id);
-                    window.location.href = "/frequencia/\""+data[0].frequencia_id+"\"edit";
+                    window.location.href = "/frequencia/"+data[0].frequencia_id+"/edit";
 
 
                 }

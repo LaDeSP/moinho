@@ -3,6 +3,8 @@
 use PHP\test;
 $data = date("Y/m/d");
 $data = str_replace("/","-",$data); 
+
+
 ?>
 
 <html>
@@ -27,7 +29,7 @@ $data = str_replace("/","-",$data);
                 <label for="exampleFormControlInput1"> Participante*</label>
                 <select name="participante_id" class="form-control">
                     @foreach(busca_participante() as $participante) 
-                        <option value="{{ $participante->dados_inscricao_id }}"> {{ $participante->nome }} </option>
+                        <option value="{{ $participante->matricula }}"> {{ $participante->nome }} </option>
                     @endforeach
                  
                 </select>

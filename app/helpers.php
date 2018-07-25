@@ -236,7 +236,9 @@
         ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
         ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
          //->join('matricula','participante.matricula_id','=','matricula.id')
+         ->select('matricula.id as matricula','pessoas.nome as nome')
          ->whereYear('data',date('Y'))
+         ->where('matricula.status_matricula_id','=',1)
         ->get();
         return $query;
     }

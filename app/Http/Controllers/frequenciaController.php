@@ -74,7 +74,7 @@ class frequenciaController extends Controller
         for($i = 0; $i < count($request->justificativa); $i++){
             $frequencia = new Frequencia;
 
-            $frequencia->presenca = $request->presenca[$i];
+            $frequencia->frequencia = $request->presenca[$i];
             $frequencia->disciplina_id = $disciplina_id; //disciplina
             $frequencia->participante_id = $request->matricula[$i]; //matricula
             $frequencia->justificativa = $request->justificativa[$i];
@@ -111,7 +111,22 @@ class frequenciaController extends Controller
     {
         //
         $freque = Frequencia::find($id);
-        return view('frequencia.edit',compact('freque'));
+      
+        $query = DB::table('frequencia')
+        ->join('disciplina','frequencia.disciplina_id','=','disciplina.id')
+        ->join('matricula','matricula.id','=','frequencia.participante_id')
+        ->join('inscricao','inscricao.id','=','matricula.inscricao_id')
+        ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
+        ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+        ->select('matricula.id as matricula','pessoas.nome as nome_participante','frequencia.frequencia as frequencia','frequencia.justificativa','frequencia.id as id_frequencia')
+        ->where('frequencia.disciplina_id','=',$freque->disciplina_id)
+        ->where('frequencia.data','=',$freque->data)
+        ->get();
+
+
+        return view('frequencia.edit',compact('freque','query'),[
+            'message' => 'Frequência EDITADA com sucesso!'
+        ]);
 
     }
 
@@ -124,7 +139,24 @@ class frequenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!isset($request->id_frequencia)){
+            return view('frequencia.create',[
+                'error' => 'Error ao ATUALIZAR frequência!'
+            ]);
+        }
+
+        for($i = 0; $i < count($request->justificativa); $i++){
+           echo($request->id_frequencia[$i]);
+           echo($request->presenca[$i]); //matricula
+           echo($request->justificativa[$i]);
+          
+        }
+        //if(!isset($request->matricula)){
+        //    return view('frequencia.create', compact('colaborador'),[
+        //        'error' => 'Error ao atualizar frequência!'
+        //    ]);
+        //}
+       
     }
 
     /**
