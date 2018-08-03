@@ -212,11 +212,11 @@ $cont = 1;
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="right: 50%">
+            <a class="carousel-control-prev" href="#carouselExampleControls" id="previous" role="button" data-slide="prev" style="right: 50%">
                 <i class="fa fa-arrow-left fa-lg text-success icon" aria-hidden="true"></i>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleControls" id="next" role="button" data-slide="next">
                 <i class="fa fa-arrow-right fa-lg text-success icon" aria-hidden="true"></i>
                 <span class="sr-only">Next</span>
             </a>
@@ -276,7 +276,7 @@ $cont = 1;
                             <small>{{ $array->email }}</small>
                             <br>
                             <a href="/colaborador/remove/{{ $array->id }}" title="Excluir Colaborador">
-                                <span class="text-danger destroy" aria-hidden="true">&times;</span>
+                                <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
                             </a>
                         </span>
                     </div>
@@ -300,5 +300,6 @@ $cont = 1;
 <script>
     $(document).ready(function(){
         paginacao( {{$count}} , 24 );
+        total_slide = 3
     });
 </script>
