@@ -151,41 +151,86 @@ class PermissionsTableSeeder extends Seeder
         $excluir_advertencias -> description = 'Permite excluir as advertencias estudantes';
         $excluir_advertencias ->save();
 
+        #____________________________--Eventos--____________________________#
+        $ver_eventos = new Permission();
+        $ver_eventos -> name = 'ver_eventos';
+        $ver_eventos -> display_name= 'Ver eventos gerados';
+        $ver_eventos -> description = 'Permite ver eventos gerados';
+        $ver_eventos ->save();
+
+        $visualizar_evento = new Permission();
+        $visualizar_evento -> name = 'visualizar_evento';
+        $visualizar_evento -> display_name= 'Visualizar evento gerado';
+        $visualizar_evento -> description = 'Permite visualizar evento gerado';
+        $visualizar_evento ->save();
+
+        $criar_eventos = new Permission();
+        $criar_eventos -> name = 'criar_eventos';
+        $criar_eventos -> display_name= 'Criar eventos';
+        $criar_eventos -> description = 'Permite criar eventos no sistema';
+        $criar_eventos ->save();
+
+        $editar_eventos = new Permission();
+        $editar_eventos -> name = 'editar_eventos';
+        $editar_eventos -> display_name= 'Editar eventos';
+        $editar_eventos -> description = 'Permite editar os eventos no sistema';
+        $editar_eventos ->save();
+
+        $excluir_eventos = new Permission();
+        $excluir_eventos -> name = 'excluir_eventos';
+        $excluir_eventos -> display_name= 'Excluir eventos no sistema';
+        $excluir_eventos -> description = 'Permite excluir os eventos no sistema';
+        $excluir_eventos ->save();
+
         # Atribuindo as permissões às funções
 
         $administrador = Role::where('name', '=', 'administrador') -> first();
-        $administrador -> attachPermissions(array($ver_colaborador, $criar_colaborador, $ver_turma, 
-            $ver_matricula, $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $ver_ocorrencias, $ver_advertencias, $excluir_advertencias));
+        $administrador -> attachPermissions(array(
+            $ver_colaborador, $criar_colaborador, $ver_turma, 
+            $ver_matricula, $criar_matricula, $ver_matriculas_regulares, 
+            $ver_matriculas_irregulares, $ver_escola, $ver_disciplina, 
+            $ver_participante, $ver_inscricao, $ver_ocorrencias, 
+            $ver_advertencias, $excluir_advertencias, $ver_eventos,
+            $criar_eventos, $visualizar_evento, $editar_eventos,
+            $excluir_eventos
+        ));
 
         $diretor = Role::where('name', 'diretor') -> first();
         $diretor -> attachPermissions(array(
             $ver_colaborador, $ver_turma, $ver_matricula,
             $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
-            $ver_escola, $ver_disciplina, $ver_participante, $ver_inscricao, $excluir_ocorrencias, $ver_ocorrencias, $ver_advertencias, $excluir_advertencias
+            $ver_escola, $ver_disciplina, $ver_participante, 
+            $ver_inscricao, $excluir_ocorrencias, $ver_ocorrencias, 
+            $ver_advertencias, $excluir_advertencias, $ver_eventos,
+            $criar_eventos, $visualizar_evento, $editar_eventos,
+            $excluir_eventos
             
         ));
 
         $coordenador = Role::where('name', 'coordenador') -> first();
         $coordenador -> attachPermissions(array(
-            $ver_participante,$ver_ocorrencias
+            $ver_participante, $ver_ocorrencias, $ver_eventos
         ));
 
         $social = Role::where('name', 'social') -> first();
         $social -> attachPermissions(array(
             $ver_inscricao, $criar_inscricao, $ver_matricula,
-            $ver_turma, $ver_participante, $ver_colaborador,$ver_ocorrencias, $excluir_ocorrencias, $ver_advertencias
+            $ver_turma, $ver_participante, $ver_colaborador,
+            $ver_ocorrencias, $excluir_ocorrencias, $ver_advertencias,
+            $ver_eventos
         ));
 
         $colaborador = Role::where('name', 'colaborador') -> first();
         $colaborador -> attachPermissions(array(
-            $ver_participante, $ver_ocorrencias
+            $ver_participante, $ver_ocorrencias, $ver_eventos,
+            $criar_eventos, $visualizar_evento
         ));
 
         $apoio = Role::where('name', 'apoio') -> first();
         $apoio -> attachPermissions(array(
             $ver_participante, $ver_turma, $ver_matricula,
-            $criar_matricula,$ver_ocorrencias
+            $criar_matricula, $ver_ocorrencias, $ver_eventos,
+            $criar_eventos, $visualizar_evento
         ));
         
     }

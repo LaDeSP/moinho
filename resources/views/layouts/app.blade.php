@@ -34,6 +34,10 @@
         }
         a{
             color: #343a40;
+
+        }
+        a:hover {
+            cursor: pointer;
         }
        
     </style>

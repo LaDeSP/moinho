@@ -71,8 +71,13 @@ use PHP\test;
     </div>
     @permission('excluir-ocorrencias')
     <div class="text-right">
-        <a href="/ocorrencia/remove/{{ $ocorrencia->id }}">
-            <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
+        <a class="excluirRegistro" title="Excluir Ocorrência">
+            <i 
+                url="/ocorrencia/remove/{{ $ocorrencia->id }}" 
+                nome="Ocorrência" 
+                class="fa fa-trash icon text-danger" 
+                aria-hidden="true"
+            ></i>
         </a>
     </div>
     @endpermission

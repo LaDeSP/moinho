@@ -142,6 +142,7 @@
             >
             </input>  
         </div>
+        <!--
         <div class="col-md-3 text-center">
             <button 
                 type="submit"
@@ -179,6 +180,7 @@
             >{{ $situacoe->nome }}</button>
         </div>
         @endforeach
+        -->
     </div>
     <div class="row" id="eventos">
         @foreach($eventos as $evento)
@@ -229,9 +231,15 @@
                         Responsável: {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome  }}
                     </small>
                     <br>
-                    
-                    <a href="/evento/remove/{{ $evento->id }} " title="Excluir Evento">
-                        <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
+
+                    <a class="excluirRegistro" title="Excluir Evento">
+                        <i 
+                            url="/evento/remove/{{ $evento->id }}" 
+                            nome="Evento"
+                            excluir="{{ $evento->nome_evento }}"
+                            class="fa fa-trash icon text-danger" 
+                            aria-hidden="true"
+                        ></i>
                     </a>
                 </span>
             </div>
@@ -249,6 +257,7 @@
 <script>
     $(document).ready(function(){
         //paginacao( 20, 1 );
+        
         paginacao( {{ $count }}, 24 );
         total_slide = 2
     });

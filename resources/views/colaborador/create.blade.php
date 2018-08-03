@@ -275,8 +275,14 @@ $cont = 1;
                             <br>
                             <small>{{ $array->email }}</small>
                             <br>
-                            <a href="/colaborador/remove/{{ $array->id }}" title="Excluir Colaborador">
-                                <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
+                            <a class="excluirRegistro" title="Excluir Colaborador">
+                                <i 
+                                    url="/colaborador/remove/{{ $array->id }}" 
+                                    nome="Colaborador"
+                                    excluir="{{ $array->nome }}"
+                                    class="fa fa-trash icon text-danger" 
+                                    aria-hidden="true"
+                                ></i>
                             </a>
                         </span>
                     </div>
