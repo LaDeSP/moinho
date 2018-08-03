@@ -75,6 +75,10 @@ class frequenciaController extends Controller
             $frequencia = new Frequencia;
 
             $frequencia->frequencia = $request->presenca[$i];
+            if($frequencia->frequencia==0) //se faltou a quantidade de faltas vai receber 1
+                $frequencia->quantidade = 1;
+            else
+                $frequencia->quantidade = 0;
             $frequencia->disciplina_id = $disciplina_id; //disciplina
             $frequencia->participante_id = $request->matricula[$i]; //matricula
             $frequencia->justificativa = $request->justificativa[$i];
@@ -157,6 +161,10 @@ class frequenciaController extends Controller
             $frequencia = Frequencia::find($request->id_frequencia[$i]); //encontro o id da frequencia
             //AGORA SETA OS VALORES
             $frequencia->frequencia = $request->presenca[$i];
+                if($frequencia->frequencia==0) //se faltou a quantidade de faltas vai receber 1
+                    $frequencia->quantidade = 1;
+                else
+                    $frequencia->quantidade = 0;
             $frequencia->disciplina_id = $freque->disciplina_id; //id da disciplina
             $frequencia->participante_id = $request->id_matricula[$i]; //id da matricula
             $frequencia->justificativa = $request->justificativa[$i]; //justificativa

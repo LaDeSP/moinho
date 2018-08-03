@@ -58,7 +58,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                         </select>                                
             </div>
             <div class="col-md-4">
-                   <label for="exampleFormControlInput1">Data da Advertência</label>
+                   <label for="exampleFormControlInput1">Data da Advertência <small> #(data que será colocada no termo)</small></label>
                                <input type="date" name="data" size="23"  class="form-control validate"  onkeyup="verifica_vazio(this.value, this.id);"
                                id="data" value="{{$advertencia->data_advertencia}}" >
                                <div class="invalid-feedback">
@@ -93,7 +93,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
             <div class="row">
                     <div class="col-md-4">
                             <label for="exampleFormControlInput1">Advertência gerada por:  {{$pessoa->nome}} </label>
-                            <input type="text" name="Colaborador" size="23" class="form-control validate"
+                            <input type="text" name="Colaborador" size="23" class="form-control"
                             id="Colaborador" value="{{$colaborador->id}}" hidden> 
                     </div>
             </div>

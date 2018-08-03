@@ -50,7 +50,7 @@ use PHP\test;
                         </select>                                
             </div>
             <div class="col-md-4">
-                   <label for="exampleFormControlInput1">Data da Advertência</label>
+                   <label for="exampleFormControlInput1">Data da Advertência<small> (data que será colocada no termo)</small></label>
                                <input type="date" name="data" size="23" class="form-control"
                                id="data" value="{{$advertencia->data_advertencia}}" disabled>
                                <div class="invalid-feedback">
@@ -94,7 +94,7 @@ use PHP\test;
                     </div>
                 <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Observação: <small>(opcional)</small></label>
+                            <label for="exampleFormControlInput1">Observação:<small>(opcional)  *será colocado no termo da advertência</small></label>
                     <textarea name="observacao" rows="5" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
@@ -102,15 +102,22 @@ use PHP\test;
 
                 <div class="text-right">
                     <a href="/advertencia/remove/{{ $id }}">
-                        <i class="fa fa-trash icon text-danger" aria-hidden="true"></i>
+                        <i class="fa fa-trash icon text-warning" aria-hidden="true"></i>
                     </a>
                 </div>
     
                 @endpermission
-            </form>
-               
-            <div class="col-md-10">
-               <h3 class="text-danger"> Ocorrência associada </h3>
+           
+
+            <div class="row">
+            <div class="col-md-1" >
+            </div>
+            <div class="col-md-10" >
+                <div class="row">
+                <table>
+                    <tr>
+                    <th> 
+                    <h3 class="text-danger"> Ocorrência associada </h3>
                <!-- Imprimir a ocorrência que resultou na advertência -->
                    <div class="row">
                        <div class="col-md-4">
@@ -123,16 +130,23 @@ use PHP\test;
                         <!-- Encontrar o colaborador que gerou a ocorrencia -->
                         <?php $teste = busca_colaborador_gerou_ocorrencia($advertencia->ocorrencia_id);
                         ?>
-                               Ocorrência gerada por: {{$teste[0]->nome }}
+                               Ocorrência gerada por {{$teste[0]->nome }}
                        </div>
                    </div>
                    <div class="row">
                        <div class="col-md-8">
                            Motivo: {{$ocorrencia[0]->motivo_ocorrencia}}
                        </div>
-                   </div>    
+                    </div>    
+                    </th>
+                    </tr>
+                </table>
+                </div>
            </div>
-           <div class="col-md-10" id="pdf" >
+            </form>
+           <br>
+        </div>
+           <div class="col-md-10"  id="pdf" >
                 <div class="row">
                      <table id="print" style="width:80%; height:20%;" >
                              <tr>
@@ -151,7 +165,7 @@ use PHP\test;
                                    <p style="text-align:justify">
                                         O Instituto Moinho Cultural Sul – Americano comunica que a/o participante <b>{{$ocorrencia[0]->nome_participante}} </b>
                                         está ADVERTIDA/O e necessitamos de vossa presença para tratarmos de tal assunto. 
-                                        Participante recebeu orientações por/pela(o) <b>coordenação</b>. Informamos que a entrada do(a) mesmo(a) fica 
+                                        Participante recebeu orientações por/ pela(o) <b>coordenação</b>. Informamos que a entrada do(a) mesmo(a) fica 
                                         condicionada a <b>assinatura e presença dos responsáveis</b>. 
                                         </p> 
                                    <p style="text-align:center">
@@ -225,7 +239,7 @@ use PHP\test;
                                        <p style="text-align:justify">
                                             O Instituto Moinho Cultural Sul – Americano comunica que a participante <b>{{$ocorrencia[0]->nome_participante}}</b>
                                             está advertida/o por descumprir as regras da Instituição. Participante recebeu orientações por/pela(o) <b>Coordenação</b>. Estamos
-                                            disposição para maiores esclarecimentos. <b>Não é necessária a presença, apenas a assinatura de ciência</b>
+                                            disposição para maiores esclarecimentos. <b>Não é necessária a presença, apenas a assinatura de ciência.</b>
                                             </p> 
                                        <p style="text-align:center">
                                                  Ciente, _______________________________________________________________.
@@ -247,7 +261,6 @@ use PHP\test;
         @endsection
         <style>
                 table, th, td {
-                border: 1px solid black;
                 border-collapse: collapse;
                 padding: 20px 20px 20px 20px;
             }
@@ -259,6 +272,8 @@ use PHP\test;
             }
 
             #print{
+                border: 1px solid black;
+
                 margin-left: 120px;
                 margin-right: 50px;
                 padding: 20px 20px 20px 20px;
