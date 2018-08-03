@@ -23,7 +23,7 @@
     </h3>
 @endif
 
-<h1> Relatórios </h1>
+<h1 class="text-info"> Relatórios </h1>
 <label for="" class="text-secondary"> Escolha um relatório para poder gera-ló.</label>
 <div class="row">
     <select class="form-control col-md-4" name="report" id="report">

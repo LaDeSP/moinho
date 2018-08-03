@@ -175,17 +175,239 @@ class ColumnTableSeeder extends Seeder
             # verificar se há mais colunas para colocar
 
         #______________________--Relatório Participante--_____________________#
-            #Colunas da tabela Inscrição
-            #1
-            $coluna = new Coluna;
-            $coluna->coluna = 'data_inscricao';
-            $coluna->nome = 'Data da Inscrição';
-            $coluna->tabela = 'inscricao';
-            $coluna->relatorio()->associate($relatorio_participante);
-            $coluna->tipo()->associate($tipo_date);
-            $coluna->save();
+            #Pessoa
+                #1
+                $coluna = new Coluna;
+                $coluna->coluna = 'nome';
+                $coluna->nome = 'Nome do Participante';
+                $coluna->tabela = 'pessoas';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
 
-            # continuar a colocar as outras colunas
+                #2
+                $coluna = new Coluna;
+                $coluna->coluna = 'cpf';
+                $coluna->nome = 'CPF do Participante';
+                $coluna->tabela = 'pessoas';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #3
+                $coluna = new Coluna;
+                $coluna->coluna = 'data_nascimento';
+                $coluna->nome = 'Data de Nascimento do Participante';
+                $coluna->tabela = 'pessoas';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_date);
+                $coluna->save();
+
+            #Inscrição
+                #1
+                $coluna = new Coluna;
+                $coluna->coluna = 'data_inscricao';
+                $coluna->nome = 'Data da Inscrição';
+                $coluna->tabela = 'inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_date);
+                $coluna->save();
+
+                #2
+                $coluna = new Coluna;
+                $coluna->coluna = 'data_avaliacao';
+                $coluna->nome = 'Data da Avaliação';
+                $coluna->tabela = 'inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_date);
+                $coluna->save();
+            
+            #Dados Inscrição
+                #3
+                $coluna = new Coluna;
+                $coluna->coluna = 'turma';
+                $coluna->nome = 'Turma';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #4
+                $coluna = new Coluna;
+                $coluna->coluna = 'turno';
+                $coluna->nome = 'Turno';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #5
+                $coluna = new Coluna;
+                $coluna->coluna = 'transporte';
+                $coluna->nome = 'Transporte';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #6
+                $coluna = new Coluna;
+                $coluna->coluna = 'raca';
+                $coluna->nome = 'Raça';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #7
+                $coluna = new Coluna;
+                $coluna->coluna = 'renda';
+                $coluna->nome = 'Renda';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_double);
+                $coluna->save();
+
+                #8
+                $coluna = new Coluna;
+                $coluna->coluna = 'qtd_residencia';
+                $coluna->nome = 'Quantidade de residências';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_double);
+                $coluna->save();
+
+                #9
+                $coluna = new Coluna;
+                $coluna->coluna = 'beneficio_social';
+                $coluna->nome = 'Beneficio Social';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #10
+                $coluna = new Coluna;
+                $coluna->coluna = 'serie';
+                $coluna->nome = 'Série';
+                $coluna->tabela = 'dados_inscricao';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+            #Endereços
+                #6
+                $coluna = new Coluna;
+                $coluna->coluna = 'rua';
+                $coluna->nome = 'Endereço Rua';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #7
+                $coluna = new Coluna;
+                $coluna->coluna = 'bairro';
+                $coluna->nome = 'Endereço Bairro';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #8
+                $coluna = new Coluna;
+                $coluna->coluna = 'numero';
+                $coluna->nome = 'Endereço Número';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #9
+                $coluna = new Coluna;
+                $coluna->coluna = 'complemento';
+                $coluna->nome = 'Endereço Complemento';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #10
+                $coluna = new Coluna;
+                $coluna->coluna = 'cep';
+                $coluna->nome = 'Endereço CEP';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #11
+                $coluna = new Coluna;
+                $coluna->coluna = 'cidade';
+                $coluna->nome = 'Endereço Cidade';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #12
+                $coluna = new Coluna;
+                $coluna->coluna = 'estado';
+                $coluna->nome = 'Endereço Estado';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #13
+                $coluna = new Coluna;
+                $coluna->coluna = 'pais';
+                $coluna->nome = 'Endereço País';
+                $coluna->tabela = 'enderecos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+            #Contatos
+                #14
+                $coluna = new Coluna;
+                $coluna->coluna = 'numero_fixo';
+                $coluna->nome = 'Contato Telefone';
+                $coluna->tabela = 'contatos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #15
+                $coluna = new Coluna;
+                $coluna->coluna = 'celular1';
+                $coluna->nome = 'Contato Celular 1';
+                $coluna->tabela = 'contatos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #16
+                $coluna = new Coluna;
+                $coluna->coluna = 'celular2';
+                $coluna->nome = 'Contato Celular 2';
+                $coluna->tabela = 'contatos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #17
+                $coluna = new Coluna;
+                $coluna->coluna = 'email';
+                $coluna->nome = 'Contato Email';
+                $coluna->tabela = 'contatos';
+                $coluna->relatorio()->associate($relatorio_participante);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+            
+            
+            #Arrumar a numeração depois
+            #continuar a colocar as outras colunas
 
         #______________________--Relatório Colaborador--_____________________#
             #Colaborador

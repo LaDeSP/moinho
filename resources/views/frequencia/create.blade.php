@@ -29,15 +29,16 @@ $data = str_replace("/","-",$data);
         @endif
 <form id="formRecebimento" method="POST" novalidate >
         {{ csrf_field() }}
-
     <div class="row">
             <div class="col-md-4">
                 <label for="exampleFormControlInput1"> Turma: *</label>
                 <select name="turma" id="turma" onchange="habilitaBtn()" class="form-control" >
                     <option value="0" disable="true" selected="true"></option>
-                    @foreach(buscar_turma_colaborador($colaborador->id) as $turma) 
-                        <option value="{{ $turma->turma_id }}"> {{ $turma->nome_turma }} </option>
-                    @endforeach
+                    @if( isset($colaborador->id) )
+                        @foreach(buscar_turma_colaborador($colaborador->id) as $turma) 
+                            <option value="{{ $turma->turma_id }}"> {{ $turma->nome_turma }} </option>
+                        @endforeach
+                    @endif
                 </select>
             </div>
             <div class="col-md-4">

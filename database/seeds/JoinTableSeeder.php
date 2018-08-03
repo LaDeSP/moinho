@@ -160,5 +160,65 @@ class JoinTableSeeder extends Seeder
                 #Associar a query
                 $join->relatorio()->associate($relatorio_colaborador);
                 $join->save();
+        #______________________--Relatório Participante--_____________________#
+            #Inner join Dados Inscrição
+                $join                     = new Juntar();
+                $join->tabela1            = 'dados_inscricao';
+                $join->tabela2            = 'inscricao';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'dados_inscricao_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_participante);
+                $join->save();
+            
+            #Inner join Dados Pessoais
+                $join                     = new Juntar();
+                $join->tabela1            = 'pessoas';
+                $join->tabela2            = 'dados_inscricao';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'dados_pessoais_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_participante);
+                $join->save();
+
+            #Inner join Escola
+                $join                     = new Juntar();
+                $join->tabela1            = 'escolas';
+                $join->tabela2            = 'dados_inscricao';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'escola_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_participante);
+                $join->save();
+            
+            #Inner join Endereco
+                $join                     = new Juntar();
+                $join->tabela1            = 'enderecos';
+                $join->tabela2            = 'pessoas';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'endereco_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_participante);
+                $join->save();
+
+            #Inner join Contato
+                $join                     = new Juntar();
+                $join->tabela1            = 'contatos';
+                $join->tabela2            = 'pessoas';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'contato_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_participante);
+                $join->save();
     }
 }
