@@ -50,7 +50,7 @@ use PHP\test;
                         </select>                                
             </div>
             <div class="col-md-4">
-                   <label for="exampleFormControlInput1">Data da Advertência<small> (data que será colocada no termo)</small></label>
+                   <label for="exampleFormControlInput1">Data da Advertência <small><b>(data que será colocada no termo)</b></small></label>
                                <input type="date" name="data" size="23" class="form-control"
                                id="data" value="{{$advertencia->data_advertencia}}" disabled>
                                <div class="invalid-feedback">
@@ -83,6 +83,12 @@ use PHP\test;
                 </div>
                 <div class="col-md-4" style="margin-top:20px; ">
                     <label id="chamar" for="exampleFormControlInput1"> </label>
+                    @if ($advertencia->responsavel_assina === 1)
+                        <button onclick="printDiv('printA');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
+                    @else
+                    <h3 class="text-warning"> Motivo da advertência: </h3><button onclick="printDiv('printB');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
+                    <h3 class="text-warning"> Assinatura de ciência: </h3><button onclick="printDiv('printC');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
+                    @endif
                 </div>
             </div>
                     <div class="row">
@@ -94,7 +100,7 @@ use PHP\test;
                     </div>
                 <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Observação:<small>(opcional)  *será colocado no termo da advertência</small></label>
+                            <label for="exampleFormControlInput1">Observação:<small> <b>(opcional)  *será colocado no termo da advertência</b></small></label>
                     <textarea name="observacao" rows="5" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
@@ -110,8 +116,6 @@ use PHP\test;
            
 
             <div class="row">
-            <div class="col-md-1" >
-            </div>
             <div class="col-md-10" >
                 <div class="row">
                 <table>
@@ -130,7 +134,7 @@ use PHP\test;
                         <!-- Encontrar o colaborador que gerou a ocorrencia -->
                         <?php $teste = busca_colaborador_gerou_ocorrencia($advertencia->ocorrencia_id);
                         ?>
-                               Ocorrência gerada por {{$teste[0]->nome }}
+                               Ocorrência gerada por: {{$teste[0]->nome }}
                        </div>
                    </div>
                    <div class="row">
@@ -146,14 +150,15 @@ use PHP\test;
             </form>
            <br>
         </div>
-           <div class="col-md-10"  id="pdf" >
+        @if ($advertencia->responsavel_assina === 1)
+           <div class="col-md-10" id="printA" >
                 <div class="row">
-                     <table id="print" style="width:80%; height:20%;" >
+                     <table >
                              <tr>
                                <th> 
                          <div class="row" >
                              <div style="text-align:center" class="col-md-9">
-                                     <h2> Termo de Advertência 1</h2>
+                                     <h2> Termo de Advertência</h2>
                              </div>
                              <div style="text-align:right" class="col-md-3">
                              <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
@@ -184,14 +189,16 @@ use PHP\test;
                    </tr>
                  </table>
                 </div>
-       
+           </div>
+        @else
+           <div class="col-md-10" id="printB" hidden> 
                 <div class="row">
-                     <table id="print" style="width:80%; height:20%;" >
+                     <table >
                              <tr>
                                <th> 
                          <div class="row" >
                              <div style="text-align:center" class="col-md-9">
-                                     <h2> Termo de Advertência 2 </h2>
+                                     <h2> Termo de Advertência </h2>
                              </div>
                              <div style="text-align:right" class="col-md-3">
                              <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
@@ -221,13 +228,15 @@ use PHP\test;
                    </tr>
                  </table>
                 </div>
+           </div>
+           <div class="col-md-10" id="printC" hidden> 
                     <div class="row">
-                         <table id="print" style="width:80%; height:20%;" >
+                         <table >
                                  <tr>
                                    <th> 
                              <div class="row" >
                                  <div style="text-align:center" class="col-md-9">
-                                         <h2> Termo de Advertência 4 </h2>
+                                         <h2> Termo de Advertência </h2>
                                  </div>
                                  <div style="text-align:right" class="col-md-3">
                                  <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
@@ -257,11 +266,15 @@ use PHP\test;
                        </tr>
                      </table>
                     </div>
-           </div>                
+           </div>
+           @endif
         @endsection
         <style>
                 table, th, td {
+                border: 1px solid black;
                 border-collapse: collapse;
+                margin-left: 120px;
+                margin-right: 50px;
                 padding: 20px 20px 20px 20px;
             }
             p{
@@ -291,12 +304,7 @@ use PHP\test;
             
             console.log(var_name);
 
-            if(var_name == 1){
-                console.log("Deve chamar o pai");
-                $('#chamar').append('<button type="submit" onclick="GerarDoc();" class="btn btn-warning"><i class="fa fa-download" aria-hidden="true"></i> Imprimir </button>');            
-
-            }
-
+            
         });
 
            $(document).ready(function(){

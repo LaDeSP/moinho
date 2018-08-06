@@ -68,8 +68,8 @@ class frequenciaController extends Controller
 
         $data_frequencia = $request->novaData;
         $disciplina_id=$request->disci;
-        $turma = $request->turma;
-
+        $turma = $request->turm;
+      
         //data, presenca, justificativa, participante_id, disciplina_id
         for($i = 0; $i < count($request->justificativa); $i++){
             $frequencia = new Frequencia;
@@ -83,7 +83,7 @@ class frequenciaController extends Controller
             $frequencia->participante_id = $request->matricula[$i]; //matricula
             $frequencia->justificativa = $request->justificativa[$i];
             $frequencia->data = $data_frequencia; //data da chamada
-            $freque->turma_id = $turma; //a turma para facilitar no momento de gerar relatório
+            $frequencia->turma_id = $turma; //a turma para facilitar no momento de gerar relatório
             $frequencia->save();
         }
         return view('frequencia.create', compact('colaborador'),[
@@ -115,15 +115,17 @@ class frequenciaController extends Controller
     {
         //
         $freque = Frequencia::find($id);
-      
+
         $query = DB::table('frequencia')
         ->join('disciplina','frequencia.disciplina_id','=','disciplina.id')
         ->join('matricula','matricula.id','=','frequencia.participante_id')
         ->join('inscricao','inscricao.id','=','matricula.inscricao_id')
         ->join('dados_inscricao','dados_inscricao.id','=','inscricao.dados_inscricao_id')
         ->join('pessoas','pessoas.id','=','dados_inscricao.dados_pessoais_id')
+        ->join('turma','turma.id','=','frequencia.turma_id')
         ->select('matricula.id as matricula','pessoas.nome as nome_participante','frequencia.frequencia as frequencia','frequencia.justificativa','frequencia.id as id_frequencia')
         ->where('frequencia.disciplina_id','=',$freque->disciplina_id)
+        ->where('frequencia.turma_id','=',$freque->turma_id)
         ->where('frequencia.data','=',$freque->data)
         ->get();
 
@@ -151,12 +153,6 @@ class frequenciaController extends Controller
 
 
         for($i = 0; $i < count($request->justificativa); $i++){
-           //echo("<br>Id da frequencia:");echo($request->id_frequencia[$i]);echo("<br>");
-          // echo("Matricula_id:");echo($request->id_matricula[$i]);echo("<br>");
-          // echo("presença:");echo($request->presenca[$i]);echo("<br>");
-          // dd($request->presenca[$i]); //matricula
-          // echo("justificativa:");echo($request->justificativa[$i]);echo("<br>");
-          // echo("----------------------");
             
             $frequencia = Frequencia::find($request->id_frequencia[$i]); //encontro o id da frequencia
             //AGORA SETA OS VALORES
@@ -233,24 +229,29 @@ class frequenciaController extends Controller
         ->where('matricula.status_matricula_id','=',$regular)//matricula regular        
         ->where('turma.ano', '=', date('Y'))
         ->get();
-           
+
         return response()->json($query);
 
     }
-    public function ajaxVerifica($data, $disciplina){
-      
-
+    public function ajaxVerifica($turma, $disciplina, $data){
+     // echo($disciplina);
+     // echo($data);
         $query = DB::table('frequencia')
         ->join('disciplina','frequencia.disciplina_id','=','disciplina.id')
+        ->join('turma','turma.id','=','frequencia.turma_id')
+        //->join('turma_disciplina','turma_disciplina.disciplina_id','=','disciplina.id')
         ->where('frequencia.disciplina_id','=',$disciplina)
         ->where('frequencia.data','=',$data)
+        ->where('frequencia.turma_id','=',$turma)
         ->select('*', 'frequencia.id as frequencia_id')
         ->get();
-     
+        
+        //dd($query);
+
         if($query->isEmpty()) //esta vazio, não há data e id da disciplina lançada no sistema
             return response()->json(1);
-           
-            return response()->json($query);            
+          
+        return response()->json($query);            
                     
     }
 

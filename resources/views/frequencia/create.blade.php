@@ -68,13 +68,16 @@ $data = str_replace("/","-",$data);
         {{ csrf_field() }}
         <label for="exampleFormControlInput1" id="nova" ></label>
         <label for="exampleFormControlInput1" id="disc"></label>
-
+        <label for="exampleFormControlInput1" id="turm"></label>
+        
     <table class="table" id="tabelaAluno" >
             <thead class="table-success">
               <tr>
                 <th scope="col">Matricula</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Presença</th>
+                <th scope="col">Presença 
+                 <input type=checkbox name="selall" onClick="CheckAll()"><span id="checar">Marcar todos</span><br>
+    
                 <th scope="col">Justificativa</th>
               </tr>
             </thead>
@@ -89,8 +92,6 @@ $data = str_replace("/","-",$data);
             </tbody>
           </table>
            
-            
-               
            <div class="col-md-2"><br>
                 <button type="submit" class="btn btn-outline-danger"> Salvar</button>
             </div> 
@@ -124,41 +125,38 @@ $data = str_replace("/","-",$data);
         });
     });
 
-
-   
-
     function habilitaBtn () {
             var disciplina = document.getElementById("disciplina").value; //disciplina
             var turma = document.getElementById("turma").value; //turma
 
                 console.log(disciplina);
 
-
             if(disciplina != 0 && turma != 0)
             {
                 document.getElementById('pesquisar').disabled=false;  
-
                 //if(!document.getElementById('pesquisar').disabled) 
-              
-
                 
             }
             else
             {
                 //if(document.getElementById('pesquisar').disabled) 
                 document.getElementById('pesquisar').disabled=true;
-
             }
         }         
+        
     function verificar(){
 
             var disciplina = document.getElementById("disciplina").value; //disciplina
-            var data = document.getElementById("data").value; //turma
-            console.log(data);
-            console.log(disciplina);
+            var data = document.getElementById("data").value; 
+            var turma = document.getElementById("turma").value; 
+            console.log("data",data);
+            console.log("disciplina",disciplina);
+            console.log("turma",turma);
+
+            console.log("/frequencia/ajaxVerifica/"+turma+disciplina+data);
             //antes de gerar a lista, precisamos validar se já existe lançamento
-            $.get('/frequencia/ajaxVerifica/' + data+disciplina ,function(data){            
-                
+            $.get('/frequencia/ajaxVerifica/'+ turma +'/'+disciplina+'/'+ data ,function(data){            
+                console.log(data)
                 if(data == 1) //imprime quando a consulta retorna vazio
                     console.log("NOVO LANÇAMENTO");
                 else{
@@ -166,15 +164,17 @@ $data = str_replace("/","-",$data);
                     console.log("Já existe consulta, vai para view editar");
                     console.log(data[0].frequencia_id);
                     window.location.href = "/frequencia/"+data[0].frequencia_id+"/edit";
-
-
                 }
             });
-
     }
         $(document).ready(function(){  
 
+            $("#checkTodos").click(function(){
+                $('input:checkbox').prop('checked', $(this).prop('checked'));
+            });
+            
             $('#formRecebimento').submit(function(e){
+
                 document.getElementById('frequencia').style.visibility = 'visible';  
 
                 var disciplina = document.getElementById("disciplina").value; //disciplina
@@ -183,6 +183,7 @@ $data = str_replace("/","-",$data);
 
                     $('#nova').append('<input name="novaData" type="text" value="'+data+'" hidden>');            
                     $('#disc').append('<input type="text" name="disci" value="'+ disciplina +'"hidden>');
+                    $('#turm').append('<input type="text" name="turm" value="'+ turma +'"hidden>');
 
 
                         e.preventDefault();
@@ -194,7 +195,7 @@ $data = str_replace("/","-",$data);
 
                                  $('#matricula').append('<input value='+ frequencia.matricula +' name="matricula[]" class="d-none">'+ frequencia.matricula +'<br></input> ');
                                  $('#nome').append(''+ frequencia.nome +'<br></input>');
-                                 $('#presenca').append('<input value="'+frequencia.matricula+'" class="freq" type="checkbox" >  <label for="presenca"></label> <br>');
+                                 $('#presenca').append('<input value="'+frequencia.matricula+'" class="freq" type="checkbox" name="check[]">  <label for="presenca"></label> <br>');
                                  $('#justificativa').append('<textarea name="justificativa[]" class="just" id_matricula="'+frequencia.matricula+'" rows="1" type="text" > </textarea>  <label for="justificativa"></label>');
                                  $('#presenca').append('<input name="presenca[]" id="'+frequencia.matricula+'presenca" value="0" type="text" class="d-none"/>');
                             });
@@ -202,9 +203,7 @@ $data = str_replace("/","-",$data);
                         });
                     });
         });  
-
-        
-        
+       
         
    // });
    $(document).on('change', '.freq', function(e){
@@ -222,10 +221,25 @@ $data = str_replace("/","-",$data);
         console.log(e.target.attributes.id_matricula.value);
        
     });
+    function CheckAll() { 
+   for (var i=0;i<document.formRecebimento.elements.length;i++) {
+        var x = document.formRecebimento.elements[i];
+        if (x.name == 'check[]') { 
+            x.checked = document.formRecebimento.selall.checked;
+            } 
+        }
+        if (cont == 0){    
+            var elem = document.getElementById("checar");
+            elem.innerHTML = "Desmarcar todos";
+            cont = 1;
+        } else {
+            var elem = document.getElementById("checar");
+            elem.innerHTML = "Marcar todos";
+            cont = 0;
+        }
 
-
-          
-       
+} 
    
+    
 </script>
 
