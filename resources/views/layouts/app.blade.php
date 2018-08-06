@@ -16,6 +16,15 @@
     <link href="/vendor/devicons/css/devicons.min.css" rel="stylesheet">
     <link href="/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1791578-38"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1791578-38');
+    </script>
+
     <!-- Custom styles for this template -->
     <link href="/css/resume.min.css" rel="stylesheet">
     <link href="/css/moinho.css" rel="stylesheet">
@@ -348,5 +357,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="/js/resume.min.js"></script>
+
+   
 </body>
 </html>

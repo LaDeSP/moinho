@@ -7,6 +7,9 @@ use App\Matricula;
 use App\Inscricao;
 use App\Turma;
 use App\StatusMatricula;
+use App\DadosInscricao;
+use App\Pessoa;
+use App\Endereco;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 
@@ -142,5 +145,32 @@ class matriculaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function termo($id)
+    {
+        $matricula = Matricula::find($id);
+        $inscricao = Inscricao::find($matricula->inscricao_id);
+        $dados_inscricao = DadosInscricao::find($inscricao->dados_inscricao_id);
+        $inscrito = Pessoa::find($dados_inscricao->dados_pessoais_id);
+        $responsavel = Pessoa::find($dados_inscricao->responsavel1_id);
+        $endereco_responsavel = Endereco::find($responsavel->endereco_id);
+
+        // Declara a data! :P
+        $data = $inscrito->data_nascimento;
+    
+        // Separa em dia, mês e ano
+        list($ano, $mes, $dia) = explode('-', $data);
+    
+        // Descobre que dia é hoje e retorna a unix timestamp
+        $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+        // Descobre a unix timestamp da data de nascimento do fulano
+        $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
+    
+        // Depois apenas fazemos o cálculo já citado :)
+        $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+        $inscrito->idade = $idade;
+
+        return view('matricula.termoDeImagem', compact('inscrito', 'responsavel', 'endereco_responsavel'));
     }
 }

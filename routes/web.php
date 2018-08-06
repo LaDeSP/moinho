@@ -81,11 +81,6 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     //Route::get('/evento/participante/{id}', 'eventoController@participante');
 
     //Route::post('/evento/participante/{id}', 'eventoController@addParticipante');
-
-
-   
-
-    
     
     #______________________--Relatórios--_____________________#
 
@@ -100,6 +95,8 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/relatorio_participante', 'participanteController@export');
     Route::get('/relatorio_colaborador', 'colaboradorController@export');
 
+    #______________________--Termos--_____________________#
+    Route::get('/termo/imagem/{id}', 'matriculaController@termo');
 });
 
 Auth::routes();
