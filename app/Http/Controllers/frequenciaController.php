@@ -68,7 +68,7 @@ class frequenciaController extends Controller
 
         $data_frequencia = $request->novaData;
         $disciplina_id=$request->disci;
-       
+        $turma = $request->turma;
 
         //data, presenca, justificativa, participante_id, disciplina_id
         for($i = 0; $i < count($request->justificativa); $i++){
@@ -83,7 +83,7 @@ class frequenciaController extends Controller
             $frequencia->participante_id = $request->matricula[$i]; //matricula
             $frequencia->justificativa = $request->justificativa[$i];
             $frequencia->data = $data_frequencia; //data da chamada
-
+            $freque->turma_id = $turma; //a turma para facilitar no momento de gerar relatório
             $frequencia->save();
         }
         return view('frequencia.create', compact('colaborador'),[
@@ -169,7 +169,7 @@ class frequenciaController extends Controller
             $frequencia->participante_id = $request->id_matricula[$i]; //id da matricula
             $frequencia->justificativa = $request->justificativa[$i]; //justificativa
             $frequencia->data = $freque->data; //data da chamada
-
+            $frequencia->turma_id = $freque->turma_id; //id da turma
             $frequencia->save();
         }
         

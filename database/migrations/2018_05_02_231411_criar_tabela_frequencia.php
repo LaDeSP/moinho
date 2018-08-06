@@ -21,6 +21,8 @@ class CriarTabelaFrequencia extends Migration
             $table->integer('quantidade')->nullable();;
             $table->unsignedInteger('participante_id')->unsigned; //vai referenciar matricula.id
             $table->unsignedInteger('disciplina_id')->unsigned;
+            $table->string('turma_id')->nullable(); //não obrigatório
+
         });
 
         
