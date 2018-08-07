@@ -28,7 +28,7 @@ use PHP\test;
             <div class="col-md-4">
                 
                 <label for="exampleFormControlInput1">
-                    <?php echo Lang::get('validation.attributes.name'); ?> do participante
+                    <?php echo Lang::get('validation.attributes.name'); ?> do participante:
                 </label>
                         <input type="text" name="participante_id" size="23" class="form-control validate"
                     id="nome" value="{{$advertencia->ocorrencia_id}}" disabled hidden> <!-- id da ocorrencia (ocorrencia.id) -->
@@ -36,7 +36,7 @@ use PHP\test;
                         id="nome" value="{{$ocorrencia[0]->nome_participante}}" Disabled>
             </div>
             <div class="col-md-4">
-                    <label for="exampleFormControlInput1">Tipo</label>
+                    <label for="exampleFormControlInput1">Tipo:</label>
                         <select name="tipo" class="form-control" disabled>
                                 @foreach($t as $tipo_geral) 
                                 <option 
@@ -50,7 +50,7 @@ use PHP\test;
                         </select>                                
             </div>
             <div class="col-md-4">
-                   <label for="exampleFormControlInput1">Data da Advertência <small><b>(data que será colocada no termo)</b></small></label>
+                   <label for="exampleFormControlInput1">Data da Advertência: <small><b>(data que será colocada no termo)</b></small></label>
                                <input type="date" name="data" size="23" class="form-control"
                                id="data" value="{{$advertencia->data_advertencia}}" disabled>
                                <div class="invalid-feedback">
@@ -100,7 +100,7 @@ use PHP\test;
                     </div>
                 <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Observação:<small> <b>(opcional)  *será colocado no termo da advertência</b></small></label>
+                            <label for="exampleFormControlInput1">Observação:<small> <b>(opcional) *poderá ser colocado no termo da advertência</b></small></label>
                     <textarea name="observacao" rows="5" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
@@ -151,7 +151,7 @@ use PHP\test;
            <br>
         </div>
         @if ($advertencia->responsavel_assina === 1)
-           <div class="col-md-10" id="printA" >
+           <div class="col-md-10" id="printA" hidden>
                 <div class="row">
                      <table >
                              <tr>

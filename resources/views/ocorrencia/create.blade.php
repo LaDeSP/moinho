@@ -4,7 +4,7 @@ use PHP\test;
 $data = date("Y/m/d");
 $data = str_replace("/","-",$data); 
 
-
+$count = 0 ;
 ?>
 
 <html>
@@ -26,7 +26,7 @@ $data = str_replace("/","-",$data);
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-6">
-                <label for="exampleFormControlInput1"> Participante*</label>
+                <label for="exampleFormControlInput1"> Participante: *</label>
                 <select name="participante_id" class="form-control">
                     @foreach(busca_participante() as $participante) 
                         <option value="{{ $participante->matricula }}"> {{ $participante->nome }} </option>
@@ -35,7 +35,7 @@ $data = str_replace("/","-",$data);
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="exampleFormControlInput1">Tipo*</label>
+                <label for="exampleFormControlInput1">Tipo: *</label>
                     <select name="tipo" class="form-control">
                         @foreach($tipo as $ti) 
                             <option value="{{ $ti->id }}"> {{ $ti->nome }}</option>
@@ -44,7 +44,7 @@ $data = str_replace("/","-",$data);
                                       
             </div>
             <div class="col-md-3">
-                <label for="exampleFormControlInput1">Data da Ocorrência</label>
+                <label for="exampleFormControlInput1">Data da Ocorrência: *</label>
                             <input type="date" name="data" size="23" class="form-control is-valid validate" onkeyup="verifica_vazio(this.value, this.id);" 
                             id="data" value="{{$data}}" >
                             <div class="invalid-feedback">
@@ -52,7 +52,7 @@ $data = str_replace("/","-",$data);
                             </div>
             </div>
             <div class="col-md-12">
-                            <label for="exampleFormControlInput1" >Motivo*</label>
+                            <label for="exampleFormControlInput1" >Motivo: *</label>
                             <textarea name="motivo" rows="5"  class="form-control"  required></textarea>
             </div>
             <div class="col-md-2">
@@ -81,7 +81,12 @@ $data = str_replace("/","-",$data);
         <div class="list-group">
             <div class="row">
                  @foreach(mostrar_ocorrencia(auth()->user()->id) as $array)
-                <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
+                 
+                <div <?php
+                if($count >= 9){
+                    echo " style='display: none' ";
+                }
+            ?> class="isvalid col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_ocorrencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome_colaborador }}</h5>
@@ -99,9 +104,24 @@ $data = str_replace("/","-",$data);
                         <small>Ocorrencia: {{ $array->status}}</small>
                         <small>Data:   {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }}</small>                                                    
                     </span>
-                </div>                         
+                </div>       
+                <?php
+                    $count++;
+                ?>                  
                 @endforeach
             </div>
         </div>
-
+        <nav aria-label="..." id='pagination'>
+            </nav>
+            <br>
+            <br>
         @endsection
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        //paginacao( 20, 1 );
+        paginacao( {{ $count }},8);
+    });
+</script>

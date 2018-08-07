@@ -27,7 +27,7 @@ use PHP\test;
         <div class="col-md-4">
            
             <label for="exampleFormControlInput1">
-                <?php echo Lang::get('validation.attributes.name'); ?> do participante
+                <?php echo Lang::get('validation.attributes.name'); ?> do participante: 
             </label>
             <input type="text" name="participante_id" size="23" class="form-control validate"
         id="nome" value="{{$ocorrencia->participante_id}}" hidden="hidden" disabled> <!-- id da ocorrencia (ocorrencia.id) -->
@@ -36,7 +36,7 @@ use PHP\test;
         </div>
       
         <div class="col-md-4">
-                <label for="exampleFormControlInput1">Tipo</label>
+                <label for="exampleFormControlInput1">Tipo: </label>
                     <select name="tipo" class="form-control" disabled>
                             @foreach($t as $tipo_geral) 
                             <option 
@@ -51,7 +51,7 @@ use PHP\test;
             </div>
         <div class="col-md-4">
              <!-- Data de Inscrição -->
-            <label for="exampleFormControlInput1">Data da Ocorrência</label>
+            <label for="exampleFormControlInput1">Data da Ocorrência: </label>
                         <input type="date" name="data" size="23" class="form-control"
                         id="data" value="{{$ocorrencia->data_ocorrencia}}" disabled>
                         <div class="invalid-feedback">
@@ -65,7 +65,7 @@ use PHP\test;
         </div>
             
                     <div class="col-md-12">
-                        <label for="exampleFormControlInput1">Motivo</label>
+                        <label for="exampleFormControlInput1">Motivo: </label>
                         <textarea class="form-control" name="motivo" rows="5" disabled> {{$ocorrencia->motivo}}</textarea>
             </div>
     </div>

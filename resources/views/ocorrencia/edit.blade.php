@@ -34,14 +34,14 @@ use PHP\test;
     <div class="row">
         <div class="col-md-4">
             <label for="exampleFormControlInput1">
-                <?php echo Lang::get('validation.attributes.name'); ?> do participante
+                <?php echo Lang::get('validation.attributes.name'); ?> do participante: *
             </label>
          <input type="text" name="nomeParticipante" size="23" class="form-control"
         id="nome" value="{{$teste[0]->nome_participante}}" Disabled>
         </div>        
         
         <div class="col-md-4">
-            <label for="exampleFormControlInput1">Tipo</label>
+            <label for="exampleFormControlInput1">Tipo: *</label>
                 <select name="tipo" class="form-control" >
                         @foreach($t as $tipo_geral) 
                         <option 
@@ -55,7 +55,7 @@ use PHP\test;
                 </select>            
         </div>
         <div class="col-md-4">
-            <label for="exampleFormControlInput1">Data da Ocorrência</label>
+            <label for="exampleFormControlInput1">Data da Ocorrência: * </label>
                         <input type="date" name="data" size="23" class="form-control validate" onkeyup="verifica_vazio(this.value, this.id);"
                         id="data" value="{{$ocorrencia->data_ocorrencia}}" >
                         <div class="invalid-feedback">
@@ -69,7 +69,7 @@ use PHP\test;
         </div>
             
                     <div class="col-md-12"  class="form-control">
-                        <label for="exampleFormControlInput1">Motivo*</label>
+                        <label for="exampleFormControlInput1">Motivo: *</label>
                         <textarea class="form-control" name="motivo" rows="5" onkeyup="verifica_vazio(this.value, this.id);"> {{$ocorrencia->motivo}}</textarea>
         </div>
         <div class="col-md-3">

@@ -38,13 +38,13 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
         <div class="row">
             <div class="col-md-4">
                 <label for="exampleFormControlInput1">
-                    <?php echo Lang::get('validation.attributes.name'); ?> do participante
+                    <?php echo Lang::get('validation.attributes.name'); ?> do participante:
                 </label>
                         <input type="text" name="participante_id" size="23" class="form-control" id="id_participante" value="{{$teste[0]->participante_id}}" hidden disabled> <!-- id DO PARTICIPANTE -->
                         <input type="text" name="nomeParticipante" size="23" class="form-control" id="nome_participante" value="{{$teste[0]->nome_participante}}"Disabled>
             </div>
             <div class="col-md-4">
-                    <label for="exampleFormControlInput1">Tipo</label>
+                    <label for="exampleFormControlInput1">Tipo: *</label>
                         <select name="tipo" class="form-control" >
                                 @foreach($t as $tipo_geral) 
                                 <option 
@@ -58,7 +58,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                         </select>                                
             </div>
             <div class="col-md-4">
-                   <label for="exampleFormControlInput1">Data da Advertência <small> #(data que será colocada no termo)</small></label>
+                   <label for="exampleFormControlInput1">Data da Advertência: *<small> <b>(data que será colocada no termo)</b></small></label>
                                <input type="date" name="data" size="23"  class="form-control validate"  onkeyup="verifica_vazio(this.value, this.id);"
                                id="data" value="{{$advertencia->data_advertencia}}" >
                                <div class="invalid-feedback">
@@ -70,7 +70,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
             <div class="row">
                 <div class="col-md-4">
                         <!-- Nome do Agressor -->
-                        <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small>(opcional)</small></label>
+                        <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small><b>(opcional)</b></small></label>
                     <input type="text" name="agressor" value="{{$advertencia->agressor}}" id="agressor" size="23" class="form-control">
                 </div>
                 <div class="col-md-4">
@@ -99,7 +99,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
             </div>
             <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Observação: <small>(opcional)</small></label>
+                            <label for="exampleFormControlInput1">Observação: <small><b>(opcional) *poderá ser colocado no termo da advertência</b></small></label>
                     <textarea name="observacao" rows="5" > {{$advertencia->observacao}}</textarea>
                     </div>
             </div>

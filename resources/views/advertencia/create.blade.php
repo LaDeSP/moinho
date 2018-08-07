@@ -5,6 +5,8 @@ use PHP\test;
 $data = date("Y/m/d");
 $data = str_replace("/","-",$data);
 
+$count = 0 ;
+
 ?>
 
 <html>
@@ -35,7 +37,7 @@ $data = str_replace("/","-",$data);
         <div class="row">
                 <div class="col-md-6">
                       
-                <label for="exampleFormControlInput1">Ocorrência*</label>
+                <label for="exampleFormControlInput1">Ocorrência: *</label>
                     <select name="ocorrencia_id" class="form-control">
                             @foreach(listar_ocorrencias() as $array)
                            
@@ -51,7 +53,7 @@ $data = str_replace("/","-",$data);
             </div>
             
             <div class="col-md-2">
-                <label for="exampleFormControlInput1">Tipo*</label>
+                <label for="exampleFormControlInput1">Tipo: *</label>
                     <select name="tipo" class="form-control">
                         @foreach($tipo as $ti) 
                             <option value="{{ $ti->id }}"> {{ $ti->nome }}</option>
@@ -60,7 +62,7 @@ $data = str_replace("/","-",$data);
             </div>
             <div class="col-md-3">
                 <!-- Data da Advertência -->
-            <label for="exampleFormControlInput1">Data da Advertência*</label>
+            <label for="exampleFormControlInput1">Data da Advertência: *</label>
                         <input type="date" name="data" size="23"  class="form-control validate" 
             id="data" value="{{$data}}" onkeyup="verifica_vazio(this.value, this.id);" >
                 <div class="invalid-feedback">
@@ -72,13 +74,13 @@ $data = str_replace("/","-",$data);
         <div class="row">
             <div class="col-md-4">
                     <!-- Nome do Agressor -->
-                    <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small>(opcional)</small></label>
+                    <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small><b>(opcional)</b> </small></label>
                     <input type="text" name="nome" value="" id="nome" size="23" class="form-control">
             </div>
 
             <div class="col-md-4">
             <!-- Chamar Responsável -->
-            <label for="exampleFormControlInput1">Chamar Responsável*</label>
+            <label for="exampleFormControlInput1">Chamar Responsável: *</label>
                 <div class="form-check" >
                     <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios1" value="1" >
                         <label class="form-check-label" for="exampleRadios1">
@@ -95,7 +97,7 @@ $data = str_replace("/","-",$data);
         </div>
         <div class="row">
             <div class="col-md-12">
-                    <label for="exampleFormControlInput1">Observação: <small>(opcional)</small></label>
+                    <label for="exampleFormControlInput1">Observação: <small><b>(opcional)</b></small></label>
                     <textarea name="observacao" rows="5"></textarea>
             </div>
         </div>
@@ -125,7 +127,11 @@ $data = str_replace("/","-",$data);
                 
                     @if($role->name === 'administrador')
                         @foreach(mostrar_advertencias() as $array)
-                            <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
+                            <div <?php
+                            if($count >= 9){
+                                echo " style='display: none' ";
+                            }
+                        ?>class="isvalid col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
      
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                     <div class="d-flex w-100 justify-content-between">
@@ -144,12 +150,17 @@ $data = str_replace("/","-",$data);
                                 </span>
                                 <br>
                             </div>
+                            <?php   $count++; ?> 
                             @endforeach
                     @endif
                 
                     @if($role->name === 'social')
                     @foreach(mostrar_advertencias_social() as $array)
-                            <div class="col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
+                            <div <?php
+                            if($count >= 9){
+                                echo " style='display: none' ";
+                            }
+                        ?>class="isvalid col-md-4 {{ $array->status }} {{ str_replace(' ', '_', $array->data_advertencia) }} {{ str_replace(' ', '_', $array->nome_colaborador) }} filtro">
      
                             <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                                 <div class="d-flex w-100 justify-content-between">
@@ -168,14 +179,25 @@ $data = str_replace("/","-",$data);
                             </span>
                             <br>
                             </div>
+                            <?php   $count++; ?> 
                             @endforeach
                     @endif 
                                            
-                
             </div>
         </div>
    
-    
-   
+        <nav aria-label="..." id='pagination'>
+            </nav>
+            <br>
+            <br>    
 @endsection
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        //paginacao( 20, 1 );
+        paginacao( {{ $count }},8);
+    });
+</script>
 
