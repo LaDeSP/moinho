@@ -40,9 +40,9 @@ class documentoController extends Controller
     {
         $document = new Documento;
 
-       $this->validate($request, [
+        $this->validate($request, [
             'documento' => 'required|file'
-         ]);
+        ]);
         
         $file = $request->file('documento');
         $document->url = $file->store('documento');
@@ -56,7 +56,7 @@ class documentoController extends Controller
 
         $this->validate($request, [
             'documento' => 'required|file'
-         ]);
+        ]);
         
         $file = $request->file('documento2');
         $document->url = $file->store('documento');
@@ -70,8 +70,7 @@ class documentoController extends Controller
 
         $this->validate($request, [
             'documento' => 'required|file'
-         ]);
-        
+        ]);
         $file = $request->file('documento3');
         $document->url = $file->store('documento');
         $document->documento_numero = $request->numero_documento3;

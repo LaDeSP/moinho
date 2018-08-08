@@ -52,7 +52,7 @@ $data = str_replace("/","-",$data);
     </div>
     @if( !count($escola) )
         <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
-            Nenhum reponsável ainda cadastrado
+            Nenhum escola ainda cadastrada
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

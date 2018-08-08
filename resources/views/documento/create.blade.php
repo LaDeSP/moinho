@@ -10,7 +10,7 @@
 
     <form onkeyup="verifica_submit('validate');"  method= "POST" action="{{ route('documento.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <input type="text" name="help" value="{{ $help }}" id="SI" >
+        <input type="text" class="d-none" name="help" value="{{ $help }}" id="SI" >
         <div class="row">
             <!-- Dados Inscrição - Arquivo -->
             <div class="col-md-3">
