@@ -50,6 +50,14 @@ $data = str_replace("/","-",$data);
     <div style="margin-bottom: 20px">
         <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.inscriptionReport');?></a>
     </div>
+    @if( !count($escola) )
+        <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
+            Nenhum reponsável ainda cadastrado
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+    @endif
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('dados_inscricao.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
