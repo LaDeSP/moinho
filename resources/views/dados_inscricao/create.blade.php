@@ -94,6 +94,7 @@ $data = str_replace("/","-",$data);
                             <div class="invalid-feedback">
                                 Por favor, digite o nome do responsavel 1
                             </div>
+                            <small class="form-text text-muted">O Responsável 1 é aquele que será usado como responsável principal.</small>
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável -->
