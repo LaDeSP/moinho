@@ -46,39 +46,7 @@ class documentoController extends Controller
         
         $file = $request->file('documento');
         $document->url = $file->store('documento');
-        $document->documento_numero = $request->numero_documento;
-        $document->comentario = $request->comentario;
-        $document->inscricao_id = $request->help;
-        $document->documento_tipo_id = $request->doc_type; 
-        $document->save(['timestamps' => false]);
-
-        $document = new Documento;
-
-        $this->validate($request, [
-            'documento' => 'required|file'
-        ]);
-        
-        $file = $request->file('documento2');
-        $document->url = $file->store('documento');
-        $document->documento_numero = $request->numero_documento;
-        $document->comentario = $request->comentario2;
-        $document->inscricao_id  = $request->help;
-        $document->documento_tipo_id = $request->doc_type2; 
-        $document->save(['timestamps' => false]);
-
-        $document = new Documento;
-
-        $this->validate($request, [
-            'documento' => 'required|file'
-        ]);
-        $file = $request->file('documento3');
-        $document->url = $file->store('documento');
-        $document->documento_numero = $request->numero_documento3;
-        $document->comentario = $request->comentario3;
-        $document->inscricao_id = $request->help;
-        $document->documento_tipo_id = $request->doc_type3; 
-        $document->save(['timestamps' => false]);
-        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');    }
+    }
     /**
      * Display the specified resource.
      *

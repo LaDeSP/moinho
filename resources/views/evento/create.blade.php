@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @permission('criar_eventos')
     <h1 class="text-success"> Adicionar Evento </h1>
     
 
@@ -30,7 +31,6 @@
             </button>
         </h3>
     @endif
-
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('evento.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
@@ -47,9 +47,11 @@
                             <!-- Colaborador do Evento -->
                             <label for="exampleFormControlInput1"> Responsável* </label>
                             <select name="colaborador" class="form-control">
-                                @foreach($colaboradores as $colaborador)
-                                    <option value="{{ $colaborador->id }}"> {{ $pessoas[$colaborador->id]->nome }} - {{ $colaborador->area_atuacao }} </option>
-                                @endforeach
+                                @if( isset($colaboradores) )
+                                    @foreach($colaboradores as $colaborador)
+                                        <option value="{{ $colaborador->id }}"> {{ $pessoas[$colaborador->id]->nome }} - {{ $colaborador->area_atuacao }} </option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -61,9 +63,11 @@
                                 id="situacao"
                                 onchange="criar_observacao(this.value)"
                             >
-                                @foreach($situacoes as $situacoe)
-                                    <option value="{{ $situacoe->id }}"> {{ $situacoe->nome }} </option>
-                                @endforeach
+                                @if( isset($situacoes) )
+                                    @foreach($situacoes as $situacoe)
+                                        <option value="{{ $situacoe->id }}"> {{ $situacoe->nome }} </option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="col-md-12">
@@ -137,6 +141,7 @@
             </a>
         </div>
     </form>
+    @endpermission
     <br>
     <br>
     <h3 class="text-success"> Eventos </h3>
@@ -204,13 +209,16 @@
                 <span href="#" class=" list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"> {{ $evento->nome_evento }} </h5>
-                        <small> 
+                        <small>
+                            @permission('editar_eventos')
                             <a href="{{ route('evento.edit', $evento->id) }}" title="Alterar Evento">
                                 <i class="fa fa-pencil icon text-success" aria-hidden="true"></i>
                             </a>
+                            @endpermission
                             <a href="{{ route('evento.show', $evento->id) }}" title="Visualizar Evento">
                                 <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
                             </a>
+                            
                             <a href="/evento/participante/{{ $evento->id }}/edit" title="Participantes">
                                 <i class="fa fa-user icon text-success" aria-hidden="true"></i>
                             </a>
@@ -240,7 +248,7 @@
                         Responsável: {{ $pessoas[ $colaboradores[ $evento->colaborador_id ]->id ]->nome  }}
                     </small>
                     <br>
-
+                    @permission('excluir_eventos')
                     <a class="excluirRegistro" title="Excluir Evento">
                         <i 
                             url="/evento/remove/{{ $evento->id }}" 
@@ -250,6 +258,7 @@
                             aria-hidden="true"
                         ></i>
                     </a>
+                    @endpermission
                 </span>
             </div>
             <?php

@@ -10,7 +10,7 @@
 @section('content')
 
 
-
+@permission('editar_eventos')
 <h1 class="text-success">
     Adicionar Participante
 </h1>
@@ -100,6 +100,7 @@
     <nav aria-label="..." id='pagination'>
     </nav>
 </section>
+@endpermission
 <section>
     <h4 class="text-success"> Participantes Adicionados </h4>
     <form method= "POST" action="/evento/participante" enctype="multipart/form-data">
@@ -116,7 +117,9 @@
                         <small id="{{ $participante->id }}tipo"> {{ $participante->area_atuacao }} </small>
                         <br>
                         <br>
+                        @permission('editar_eventos')
                         <button type="button" class="btn btn-outline-danger" onClick="excluir_elemento('{{ $participante->id }}card', {{ $participante->pessoa_evento_id }})" > Excluir </button>
+                        @endpermission
                         <input id="{{ $participante->id }}" style="display: none" value="{{ $participante->id }}" type="number" name="participante_id[]" class="form-control">
                         <input style="display: none" value="{{ $participante->pessoa_evento_id }}" type="number" name="evento_participante[]" class="form-control">
                     </span>
@@ -132,14 +135,18 @@
                         <small id="{{ $participante->id }}tipo"> Inscrito </small>
                         <br>
                         <br>
+                        @permission('editar_eventos')
                         <button type="button" class="btn btn-outline-danger" onClick="excluir_elemento('{{ $participante->id }}card', {{ $participante->pessoa_evento_id }})" > Excluir </button>
+                        @endpermission
                         <input id="{{ $participante->id }}" style="display: none" value="{{ $participante->id }}" type="number" name="participante_id[]" class="form-control">
                         <input style="display: none" value="{{ $participante->pessoa_evento_id }}" type="number" name="evento_participante[]" class="form-control">
                     </span>
                 </div>
             @endforeach
         </div>
+        @permission('editar_eventos')
         <button type="submit" class="btn btn-outline-success"> Concluir </button>
+        @endpermission
         <div id="excluidos">
         </div>
     </form>
