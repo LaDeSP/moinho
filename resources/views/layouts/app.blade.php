@@ -137,7 +137,7 @@
                             </h4>
                         </a>
                     </li>
-                    @permission('ver-frequencia')
+                    @permission('ver_frequencia')
                     <!-- Link para frequência-->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('frequencia.create')}}">

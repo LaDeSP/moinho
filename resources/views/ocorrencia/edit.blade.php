@@ -26,7 +26,7 @@ use PHP\test;
     $teste = busca_ocorrencia_participante($ocorrencia->id);
     ?>
     <!--editar ocorrência -->
-     @permission('editar_ocorrencias')
+     @permission('editar-ocorrencias')
     <form 
     onkeyup="verifica_submit('validate');"
         method="POST" 

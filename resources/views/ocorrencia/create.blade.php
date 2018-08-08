@@ -27,7 +27,7 @@ $count = 0 ;
     </h3>
     @endif
  <!-- Criar ocorrencia -->
- @permission('criar_ocorrencias')
+ @permission('criar-ocorrencias')
     <form onkeyup="verifica_submit('validate');"  method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
         <div class="row">
