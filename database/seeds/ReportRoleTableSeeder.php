@@ -56,5 +56,59 @@ class ReportRoleTableSeeder extends Seeder
             $relatorio_role->relatorio()->associate($relatorio_colaborador);
             $relatorio_role->save();
 
+             #______________________--Social--_____________________# 
+             $role = Role::where('name', '=', 'social') -> first();
+
+             #Inserindo o participante evento
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_participante_evento);
+             $relatorio_role->save();
+ 
+             #Inserindo o evento periodo
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_evento_periodo);
+             $relatorio_role->save();
+ 
+             #Inserindo o participante
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_participante);
+             $relatorio_role->save();
+ 
+             #Inserindo o colaborador
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_colaborador);
+             $relatorio_role->save();
+
+             #______________________--Diretor--_____________________# 
+             $role = Role::where('name', '=', 'diretor') -> first();
+
+             #Inserindo o participante evento
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_participante_evento);
+             $relatorio_role->save();
+ 
+             #Inserindo o evento periodo
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_evento_periodo);
+             $relatorio_role->save();
+ 
+             #Inserindo o participante
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_participante);
+             $relatorio_role->save();
+ 
+             #Inserindo o colaborador
+             $relatorio_role = new Relatorio_Role;
+             $relatorio_role->role()->associate($role);
+             $relatorio_role->relatorio()->associate($relatorio_colaborador);
+             $relatorio_role->save();
+
     }
 }
