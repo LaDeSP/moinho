@@ -113,20 +113,21 @@ use PHP\test;
                     </div>
                 </div>
                 @permission('excluir-advertencias')
-
                 <div class="text-right">
-                    <a href="/advertencia/remove/{{ $id }}">
-                        <i class="fa fa-trash icon text-warning" aria-hidden="true"></i>
+                    <a class="excluirRegistro" title="Excluir Advertência">
+                        <i 
+                            url="/advertencia/remove/{{ $id }}" 
+                            nome="Advertência" 
+                            class="fa fa-trash icon text-warning" 
+                            aria-hidden="true"
+                        ></i>
                     </a>
                 </div>
-    
                 @endpermission
-           
-
-            <div class="row">
+            </form>
             <div class="col-md-10" >
                 <div class="row">
-                <table>
+                <table >
                     <tr>
                     <th> 
                     <h3 class="text-danger"> Ocorrência associada </h3>
@@ -155,8 +156,6 @@ use PHP\test;
                 </table>
                 </div>
            </div>
-            </form>
-           <br>
         </div>
         @if ($advertencia->providencia === 1)
            <div class="col-md-10" id="printA">
@@ -285,9 +284,9 @@ use PHP\test;
                 table, th, td {
                 border: 1px solid black;
                 border-collapse: collapse;
-                margin-left: 110px;
+                margin-left: 120px;
                 margin-right: 50px;
-                padding: 20px 20px 20px 20px;
+                padding: 25px 25px 25px 25px;
             }
             p{
                 font-family: Arial, Helvetica, sans-serif;
@@ -295,8 +294,7 @@ use PHP\test;
                 font-weight: normal;
                 color: black;
             }
-
-           
+                       
             </style>
 
 <script src="/vendor/jquery/jquery.min.js"></script>

@@ -190,7 +190,7 @@ class PermissionsTableSeeder extends Seeder
             $ver_matricula, $criar_matricula, $ver_matriculas_regulares, 
             $ver_matriculas_irregulares, $ver_escola, $ver_disciplina, 
             $ver_participante, $ver_inscricao, $ver_ocorrencias, 
-            $ver_advertencias, $excluir_advertencias, $ver_eventos,
+            $ver_advertencias,$criar_advertencias, $excluir_advertencias, $ver_eventos,
             $criar_eventos, $visualizar_evento, $editar_eventos,
             $excluir_eventos
         ));
@@ -201,23 +201,24 @@ class PermissionsTableSeeder extends Seeder
             $criar_matricula, $ver_matriculas_regulares, $ver_matriculas_irregulares,
             $ver_escola, $ver_disciplina, $ver_participante, 
             $ver_inscricao, $excluir_ocorrencias, $ver_ocorrencias, 
-            $ver_advertencias, $excluir_advertencias, $ver_eventos,
-            $criar_eventos, $visualizar_evento, $editar_eventos,
+            $ver_advertencias,  $criar_advertencias, $excluir_advertencias, $editar_advertencias,
+            $ver_eventos,$criar_eventos, $visualizar_evento, $editar_eventos,
             $excluir_eventos
             
         ));
 
         $coordenador = Role::where('name', 'coordenador') -> first();
         $coordenador -> attachPermissions(array(
-            $ver_participante, $ver_ocorrencias, $ver_eventos
+            $ver_participante, $ver_ocorrencias, $ver_eventos, 
+            $ver_advertencias, $criar_advertencias, $editar_advertencias 
         ));
 
         $social = Role::where('name', 'social') -> first();
         $social -> attachPermissions(array(
-            $ver_inscricao, $criar_inscricao, $ver_matricula,
+            $ver_inscricao, $criar_inscricao, $ver_matricula, $criar_matricula,
             $ver_turma, $ver_participante, $ver_colaborador,
-            $ver_ocorrencias, $excluir_ocorrencias, $ver_advertencias,
-            $ver_eventos
+            $ver_ocorrencias, $excluir_ocorrencias, $ver_eventos, 
+            $ver_advertencias,$criar_advertencias, $excluir_advertencias
         ));
 
         $colaborador = Role::where('name', 'colaborador') -> first();

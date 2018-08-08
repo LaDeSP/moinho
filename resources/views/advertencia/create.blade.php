@@ -25,8 +25,6 @@ $count = 0 ;
     }
     </style> 
 
-<form method= "POST" onkeyup="verifica_submit('validate');"  action="{{ route('advertencia.store') }}" enctype="multipart/form-data" novalidate>
-    {{ csrf_field() }}
     <div class="cold-m-8">
         <h1 class="text-warning">Advertência</h1>
         @if( isset($message) )
@@ -35,6 +33,10 @@ $count = 0 ;
         </h3>
     </div>
     @endif
+    <!-- Criar advertências -->
+    <form method= "POST" onkeyup="verifica_submit('validate');"  action="{{ route('advertencia.store') }}" enctype="multipart/form-data" novalidate>
+        {{ csrf_field() }}
+
         <div class="row">
                 <div class="col-md-6">
                       
@@ -42,8 +44,8 @@ $count = 0 ;
                     <select name="ocorrencia_id" class="form-control">
                             @foreach(listar_ocorrencias() as $array)
                            
-                                @if($role->name === 'administrador' && $array->tipo_ocorrencia_advertencia !== 4) <!-- GARANTE QUE A OCORRÊNCIA DO TIPO ABUSO NÃO APAREÇA PARA O ADM -->
-                    <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }} ({{$array->status}})</option>
+                                @if($role->name != 'social' && $array->tipo_ocorrencia_advertencia !== 4) <!-- GARANTE QUE A OCORRÊNCIA DO TIPO ABUSO NÃO APAREÇA PARA O ADM -->
+                                 <option value="{{  $array->ocorrencia_id }}"> {{ $array->nome_colaborador }} - {{ date('d/m/Y', strtotime($array->data_ocorrencia)) }} ({{$array->status}})</option>
                                 
                                 @endif
                                 @if($role->name === 'social')
@@ -122,7 +124,7 @@ $count = 0 ;
         <div class="list-group">
             <div class="row">        
                 
-                    @if($role->name === 'administrador')
+                    @if($role->name != 'social')
                         @foreach(mostrar_advertencias() as $array)
                             <div <?php
                             if($count >= 9){
