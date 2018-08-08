@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Situacao;
+use App\Situacao;
 
 class SituationSeeder extends Seeder
 {

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeTableSeeder::class);
         $this->call(ColumnTableSeeder::class);
         $this->call(ConditionTableSeeder::class);
-        $this->call(DocumentTypeSeeder::class);
         $this->call(SituationSeeder::class);
+        $this->call(DocumentTypeSeeder::class);
     }
 }
