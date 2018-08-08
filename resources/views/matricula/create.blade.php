@@ -121,6 +121,9 @@
                                                                     <a href="{{ route('matricula.show', $mat->id)}}">
                                                                         <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
                                                                     </a>
+                                                                    <a href="/termo/imagem/{{ $mat->id }}">
+                                                                        <i class="fa fa-file-text icon text-success" aria-hidden="true"></i>
+                                                                    </a>
                                                                 @endpermission
                                                             </small>
                                                         </div>

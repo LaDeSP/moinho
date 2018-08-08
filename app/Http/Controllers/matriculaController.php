@@ -73,8 +73,9 @@ class matriculaController extends Controller
     
         $formulario->save(['timestamps' => false]);
 
-
-        return redirect()->back()->with('message', 'Matricula adicionada com sucesso!');
+        return redirect('/termo/imagem/'.( (string) $formulario->id ));
+        #return $this->termo($formulario->id);
+        //return redirect()->back()->with('message', 'Matricula adicionada com sucesso!');
     }
 
    /* public function ajaxprod(){
