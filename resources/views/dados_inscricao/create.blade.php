@@ -2,6 +2,9 @@
 
 use PHP\test;
 $cont = 1;
+$data = date("Y/m/d");
+$data = str_replace("/","-",$data);
+
 ?>
 
 <html>
@@ -141,8 +144,8 @@ $cont = 1;
                         <div class="col-md-6">
                             <!-- Data de Inscrição -->
                             <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.inscriptionDate');?>*</label>
-                            <input type="date" name="data_inscricao" size="23" class="form-control validate"
-                            id="data_inscricao" onkeyup="verifica_vazio(this.value, this.id);">
+                            <input type="date" name="data_inscricao" size="23" class="form-control is-valid validate"
+                            value='{{ $data }}' id="data_inscricao" onkeyup="verifica_vazio(this.value, this.id);">
                             <div class="invalid-feedback">
                                 Por favor, digite a data de inscricao
                             </div>

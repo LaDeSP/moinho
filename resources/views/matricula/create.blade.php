@@ -1,3 +1,10 @@
+<?php
+
+$data = date("Y/m/d");
+$data = str_replace("/","-",$data);
+
+?>
+
 <script type="text/javascript">
   
 </script>
@@ -27,7 +34,7 @@
                 <!-- Data -->
                 <label for="exampleFormControlInput1"> <?php echo Lang::get('conteudo.dateRegistration'); ?>*</label>
                 <input type="date" name="data" size="23" id="data" class="form-control validate"
-                onkeyup="verifica_vazio(this.value, this.id);">
+                value='{{ $data }}' onkeyup="verifica_vazio(this.value, this.id);">
             </div>
 
             <!-- Segunda Linha -->
