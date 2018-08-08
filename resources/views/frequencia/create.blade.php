@@ -6,6 +6,7 @@ $data = date("Y/m/d");
 $data = str_replace("/","-",$data);
 
 ?>
+
 @extends('layouts.app')
 
 @section('content')
@@ -27,7 +28,7 @@ $data = str_replace("/","-",$data);
                 {{ $error }}
         </h3>
         @endif
-<form id="formRecebimento" method="POST" novalidate >
+<form id="formRecebimento" onkeyup="verifica_submit('validate');"  method="POST" enctype="multipart/form-data" novalidate >
         {{ csrf_field() }}
     <div class="row">
             <div class="col-md-4">
@@ -51,7 +52,7 @@ $data = str_replace("/","-",$data);
                
 
             <label for="exampleFormControlInput1">Data da Frequência*</label>
-                        <input type="date" name="data" size="23"  class="form-control validate" 
+                        <input type="date" name="data" size="23"  class="form-control is-valid validate" 
             id="data" value="{{$data}}" onkeyup="verifica_vazio(this.value, this.id);" >
                 <div class="invalid-feedback">
                     Por favor, digite a data da Frequência.
@@ -59,12 +60,12 @@ $data = str_replace("/","-",$data);
             </div>
 
             <div class="col-md-2"><br>
-                <button type="submit" class="btn btn-outline-danger" disabled onclick="verificar();" id="pesquisar" >Pesquisar</button>
+                <button type="submit" class="btn btn-outline-danger"  id="submit" disabled  onclick="verificar();" id="pesquisar" >Pesquisar</button>
             </div>
         </div>
     </form>
 <div class="frequencia" id ="frequencia" style="visibility: hidden">
-    <form id="salvarFrequencia" method="POST" action="{{ route('frequencia.store') }}" enctype="multipart/form-data" novalidate >
+    <form id="salvarFrequencia" method="POST" action="{{ route('frequencia.store') }}" onkeyup="verifica_submit('validate');"enctype="multipart/form-data" novalidate >
         {{ csrf_field() }}
         <label for="exampleFormControlInput1" id="nova" ></label>
         <label for="exampleFormControlInput1" id="disc"></label>
@@ -93,7 +94,8 @@ $data = str_replace("/","-",$data);
           </table>
            
            <div class="col-md-2"><br>
-                <button type="submit" class="btn btn-outline-danger"> Salvar</button>
+        
+                <button type="submit" id="submit" onclick="verificar();" class="btn btn-outline-danger"> Salvar</button>
             </div> 
         </form>
     <br>

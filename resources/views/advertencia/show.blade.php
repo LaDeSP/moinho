@@ -35,7 +35,7 @@ use PHP\test;
                         <input type="text" name="nomeParticipante" size="23" class="form-control validate"
                         id="nome" value="{{$ocorrencia[0]->nome_participante}}" Disabled>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                     <label for="exampleFormControlInput1">Tipo:</label>
                         <select name="tipo" class="form-control" disabled>
                                 @foreach($t as $tipo_geral) 
@@ -49,7 +49,7 @@ use PHP\test;
                             @endforeach                 
                         </select>                                
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                    <label for="exampleFormControlInput1">Data da Advertência: <small><b>(data que será colocada no termo)</b></small></label>
                                <input type="date" name="data" size="23" class="form-control"
                                id="data" value="{{$advertencia->data_advertencia}}" disabled>
@@ -62,32 +62,40 @@ use PHP\test;
             <div class="row">
                 <div class="col-md-4">
                         <!-- Nome do Agressor -->
-                        <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small>(opcional)</small></label>
+                        <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small><b>(opcional)</b></small></label>
                     <input type="text" name="nome" value="{{$advertencia->agressor}}" id="nome" size="23" class="form-control" disabled>
                 </div>
-                <div class="col-md-4">
-                        <!-- Chamar Responsável -->
-                        <label for="exampleFormControlInput1">Chamar Responsável*</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="responsavel" disabled id="responsavel" value="1" <?php if($advertencia->responsavel_assina == 1)echo("checked");?> >
-                                    <label class="form-check-label" for="exampleRadios1">
-                                    Sim
-                                    </label>
+                            <div class="col-md-4">
+                                    <!-- Chamar Responsável -->
+                                    <label for="exampleFormControlInput1">Chamar Responsável: *</label>
+                                            <select name="responsavel" class="form-control" disabled>
+                                               <?php 
+                                                    switch($advertencia->responsavel_assina) {
+                                                        case 0:
+                                                        echo("<option value=\"0\"> </option>");
+                                                        break;
+                                                        case 2:
+                                                        echo("<option value=\"2\"> Notificação com o Motivo  </option>");
+                                                        break;
+                                                        case 3:
+                                                        echo("<option value=\"3\"> Assinatura do Responsável </option>");
+                                                        break;
+                                                        case 1:
+                                                        echo("<option value=\"1\"> Assinatura e Presença do Responsável </option>");
+                                                    }
+                                               ?>
+                                            </select>
                             </div>
-                            <div class="form-check">
-                            <input class="form-check-input" type="radio" name="responsavel" disabled id="responsavel" value="0" <?php if($advertencia->responsavel_assina == 0) echo("checked"); ?>>
-                                    <label class="form-check-label" for="exampleRadios2">
-                                    Não
-                                    </label>
-                            </div>
-                </div>
                 <div class="col-md-4" style="margin-top:20px; ">
                     <label id="chamar" for="exampleFormControlInput1"> </label>
                     @if ($advertencia->responsavel_assina === 1)
                         <button onclick="printDiv('printA');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
-                    @else
-                    <h3 class="text-warning"> Motivo da advertência: </h3><button onclick="printDiv('printB');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
-                    <h3 class="text-warning"> Assinatura de ciência: </h3><button onclick="printDiv('printC');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
+                    @endif
+                    @if ($advertencia->responsavel_assina === 2)
+                        <button onclick="printDiv('printB');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
+                    @endif
+                    @if ($advertencia->responsavel_assina === 3)
+                        <button onclick="printDiv('printC');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
                     @endif
                 </div>
             </div>
@@ -101,7 +109,7 @@ use PHP\test;
                 <div class="row">
                     <div class="col-md-12">
                             <label for="exampleFormControlInput1">Observação:<small> <b>(opcional) *poderá ser colocado no termo da advertência</b></small></label>
-                    <textarea name="observacao" rows="5" disabled> {{$advertencia->observacao}}</textarea>
+                    <textarea name="observacao" rows="4" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
                 @permission('excluir-advertencias')
@@ -151,7 +159,7 @@ use PHP\test;
            <br>
         </div>
         @if ($advertencia->responsavel_assina === 1)
-           <div class="col-md-10" id="printA" hidden>
+           <div class="col-md-10" id="printA">
                 <div class="row">
                      <table >
                              <tr>
@@ -190,8 +198,10 @@ use PHP\test;
                  </table>
                 </div>
            </div>
-        @else
-           <div class="col-md-10" id="printB" hidden> 
+        @endif
+        @if ($advertencia->responsavel_assina === 2)
+
+           <div class="col-md-10" id="printB"> 
                 <div class="row">
                      <table >
                              <tr>
@@ -229,7 +239,9 @@ use PHP\test;
                  </table>
                 </div>
            </div>
-           <div class="col-md-10" id="printC" hidden> 
+           @endif
+           @if ($advertencia->responsavel_assina === 3)
+           <div class="col-md-10" id="printC"> 
                     <div class="row">
                          <table >
                                  <tr>
@@ -273,25 +285,17 @@ use PHP\test;
                 table, th, td {
                 border: 1px solid black;
                 border-collapse: collapse;
-                margin-left: 120px;
+                margin-left: 110px;
                 margin-right: 50px;
                 padding: 20px 20px 20px 20px;
             }
             p{
                 font-family: Arial, Helvetica, sans-serif;
-                font-size: 12pt;
+                font-size: 13pt;
                 font-weight: normal;
                 color: black;
             }
 
-            #print{
-                border: 1px solid black;
-
-                margin-left: 120px;
-                margin-right: 50px;
-                padding: 20px 20px 20px 20px;
-
-            }
            
             </style>
 
