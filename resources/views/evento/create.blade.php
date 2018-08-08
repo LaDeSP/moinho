@@ -21,6 +21,15 @@
             </button>
         </h3>
     @endif
+    
+    @if( !isset($colaboradores) )
+        <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
+            Nenhum reponsável ainda cadastrado
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+    @endif
 
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('evento.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}

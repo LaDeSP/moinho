@@ -52,16 +52,21 @@ class eventoController extends Controller
      */
     public function create()
     {
+        $cont = 1;
         $todos_colaboradores = Colaborador::all();
         foreach($todos_colaboradores as $colaborador){
             $colaboradores[$colaborador->id] = $colaborador;
         }
         $situacoes = Situacao::all();
+        if(!isset($colaboradores)){
+            $error = 'Nenhum horário adicionado!';
+            $eventos = [];
+            $count = 0;
+            return view('evento.create', compact('error', 'situacoes', 'eventos', 'cont', 'count'));
+        }
         foreach($colaboradores as $colaborador){
             $pessoas[$colaborador->id] = Pessoa::find($colaborador->pessoa_id);
         }
-
-        $cont = 1;
 
         $count = DB::table('periodo_evento')
             ->join('periodos', 'periodos.id', '=', 'periodo_evento.periodo_id')
