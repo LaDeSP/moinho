@@ -10,7 +10,7 @@
 @section('content')
 
 
-@permission('editar_eventos')
+@permission('editar_participantes')
 <h1 class="text-success">
     Adicionar Participante
 </h1>
@@ -117,7 +117,7 @@
                         <small id="{{ $participante->id }}tipo"> {{ $participante->area_atuacao }} </small>
                         <br>
                         <br>
-                        @permission('editar_eventos')
+                        @permission('editar_participantes')
                         <button type="button" class="btn btn-outline-danger" onClick="excluir_elemento('{{ $participante->id }}card', {{ $participante->pessoa_evento_id }})" > Excluir </button>
                         @endpermission
                         <input id="{{ $participante->id }}" style="display: none" value="{{ $participante->id }}" type="number" name="participante_id[]" class="form-control">
@@ -135,7 +135,7 @@
                         <small id="{{ $participante->id }}tipo"> Inscrito </small>
                         <br>
                         <br>
-                        @permission('editar_eventos')
+                        @permission('editar_participantes')
                         <button type="button" class="btn btn-outline-danger" onClick="excluir_elemento('{{ $participante->id }}card', {{ $participante->pessoa_evento_id }})" > Excluir </button>
                         @endpermission
                         <input id="{{ $participante->id }}" style="display: none" value="{{ $participante->id }}" type="number" name="participante_id[]" class="form-control">
@@ -144,7 +144,7 @@
                 </div>
             @endforeach
         </div>
-        @permission('editar_eventos')
+        @permission('editar_participantes')
         <button type="submit" class="btn btn-outline-success"> Concluir </button>
         @endpermission
         <div id="excluidos">

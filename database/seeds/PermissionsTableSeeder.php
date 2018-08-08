@@ -181,6 +181,13 @@ class PermissionsTableSeeder extends Seeder
         $excluir_eventos -> display_name= 'Excluir eventos no sistema';
         $excluir_eventos -> description = 'Permite excluir os eventos no sistema';
         $excluir_eventos ->save();
+
+        $editar_participantes = new Permission();
+        $editar_participantes -> name = 'editar_participantes';
+        $editar_participantes -> display_name= 'Editar quais participantes estão no evento';
+        $editar_participantes -> description = 'Permite editar os participantes do evento';
+        $editar_participantes ->save();
+
         #____________________________--Frequência--____________________________#
         $ver_frequencia = new Permission();
         $ver_frequencia -> name = 'ver_frequencia';
@@ -199,7 +206,7 @@ class PermissionsTableSeeder extends Seeder
             $ver_ocorrencias, $criar_ocorrencias, $editar_ocorrencias, $excluir_ocorrencias,  // ocorrências
             $ver_advertencias, $criar_advertencias, $excluir_advertencias, $editar_advertencias,
             $ver_eventos,$criar_eventos, $visualizar_evento, $editar_eventos,
-            $excluir_eventos
+            $excluir_eventos, $editar_participantes
         ));
 
         $diretor = Role::where('name', 'diretor') -> first();
@@ -213,7 +220,8 @@ class PermissionsTableSeeder extends Seeder
             $ver_inscricao, 
             $ver_ocorrencias,  $criar_ocorrencias, $editar_ocorrencias, $excluir_ocorrencias,  // ocorrências
             $ver_advertencias,  $criar_advertencias, $excluir_advertencias, $editar_advertencias,
-            $ver_eventos, $criar_eventos, $visualizar_evento, $editar_eventos, $excluir_eventos
+            $ver_eventos, $criar_eventos, $visualizar_evento, $editar_eventos, $excluir_eventos,
+            $editar_participantes
         ));
 
         $coordenador = Role::where('name', 'coordenador') -> first();
@@ -238,7 +246,8 @@ class PermissionsTableSeeder extends Seeder
             $ver_participante, //participante
             $ver_eventos, $criar_eventos, $visualizar_evento, //eventos
             $ver_ocorrencias,  $criar_ocorrencias, $editar_ocorrencias, // ocorrências
-            $ver_frequencia  //frequência
+            $ver_frequencia,  //frequência
+            $editar_participantes,
         ));
 
         $apoio = Role::where('name', 'apoio') -> first();
@@ -246,7 +255,8 @@ class PermissionsTableSeeder extends Seeder
             $ver_participante, $ver_turma, $ver_matricula,
             $criar_matricula, 
             $ver_ocorrencias, $criar_ocorrencias, $editar_ocorrencias,
-            $ver_eventos, $criar_eventos, $visualizar_evento
+            $ver_eventos, $criar_eventos, $visualizar_evento,
+            $editar_participantes
         ));
         
     }
