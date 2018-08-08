@@ -275,6 +275,7 @@ $cont = 1;
                             <br>
                             <small>{{ $array->email }}</small>
                             <br><br>
+                            @permission('excluir_colaborador')
                             <a class="excluirRegistro" title="Excluir Colaborador">
                                 <i 
                                     url="/colaborador/remove/{{ $array->id }}" 
@@ -284,6 +285,7 @@ $cont = 1;
                                     aria-hidden="true"
                                 ></i>
                             </a>
+                            @endpermission
                         </span>
                     </div>
                     <?php

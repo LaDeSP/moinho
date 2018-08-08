@@ -63,6 +63,12 @@ class PermissionsTableSeeder extends Seeder
         $criar_colaborador -> description = 'Permite criar os colaboradores';
         $criar_colaborador -> save();
 
+        $excluir_colaborador = new Permission();
+        $excluir_colaborador -> name = 'excluir_colaborador';
+        $excluir_colaborador -> display_name = 'excluir colaborador';
+        $excluir_colaborador -> description = 'Permite excluir os colaboradores';
+        $excluir_colaborador -> save();
+
         #______________________--ESCOLA--_____________________#
         $ver_escola = new Permission();
         $ver_escola -> name = 'ver-escola';
@@ -206,7 +212,7 @@ class PermissionsTableSeeder extends Seeder
             $ver_ocorrencias, $criar_ocorrencias, $editar_ocorrencias, $excluir_ocorrencias,  // ocorrências
             $ver_advertencias, $criar_advertencias, $excluir_advertencias, $editar_advertencias,
             $ver_eventos,$criar_eventos, $visualizar_evento, $editar_eventos,
-            $excluir_eventos, $editar_participantes
+            $excluir_eventos, $editar_participantes, $excluir_colaborador
         ));
 
         $diretor = Role::where('name', 'diretor') -> first();
