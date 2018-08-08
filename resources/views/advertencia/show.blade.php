@@ -67,15 +67,15 @@ use PHP\test;
                 </div>
                             <div class="col-md-4">
                                     <!-- Chamar Responsável -->
-                                    <label for="exampleFormControlInput1">Chamar Responsável: *</label>
-                                            <select name="responsavel" class="form-control" disabled>
+                                    <label for="exampleFormControlInput1">Providências: *</label>
+                                            <select name="providencia" class="form-control" disabled>
                                                <?php 
-                                                    switch($advertencia->responsavel_assina) {
+                                                    switch($advertencia->providencia) {
                                                         case 0:
                                                         echo("<option value=\"0\"> </option>");
                                                         break;
                                                         case 2:
-                                                        echo("<option value=\"2\"> Notificação com o Motivo  </option>");
+                                                        echo("<option value=\"2\"> Notificação </option>");
                                                         break;
                                                         case 3:
                                                         echo("<option value=\"3\"> Assinatura do Responsável </option>");
@@ -88,13 +88,13 @@ use PHP\test;
                             </div>
                 <div class="col-md-4" style="margin-top:20px; ">
                     <label id="chamar" for="exampleFormControlInput1"> </label>
-                    @if ($advertencia->responsavel_assina === 1)
+                    @if ($advertencia->providencia === 1)
                         <button onclick="printDiv('printA');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
                     @endif
-                    @if ($advertencia->responsavel_assina === 2)
+                    @if ($advertencia->providencia === 2)
                         <button onclick="printDiv('printB');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
                     @endif
-                    @if ($advertencia->responsavel_assina === 3)
+                    @if ($advertencia->providencia === 3)
                         <button onclick="printDiv('printC');" class="btn btn-warning"><i class="fa fa-download" ></i> Imprimir </button>            
                     @endif
                 </div>
@@ -108,7 +108,7 @@ use PHP\test;
                     </div>
                 <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Observação:<small> <b>(opcional) *poderá ser colocado no termo da advertência</b></small></label>
+                            <label for="exampleFormControlInput1">Observação:<small> <b>(opcional) poderá ser colocado no termo da advertência</b></small></label>
                     <textarea name="observacao" rows="4" disabled> {{$advertencia->observacao}}</textarea>
                     </div>
                 </div>
@@ -158,7 +158,7 @@ use PHP\test;
             </form>
            <br>
         </div>
-        @if ($advertencia->responsavel_assina === 1)
+        @if ($advertencia->providencia === 1)
            <div class="col-md-10" id="printA">
                 <div class="row">
                      <table >
@@ -177,9 +177,9 @@ use PHP\test;
                                    <p>  Sres. Pais ou Responsáveis,</p>
                                    <p style="text-align:justify">
                                         O Instituto Moinho Cultural Sul – Americano comunica que a/o participante <b>{{$ocorrencia[0]->nome_participante}} </b>
-                                        está ADVERTIDA/O e necessitamos de vossa presença para tratarmos de tal assunto. 
-                                        Participante recebeu orientações por/ pela(o) <b>coordenação</b>. Informamos que a entrada do(a) mesmo(a) fica 
-                                        condicionada a <b>assinatura e presença dos responsáveis</b>. 
+                                        está <b>ADVERTIDA/O</b> e necessitamos de vossa presença para tratarmos de tal assunto. 
+                                        Participante recebeu orientações por/pela(o) <b>coordenação</b>. Informamos que a entrada do(a) mesmo(a) fica 
+                                        condicionada à <b>assinatura e presença dos responsáveis</b>. 
                                         </p> 
                                    <p style="text-align:center">
                                              Ciente, _______________________________________________________________.
@@ -199,7 +199,7 @@ use PHP\test;
                 </div>
            </div>
         @endif
-        @if ($advertencia->responsavel_assina === 2)
+        @if ($advertencia->providencia === 2)
 
            <div class="col-md-10" id="printB"> 
                 <div class="row">
@@ -218,8 +218,8 @@ use PHP\test;
                                  <div class="col-md-12">
                                    <p>  Sres. Pais ou Responsáveis,</p>
                                      <p style="text-align:justify">
-                                    Fica advertido nesta data <b>{{ date('d/m/Y', strtotime($advertencia->data_advertencia)) }}</b>, o participante <b>{{$ocorrencia[0]->nome_participante}}</b>,
-                                    motivo {{$advertencia->observacao}} Pedimos a sua colaboração.
+                                    Fica advertido nesta data <b>{{ date('d/m/Y', strtotime($advertencia->data_advertencia)) }}</b>, o participante <b>{{$ocorrencia[0]->nome_participante}}</b>.
+                                    O motivo é {{$advertencia->observacao}} Pedimos a sua colaboração.
                                    
                                      </p><br>
                                      <p style="text-align:center">
@@ -240,7 +240,7 @@ use PHP\test;
                 </div>
            </div>
            @endif
-           @if ($advertencia->responsavel_assina === 3)
+           @if ($advertencia->providencia === 3)
            <div class="col-md-10" id="printC"> 
                     <div class="row">
                          <table >
@@ -301,15 +301,7 @@ use PHP\test;
 
 <script src="/vendor/jquery/jquery.min.js"></script>
         <script type="text/javascript">
-        $(document).ready(function(){  
-            //se chamar responsavel ativa o botão
-            
-            var var_name = $('input[name=responsavel]:checked').val(); 
-            
-            console.log(var_name);
-
-            
-        });
+     
 
            $(document).ready(function(){
                 cache_width = $('#pdf').width(); //Criado um cache do CSS

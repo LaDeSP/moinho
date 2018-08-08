@@ -18,7 +18,7 @@ class CriarTabelaAdvertencia extends Migration
             $table->date('data_advertencia'); //data da advertencia
 
             $table->string('agressor')->nullable(); //não obrigatório
-            $table->integer('responsavel_assina'); 
+            $table->integer('providencia'); 
             $table->text('observacao')->nullable(); //texto não obrigatório 
             $table->timestamps();
             $table->string('colaborador'); //nome do colaborador que gerou a advertencia ou id

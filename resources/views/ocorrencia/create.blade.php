@@ -21,6 +21,11 @@ $count = 0 ;
                 {{ $message }}
         </h3>
     @endif
+    @if( isset($error) ) <!--Mensagem de erro ao gerar ocorrência -->
+    <h3 class="alert alert-danger">
+            {{ $error }}
+    </h3>
+    @endif
 
     <form onkeyup="verifica_submit('validate');"  method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}

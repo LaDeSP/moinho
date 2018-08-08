@@ -75,12 +75,12 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                 </div>
                 <div class="col-md-4">
                         <!-- Chamar Responsável -->
-                        <label for="exampleFormControlInput1">Chamar Responsável: *</label>
-                                <select name="responsavel" class="form-control">
+                        <label for="exampleFormControlInput1">Providências: *</label>
+                                <select name="providencia" class="form-control">
                                     <option value="0"> </option>
-                                    <option value="2"<?php if($advertencia->responsavel_assina == 2)echo("selected");?>> Notificação com o Motivo  </option>
-                                    <option value="3" <?php if($advertencia->responsavel_assina == 3)echo("selected");?>> Assinatura do Responsável </option>
-                                    <option value="1" <?php if($advertencia->responsavel_assina == 1)echo("selected");?>> Assinatura e Presença do Responsável </option>
+                                    <option value="2"<?php if($advertencia->providencia == 2)echo("selected");?>> Notificação </option>
+                                    <option value="3" <?php if($advertencia->providencia == 3)echo("selected");?>> Assinatura do Responsável </option>
+                                    <option value="1" <?php if($advertencia->providencia == 1)echo("selected");?>> Assinatura e Presença do Responsável </option>
             
                                 </select>
                 </div>
@@ -94,7 +94,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
             </div>
             <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Observação: <small><b>(opcional) *poderá ser colocado no termo da advertência</b></small></label>
+                            <label for="exampleFormControlInput1">Observação: <small><b>(opcional) poderá ser colocado no termo da advertência</b></small></label>
                     <textarea name="observacao" rows="5" > {{$advertencia->observacao}}</textarea>
                     </div>
             </div>

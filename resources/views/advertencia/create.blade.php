@@ -80,10 +80,10 @@ $count = 0 ;
 
             <div class="col-md-4">
             <!-- Chamar Responsável -->
-            <label for="exampleFormControlInput1">Chamar Responsável: *</label>
-                    <select name="responsavel" class="form-control">
+            <label for="exampleFormControlInput1">Providências: *</label>
+                    <select name="providencia" class="form-control">
                         <option value="0"> </option>
-                        <option value="2"> Notificação com o Motivo  </option>
+                        <option value="2"> Notificação  </option>
                         <option value="3"> Assinatura do Responsável </option>
                         <option value="1"> Assinatura e Presença do Responsável </option>
 
@@ -93,7 +93,7 @@ $count = 0 ;
         </div>
         <div class="row">
                     <div class="col-md-12">
-                            <label for="">Observação: <small><b>(opcional) *será colocado no termo da advertência</b></small></label>
+                            <label for="">Observação: <small><b>(opcional) será colocado no termo da advertência</b></small></label>
                             <textarea name="observacao" rows="5"></textarea>
                     </div>
         </div>
