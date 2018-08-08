@@ -158,6 +158,7 @@
         for(i = 0; i < {{ count($periodos) }}; i++){
             inserir_criados(periodos[i].entrada, periodos[i].saida, 1, periodos[i].id);   
         }
+        total_slide = 3
     });
     
 </script>

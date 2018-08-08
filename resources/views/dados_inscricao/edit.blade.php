@@ -35,6 +35,7 @@ use PHP\test;
             alert("CEP não encontrado.");
         }
     }
+    total_slide = 3
 
     </script>
 
@@ -652,3 +653,10 @@ use PHP\test;
     <br>
 @endsection
 
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        paginacao( {{$count}} , 24 );
+        total_slide = 3
+    });
+</script>
