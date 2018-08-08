@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ConditionTableSeeder::class);
         $this->call(SituationSeeder::class);
         $this->call(DocumentTypeSeeder::class);
+        $this->call(Ocr_Advr_Type::class);
     }
 }
