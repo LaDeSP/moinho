@@ -28,9 +28,11 @@
 <div class="row">
     <select class="form-control col-md-4" name="report" id="report">
         <option value="vazio">Selecione o tipo de relatório</option>
-        @foreach($reports as $report)
-            <option value="{{ $report->id }}"> {{ $report->nome }} </option>
-        @endforeach
+        @if( isset($reports) )
+            @foreach($reports as $report)
+                <option value="{{ $report->id }}"> {{ $report->nome }} </option>
+            @endforeach
+        @endif
     </select>
 </div>
 

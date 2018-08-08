@@ -19,7 +19,13 @@ class RelatorioController extends Controller
      */
     public function index()
     {
-        $reports = Relatorio::all();
+        $id = Auth::id();
+        $role = RoleUser::where('user_id', $id)->first();
+        $reports_id = Relatorio_Role::where('role_id', $role->role_id)->get();
+        #$reports_id = Relatorio::where('role_id', $role->role_id)->get();
+        foreach($reports_id as $id){
+            $reports[] = Relatorio::find( $id->relatorio_id );
+        }
         return view('relatorio.index', compact('reports'));
     }
 
