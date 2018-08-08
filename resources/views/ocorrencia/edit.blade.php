@@ -25,6 +25,8 @@ use PHP\test;
     <?php 
     $teste = busca_ocorrencia_participante($ocorrencia->id);
     ?>
+    <!--editar ocorrência -->
+     @permission('editar_ocorrencias')
     <form 
     onkeyup="verifica_submit('validate');"
         method="POST" 
@@ -82,6 +84,7 @@ use PHP\test;
             <button disabled onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-danger " id="submit"> Alterar </button>
         </div>
     </div>
+    @endpermission
     @endsection
 </form>
 

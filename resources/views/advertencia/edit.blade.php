@@ -23,7 +23,9 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                     {{ $message }}
             </h3>
         @endif
-        <!-- Criar advertências -->
+        <!-- Editar advertências -->
+    
+    @permission('editar-advertencias')
     <form 
         onkeyup="verifica_submit('validate');"
             method="POST" 
@@ -105,6 +107,6 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                 </div>
         
     </div>
-
+    @endpermission
 @endsection
 

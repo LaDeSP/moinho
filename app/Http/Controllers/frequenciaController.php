@@ -62,7 +62,7 @@ class frequenciaController extends Controller
 
         if(!isset($request->matricula)){
             return view('frequencia.create', compact('colaborador'),[
-                'error' => 'Error ao gerar frequência!'
+                'error' => 'Erro ao gerar frequência!'
             ]);
         }
 

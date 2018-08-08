@@ -26,7 +26,8 @@ $count = 0 ;
             {{ $error }}
     </h3>
     @endif
-
+ <!-- Criar ocorrencia -->
+ @permission('criar_ocorrencias')
     <form onkeyup="verifica_submit('validate');"  method= "POST" action="{{ route('ocorrencia.store') }}" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
         <div class="row">
@@ -120,6 +121,7 @@ $count = 0 ;
             </nav>
             <br>
             <br>
+            @endpermission
         @endsection
 
 <script src="/vendor/jquery/jquery.min.js"></script>

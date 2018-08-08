@@ -274,7 +274,7 @@ $cont = 1;
                             <small>{{ $array->celular2 }}</small>
                             <br>
                             <small>{{ $array->email }}</small>
-                            <br>
+                            <br><br>
                             <a class="excluirRegistro" title="Excluir Colaborador">
                                 <i 
                                     url="/colaborador/remove/{{ $array->id }}" 

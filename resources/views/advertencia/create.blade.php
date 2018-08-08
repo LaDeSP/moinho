@@ -34,6 +34,8 @@ $count = 0 ;
     </div>
     @endif
     <!-- Criar advertências -->
+  
+     @permission('criar-advertencias')
     <form method= "POST" onkeyup="verifica_submit('validate');"  action="{{ route('advertencia.store') }}" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
 
@@ -188,7 +190,8 @@ $count = 0 ;
         <nav aria-label="..." id='pagination'>
             </nav>
             <br>
-            <br>    
+            <br>
+            @endpermission    
 @endsection
 
 <script src="/vendor/jquery/jquery.min.js"></script>

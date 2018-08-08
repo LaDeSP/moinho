@@ -137,7 +137,8 @@
                             </h4>
                         </a>
                     </li>
-                    <!-- Link para estudantes/participantes-->
+                    @permission('ver-frequencia')
+                    <!-- Link para frequência-->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('frequencia.create')}}">
                             <h4 class="green">
@@ -145,6 +146,8 @@
                             </h4>
                         </a>
                     </li>
+                    @endpermission
+
                     @permission('ver-inscricao')
                     <!-- Link para inscrição-->
                     <li class="nav-item">
