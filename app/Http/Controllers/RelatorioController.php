@@ -78,7 +78,6 @@ class RelatorioController extends Controller
                 $condition = Condicao::find($request->id_condition[$i]);
                 $coluna = $column->tabela.'.'.$column->coluna;
                 $condicao = $condition->condicao;
-                dd($coluna.' '.$condicao.' '.$request->input_condition[$i]);
                 $query = $query->where($coluna, $condicao, $request->input_condition[$i]);
             }
         }

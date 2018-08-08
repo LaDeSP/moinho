@@ -59,14 +59,9 @@
                 <i class="fa fa-angle-left" aria-hidden="true"></i> Voltar
             </h4>
         </a>
-        <a class="nav-link js-scroll-trigger col-md-2" onclick="getPDF()">
-            <h4 class="red">
-                <i class="fa fa-download" aria-hidden="true"></i> Gerar pdf
-            </h4>
-        </a>
         <a class="nav-link js-scroll-trigger col-md-2" onclick="printDiv('renderPDF')">
             <h4 class="red">
-                <i class="fa fa-download" aria-hidden="true"></i> Gerar pdf 2
+                <i class="fa fa-download" aria-hidden="true"></i> Gerar pdf
             </h4>
         </a>
     </div>

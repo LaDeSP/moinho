@@ -237,15 +237,21 @@
                         </a>
                     </li>
                     @endpermission
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('evento.create')}}">
+                            <h4 class="green">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> Evento
+                            </h4>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('relatorio.index')}}">
+                            <h4 class="blue">
+                                <i class="fa fa-download" aria-hidden="true"></i> Relatório 
+                            </h4>
+                        </a>
+                    </li>
                     @endif
-               
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ route('evento.create')}}">
-                        <h4 class="green">
-                            <i class="fa fa-calendar" aria-hidden="true"></i> Evento
-                        </h4>
-                    </a>
-                </li>
             </div>
         </ul>
       </div>
