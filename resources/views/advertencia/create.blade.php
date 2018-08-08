@@ -33,6 +33,7 @@ $count = 0 ;
         <h3 class="alert alert-success">
                 {{ $message }}
         </h3>
+    </div>
     @endif
         <div class="row">
                 <div class="col-md-6">
@@ -70,40 +71,36 @@ $count = 0 ;
                 </div>
             </div>
         </div>
-        
         <div class="row">
             <div class="col-md-4">
                     <!-- Nome do Agressor -->
-                    <label for="exampleFormControlInput1"><?php echo Lang::get('validation.attributes.name');?> do agressor: <small><b>(opcional)</b> </small></label>
+                    <label><?php echo Lang::get('validation.attributes.name');?> do agressor: <b><small>(opcional) </small></b></label>
                     <input type="text" name="nome" value="" id="nome" size="23" class="form-control">
             </div>
 
             <div class="col-md-4">
             <!-- Chamar Responsável -->
-            <label for="exampleFormControlInput1">Chamar Responsável: *</label>
-                <div class="form-check" >
-                    <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios1" value="1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                        Sim
-                        </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="responsavel" checked id="exampleRadios2" value="0">
-                        <label class="form-check-label" for="exampleRadios2">
-                        Não
-                        </label>
-                </div>
+            <label for="exampleFormControlInput1">Providências: *</label>
+                    <select name="providencia" class="form-control">
+                        <option value="0"> </option>
+                        <option value="2"> Notificação  </option>
+                        <option value="3"> Assinatura do Responsável </option>
+                        <option value="1"> Assinatura e Presença do Responsável </option>
+
+                    </select>
             </div>
+           
         </div>
         <div class="row">
-            <div class="col-md-12">
-                    <label for="exampleFormControlInput1">Observação: <small><b>(opcional)</b></small></label>
-                    <textarea name="observacao" rows="5"></textarea>
-            </div>
+                    <div class="col-md-12">
+                            <label for="">Observação: <small><b>(opcional) será colocado no termo da advertência</b></small></label>
+                            <textarea name="observacao" rows="5"></textarea>
+                    </div>
         </div>
-        <div class="col-md-2">
+            <div class="col-md-2">
                 <button disabled type="submit" class="btn btn-outline-danger" id="submit" onClick="changeListGroup('.filtro', 'all');" >Gerar Advertência</button>
             </div>
+        
         </form>    
         <!-- fim do formulario --><br>
         <div class="row">

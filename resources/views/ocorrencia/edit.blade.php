@@ -17,6 +17,11 @@ use PHP\test;
                 {{ $message }}
         </h3>
     @endif
+    @if( isset($error) ) <!--Mensagem de erro ao editar ocorrência -->
+    <h3 class="alert alert-danger">
+            {{ $error }}
+    </h3>
+    @endif
     <?php 
     $teste = busca_ocorrencia_participante($ocorrencia->id);
     ?>

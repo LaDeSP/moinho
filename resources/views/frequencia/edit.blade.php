@@ -23,7 +23,7 @@
 <?php 
     $id = $freque->id;
     ?>
-    <form id="salvarFrequencia" method="POST" action="{{route('frequencia.update',$id)}}" enctype="multipart/form-data" novalidate >
+    <form id="salvarFrequencia" method="POST" action="{{route('frequencia.update',$id)}}" enctype="multipart/form-data" onkeyup="verifica_submit('validate');" novalidate >
         <input name="_method" type="hidden" value="PUT">
   
         {{ csrf_field() }} 
@@ -63,10 +63,10 @@
             </tbody>
 
         </table>   
-        <div id="txtAge" style="display:none">Age is something</div>
 
             <div class="col-md-2"><br>
-                <button type="submit" class="btn btn-outline-danger"> Salvar</button>
+                
+                <button type="submit" onClick="changeListGroup('.filtro', 'all');" onclick="verificar();" class="btn btn-outline-danger" disable id="submit"> Salvar</button>
             </div> 
         </form>
     <br>

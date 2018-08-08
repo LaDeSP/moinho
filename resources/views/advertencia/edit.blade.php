@@ -43,7 +43,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                         <input type="text" name="participante_id" size="23" class="form-control" id="id_participante" value="{{$teste[0]->participante_id}}" hidden disabled> <!-- id DO PARTICIPANTE -->
                         <input type="text" name="nomeParticipante" size="23" class="form-control" id="nome_participante" value="{{$teste[0]->nome_participante}}"Disabled>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                     <label for="exampleFormControlInput1">Tipo: *</label>
                         <select name="tipo" class="form-control" >
                                 @foreach($t as $tipo_geral) 
@@ -57,7 +57,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                             @endforeach                 
                         </select>                                
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                    <label for="exampleFormControlInput1">Data da Advertência: *<small> <b>(data que será colocada no termo)</b></small></label>
                                <input type="date" name="data" size="23"  class="form-control validate"  onkeyup="verifica_vazio(this.value, this.id);"
                                id="data" value="{{$advertencia->data_advertencia}}" >
@@ -75,19 +75,14 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
                 </div>
                 <div class="col-md-4">
                         <!-- Chamar Responsável -->
-                        <label for="exampleFormControlInput1">Chamar Responsável*</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="responsavel" id="exampleRadios1" value="1" <?php if($advertencia->responsavel_assina == 1)echo("checked");?> >
-                                    <label class="form-check-label" for="exampleRadios1">
-                                    Sim
-                                    </label>
-                            </div>
-                            <div class="form-check">
-                            <input class="form-check-input" type="radio" name="responsavel"  id="exampleRadios2" value="0" <?php if($advertencia->responsavel_assina == 0) echo("checked"); ?> >
-                                    <label class="form-check-label" for="exampleRadios2">
-                                    Não
-                                    </label>
-                            </div>
+                        <label for="exampleFormControlInput1">Providências: *</label>
+                                <select name="providencia" class="form-control">
+                                    <option value="0"> </option>
+                                    <option value="2"<?php if($advertencia->providencia == 2)echo("selected");?>> Notificação </option>
+                                    <option value="3" <?php if($advertencia->providencia == 3)echo("selected");?>> Assinatura do Responsável </option>
+                                    <option value="1" <?php if($advertencia->providencia == 1)echo("selected");?>> Assinatura e Presença do Responsável </option>
+            
+                                </select>
                 </div>
             </div>
             <div class="row">
@@ -99,7 +94,7 @@ $teste = busca_ocorrencia_participante($advertencia->ocorrencia_id);
             </div>
             <div class="row">
                     <div class="col-md-12">
-                            <label for="exampleFormControlInput1">Observação: <small><b>(opcional) *poderá ser colocado no termo da advertência</b></small></label>
+                            <label for="exampleFormControlInput1">Observação: <small><b>(opcional) poderá ser colocado no termo da advertência</b></small></label>
                     <textarea name="observacao" rows="5" > {{$advertencia->observacao}}</textarea>
                     </div>
             </div>

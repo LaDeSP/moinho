@@ -49,10 +49,17 @@ class OcorrenciaController extends Controller
     public function store(Request $request)
     {
         //
+        $tipo = statusOcorrenciaAdvertencia::All();
+
+        if(!isset($request->motivo)){
+            return view('ocorrencia.create', compact('tipo'),[
+                'error' => 'Error ao gerar Ocorrência sem motivo (campo obrigatório)!'
+            ]);
+        }
+
         $formulario = new Ocorrencia; 
         $colaborador = new Colaborador;
         $matricula = new Matricula;
-        $tipo = statusOcorrenciaAdvertencia::All();
 
             $formulario->motivo = $request->motivo;
             $formulario->data_ocorrencia = $request->data;
@@ -116,12 +123,19 @@ class OcorrenciaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $tipo = statusOcorrenciaAdvertencia::All();
+        
+        if(!isset($request->motivo)){
+            return view('ocorrencia.create', compact('tipo'),[
+                'error' => 'Error ao editar Ocorrência sem motivo (campo obrigatório)!'
+            ]);
+        }
+        
         $ocorrencia = Ocorrencia::find($id);
         $colaborador = Colaborador::find($ocorrencia->colaborador_id);
         $participante = Matricula::find($ocorrencia->participante_id);
-        
-        $tipo = statusOcorrenciaAdvertencia::All();
-        
+
+
             $ocorrencia->motivo = $request->motivo; //atualizando a descrição do motivo advertencia
             $ocorrencia->data_ocorrencia = $request->data; //atualiza a data da ocorrencia
             $ocorrencia->participante_id = $ocorrencia->participante_id; //nome do participante que na verdade será id

@@ -72,7 +72,7 @@ class AdvertenciaController extends Controller
         $colaborador = Colaborador::where('user_id', auth()->user()->id)->first();
         $formulario->colaborador =  $colaborador->id; //colaborador que esta gerando advertencia
         $formulario->data_advertencia = $request->data; //data da avertência
-        $formulario->responsavel_assina =  $request->responsavel; //chamar responsavel
+        $formulario->providencia =  $request->providencia; //proviência a ser gerada
         $formulario->observacao = $request->observacao;
         $formulario->tipo_ocorrencia_advertencia=$request->tipo;
         $formulario->ocorrencia_id = $request->ocorrencia_id;
@@ -150,7 +150,7 @@ class AdvertenciaController extends Controller
         $advertenc->tipo_ocorrencia_advertencia = $request->tipo;
         $advertenc->data_advertencia = $request->data;
         $advertenc->agressor = $request->agressor;
-        $advertenc->responsavel_assina = $request->responsavel;
+        $advertenc->providencia = $request->providencia;
         $advertenc->observacao = $request->observacao;
 
         $advertenc->save();
