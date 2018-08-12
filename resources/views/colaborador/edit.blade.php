@@ -356,7 +356,7 @@ use PHP\test;
     </form>
 @endsection
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/moinho/public/vendor/jquery/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
         paginacao( {{$count}} , 24 );

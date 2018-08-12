@@ -69,8 +69,8 @@
 
 @endsection
 
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/js/jsrender.min.js"></script>
+<script src="/moinho/public/vendor/jquery/jquery.min.js"></script>
+<script src="/moinho/public/js/jsrender.min.js"></script>
 <script>
     cont = 0;
 

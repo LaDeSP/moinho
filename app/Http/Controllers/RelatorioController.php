@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Relatorio_Role;
+use App\RoleUser;
 use App\Juntar;
 use App\Relatorio;
 use App\Coluna;

@@ -303,7 +303,7 @@ $cont = 1;
     
 @endsection
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/moinho/public/vendor/jquery/jquery.min.js"></script>
 
 <script>
     $(document).ready(function(){

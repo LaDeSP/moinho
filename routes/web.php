@@ -97,6 +97,12 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
 
     #______________________--Termos--_____________________#
     Route::get('/termo/imagem/{id}', 'matriculaController@termo');
+
+    #______________________--File--_____________________#
+    Route::post('/file', 'FileController@store');
+    Route::get('/file', function () {
+        return view('file.index');
+    });
 });
 
 Auth::routes();

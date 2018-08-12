@@ -418,7 +418,7 @@ $data = str_replace("/","-",$data);
                             echo " style='display: none' ";
                         }
                     ?> 
-                    class="col-md-4 {{ $array->serie }} {{ $array->turma }} {{ $array->raca }} {{ str_replace(' ', '_', $array->nome) }} filtro"
+                    class="isvalid col-md-4 {{ $array->serie }} {{ $array->turma }} {{ $array->raca }} {{ str_replace(' ', '_', $array->nome) }} filtro"
                 >
                     <span href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                         <div class="d-flex w-100 justify-content-between">

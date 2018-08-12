@@ -644,7 +644,7 @@ use PHP\test;
         @foreach($document as $documento)
             @if($documento->inscricao_id === $inscricao->id)
                 <div class="col-md-12">
-                    <iframe src="/document/{{ $documento->url }}" height="500" width="100%"></iframe>
+                    <iframe src="{{ $documento->url }}" height="500" width="100%"></iframe>
                 </div>
             @endif
         @endforeach
@@ -656,7 +656,6 @@ use PHP\test;
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        paginacao( {{$count}} , 24 );
         total_slide = 3
     });
 </script>

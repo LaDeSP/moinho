@@ -297,7 +297,7 @@ use PHP\test;
                        
             </style>
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/moinho/public/vendor/jquery/jquery.min.js"></script>
         <script type="text/javascript">
      
 
