@@ -110,7 +110,7 @@ class documentoController extends Controller
         foreach($request->id as $key => $entrada){
             if( $entrada == 0 || $entrada == null ){
                 echo 'Novo ';
-                if( $request->comentario[$key] == null || $request->doc_type[$key] == null || $request->numero_documento[$key] == null || is_string($request->documento[$key]) == true ){
+                if( $request->comentario[$key] == null || $request->doc_type[$key] == null || $request->numero_documento[$key] == null || is_string($request->documento) == true ){
                     echo 'Informações faltando ';
                     $resp = $resp.'O documento de numero: '.( (string) $request->numero_documento[$key]).' está faltando informações. ';
                 } else {
@@ -156,7 +156,7 @@ class documentoController extends Controller
                         $resp = $resp.'Sucesso ao alterar as infomações do documento de numero: '.( (string) $request->numero_documento[$key]).'. ';                        
                     }
 
-                    if( is_string($request->documento[$key]) != true ){
+                    if( is_string($request->documento) != true ){
                         $documento = $request->documento[$key];
                         $imageName = $documento->getClientOriginalName();
                         $ext = explode( '.', $imageName );

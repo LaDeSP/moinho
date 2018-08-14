@@ -44,9 +44,11 @@ use PHP\test;
 @section('content')
     <h1 class="text-info"> Visualizar Inscrição </h1>
     <div class="text-right">
-      <a href="{{ route('dados_inscricao.edit', $id)}}" id="{{ $id }}">
-          <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
-      </a>
+        @permission('criar-inscricao')
+        <a href="{{ route('dados_inscricao.edit', $id)}}" id="{{ $id }}">
+            <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
+        </a>
+        @endpermission
     </div>
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('dados_inscricao.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -669,9 +671,11 @@ use PHP\test;
         Documentos 
     </h1>
     <div class="text-right">
-      <a href="{{ route('documento.edit', $inscricao->id)}}">
-        <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
-      </a>
+        @permission('criar-inscricao')
+        <a href="{{ route('documento.edit', $inscricao->id)}}">
+            <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
+        </a>
+        @endpermission
     </div>
     <br>
 

@@ -155,7 +155,6 @@ $data = str_replace("/","-",$data);
                 </div>
             </div>
             <br>
-            <div><center><button onclick="printDiv('body_regular')" type="button" class="btn btn-outline-info"><?php echo Lang::get('conteudo.print'); ?></button></center></div>
             <br>
         </div>
         <nav aria-label="..." id='pagination'>

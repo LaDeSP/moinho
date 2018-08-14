@@ -47,9 +47,6 @@ $data = str_replace("/","-",$data);
 
 @section('content')
     <h1 class="text-info"><?php echo Lang::get('conteudo.addInscription');?></h1>
-    <div style="margin-bottom: 20px">
-        <a href="{{ url('/relatorio_inscricao')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.inscriptionReport');?></a>
-    </div>
     @if( !count($escola) )
         <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
             Nenhum escola ainda cadastrada
@@ -58,6 +55,7 @@ $data = str_replace("/","-",$data);
             </button>
         </h3>
     @endif
+    @permission('criar-inscricao')
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('dados_inscricao.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
@@ -392,6 +390,7 @@ $data = str_replace("/","-",$data);
             </a>
         </div>
     </form>
+    @endpermission
     <br>
     <br>
     <div class="row">
@@ -424,9 +423,11 @@ $data = str_replace("/","-",$data);
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{ $array->nome }}</h5>
                             <small>
+                                @permission('criar-inscricao')
                                 <a href="{{ route('dados_inscricao.edit', $array->id)}}" id="{{ $array->id }}">
                                     <i class="fa fa-pencil icon text-info" aria-hidden="true"></i>
                                 </a>
+                                @endpermission
                                 <a href="{{ route('dados_inscricao.show', $array->id)}}" id="{{ $array->id }}">
                                     <i class="fa fa-eye icon text-info" aria-hidden="true"></i>
                                 </a>

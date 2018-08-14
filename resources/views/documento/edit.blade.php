@@ -61,6 +61,7 @@
                         <!-- Anexo -->
                         <label for="exampleFormControlInput1">Novo Anexo*</label>
                         <input type="file" name="documento[]" size="23" class="form-control-file">
+                        <small class="form-text text-muted">O tamanho máximo permitido é de {{ ini_get('upload_max_filesize') }}.</small>
                     </div>
                     <div class="col-md-11">
                         <!-- Anotação -->
@@ -117,6 +118,7 @@
                     <!-- Anexo -->
                     <label for="exampleFormControlInput1">Anexo*</label>
                     <input type="file" name="documento[]" size="23" class="form-control-file">
+                    <small class="form-text text-muted">O tamanho máximo permitido é de {{ ini_get('upload_max_filesize') }}.</small>
                 </div>
                 <div class="col-md-11">
                     <!-- Anotação -->

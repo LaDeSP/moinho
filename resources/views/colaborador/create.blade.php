@@ -45,11 +45,6 @@ $cont = 1;
     <h1 class="text-danger"><?php echo Lang::get('conteudo.addCollaborator'); ?></h1>
 
     <!-- Relatório -->
-    <div style="margin-bottom: 20px">
-        <!-- Adicionar filtros -->
-        <a href="{{ url('/relatorio_colaborador')}}"  class="btn btn-outline-info"><?php echo Lang::get('conteudo.employeeReport'); ?> </a>
-    </div>
-
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('colaborador.store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
@@ -303,7 +298,7 @@ $cont = 1;
     
 @endsection
 
-<script src="/moinho/public/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
 
 <script>
     $(document).ready(function(){
