@@ -8,7 +8,7 @@ $cont = 1;
     <h1 class="text-info"><?php echo Lang::get('conteudo.registerDiscipline'); ?></h1>
     @if( $countColaboradores == 0 )
         <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
-            Nenhum professor ainda cadastrada
+            Nenhum colaborador cadastrado
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

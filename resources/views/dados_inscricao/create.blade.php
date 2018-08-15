@@ -49,7 +49,7 @@ $data = str_replace("/","-",$data);
     <h1 class="text-info"><?php echo Lang::get('conteudo.addInscription');?></h1>
     @if( !count($escola) )
         <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
-            Nenhum escola ainda cadastrada
+            Nenhum escola cadastrada
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
