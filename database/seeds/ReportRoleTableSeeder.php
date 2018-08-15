@@ -167,5 +167,11 @@ class ReportRoleTableSeeder extends Seeder
             $relatorio_role->relatorio()->associate($relatorio_evento_periodo);
             $relatorio_role->save();
 
+            #Inserindo o evento periodo
+            $relatorio_role = new Relatorio_Role;
+            $relatorio_role->role()->associate($role);
+            $relatorio_role->relatorio()->associate($relatorio_frequencia);
+            $relatorio_role->save();
+
     }
 }

@@ -116,7 +116,7 @@
             </div>
 
             <div class="col-md-12">
-                <button type="submit" class="btn btn-outline-success" id="submit" > Alterar </button>
+                <button type="submit" class="btn btn-outline-success" id="submit" > Salvar </button>
             </div>
 
             <div class="col-md-12">

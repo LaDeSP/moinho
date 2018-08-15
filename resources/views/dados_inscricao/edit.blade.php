@@ -614,7 +614,7 @@ use PHP\test;
 
                         <!-- Submit -->
                         <div class="col-md-4">
-                            <button onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-success" id="submit"> Alterar </button>
+                            <button onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-success" id="submit"> Salvar </button>
                         </div>
                     </div>
                 </div>

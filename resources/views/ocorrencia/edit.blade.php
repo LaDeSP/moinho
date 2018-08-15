@@ -81,7 +81,7 @@ use PHP\test;
         </div>
         <div class="col-md-3">
             <!-- Submit -->
-            <button disabled onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-danger " id="submit"> Alterar </button>
+            <button disabled onClick="verifica_campo('validate');" type="submit" class="btn btn-outline-danger " id="submit"> Salvar </button>
         </div>
     </div>
     @endpermission

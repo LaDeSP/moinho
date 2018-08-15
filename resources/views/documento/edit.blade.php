@@ -143,7 +143,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <button type="submit" class="btn btn-outline-success" id="submit"> Alterar </button>
+                <button type="submit" class="btn btn-outline-success" id="submit"> Salvar </button>
             </div>
         </div>
     </form>
