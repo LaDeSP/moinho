@@ -243,8 +243,9 @@ class PermissionsTableSeeder extends Seeder
             $ver_inscricao, $criar_inscricao, $ver_matricula, $criar_matricula,
             $ver_turma, $ver_participante, $ver_colaborador,
             $ver_ocorrencias, $excluir_ocorrencias,$editar_ocorrencias,$criar_ocorrencias,
-            $ver_eventos, 
-            $ver_advertencias,$criar_advertencias,$editar_advertencias,$excluir_advertencias
+            $ver_eventos,  $ver_disciplina, 
+            $ver_advertencias,$criar_advertencias,$editar_advertencias,$excluir_advertencias,
+            $ver_escola
         ));
 
         $colaborador = Role::where('name', 'colaborador') -> first();
