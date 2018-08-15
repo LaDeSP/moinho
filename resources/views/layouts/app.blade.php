@@ -59,7 +59,7 @@
         <i class="fa fa-bars text-dark" aria-hidden="true"></i>
       </button>
       <div class="collapse navbar-collapse" data-spy="scroll" data-target="#sub-menu" id="navbarSupportedContent">
-        <ul class="navbar-nav" id="sub-menu" style="text-align: center; overflow: visible;">
+        <ul class="navbar-nav" id="sub-menu" style="text-align: left; overflow: visible;">
             <div class="scroll">
                 @if(Auth::guest())
                     <li class="nav-item ">
@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn nav-link" data-toggle="collapse" href="#login" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+                        <a class="btn nav-link" style="text-align: left;" data-toggle="collapse" href="#login" role="button" aria-expanded="false" aria-controls="collapseExample"> 
                             <h4 class="blue"> <i class="fa fa-sign-in" aria-hidden="true"> </i> Login</h4> 
                         </a>
                         <div class="collapse drop-login" id="login">
