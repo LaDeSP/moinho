@@ -208,7 +208,7 @@ class PermissionsTableSeeder extends Seeder
             $ver_colaborador, $criar_colaborador, $ver_turma, 
             $ver_matricula, $criar_matricula, $ver_matriculas_regulares, 
             $ver_matriculas_irregulares, $ver_escola, $ver_disciplina, 
-            $ver_participante, $ver_inscricao, 
+            $ver_participante, $ver_inscricao, $criar_inscricao,
             $ver_ocorrencias, $criar_ocorrencias, $editar_ocorrencias, $excluir_ocorrencias,  // ocorrências
             $ver_advertencias, $criar_advertencias, $excluir_advertencias, $editar_advertencias,
             $ver_eventos,$criar_eventos, $visualizar_evento, $editar_eventos,
