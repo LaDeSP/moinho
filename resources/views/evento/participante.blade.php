@@ -37,7 +37,7 @@
             class="form-control" 
             value=""
             placeholder="Pesquisa"
-            onKeyUp="changeListGroup('.filtro', this.value);"
+            onKeyUp="changeListGroup('.filtro', this.value);" id='search'
         >
         </input>  
     </div>

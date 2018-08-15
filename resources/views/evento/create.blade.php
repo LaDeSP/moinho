@@ -144,7 +144,6 @@
     @endpermission
     <br>
     <br>
-    <h3 class="text-success"> Eventos </h3>
     <div class="row">
         <div class="col-md-4">
             <input
@@ -152,9 +151,12 @@
                 class="form-control" 
                 value=""
                 placeholder="Pesquisa"
-                onKeyUp="changeListGroup('.filtro', this.value);"
+                onKeyUp="changeListGroup('.filtro', this.value);" id='search'
             >
             </input>  
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-info" onClick="changeSearch('search', '');" >Todos</button>
         </div>
         <!--
         <div class="col-md-3 text-center">
@@ -171,7 +173,7 @@
             </h3>
         </div>
         <div class="col-md-3 text-center">
-            <button type="submit" class="btn btn-outline-danger" onClick="changePesquisa('.filtro', '');" >Todos</button>
+            <button type="submit" class="btn btn-outline-danger" onClick="changeSearch('search', '');" >Todos</button>
         </div>
         @foreach($situacoes as $situacoe)
         <div class="col-md-3 text-center">

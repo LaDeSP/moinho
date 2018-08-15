@@ -69,12 +69,12 @@
                 class="form-control" 
                 value=""
                 placeholder="Pesquisa"
-                onKeyUp="changeListGroup('.filtro', this.value);"
+                onKeyUp="changeListGroup('.filtro', this.value);" id='search'
             >
             </input>  
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-warning" onClick="changePesquisa('.filtro', '');" >Todos</button>
+            <button type="submit" class="btn btn-outline-warning" onClick="changeSearch('search', '');" >Todos</button>
         </div>
     </div>
     <div class="list-group">
