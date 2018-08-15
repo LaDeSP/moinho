@@ -116,13 +116,6 @@
                         </h4>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#Evento">
-                            <h4 class="yellow">
-                                <i class="fa fa-calendar" aria-hidden="true"></i> <?php echo Lang::get('conteudo.event');?> 
-                            </h4>
-                        </a>
-                    </li>
                 @endif
                 @if(!Auth::guest())
                     <li class="nav-item ">
@@ -336,18 +329,6 @@
                     </a>
                 </li>
             </ul>
-        </section>
-        <section class="resume-section p-3 p-lg-5 d-flex d-column" id="Evento">
-            <div class="row"> 
-                <div class="col-12">
-                    <h1 class="text-warning">
-                        Eventos 
-                    </h1>
-                    <h3>
-                        Ainda em andamento
-                    </h3>
-                </div>
-            </div>
         </section>
     @endif
     </div>

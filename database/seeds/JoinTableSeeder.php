@@ -26,6 +26,9 @@ class JoinTableSeeder extends Seeder
             #______________________--Colaborador--_____________________#
             $relatorio_colaborador = Relatorio::where('nome', '=', 'Colaborador') -> first();
 
+            #______________________--Frequência--_____________________#
+            $relatorio_frequencia = Relatorio::where('nome', '=', 'Frequência') -> first();
+
         #______________________--Relatório Participante Evento--_____________________#
             #Inner join Pessoa_evento
                 $join                     = new Juntar();
@@ -219,6 +222,102 @@ class JoinTableSeeder extends Seeder
 
                 #Associar a query
                 $join->relatorio()->associate($relatorio_participante);
+                $join->save();
+        #______________________--Relatório Participante--_____________________#
+            #Inner join Matricula
+                $join                     = new Juntar();
+                $join->tabela1            = 'matricula';
+                $join->tabela2            = 'frequencia';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'participante_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
+                $join->save();
+
+            #Inner join Inscricao
+                $join                     = new Juntar();
+                $join->tabela1            = 'inscricao';
+                $join->tabela2            = 'matricula';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'inscricao_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
+                $join->save();
+
+            #Inner join Dados Inscrição
+                $join                     = new Juntar();
+                $join->tabela1            = 'dados_inscricao';
+                $join->tabela2            = 'inscricao';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'dados_inscricao_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
+                $join->save();
+
+            #Inner join Participante
+                $join                     = new Juntar();
+                $join->tabela1            = 'pessoas';
+                $join->tabela2            = 'dados_inscricao';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'dados_pessoais_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
+                $join->save();
+            
+            #Inner join Disciplina
+                $join                     = new Juntar();
+                $join->tabela1            = 'disciplina';
+                $join->tabela2            = 'frequencia';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'disciplina_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
+                $join->save();
+
+            #Inner join Turma_Disciplina
+                $join                     = new Juntar();
+                $join->tabela1            = 'turma_disciplina';
+                $join->tabela2            = 'disciplina';
+                $join->coluna1            = 'disciplina_id';
+                $join->coluna2            = 'id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
+                $join->save();
+            
+            #Inner join Turma
+                $join                     = new Juntar();
+                $join->tabela1            = 'turma';
+                $join->tabela2            = 'turma_disciplina';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'turma_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
+                $join->save();
+            
+            #Inner join Turma
+                $join                     = new Juntar();
+                $join->tabela1            = 'nome_turma';
+                $join->tabela2            = 'turma';
+                $join->coluna1            = 'id';
+                $join->coluna2            = 'nome_turma_id';
+                $join->condicao           = '=';
+
+                #Associar a query
+                $join->relatorio()->associate($relatorio_frequencia);
                 $join->save();
     }
 }

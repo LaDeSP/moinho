@@ -26,6 +26,9 @@ class ColumnTableSeeder extends Seeder
 
             #______________________--Colaborador--_____________________#
             $relatorio_colaborador = Relatorio::where('nome', '=', 'Colaborador') -> first();
+
+            #______________________--Frequência--_____________________#
+            $relatorio_frequencia = Relatorio::where('nome', '=', 'Frequência') -> first();
         
         # Buscando os Tipos de Relatórios
             #______________________--String--_____________________#
@@ -568,5 +571,99 @@ class ColumnTableSeeder extends Seeder
                 $coluna->save();
 
                 # continuar a colocar as outras colunas
+        #______________________--Relatório Colaborador--_____________________#
+            # Participante
+                #1
+                $coluna = new Coluna;
+                $coluna->coluna = 'nome';
+                $coluna->nome = 'Nome do Particpante';
+                $coluna->tabela = 'pessoas';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #2
+                $coluna = new Coluna;
+                $coluna->coluna = 'cpf';
+                $coluna->nome = 'CPF do Participante';
+                $coluna->tabela = 'pessoas';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #3
+                $coluna = new Coluna;
+                $coluna->coluna = 'data_nascimento';
+                $coluna->nome = 'Data de Nascimento do Participante';
+                $coluna->tabela = 'pessoas';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_date);
+                $coluna->save();
+
+            # Frequência
+                #1
+                $coluna = new Coluna;
+                $coluna->coluna = 'presenca';
+                $coluna->nome = 'Presença';
+                $coluna->tabela = 'frequencia';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_tinyint);
+                $coluna->save();
+
+                #2
+                $coluna = new Coluna;
+                $coluna->coluna = 'data';
+                $coluna->nome = 'Data';
+                $coluna->tabela = 'frequencia';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_date);
+                $coluna->save();
+
+                #3
+                $coluna = new Coluna;
+                $coluna->coluna = 'justificativa';
+                $coluna->nome = 'Justificativa';
+                $coluna->tabela = 'frequencia';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+            # Disciplina
+                #1
+                $coluna = new Coluna;
+                $coluna->coluna = 'nome';
+                $coluna->nome = 'Nome da Disciplina';
+                $coluna->tabela = 'disciplina';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #2
+                $coluna = new Coluna;
+                $coluna->coluna = 'turno';
+                $coluna->nome = 'Turno da Disciplina';
+                $coluna->tabela = 'disciplina';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+
+                #3
+                $coluna = new Coluna;
+                $coluna->coluna = 'sala_aula';
+                $coluna->nome = 'Sala de Aula';
+                $coluna->tabela = 'disciplina';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
+            
+            # Turma
+                #1
+                $coluna = new Coluna;
+                $coluna->coluna = 'nome_turma';
+                $coluna->nome = 'Turma';
+                $coluna->tabela = 'nome_turma';
+                $coluna->relatorio()->associate($relatorio_frequencia);
+                $coluna->tipo()->associate($tipo_string);
+                $coluna->save();
     }
 }

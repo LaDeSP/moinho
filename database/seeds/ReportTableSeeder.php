@@ -39,5 +39,12 @@ class ReportTableSeeder extends Seeder
         $report->tabela             = 'colaborador';
         
         $report->save();
+
+        #5
+        $report                     = new Relatorio();
+        $report->nome               = 'Frequência';
+        $report->tabela             = 'frequencia';
+        
+        $report->save();
     }
 }
