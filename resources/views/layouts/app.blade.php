@@ -378,8 +378,15 @@
                 case '':
                     url = 'home';
                     break;
+                case 'turma_disciplina':
+                    url = 'turma';
+                    break;
+                case 'documento':
+                    url = 'inscricao';
+                    break;
                 case 'user':
                     document.getElementById('user').setAttribute("class", "text-info");
+
             }
 
             submenu = $('#sub-menu').children().children()
