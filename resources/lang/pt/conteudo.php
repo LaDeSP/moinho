@@ -8,7 +8,7 @@ return[
 'grade' => 'Turma',
 'regularRegistration' => 'Matrículas regulares',
 'irregularRegistration' => 'Matrículas irregulares',
-'contributors' => 'Colaboradores',
+'contributors' => 'Colaborador',
 'schoolSubject' => 'Disciplina',
 'logOut' => 'Sair', 
 'event' => 'Evento',

@@ -53,17 +53,13 @@ class turmaController extends Controller
     {
         $formulario = new Turma;
         $nome_turma = new NomeTurma;
-
         $nome_turma -> nome_turma = $request->turma;
-
         $nome_turma -> save();
 
         $formulario->nome_turma_id = $nome_turma -> id;
         $formulario->turno = $request->turno;
         $formulario->ano = $request->ano;
         $formulario->periodo = $request->periodo;
-      
-    
         $formulario->save(['timestamps' => false]);
 
         $help = $formulario->id;

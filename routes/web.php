@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/file', function () {
         return view('file.index');
     });
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 
 Auth::routes();

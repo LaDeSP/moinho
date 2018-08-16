@@ -64,7 +64,7 @@
                 @if(Auth::guest())
                     <li class="nav-item ">
                         <a href="#page-top" class="js-scroll-trigger">
-                        <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
+                            <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
                         </a>
                     </li>
                     <li class="nav-item">
@@ -125,7 +125,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger"href="{{ route('home')}}">
-                            <h4 class="yellow">
+                            <h4 class="yellow" id="home">
                                 <i class="fa fa-home" aria-hidden="true"></i><?php echo Lang::get('conteudo.home');?> 
                             </h4>
                         </a>
@@ -269,7 +269,7 @@
             </div>
             <div class="p-2">
                 <a class="nav-link js-scroll-trigger" href="{{ route('user.create') }}">
-                    <h4 class="blue">
+                    <h4 class="blue" id="user">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         {{{ Auth::user()->name }}}
                     </h4>
@@ -348,6 +348,62 @@
     <!-- Custom scripts for this template -->
     <script src="/js/resume.min.js"></script>
 
-   
+    <script>
+        function removeAcento(text){       
+            text = text.toLowerCase();                                                         
+            text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
+            text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
+            text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
+            text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
+            text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
+            text = text.replace(new RegExp('[Ç]','gi'), 'c');
+            return text;                 
+        }
+
+        $(document).ready(function(){
+            url = window.location.href;
+            url = url.split("/").slice(3, url.lenght);
+            slice = 0;
+            url.forEach(function(val, index){
+                switch(val){
+                    case 'public':
+                        slice = index;
+                }
+            });
+            url = url[slice];
+            switch(url){
+                case 'dados_inscricao':
+                    url = 'inscricao';
+                    break;
+                case '':
+                    url = 'home';
+                    break;
+                case 'user':
+                    document.getElementById('user').setAttribute("class", "text-info");
+            }
+
+            submenu = $('#sub-menu').children().children()
+
+            for( i = 0; i < submenu.length; i++ ){
+                if( removeAcento(submenu[i].innerText).indexOf(url) >= 0 ){
+                    option = submenu[i].children[0].children[0];
+                    switch( option.getAttribute('class') ){
+                        case 'blue':
+                            option.setAttribute("class", "text-info");
+                            break;
+                        case 'red':
+                            option.setAttribute("class", "text-danger");
+                            break;
+                        case 'green':
+                            option.setAttribute("class", "text-success");
+                            break;
+                        case 'yellow':
+                            option.setAttribute("class", "text-warning");
+                            break;
+                    }
+                }
+            }
+        })
+    </script>
 </body>
 </html>

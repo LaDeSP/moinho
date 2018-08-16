@@ -31,8 +31,7 @@ class HomeController extends Controller
         ->where(DB::raw('documents.document_type_id = 1'))
         ->orderBy('Dias_para_expirar')
         ->get();*/
-     
-        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
-        
+
+        return view('home');        
     }
 }

@@ -373,7 +373,6 @@ use PHP\test;
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        paginacao( {{$count}} , 24 );
         total_slide = 3
     });
 </script>

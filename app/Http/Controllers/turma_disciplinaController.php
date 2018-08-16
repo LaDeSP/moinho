@@ -48,11 +48,14 @@ class turma_disciplinaController extends Controller
      */
     public function store(Request $request)
     {
-
+        if( !isset($request->testando) ){
+            return redirect()->route('turma.create')->with('message', 'Turma criada com sucesso!');
+            echo 'Entrou';
+        }
         //$tamanho = $request->tamanho;
         $teste = $request->testando;
         $teste = str_split($teste);
-        $tamanho=count($teste);
+        $tamanho = count($teste);
         $teste = array_diff($teste, [',']);
         $turma_disciplina_aux = $request->botao;
 
@@ -80,7 +83,7 @@ class turma_disciplinaController extends Controller
        
 
 
-        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
+        return redirect()->route('turma.create')->with('message', 'Turma criada com sucesso junto com as suas disciplinas!');
     }
 
    
