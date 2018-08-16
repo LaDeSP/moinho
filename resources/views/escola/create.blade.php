@@ -45,7 +45,7 @@ $cont = 1;
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-success"><?php echo Lang::get('conteudo.addSchool'); ?> </h1>
+    <h1 class="text-success"><?php echo Lang::get('conteudo.school'); ?> </h1>
 
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('escola.store') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
         {{ csrf_field() }}

@@ -68,6 +68,11 @@
     @if(count($disciplinas) != 0)
         <h1 class="text-warning"> Disciplinas Adicionadas</h1>
     @endif
+    <div class="text-right">
+        <a href="{{ route('turma_disciplina.edit', $id)}}" title="Disciplinas">
+            <i class="fa fa-book icon text-warning" aria-hidden="true"></i>
+        </a>
+    </div>
     <div class="row">
         @foreach($disciplinas as $disciplina)
         <div class="col-md-3">

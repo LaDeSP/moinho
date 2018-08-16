@@ -6,7 +6,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-warning"><?php echo Lang::get('conteudo.addClass');?></h1>
+    <h1 class="text-warning"><?php echo Lang::get('conteudo.class');?></h1>
 
     @if( $disciplinas == 0 )
         <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -98,6 +98,9 @@
                                 </a>
                                 <a href="{{ route('turma.show', $array->id)}}">
                                     <i class="fa fa-eye icon text-warning" aria-hidden="true"></i>
+                                </a>
+                                <a href="{{ route('turma_disciplina.edit', $array->id)}}" title="Disciplinas">
+                                    <i class="fa fa-book icon text-warning" aria-hidden="true"></i>
                                 </a>
                             </small>
                         </div>

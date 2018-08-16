@@ -42,7 +42,7 @@ $cont = 1;
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-danger"><?php echo Lang::get('conteudo.addCollaborator'); ?></h1>
+    <h1 class="text-danger"><?php echo Lang::get('conteudo.collaborator'); ?></h1>
 
     <!-- Relatório -->
     <form onkeyup="verifica_submit('validate');" method= "POST" action="{{ route('colaborador.store') }}" enctype="multipart/form-data">

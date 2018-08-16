@@ -16,15 +16,23 @@
 
     function salva(){
         var i=0;
-        var div = document.getElementById("divResultado");
-       // for (i=0; i<array.length; i=i+1){
-          /*  console.log(array[i].id);
-            div.innerHTML = "<h1>" + "Lista de Disciplinas:" +"</h1>"+ "\n" + array[i].id + "\n"*/
-            //document.getElementById("divResultado").innerHTML = array.join(" ");
-            //document.getElementById("divResultado").innerHTML = JSON.stringify(array);
-
-      //  }
-        document.getElementById("divResultado").innerHTML = "<h1 class='text-warning'>Disciplinas Selecionadas</h1>" + "\n" + disciplina.join("<br>");
+        document.getElementById("divResultado").innerHTML = "<h1 class='text-warning'>Disciplinas Selecionadas</h1>";
+        div = $('#divResultado');
+        disciplina.forEach(function(value, index){
+            div.append(
+            `<div>
+                <a title="Excluir Disciplina" class="a">
+                    <i 
+                        nome="Disciplina"
+                        excluir="`+value+`"
+                        class="fa fa-trash icon text-danger"
+                        onClick="excluirDisciplinas('`+value+`')"
+                        aria-hidden="true"
+                    ></i>
+                </a>
+            `+value+"</div><br>");
+            console.log(value)
+        });
     }
 
     /*function tamanh(){
@@ -33,6 +41,13 @@
     
     function teste(){
         document.getElementById('test').value=array;
+    }
+
+    function excluirDisciplinas(nome){
+        posicao = disciplina.indexOf(nome);
+        disciplina.pop(posicao);
+        array.pop(posicao);
+        salva();
     }
     
 

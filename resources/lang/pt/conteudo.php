@@ -15,8 +15,10 @@ return[
 'language' => 'Idioma',//tradução do menu
 'inscriptionReport'=>'Baixar - Relatório de Inscrição',
 'addInscription'=> 'Adicionar Inscrição',
+'inscription'=> 'Inscrição',
 'namei' =>'Nome do Inscrito',
 'registerDiscipline' => 'Cadastrar Disciplina',
+'discipline' => 'Disciplina',
 'responsibleName'=>'Nome do Responsável',
 'responsibleBirth'=>'Data de Nascimento do Responsável',
 'cpfResponsible'=>'CPF do Responsável',//cpf do responsável
@@ -53,15 +55,18 @@ return[
 'print'=>'Imprimir',
 //Colaborador
 'addCollaborator'=>'Adicionar Colaborador',
+'collaborator'=>'Colaborador',
 'employeeReport'=> 'Download - Relatório do Colaborador',
 'enrrollmentTime'=>'Ano de Ingresso',
 'occupationArea'=>'Área de Atuação',
 'typeCollaborator'=>'Tipo Colaborador',
 //Adicionar Turma
 'addClass'=>'Adicionar Turma',
+'class'=>'Turma',
 'semester'=>'Semestre',
 //escola
 'addSchool'=>'Adicionar Escola',
+'school'=>'Escola',
 'classroom'=>'Sala de aula',
 'teacher'=> 'Professor',
 'dayWeek'=> 'Dia da Semana',

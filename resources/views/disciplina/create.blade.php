@@ -5,7 +5,7 @@ $cont = 1;
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-info"><?php echo Lang::get('conteudo.registerDiscipline'); ?></h1>
+    <h1 class="text-info"><?php echo Lang::get('conteudo.discipline'); ?></h1>
     @if( $countColaboradores == 0 )
         <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
             Nenhum colaborador cadastrado

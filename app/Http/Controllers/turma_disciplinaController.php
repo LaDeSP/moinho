@@ -106,7 +106,14 @@ class turma_disciplinaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $turma_disciplina = TurmaDisciplina::where('turma_id', $id)->get();
+        foreach( $turma_disciplina as $value ){
+            $disciplina_add[] = Disciplina::find( $value->disciplina_id );
+            $nomes[] = Disciplina::find( $value->disciplina_id )->nome;
+            $ids[] = Disciplina::find( $value->disciplina_id )->id;
+        }
+        $disciplina = Disciplina::all();
+        return view('turma_disciplina.edit', compact('id', 'disciplina_add', 'disciplina', 'nomes', 'ids'));
     }
 
     /**
@@ -118,7 +125,32 @@ class turma_disciplinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $disciplinas = str_split($request->testando);
+        $disciplinas = array_diff($disciplinas, [',']);
+        $turma_disciplina = TurmaDisciplina::where('turma_id', $id)->get();
+        foreach( $turma_disciplina as $index => $value ){
+            if( $this->indexOf($disciplinas, $value->id) == -1 ){
+                $value->delete();
+            } else {
+                unset( $disciplinas[$this->indexOf($disciplinas, $value->id)] );
+            }
+        }
+        foreach( $disciplinas as $value ){
+            $formulario = new TurmaDisciplina;
+            $formulario->turma_id = $id;
+            $formulario->disciplina_id = $value;
+            $formulario->save(['timestamps' => false]);
+        }
+        return redirect()->back()->with('message', 'Turma alterada com sucesso');
+    }
+
+    public function indexOf($arr, $string){
+        foreach($arr as $index => $value){
+            if( $value == $string ){
+                return $index;
+            }
+        }
+        return -1;
     }
 
     /**

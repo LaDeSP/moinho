@@ -46,7 +46,7 @@ $data = str_replace("/","-",$data);
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-info"><?php echo Lang::get('conteudo.addInscription');?></h1>
+    <h1 class="text-info"><?php echo Lang::get('conteudo.inscription');?></h1>
     @if( !count($escola) )
         <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
             Nenhuma escola cadastrada
