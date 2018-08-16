@@ -47,7 +47,7 @@ return[
 'turma'=>'Turma',
 'status'=>'Status',
 'add'=>'Adicionar',
-'listRegular'=>'Lista de Prticipantes regulares',
+'listRegular'=>'Lista de Participantes Regulares',
 'listIrregular'=>'Lista de Participantes Irregulares',
 'participant'=>'Participante',
 'print'=>'Imprimir',
