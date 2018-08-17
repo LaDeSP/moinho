@@ -73,7 +73,7 @@
 </div>
 @endsection
 
-<script src="{{ getenv('APP_URL') }}vendor/jquery/jquery.min.js"></script>
+<script src="{{ getenv('APP_URL') }}/vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
   
 $(document).on('change', '.freq', function(e){

@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap core CSS -->
-    <link href="{{ getenv('APP_URL') }}vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ getenv('APP_URL') }}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="{{ getenv('APP_URL') }}vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{ getenv('APP_URL') }}vendor/devicons/css/devicons.min.css" rel="stylesheet">
-    <link href="{{ getenv('APP_URL') }}vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="{{ getenv('APP_URL') }}/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ getenv('APP_URL') }}/vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="{{ getenv('APP_URL') }}/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{ getenv('APP_URL') }}css/resume.min.css" rel="stylesheet">
-    <link href="{{ getenv('APP_URL') }}css/moinho.css" rel="stylesheet">
+    <link href="{{ getenv('APP_URL') }}/css/resume.min.css" rel="stylesheet">
+    <link href="{{ getenv('APP_URL') }}/css/moinho.css" rel="stylesheet">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -70,7 +70,7 @@
     <div id="renderPDF">
         <div id="1">
             <h2 class="relatorio" id="0">
-                <img class="logo" src="{{ getenv('APP_URL') }}img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
+                <img class="logo" src="{{ getenv('APP_URL') }}/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO">
             </h2>
             <h2 class="relatorio" >
                 Relatório: {{ $report_name }}
@@ -137,14 +137,14 @@
     </div>
     
     <!-- Bootstrap core JavaScript -->
-    <script src="{{ getenv('APP_URL') }}vendor/jquery/jquery.min.js"></script>
-    <script src="{{ getenv('APP_URL') }}vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ getenv('APP_URL') }}/vendor/jquery/jquery.min.js"></script>
+    <script src="{{ getenv('APP_URL') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="{{ getenv('APP_URL') }}vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ getenv('APP_URL') }}/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="{{ getenv('APP_URL') }}js/resume.min.js"></script>
+    <script src="{{ getenv('APP_URL') }}/js/resume.min.js"></script>
 
     <!-- Div to PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>

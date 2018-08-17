@@ -260,7 +260,7 @@
         <div class="d-flex flex-row-reverse">
             @if(!Auth::guest())
             <div class="p-2">
-                <a class="nav-link js-scroll-trigger" href="{{ getenv('APP_URL') }}auth/logout">
+                <a class="nav-link js-scroll-trigger" href="{{ getenv('APP_URL') }}/auth/logout">
                     <h4 class="red">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <?php echo Lang::get('conteudo.logOut');?>
