@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-outline-danger" id="submit" disabled> Trocar a senha </button>
+                            <button type="submit" class="btn btn-outline-danger" id="submitAcesso" disabled> Trocar a senha </button>
                         </div>
                     </form>
 
