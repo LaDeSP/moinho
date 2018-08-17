@@ -306,10 +306,10 @@
                                             Por favor, digite o nome do país
                                         </div>
                                     </div>
-                                    <input type="text" name="email" value="{{ $user->email }}" size="23" id="email" onkeyup="verifica_email(this.value, this.id);"/>
-                                    <input type="number" min="1950" max="2018" value="{{ $colaborador->ano_ingreco }}" name="ano_ingresso" size="20" id="ano_ingresso" />
-                                    <input type="text" name="area_atuacao" value="{{ $colaborador->area_atuacao }}" size="20" id="area_atuacao"/>
-                                    <select name="tipo_colaborador" class="form-control">
+                                    <input type="text" name="email" value="{{ $user->email }}" size="23" id="email" style="display: none;"/>
+                                    <input type="number" min="1950" max="2018" value="{{ $colaborador->ano_ingreco }}" style="display: none;" name="ano_ingresso" size="20" id="ano_ingresso" />
+                                    <input type="text" name="area_atuacao" value="{{ $colaborador->area_atuacao }}" style="display: none;" size="20" id="area_atuacao"/>
+                                    <select name="tipo_colaborador" class="form-control" style="display: none;">
                                             <option value="{{$usuario->id}}">{{$usuario->name}}</option>
                                     </select>
                                     
