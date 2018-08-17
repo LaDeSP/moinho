@@ -140,7 +140,7 @@
                     <h1 class='text-warning'>Disciplinas Selecionadas</h1>
                     @foreach( $disciplina_add as $value )
                         <div>
-                            <a title="Excluir Disciplina" class="a">
+                            <a title="Excluir Disciplina" class="a disciplina">
                                 <i 
                                     nome="Disciplina"
                                     excluir="{{ $value->nome }}"
