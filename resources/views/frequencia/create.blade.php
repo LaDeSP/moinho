@@ -100,7 +100,7 @@ $data = str_replace("/","-",$data);
 </div>
 @endsection
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="{{ getenv('APP_URL') }}vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
   
      

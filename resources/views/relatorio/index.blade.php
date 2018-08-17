@@ -69,8 +69,8 @@
 
 @endsection
 
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/js/jsrender.min.js"></script>
+<script src="{{ getenv('APP_URL') }}vendor/jquery/jquery.min.js"></script>
+<script src="{{ getenv('APP_URL') }}js/jsrender.min.js"></script>
 <script>
     cont = 0;
 

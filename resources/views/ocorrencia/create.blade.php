@@ -124,7 +124,7 @@ $count = 0 ;
             @endpermission
         @endsection
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="{{ getenv('APP_URL') }}vendor/jquery/jquery.min.js"></script>
 
 <script>
     $(document).ready(function(){

@@ -221,7 +221,7 @@
                                 <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
                             </a>
                             
-                            <a href="/evento/participante/{{ $evento->id }}/edit" title="Participantes">
+                            <a href="{{ getenv('APP_URL') }}evento/participante/{{ $evento->id }}/edit" title="Participantes">
                                 <i class="fa fa-user icon text-success" aria-hidden="true"></i>
                             </a>
                         </small>
@@ -272,7 +272,7 @@
     <nav aria-label="..." id='pagination'>
     </nav>
 @endsection
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="{{ getenv('APP_URL') }}vendor/jquery/jquery.min.js"></script>
 
 <script>
     $(document).ready(function(){

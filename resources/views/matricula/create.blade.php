@@ -136,7 +136,7 @@ $data = str_replace("/","-",$data);
                                                                     <a href="{{ route('matricula.show', $mat->id)}}">
                                                                         <i class="fa fa-eye icon text-success" aria-hidden="true"></i>
                                                                     </a>
-                                                                    <a href="/termo/imagem/{{ $mat->id }}">
+                                                                    <a href="{{ getenv('APP_URL') }}termo/imagem/{{ $mat->id }}">
                                                                         <i class="fa fa-file-text icon text-success" aria-hidden="true"></i>
                                                                     </a>
                                                                 @endpermission
@@ -172,7 +172,7 @@ $data = str_replace("/","-",$data);
 </section>
 @endsection
 
-<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="{{ getenv('APP_URL') }}vendor/jquery/jquery.min.js"></script>
 
 <script>
     $(document).ready(function(){

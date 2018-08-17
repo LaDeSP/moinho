@@ -168,7 +168,7 @@ use PHP\test;
                                      <h2> Termo de Advertência</h2>
                              </div>
                              <div style="text-align:right" class="col-md-3">
-                             <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
+                             <img class="logo" src="{{ getenv('APP_URL') }}/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
  
                          </div>
                          <div class="row">
@@ -210,7 +210,7 @@ use PHP\test;
                                      <h2> Termo de Advertência </h2>
                              </div>
                              <div style="text-align:right" class="col-md-3">
-                             <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
+                             <img class="logo" src="{{ getenv('APP_URL') }}/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
  
                          </div>
                          <div class="row">
@@ -250,7 +250,7 @@ use PHP\test;
                                          <h2> Termo de Advertência </h2>
                                  </div>
                                  <div style="text-align:right" class="col-md-3">
-                                 <img class="logo" src="/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
+                                 <img class="logo" src="{{ getenv('APP_URL') }}/img/moinho.png" alt="INSTITUTO MOINHO CULTURAL SUL AMERICANO" style="width:150px;height:100px; align:right;">
      
                              </div>
                              <div class="row">
@@ -297,7 +297,7 @@ use PHP\test;
                        
             </style>
 
-<script src="/moinho/public/vendor/jquery/jquery.min.js"></script>
+<script src="{{ getenv('APP_URL') }}/moinho/public/vendor/jquery/jquery.min.js"></script>
         <script type="text/javascript">
      
 
