@@ -20,25 +20,22 @@
                         <h3 class="text-success">
                             Dados de Acesso
                         </h3>
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            
-                            <div class="col-md-10">
-                                <label class="col-md-10 control-label">E-Mail</label>
-                                <input id="emailAcesso" type="email" class="form-control" name="email" 
-                                value="{{ Auth::user()->email }}" required autofocus readonly>
+                        <div>
+                            <label>E-Mail</label>
+                            <input id="emailAcesso" type="email" class="form-control" name="email" 
+                            value="{{ Auth::user()->email }}" required autofocus readonly>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-10 control-label">Senha</label>
+                            <label for="password">Senha</label>
 
-                            <div class="col-md-10" onkeyup="confirmar_password(this.value, 'password', 'password-confirm');">
+                            <div onkeyup="confirmar_password(this.value, 'password', 'password-confirm');">
                                 <input id="passwordAcesso" type="password" class="form-control validate" name="password" 
                                 onkeyup="verifica_password(this.value, this.id);" required>
 
@@ -52,8 +49,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-10 control-label">Confirme a senha</label>
-                            <div class="col-md-10">
+                            <label for="password-confirm">Confirme a senha</label>
+                            <div>
                                 <input id="password-confirmAcesso" type="password" class="form-control validate" name="password_confirmation" 
                                 onkeyup="confirmar_password(this.value, 'password', this.id);" required>
 
