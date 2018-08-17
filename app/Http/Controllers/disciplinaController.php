@@ -62,19 +62,19 @@ class disciplinaController extends Controller
     public function store(Request $request)
     {
         $formulario = new Disciplina;
-        $horario = new Horario;
-
         $formulario->nome = $request->nome;
         $formulario->turno = $request->turno;
         $formulario->sala_aula = $request->sala_de_aula;
         $formulario->colaborador_id = $request->colaborador_id;
-
-        $horario->dia_semana = $request->dia_semana;
-        $horario->hora = $request->hora;
-        
         $formulario->save(['timestamps' => false]);
-        $horario->disciplina()->associate($formulario);
-        $horario->save(['timestamps' => false]);
+
+        foreach( $request->datas as $key => $data ){
+            $horario = new Horario;
+            $horario->dia_semana = $data;
+            $horario->hora = $request->horas[$key];
+            $horario->disciplina()->associate($formulario);
+            $horario->save(['timestamps' => false]);
+        }
 
 
         return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
