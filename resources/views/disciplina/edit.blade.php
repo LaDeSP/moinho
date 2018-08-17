@@ -28,12 +28,12 @@
                 <!-- Turno da Disciplina -->
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.shift');?>*</label>
                 <select name="turno" class="form-control">
-                    <option value="morning" 
-                        <?php if(strcmp($disciplina->turno, 'morning') === 0){echo("selected");} ?>
+                    <option value="Matutino" 
+                        <?php if(strcmp($disciplina->turno, 'morning') === 0 || strcmp($disciplina->turno, 'Matutino') === 0){echo("selected");} ?>
                     > <?php echo Lang::get('validation.attributes.morning');?>  </option>
 
-                    <option value="afternoon" 
-                        <?php if(strcmp($disciplina->turno, 'afternoon') === 0){echo("selected");} ?>
+                    <option value="Vespertino" 
+                        <?php if(strcmp($disciplina->turno, 'afternoon') === 0 || strcmp($disciplina->turno, 'Vespertino') === 0){echo("selected");} ?>
                     > <?php echo Lang::get('validation.attributes.afternoon');?> </option>
                 </select>
             </div>
@@ -75,24 +75,24 @@
                 <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.dayWeek'); ?>*</label>
                 <select name="dia_semana" class="form-control">
                     <option 
-                        value="monday"
-                        <?php if(strcmp($horario->dia_semana, 'monday') === 0){echo("selected");} ?>
+                        value="Segunda-Feira"
+                        <?php if(strcmp($horario->dia_semana, 'monday') === 0 || strcmp($horario->dia_semana, 'Segunda-Feira') === 0){echo("selected");} ?>
                     > <?php echo Lang::get('conteudo.monday'); ?> </option>
                     <option 
-                        value="tuesday"
-                        <?php if(strcmp($horario->dia_semana, 'tuesday') === 0){echo("selected");} ?>
+                        value="Terça-Feira"
+                        <?php if(strcmp($horario->dia_semana, 'tuesday') === 0 || strcmp($horario->dia_semana, 'Terça-Feira') === 0){echo("selected");} ?>
                     > <?php echo Lang::get('conteudo.tuesday'); ?> </option>
                     <option 
-                        value="wednesday"
-                        <?php if(strcmp($horario->dia_semana, 'wednesday') === 0){echo("selected");} ?>
+                        value="Quarta-Feira"
+                        <?php if(strcmp($horario->dia_semana, 'wednesday') === 0 || strcmp($horario->dia_semana, 'Quarta-Feira') === 0){echo("selected");} ?>
                     > <?php echo Lang::get('conteudo.wednesday'); ?> </option>
                     <option 
-                        value="thursday"
-                        <?php if(strcmp($horario->dia_semana, 'thursday') === 0){echo("selected");} ?>
+                        value="Quinta-Feira"
+                        <?php if(strcmp($horario->dia_semana, 'thursday') === 0 || strcmp($horario->dia_semana, 'Quinta-Feira') === 0){echo("selected");} ?>
                     > <?php echo Lang::get('conteudo.thursday'); ?></option>
                     <option 
-                        value="friday"
-                        <?php if(strcmp($horario->dia_semana, 'friday') === 0){echo("selected");} ?>
+                        value="Sexta-Feira"
+                        <?php if(strcmp($horario->dia_semana, 'friday') === 0 || strcmp($horario->dia_semana, 'Sexta-Feira') === 0){echo("selected");} ?>
                     > <?php echo Lang::get('conteudo.friday'); ?> </option>
                 </select>
             </div>
