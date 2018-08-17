@@ -8,6 +8,7 @@ use App\NomeTurma;
 use App\Turma;
 use App\Disciplina;
 use App\TurmaDisciplina;
+use App\Horario;
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class turmaController extends Controller
@@ -66,7 +67,10 @@ class turmaController extends Controller
         $turma = Turma::all();
         $nome = NomeTurma::all();
         $disciplina = Disciplina::all();
-        return view('turma_disciplina.create', compact('turma', 'nome', 'disciplina', 'help'));
+        foreach( $disciplina as $value ){
+            $hora[$value->id] = Horario::where('disciplina_id', $value->id)->first();
+        }
+        return view('turma_disciplina.create', compact('turma', 'nome', 'disciplina', 'help', 'hora'));
     }
 
     /**
