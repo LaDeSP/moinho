@@ -240,7 +240,8 @@ class PermissionsTableSeeder extends Seeder
 
         $social = Role::where('name', 'social') -> first();
         $social -> attachPermissions(array(
-            $ver_inscricao, $criar_inscricao, $ver_matricula, $criar_matricula,
+            $ver_inscricao, $criar_inscricao, $ver_matricula, $criar_matricula, $ver_matriculas_regulares, 
+            $ver_matriculas_irregulares,
             $ver_turma, $ver_participante, $ver_colaborador,
             $ver_ocorrencias, $excluir_ocorrencias,$editar_ocorrencias,$criar_ocorrencias,
             $ver_eventos,  $ver_disciplina, 

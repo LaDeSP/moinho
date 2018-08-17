@@ -127,6 +127,7 @@ class frequenciaController extends Controller
         ->where('frequencia.disciplina_id','=',$freque->disciplina_id)
         ->where('frequencia.turma_id','=',$freque->turma_id)
         ->where('frequencia.data','=',$freque->data)
+        ->orderby('nome_participante')
         ->get();
 
 
@@ -228,6 +229,8 @@ class frequenciaController extends Controller
         ->where('disciplina.id','=',$disciplina) //filtro disciplina
         ->where('matricula.status_matricula_id','=',$regular)//matricula regular        
         ->where('turma.ano', '=', date('Y'))
+        ->orderby('pessoas.nome')
+
         ->get();
 
         return response()->json($query);
