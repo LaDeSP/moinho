@@ -86,7 +86,7 @@
                             <button onclick="do_bom();" type="button" class="btn btn-outline-success">Adicionar</button>
                         </div>
                         <div class="col-md-12">
-                            <input type="submit" name="testando" value="Concluir" id="test" onclick="teste();" class="btn btn-outline-success">
+                            <input type="submit" name="testando" value="Salvar" id="test" onclick="teste();" class="btn btn-outline-success">
                         </div>
                     </div>
                 </div>

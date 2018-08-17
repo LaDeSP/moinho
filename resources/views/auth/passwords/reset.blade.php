@@ -316,7 +316,7 @@
                                     </select>
                                     
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-outline-success" id="submit"> Alterar </button>
+                            <button type="submit" class="btn btn-outline-success" id="submit"> Salvar </button>
                         </div>
                     </form>
                     </div>
