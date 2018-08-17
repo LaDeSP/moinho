@@ -60,7 +60,7 @@ class OcorrenciaController extends Controller
         $formulario = new Ocorrencia; 
         $colaborador = new Colaborador;
         $matricula = new Matricula;
-
+        if(isset($colaborador->id)){
             $formulario->motivo = $request->motivo;
             $formulario->data_ocorrencia = $request->data;
             $formulario->participante_id = $request->participante_id;
@@ -68,11 +68,14 @@ class OcorrenciaController extends Controller
             $formulario->colaborador_id =  $colaborador->id;  
             $formulario->tipo_ocorrencia_advertencia = $request->tipo;
             $formulario->save();
-          
+            
             return view('ocorrencia.create', compact('tipo'),[
                 'message' => 'Ocorrencia enviada com sucesso'
             ]);
-
+        }
+        return view('ocorrencia.create', compact('tipo'),[
+            'error' => 'Ocorrencia não pode ser enviada'
+        ]);
     }
 
     /**
