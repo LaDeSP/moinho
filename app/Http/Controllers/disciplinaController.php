@@ -75,8 +75,6 @@ class disciplinaController extends Controller
             $horario->disciplina()->associate($formulario);
             $horario->save(['timestamps' => false]);
         }
-
-
         return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
