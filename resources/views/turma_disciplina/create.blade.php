@@ -78,7 +78,7 @@
                         <div class="col-md-8">
                             <select name="disciplinaaa" id="disciplinaaa" class="form-control">
                                 @foreach($disciplina as $materias) 
-                                    <option value="{{ $materias->id }}"> {{ $materias->nome }}, {{ $materias->data }} - {{ $materias->hora }} </option>
+                                    <option value="{{ $materias->id }}"> {{ $materias->nome }}, {{ $hora[$materias->id]->dia_semana }} - {{ $hora[$materias->id]->hora }} </option>
                                 @endforeach
                             </select>
                         </div>

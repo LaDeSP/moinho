@@ -8,6 +8,7 @@ use App\NomeTurma;
 use App\Turma;
 use App\Disciplina;
 use App\TurmaDisciplina;
+use App\Horario;
 
 
 class turma_disciplinaController extends Controller
@@ -36,8 +37,11 @@ class turma_disciplinaController extends Controller
         $turma = Turma::all();
         $nome = NomeTurma::all();
         $disciplina = Disciplina::all();
+        foreach( $disciplina as $value ){
+            $hora[$value->id] = Horario::where('disciplina_id', $value->id)->first();
+        }
         $help = 1;
-        return view('turma_disciplina.create', compact('turma', 'nome', 'disciplina', 'help'));
+        return view('turma_disciplina.create', compact('turma', 'nome', 'disciplina', 'help', 'hora'));
     }
 
     /**
@@ -107,13 +111,16 @@ class turma_disciplinaController extends Controller
     public function edit($id)
     {
         $turma_disciplina = TurmaDisciplina::where('turma_id', $id)->get();
+        $disciplina = Disciplina::all();
+        foreach( $disciplina as $value ){
+            $hora[$value->id] = Horario::where('disciplina_id', $value->id)->first();
+        }
         foreach( $turma_disciplina as $value ){
             $disciplina_add[] = Disciplina::find( $value->disciplina_id );
-            $nomes[] = Disciplina::find( $value->disciplina_id )->nome;
+            $nomes[] = Disciplina::find( $value->disciplina_id )->nome.', '.$hora[$value->disciplina_id]->dia_semana.' - '.$hora[$value->disciplina_id]->hora;
             $ids[] = Disciplina::find( $value->disciplina_id )->id;
         }
-        $disciplina = Disciplina::all();
-        return view('turma_disciplina.edit', compact('id', 'disciplina_add', 'disciplina', 'nomes', 'ids'));
+        return view('turma_disciplina.edit', compact('id', 'hora', 'disciplina_add', 'disciplina', 'nomes', 'ids'));
     }
 
     /**

@@ -18,12 +18,12 @@
     }
     var disciplina = `<?php 
         if(isset($nomes)){
-            echo implode(',', $nomes);
+            echo implode('.', $nomes);
         } else {
             echo ' ';
         }
     ?>`;
-    disciplina = disciplina.split(',');
+    disciplina = disciplina.split('.');
     if( disciplina.indexOf(' ') != -1 ){
         disciplina.pop(disciplina.indexOf(' '))
     }
@@ -123,7 +123,7 @@
                         <div class="col-md-8">
                             <select name="disciplinaaa" id="disciplinaaa" class="form-control">
                                 @foreach($disciplina as $materias) 
-                                    <option value="{{ $materias->id }}">{{ $materias->nome }}</option>
+                                    <option value="{{ $materias->id }}">{{ $materias->nome }}, {{ $hora[$materias->id]->dia_semana }} - {{ $hora[$materias->id]->hora }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -149,7 +149,7 @@
                                     aria-hidden="true"
                                 ></i>
                             </a>
-                            {{ $value->nome }}
+                            {{ $value->nome }}, {{ Lang::get('conteudo.'.$hora[$materias->id]->dia_semana) }} - {{ $hora[$materias->id]->hora }}
                         </div>
                         
                         <br>
