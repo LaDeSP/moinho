@@ -5,6 +5,15 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Role;
+use Auth;
+use App\RoleUser;
+use App\Colaborador;
+use App\Pessoa;
+use App\Endereco;
+use App\Contato;
+
+
+
 use Zizaco\Entrust\EntrustFacade as Entrust;
 
 class userController extends Controller
@@ -32,7 +41,21 @@ class userController extends Controller
         # Caso o usuário logado não tenha acesso a essa página, retorna um erro
         $user = User::all();
         $role = Role::all();
-        return view('auth.passwords.reset', compact('user', 'role'));
+
+        $role_user = RoleUser::where('user_id', Auth::user()->id )->first();
+        $usuario = Role::find($role_user->role_id);
+
+        $id = Auth::user()->id;
+
+        $colaborador = Colaborador::where('user_id',$id)->first();
+        $pessoa = Pessoa::find($colaborador->pessoa_id);
+        $endereco = Endereco::find($pessoa->endereco_id);
+        $contato = Contato::find($pessoa->contato_id);
+        $user = User::find($colaborador->user_id);
+        $tipo = Role::all();
+
+        
+        return view('auth.passwords.reset', compact('user', 'role','usuario', 'tipo', 'colaborador', 'pessoa', 'endereco', 'contato', 'user'));
     }
 
     /**
