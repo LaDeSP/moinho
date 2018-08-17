@@ -2,7 +2,7 @@
 
 @section('content')
     @permission('criar_eventos')
-    <h1 class="text-success"> Adicionar Evento </h1>
+    <h1 class="text-success"> Evento </h1>
     
 
     @if( \Session::has('message') )

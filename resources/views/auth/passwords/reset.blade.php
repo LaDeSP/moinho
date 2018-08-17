@@ -16,9 +16,8 @@
     <div class="row">
          <div class="col-md-5">
                 
-                <form onkeyup="verifica_submit('validate');" class="form-horizontal col-md-12" method="POST" action="{{ route('colaborador.update', $colaborador->id) }}">
+                <form onkeyup="verifica_submit('validate');" class="form-horizontal col-md-12" method="POST" action="{{ route('user.store') }}">
                         {{ csrf_field() }}
-                        <input name="_method" type="hidden" value="PUT">
                         <div class="col-md-10">
                             <h3 class="text-success">
                                 Dados de Acesso
