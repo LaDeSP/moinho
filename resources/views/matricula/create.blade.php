@@ -15,6 +15,14 @@ $data = str_replace("/","-",$data);
     <h1 class="text-success"> 
     <?php echo Lang::get('conteudo.enrolment'); ?>
     </h1>
+    @if( !count( busca_nome_inscrito() ) )
+        <h3 class="alert alert-danger alert-dismissible fade show" role="alert">
+            Nenhuma inscrito cadastrado
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+    @endif
 
     <!-- Criar matricula -->
     @permission('criar-matricula')
@@ -67,7 +75,7 @@ $data = str_replace("/","-",$data);
 
             <div class="col-md-12">
                 <br>
-                <button id="submit" type="submit" class="btn btn-outline-danger" disabled><?php echo Lang::get('conteudo.add'); ?></button>
+                <button id="submit" type="submit" class="btn btn-outline-success" <?php if( !count( busca_nome_inscrito() ) ) echo 'disabled'; ?> ><?php echo Lang::get('conteudo.add'); ?></button>
             </div>
         </div>
     </form>
