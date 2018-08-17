@@ -61,14 +61,14 @@ class disciplinaController extends Controller
      */
     public function store(Request $request)
     {
-        $formulario = new Disciplina;
-        $formulario->nome = $request->nome;
-        $formulario->turno = $request->turno;
-        $formulario->sala_aula = $request->sala_de_aula;
-        $formulario->colaborador_id = $request->colaborador_id;
-        $formulario->save(['timestamps' => false]);
-
         foreach( $request->datas as $key => $data ){
+            $formulario = new Disciplina;
+            $formulario->nome = $request->nome;
+            $formulario->turno = $request->turno;
+            $formulario->sala_aula = $request->sala_de_aula;
+            $formulario->colaborador_id = $request->colaborador_id;
+            $formulario->save(['timestamps' => false]);
+
             $horario = new Horario;
             $horario->dia_semana = $data;
             $horario->hora = $request->horas[$key];
