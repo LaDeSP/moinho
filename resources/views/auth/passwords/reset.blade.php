@@ -77,6 +77,7 @@
 
 
         </div>
+        @if( isset($colaborador) )
          <div class="col-md-6">
                 <h3 class="text-success">
                         Informações Pessoais
@@ -331,6 +332,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        @endif
          </div>
                 
         
