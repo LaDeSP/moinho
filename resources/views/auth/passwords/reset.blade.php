@@ -27,7 +27,7 @@
                             
                             <div>
                                 <label for="email" >E-Mail</label>
-                                <input id="email" type="email" class="form-control" name="email" 
+                                <input id="emailAcesso" type="email" class="form-control" name="email" 
                                 value="{{ Auth::user()->email }}" required autofocus readonly>
 
                                 @if ($errors->has('email'))
@@ -42,7 +42,7 @@
                             <label for="password" >Senha</label>
 
                             <div  onkeyup="confirmar_password(this.value, 'password', 'password-confirm');">
-                                <input id="password" type="password" class="form-control validate" name="password" 
+                                <input id="passwordAcesso" type="password" class="form-control validate" name="password" 
                                 onkeyup="verifica_password(this.value, this.id);" required>
 
                                 @if ($errors->has('password'))
@@ -57,7 +57,7 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" >Confirme a senha</label>
                             <div >
-                                <input id="password-confirm" type="password" class="form-control validate" name="password_confirmation" 
+                                <input id="password-confirmAcesso" type="password" class="form-control validate" name="password_confirmation" 
                                 onkeyup="confirmar_password(this.value, 'password', this.id);" required>
 
                                 @if ($errors->has('password_confirmation'))
@@ -337,3 +337,11 @@
                 
         
 @endsection
+
+<script src="/vendor/jquery/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        total_slide = 2
+    });
+</script>
