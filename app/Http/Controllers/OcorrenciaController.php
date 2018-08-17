@@ -60,6 +60,7 @@ class OcorrenciaController extends Controller
         $formulario = new Ocorrencia; 
         $colaborador = new Colaborador;
         $matricula = new Matricula;
+        dd($colaborador->id);
         if(isset($colaborador->id)){
             $formulario->motivo = $request->motivo;
             $formulario->data_ocorrencia = $request->data;
