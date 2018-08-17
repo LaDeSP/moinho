@@ -76,9 +76,7 @@ $data = str_replace("/","-",$data);
               <tr>
                 <th scope="col">Matricula</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Presença 
-                 <input type=checkbox name="selall" onClick="CheckAll()"><span id="checar">Marcar todos</span><br>
-    
+                <th scope="col">Presença    
                 <th scope="col">Justificativa</th>
               </tr>
             </thead>
