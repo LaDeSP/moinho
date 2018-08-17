@@ -1,33 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-
-            <div class="panel panel-default">
-                <h1 class="text-success">
-                    Trocar senha
-                </h1>
-                @if( isset($message) )
-                    <h3 class="alert alert-success">
-                            {{ $message }}
-                    </h3>
-                @endif
-            </div>
+    <div class="panel panel-default">
+        <h1 class="text-success">
+            Perfil
+        </h1>
+        @if( isset($message) )
+            <h3 class="alert alert-success">
+                    {{ $message }}
+            </h3>
+        @endif
+    </div>
            
     <div class="row">
          <div class="col-md-5">
                 
-                <form onkeyup="verifica_submit('validate');" class="form-horizontal col-md-12" method="POST" action="{{ route('colaborador.update', $colaborador->id) }}">
+                <form onkeyup="verifica_submit('validate');" class="form-horizontal col-md-12" method="POST" action="{{ route('user.store') }}">
                         {{ csrf_field() }}
-                        <input name="_method" type="hidden" value="PUT">
-
                         <h3 class="text-success">
                             Dados de Acesso
                         </h3>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             
                             <div class="col-md-10">
-                                <label for="email" class="col-md-10 control-label">E-Mail</label>
-                                <input id="email" type="email" class="form-control" name="email" 
+                                <label class="col-md-10 control-label">E-Mail</label>
+                                <input id="emailAcesso" type="email" class="form-control" name="email" 
                                 value="{{ Auth::user()->email }}" required autofocus readonly>
 
                                 @if ($errors->has('email'))
@@ -42,7 +39,7 @@
                             <label for="password" class="col-md-10 control-label">Senha</label>
 
                             <div class="col-md-10" onkeyup="confirmar_password(this.value, 'password', 'password-confirm');">
-                                <input id="password" type="password" class="form-control validate" name="password" 
+                                <input id="passwordAcesso" type="password" class="form-control validate" name="password" 
                                 onkeyup="verifica_password(this.value, this.id);" required>
 
                                 @if ($errors->has('password'))
@@ -57,7 +54,7 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-10 control-label">Confirme a senha</label>
                             <div class="col-md-10">
-                                <input id="password-confirm" type="password" class="form-control validate" name="password_confirmation" 
+                                <input id="password-confirmAcesso" type="password" class="form-control validate" name="password_confirmation" 
                                 onkeyup="confirmar_password(this.value, 'password', this.id);" required>
 
                                 @if ($errors->has('password_confirmation'))
@@ -71,22 +68,23 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-danger" id="submit" disabled> Trocar a senha </button>
+                        <button type="submit" class="btn btn-outline-danger" id="submitAcesso" disabled> Trocar a senha </button>
                     </form>
 
 
         </div>
-         <div class="col-md-6">
-                <h3 class="text-success">
-                        Informações Pessoais
-                </h3>
-                <form 
-                    onkeyup="verifica_submit('validate');" 
-                    method="POST" 
-                    action="{{ route('colaborador.update', $colaborador->id) }}" 
-                    enctype="multipart/form-data"
-                > {{ csrf_field() }} <input name="_method" type="hidden" value="PUT">
-        <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
+        @if( $id != 1 )
+        <div class="col-md-6">
+            <h3 class="text-success">
+                    Informações Pessoais
+            </h3>
+            <form 
+                onkeyup="verifica_submit('validate');" 
+                method="POST" 
+                action="{{ route('colaborador.update', $colaborador->id) }}" 
+                enctype="multipart/form-data"
+            > {{ csrf_field() }} <input name="_method" type="hidden" value="PUT">
+            <div id="carouselExampleControls" class="carousel slide" data-wrap="false" data-interval="100000">
                 <div class="carousel-inner" >
                     <div class="carousel-item active">
                         <div class="row">
@@ -318,7 +316,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" id="previous" role="button" data-slide="prev" style="right: 50%">
                 <i class="fa fa-arrow-left fa-lg text-success icon" aria-hidden="true"></i>
@@ -329,7 +327,14 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-         </div>
+        @endif
+    </div>
                 
         
 @endsection
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        total_slide = 2
+    });
+</script>

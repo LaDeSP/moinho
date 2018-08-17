@@ -46,16 +46,17 @@ class userController extends Controller
         $usuario = Role::find($role_user->role_id);
 
         $id = Auth::user()->id;
-
         $colaborador = Colaborador::where('user_id',$id)->first();
-        $pessoa = Pessoa::find($colaborador->pessoa_id);
-        $endereco = Endereco::find($pessoa->endereco_id);
-        $contato = Contato::find($pessoa->contato_id);
-        $user = User::find($colaborador->user_id);
-        $tipo = Role::all();
-
+        if( $id != 1 ){
+            $pessoa = Pessoa::find($colaborador->pessoa_id);
+            $endereco = Endereco::find($pessoa->endereco_id);
+            $contato = Contato::find($pessoa->contato_id);
+            $user = User::find($colaborador->user_id);
+            $tipo = Role::all();
+            return view('auth.passwords.reset', compact('user', 'role','usuario', 'tipo', 'colaborador', 'pessoa', 'endereco', 'contato', 'user', 'id'));
+        }
+        return view('auth.passwords.reset', compact('user', 'role', 'id', 'colaborador'));
         
-        return view('auth.passwords.reset', compact('user', 'role','usuario', 'tipo', 'colaborador', 'pessoa', 'endereco', 'contato', 'user'));
     }
 
     /**
@@ -72,9 +73,7 @@ class userController extends Controller
 
         $user->save();
 
-        return view('auth.passwords.reset', [
-            'message' => 'Senha alterada com sucesso'
-        ]);
+        return redirect()->back()->with('message', 'Alteração realizada com sucesso!');
     }
 
 
