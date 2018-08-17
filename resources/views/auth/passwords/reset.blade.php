@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div>
                             <button type="submit" class="btn btn-outline-danger" id="submit" disabled> Trocar a senha </button>
                         </div>
                     </form>
