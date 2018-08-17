@@ -4,7 +4,7 @@
 
             <div class="panel panel-default">
                 <h1 class="text-success">
-                    Trocar senha
+                Perfil                
                 </h1>
                 @if( isset($message) )
                     <h3 class="alert alert-success">
@@ -19,10 +19,11 @@
                 <form onkeyup="verifica_submit('validate');" class="form-horizontal col-md-12" method="POST" action="{{ route('colaborador.update', $colaborador->id) }}">
                         {{ csrf_field() }}
                         <input name="_method" type="hidden" value="PUT">
-
-                        <h3 class="text-success">
-                            Dados de Acesso
-                        </h3>
+                        <div class="col-md-10">
+                            <h3 class="text-success">
+                                Dados de Acesso
+                            </h3>
+                        </div>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             
                             <div class="col-md-10">
@@ -70,8 +71,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <button type="submit" class="btn btn-outline-danger" id="submit" disabled> Trocar a senha </button>
+                        <div class="col-md-10">
+                            <button type="submit" class="btn btn-outline-danger" id="submit" disabled> Trocar a senha </button>
+                        </div>
                     </form>
 
 
