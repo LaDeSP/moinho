@@ -127,9 +127,9 @@ use PHP\test;
             </form>
             <div class="col-md-10" >
                 <div class="row">
-                <table >
-                    <tr>
-                    <th> 
+                <table style="border:none;">
+                    <tr style="border:none;">
+                    <th style="border:none;"> 
                     <h3 class="text-danger"> Ocorrência associada </h3>
                <!-- Imprimir a ocorrência que resultou na advertência -->
                    <div class="row">
@@ -286,7 +286,7 @@ use PHP\test;
                 border-collapse: collapse;
                 margin-left: 120px;
                 margin-right: 50px;
-                padding: 25px 25px 25px 25px;
+                padding: 20px 25px 25px 25px;
             }
             p{
                 font-family: Arial, Helvetica, sans-serif;
