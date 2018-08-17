@@ -33,7 +33,7 @@ $data = str_replace("/","-",$data);
             <div class="col-md-6">
                 <!-- Data -->
                 <label for="exampleFormControlInput1"> <?php echo Lang::get('conteudo.dateRegistration'); ?>*</label>
-                <input type="date" name="data" size="23" id="data" class="form-control validate"
+                <input type="date" name="data" size="23" id="data" class="form-control validate is-valid"
                 value='{{ $data }}' onkeyup="verifica_vazio(this.value, this.id);">
             </div>
 
