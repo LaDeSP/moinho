@@ -149,7 +149,7 @@
                                     aria-hidden="true"
                                 ></i>
                             </a>
-                            {{ $value->nome }}, {{ Lang::get('conteudo.'.$hora[$materias->id]->dia_semana) }} - {{ $hora[$materias->id]->hora }}
+                            {{ $value->nome }}, {{ $hora[$materias->id]->dia_semana }} - {{ $hora[$materias->id]->hora }}
                         </div>
                         
                         <br>
