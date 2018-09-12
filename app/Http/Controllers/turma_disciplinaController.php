@@ -58,7 +58,7 @@ class turma_disciplinaController extends Controller
         }
         //$tamanho = $request->tamanho;
         $teste = $request->testando;
-        $teste = str_split($teste);
+        $teste = $this->split( str_split($teste) , ',');
         $tamanho = count($teste);
         $teste = array_diff($teste, [',']);
         $turma_disciplina_aux = $request->botao;
@@ -132,7 +132,7 @@ class turma_disciplinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $disciplinas = str_split($request->testando);
+        $disciplinas = $this->split( str_split($request->testando) , ',');
         $disciplinas = array_diff($disciplinas, [',']);
         $turma_disciplina = TurmaDisciplina::where('turma_id', $id)->get();
         foreach( $turma_disciplina as $index => $value ){
@@ -142,11 +142,13 @@ class turma_disciplinaController extends Controller
                 unset( $disciplinas[$this->indexOf($disciplinas, $value->id)] );
             }
         }
-        foreach( $disciplinas as $value ){
-            $formulario = new TurmaDisciplina;
-            $formulario->turma_id = $id;
-            $formulario->disciplina_id = $value;
-            $formulario->save(['timestamps' => false]);
+        if( $disciplinas[0] != '' ){
+            foreach( $disciplinas as $value ){
+                $formulario = new TurmaDisciplina;
+                $formulario->turma_id = $id;
+                $formulario->disciplina_id = $value;
+                $formulario->save(['timestamps' => false]);
+            }
         }
         return redirect()->back()->with('message', 'Turma alterada com sucesso');
     }
@@ -158,6 +160,20 @@ class turma_disciplinaController extends Controller
             }
         }
         return -1;
+    }
+
+    public function split($string, $comp){
+        $new_string = '';
+        foreach($string as $key => $char){
+            if($char == $comp){
+                $new_array[] = $new_string;
+                $new_string = '';
+            } else {
+                $new_string = $new_string.$char;
+            }
+        }
+        $new_array[] = $new_string;
+        return $new_array;
     }
 
     /**

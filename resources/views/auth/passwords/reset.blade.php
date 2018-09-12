@@ -41,7 +41,7 @@
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" >Senha</label>
 
-                            <div  onkeyup="confirmar_password(this.value, 'password', 'password-confirm');">
+                            <div  onkeyup="confirmar_password(this.value, 'passwordAcesso', 'password-confirm');">
                                 <input id="passwordAcesso" type="password" class="form-control validate" name="password" 
                                 onkeyup="verifica_password(this.value, this.id);" required>
 
@@ -58,7 +58,7 @@
                             <label for="password-confirm" >Confirme a senha</label>
                             <div >
                                 <input id="password-confirmAcesso" type="password" class="form-control validate" name="password_confirmation" 
-                                onkeyup="confirmar_password(this.value, 'password', this.id);" required>
+                                onkeyup="confirmar_password(this.value, 'passwordAcesso', this.id);" required>
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-outline-danger" id="submitAcesso" disabled> Trocar a senha </button>
+                            <button type="submit" class="btn btn-outline-danger" id="submit" disabled> Trocar a senha </button>
                         </div>
                     </form>
 
@@ -83,7 +83,7 @@
                         Informações Pessoais
                 </h3>
                 <form 
-                    onkeyup="verifica_submit('validate');" 
+                    onkeyup="verifica_submitPerfil('validateInfo');" 
                     method="POST" 
                     action="{{ route('colaborador.update', $colaborador->id) }}" 
                     enctype="multipart/form-data"
@@ -102,7 +102,7 @@
                                 value="{{ $pessoa->nome }}" 
                                 id="nome" 
                                 size="23" 
-                                class="form-control validate is-valid"
+                                class="form-control validateInfo is-valid"
                                 id="nome" 
                                 onkeyup="verifica_vazio(this.value, this.id);"
                             />
@@ -118,7 +118,7 @@
                                 name="data_nascimento" 
                                 value="{{ $pessoa->data_nascimento }}"
                                 size="20" 
-                                class="form-control validate is-valid"
+                                class="form-control validateInfo is-valid"
                                 id="data_nascimento" 
                                 onkeyup="verifica_vazio(this.value, this.id);"
                             />
@@ -136,7 +136,7 @@
                                 value="{{ $pessoa->cpf }}" 
                                 size="23" 
                                 maxlength="14" 
-                                class="form-control validate is-valid" 
+                                class="form-control validateInfo is-valid" 
                                 onkeyup="verifica_cpf(this.value, this.id);" 
                             />
                         </div>
@@ -148,7 +148,7 @@
                                 name="telefone" 
                                 value="{{ $contato->numero_fixo }}"
                                 size="23" 
-                                class="form-control is-valid validate" 
+                                class="form-control is-valid validateInfo" 
                                 onkeyup="verifica_telefone(this.value, this.id);" 
                                 id="telefone" 
                                 maxlength="15"
@@ -162,7 +162,7 @@
                                 name="celular1" 
                                 value="{{ $contato->celular1 }}"
                                 size="23" 
-                                class="form-control validate is-valid" 
+                                class="form-control validateInfo is-valid" 
                                 id="celular1" 
                                 onkeyup="verifica_telefone(this.value, this.id);" 
                                 maxlength="15"
@@ -196,7 +196,7 @@
                                             size="20" 
                                             maxlength="9"
                                             onkeyup="pesquisacep(this.value, this.id);" 
-                                            class="form-control validate is-valid" 
+                                            class="form-control validateInfo is-valid" 
                                         />
                                     </div>
                                     <div class="col-md-12">
@@ -209,7 +209,7 @@
                                             id="rua" 
                                             size="20" 
                                             onkeyup="verifica_vazio(this.value, this.id);" 
-                                            class="form-control validate is-valid"
+                                            class="form-control validateInfo is-valid"
                                         />
                                         <div class="invalid-feedback">
                                             Por favor, digite o nome da rua
@@ -225,7 +225,7 @@
                                             id="bairro" 
                                             size="20" 
                                             onkeyup="verifica_vazio(this.value, this.id);" 
-                                            class="form-control validate is-valid"
+                                            class="form-control validateInfo is-valid"
                                         />
                                         <div class="invalid-feedback">
                                             Por favor, digite o nome do bairro
@@ -270,7 +270,7 @@
                                             type="text" 
                                             id="cidade" 
                                             size="20" 
-                                            class="form-control validate is-valid"
+                                            class="form-control validateInfo is-valid"
                                             onkeyup="verifica_vazio(this.value, this.id);"
                                         />
                                         <div class="invalid-feedback">
@@ -286,7 +286,7 @@
                                             type="text" 
                                             id="uf" 
                                             size="20" 
-                                            class="form-control validate is-valid" 
+                                            class="form-control validateInfo is-valid" 
                                             onkeyup="verifica_vazio(this.value, this.id);"
                                         />
                                         <div class="invalid-feedback">
@@ -300,7 +300,7 @@
                                             type="text" 
                                             name="pais" 
                                             value="{{ $endereco->pais }}"
-                                            class="form-control validate is-valid"
+                                            class="form-control validateInfo is-valid"
                                             id="pais" 
                                             onkeyup="verifica_vazio(this.value, this.id);"
                                         />
@@ -316,7 +316,7 @@
                                     </select>
                                     
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-outline-success" id="submit"> Salvar </button>
+                            <button type="submit" class="btn btn-outline-success" id="validateInfo"> Salvar </button>
                         </div>
                     </form>
                     </div>
