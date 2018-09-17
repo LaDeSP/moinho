@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use File;
 use Carbon\Carbon;
 use App\Documento;
 use App\Documento_tipo;
@@ -155,8 +156,7 @@ class documentoController extends Controller
                         $doc->save();
                         $resp = $resp.'Sucesso ao alterar as infomações do documento de numero: '.( (string) $request->numero_documento[$key]).'. ';                        
                     }
-
-                    if( is_string($request->documento) != true ){
+                    if( is_string($request->documento) != true && isset($request->documento[$key])){
                         $documento = $request->documento[$key];
                         $imageName = $documento->getClientOriginalName();
                         $ext = explode( '.', $imageName );
@@ -184,9 +184,11 @@ class documentoController extends Controller
         }
         if( $request->excluir != null )
             foreach($request->excluir as $id_excluir){
-                Documento::find($id_excluir)->delete();
+                $documento = Documento::find($id_excluir);
+                File::delete( base_path() ."/public{$documento->url}");
+                $documento->delete();
             }
-        # dd($request->documento);
+        #dd($request->documento);
         #var_dump($request->excluir);
         return redirect()->back()->with('success', 'Alteração feita com sucesso. '.$resp);
     }

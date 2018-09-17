@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-md-11" id="file{{ $doc->id }}">
-                        <iframe src="{{ $doc->url }}" width="100%" height="500"></iframe>
+                        <iframe src="{{ getenv('APP_URL') }}{{ $doc->url }}" width="100%" height="500"></iframe>
                     </div>
                     <a onClick="moveDoc({{ $doc->id }}, 'remove')"> <i class="fa fa-trash fa-lg  text-danger" aria-hidden="true"></i> </a>
                 </div>
