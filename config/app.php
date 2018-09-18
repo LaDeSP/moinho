@@ -180,12 +180,6 @@ return [
         
         // Entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
-
-        /**
-         * Snappy PDF
-         * Export HTML to Pdf
-         */
-        Barryvdh\Snappy\ServiceProvider::class
     ],
 
     /*
