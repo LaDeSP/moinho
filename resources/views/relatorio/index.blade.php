@@ -92,7 +92,7 @@
                 $('#selects').empty();
                 $('#selects').append(select);
                 $('#list').append('<input name="id_report" class="col-md-3 form-control d-none" value="'+id+'" type="number"/>');                
-                $.get('/reports/'+id+'/column', function(data, status){
+                $.get(window.location.hostname+'/reports/'+id+'/column', function(data, status){
                     element = $('#column');
                     data.forEach(function(item, index){
                         element.append('<option value="'+item.id+'">'+item.nome+'</option>')
@@ -108,7 +108,7 @@
                 `;
                 $('#campos').empty();
                 $('#campos').append(select);
-                $.get('/reports/'+id+'/column', function(data, status){
+                $.get(window.location.hostname+'/reports/'+id+'/column', function(data, status){
                     element = $('#select');
                     data.forEach(function(item, index){
                         element.append('<option value="'+item.id+'">'+item.nome+'</option>')
@@ -138,7 +138,7 @@
                     </select>
                 `;
                 $('#selects').append(select);
-                $.get('/reports/'+id+'/condition', function(data, status){
+                $.get(window.location.hostname+'/reports/'+id+'/condition', function(data, status){
                     //console.log(data);
                     var input;
                     data.forEach(function(item, index){

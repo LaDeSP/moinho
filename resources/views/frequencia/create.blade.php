@@ -112,7 +112,7 @@ $data = str_replace("/","-",$data);
                   var turma_id = e.target.value;
 
                 console.log(turma_id);
-            $.get('/frequencia/ajaxDisciplina/' + turma_id ,function(data){
+            $.get(window.location.hostname+'/frequencia/ajaxDisciplina/' + turma_id ,function(data){
 
                 $('#disciplina').empty();
                 $('#disciplina').append('<option value="0" disable="true" selected="true"> </option>');
@@ -155,7 +155,7 @@ $data = str_replace("/","-",$data);
 
             console.log("/frequencia/ajaxVerifica/"+turma+disciplina+data);
             //antes de gerar a lista, precisamos validar se já existe lançamento
-            $.get('/frequencia/ajaxVerifica/'+ turma +'/'+disciplina+'/'+ data ,function(data){            
+            $.get(window.location.hostname+'/frequencia/ajaxVerifica/'+ turma +'/'+disciplina+'/'+ data ,function(data){            
                 console.log(data)
                 if(data == 1) //imprime quando a consulta retorna vazio
                     console.log("NOVO LANÇAMENTO");
@@ -189,7 +189,7 @@ $data = str_replace("/","-",$data);
                         e.preventDefault();
                                         $('#formRecebimento').empty();
 
-                        $.get('/frequencia/ajaxParticipantes/' + turma + disciplina ,function(data){
+                        $.get(window.location.hostname+'/frequencia/ajaxParticipantes/' + turma + disciplina ,function(data){
 
                             $.each(data, function(index, frequencia){
 
