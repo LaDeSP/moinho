@@ -71,7 +71,7 @@ Route::group(['middleware' => ['auth']], function () {//trocar web pra auth quan
     Route::get('/advertencia/remove/{id}', 'AdvertenciaController@remove');
 
     Route::get('frequencia/ajaxDisciplina/{id}', 'frequenciaController@ajaxDisciplina');
-    Route::get('frequencia/ajaxParticipantes/{turma}{disciplina}', 'frequenciaController@ajaxParticipantes');
+    Route::get('frequencia/ajaxParticipantes/{turma}/{disciplina}', 'frequenciaController@ajaxParticipantes');
     Route::get('frequencia/ajaxVerifica/{turma}/{disciplina}/{data}', 'frequenciaController@ajaxVerifica');
 
     Route::get('frequencia/post', 'frequenciaController@post');

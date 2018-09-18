@@ -160,10 +160,9 @@ $data = str_replace("/","-",$data);
                 if(data == 1) //imprime quando a consulta retorna vazio
                     console.log("NOVO LANÇAMENTO");
                 else{
-                    
                     console.log("Já existe consulta, vai para view editar");
                     console.log(data[0].frequencia_id);
-                    window.location.href = "/frequencia/"+data[0].frequencia_id+"/edit";
+                    window.location.href = "{{ getenv('APP_URL') }}/frequencia/"+data[0].frequencia_id+"/edit";
                 }
             });
     }
@@ -189,7 +188,7 @@ $data = str_replace("/","-",$data);
                         e.preventDefault();
                                         $('#formRecebimento').empty();
 
-                        $.get('{{ getenv('APP_URL') }}/frequencia/ajaxParticipantes/' + turma + disciplina ,function(data){
+                        $.get('{{ getenv('APP_URL') }}/frequencia/ajaxParticipantes/' + turma +'/'+ disciplina ,function(data){
 
                             $.each(data, function(index, frequencia){
 
