@@ -130,14 +130,13 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 1*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 1</label>
                             <input 
                                 type="date" 
                                 name="data_nascimentoPai" 
                                 value="{{ $responsavel1->data_nascimento }}"
-                                class="form-control validate"
+                                class="form-control"
                                 id="data_nascimentoPai" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
                                 disabled
                             />
                             <div class="invalid-feedback">
@@ -169,7 +168,7 @@ use PHP\test;
                                 name="nomeMae" 
                                 type="text" 
                                 id="nomeMae" 
-                                value="{{ $responsavel2->nome }}" 
+                                value="{{ $responsavel2 ? $responsavel2->nome : '' }}" 
                                 size="23" 
                                 class="form-control validate" 
                                 onkeyup="verifica_vazio(this.value, this.id);"
@@ -185,7 +184,7 @@ use PHP\test;
                             <input 
                                 type="date" 
                                 name="data_nascimentoMae"
-                                value="{{ $responsavel2->data_nascimento }}"
+                                value="{{ $responsavel2 ? $responsavel2->data_nascimento : '' }}"
                                 class="form-control validate"
                                 id="data_nascimentoMae" 
                                 onkeyup="verifica_vazio(this.value, this.id);"
@@ -197,10 +196,10 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?> 2*</label>
                             <input 
                                 name="cpfMae" 
-                                value="{{ $responsavel2->cpf }}"
+                                value="{{ $responsavel2 ? $responsavel2->cpf : '' }}"
                                 type="text" 
                                 size="23" 
                                 maxlength="11" 
@@ -640,15 +639,14 @@ use PHP\test;
                         </div>
                         <!-- Email -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1">Email*</label>
+                            <label for="exampleFormControlInput1">Email</label>
                             <input 
                                 type="text" 
                                 name="email" 
                                 value="{{ $contato->email }}"
                                 size="23" 
-                                class="form-control validate"
+                                class="form-control"
                                 id="email" 
-                                onkeyup="verifica_email(this.value, this.id);"
                                 disabled
                             />
                         </div>

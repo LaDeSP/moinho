@@ -85,21 +85,6 @@ class dados_inscricaoController extends Controller
         $telefone->email = $request->email;
         $telefone->save(['timestamps' => false]);
         
-        //Pessoa
-        $person->nome = $request->nome;
-        $person->cpf = $request->cpf;
-        $person->data_nascimento = $request->data_nascimento;
-        
-        //Pessoa - Responsavel
-        $pai->nome = $request->nomePai;
-        $pai->cpf = $request->cpfPai;
-        $pai->data_nascimento = $request->data_nascimentoPai;
-        
-        //Pessoa - Responsavel 2
-        $mae->nome = $request->nomeMae;
-        $mae->cpf = $request->cpfMae;
-        $mae->data_nascimento = $request->data_nascimentoMae;
-        
         //Endereço
         $ende->rua = $request->rua;
         $ende->bairro = $request->bairro;
@@ -111,22 +96,41 @@ class dados_inscricaoController extends Controller
         $ende->pais = $request->pais;
         $ende->save(['timestamps' => false]);
 
-        //Chaves estrangeiras - Pessoa
-        $person->endereco()->associate($ende);
-        $person->contato()->associate($telefone);
-
-        //Chaves estrangeiras - Responsavel 2
-        $mae->endereco()->associate($ende);
-        $mae->contato()->associate($telefone);
+        //Pessoa - Responsavel
+        $pai->nome = $request->nomePai;
+        $pai->cpf = $request->cpfPai;
+        $pai->data_nascimento = $request->data_nascimentoPai;
 
         //Chaves estrangeiras - Responsavel 1
         $pai->endereco()->associate($ende);
         $pai->contato()->associate($telefone);
+        $pai->save(['timestamps' => false]);
+        
+        //Pessoa - Responsavel 2
+        if($request->nomeMae !== null){
+            $mae->nome = $request->nomeMae;
+            $mae->cpf = $request->cpfMae;
+            $mae->data_nascimento = $request->data_nascimentoMae;
+
+            //Chaves estrangeiras - Responsavel 2
+            $mae->endereco()->associate($ende);
+            $mae->contato()->associate($telefone);
+            $mae->save(['timestamps' => false]);
+        }
+
+        //Pessoa
+        $person->nome = $request->nome;
+        $person->cpf = $request->cpf;
+        $person->data_nascimento = $request->data_nascimento;
+
+        //Chaves estrangeiras - Pessoa
+        $person->endereco()->associate($ende);
+        $person->contato()->associate($telefone);
 
         //Criando os registros
         $person->save(['timestamps' => false]);
-        $pai->save(['timestamps' => false]);
-        $mae->save(['timestamps' => false]);
+        
+        
 
         //Criar os dados inscrição
         $formulario->turno = $request->turno;
@@ -215,10 +219,13 @@ class dados_inscricaoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $dadosInscricao = DadosInscricao::findOrFail($id);
         $person = Pessoa::findOrFail($dadosInscricao->dados_pessoais_id);
         $pai = Pessoa::findOrFail($dadosInscricao->responsavel1_id);
-        $mae = Pessoa::findOrFail($dadosInscricao->responsavel2_id);
+        if($dadosInscricao->responsavel2_id !== null){
+            $mae = Pessoa::findOrFail($dadosInscricao->responsavel2_id);
+        }
         $ende = Endereco::findOrFail($person->endereco_id);
         $insc = Inscricao::findOrFail($dadosInscricao->id);
         $contato = Contato::findOrFail($person->contato_id);
@@ -242,9 +249,25 @@ class dados_inscricaoController extends Controller
         $pai->data_nascimento = $request->data_nascimentoPai;
         
         //Pessoa - Responsavel 2
-        $mae->nome = $request->nomeMae;
-        $mae->cpf = $request->cpfMae;
-        $mae->data_nascimento = $request->data_nascimentoMae;
+        if($dadosInscricao->responsavel2_id !== null){
+            $mae->nome = $request->nomeMae;
+            $mae->cpf = $request->cpfMae;
+            $mae->data_nascimento = $request->data_nascimentoMae;
+
+            $mae->save(['timestamps' => false]);
+        } else {
+            $mae = new Pessoa;
+            if($request->nomeMae !== null){
+                $mae->nome = $request->nomeMae;
+                $mae->cpf = $request->cpfMae;
+                $mae->data_nascimento = $request->data_nascimentoMae;
+
+                //Chaves estrangeiras - Responsavel 2
+                $mae->endereco()->associate($ende);
+                $mae->contato()->associate($contato);
+                $mae->save(['timestamps' => false]);
+            }
+        }
         
         //Endereço
         $ende->rua = $request->rua;
@@ -260,7 +283,6 @@ class dados_inscricaoController extends Controller
         //Criando os registros
         $person->save(['timestamps' => false]);
         $pai->save(['timestamps' => false]);
-        $mae->save(['timestamps' => false]);
 
         //Criar os dados inscrição
         $dadosInscricao->turno = $request->turno;
@@ -275,6 +297,10 @@ class dados_inscricaoController extends Controller
         $dadosInscricao->beneficio_social = $request->beneficio_social;
         $dadosInscricao->serie = $request->serie;
         $dadosInscricao->escola_id = $request->escola;
+
+        if($request->nomeMae !== null){
+            $dadosInscricao->responsavel2()->associate($mae);
+        }
        
 
 

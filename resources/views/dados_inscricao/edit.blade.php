@@ -121,14 +121,13 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 1*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 1</label>
                             <input 
                                 type="date" 
                                 name="data_nascimentoPai" 
                                 value="{{ $responsavel1->data_nascimento }}"
-                                class="form-control validate is-valid"
+                                class="form-control"
                                 id="data_nascimentoPai" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
                             />
                             <div class="invalid-feedback">
                                 Por favor, digite a data de nascimento do responsavel 1
@@ -153,15 +152,14 @@ use PHP\test;
                         <!-- Dados Responsável 2 -->
                         <div class="col-md-4">
                             <!-- Nome Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?> 2*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?> 2</label>
                             <input 
                                 name="nomeMae" 
                                 type="text" 
                                 id="nomeMae" 
-                                value="{{ $responsavel2->nome }}" 
+                                value="{{ $responsavel2 ? $responsavel2->nome : '' }}" 
                                 size="23" 
-                                class="form-control validate is-valid" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
+                                class="form-control" 
                             />
                             <div class="invalid-feedback">
                                 Por favor, digite o nome do responsavel 2
@@ -169,14 +167,13 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 2*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 2</label>
                             <input 
                                 type="date" 
                                 name="data_nascimentoMae"
-                                value="{{ $responsavel2->data_nascimento }}"
-                                class="form-control validate is-valid"
+                                value="{{ $responsavel2 ? $responsavel2->data_nascimento : '' }}"
+                                class="form-control"
                                 id="data_nascimentoMae" 
-                                onkeyup="verifica_vazio(this.value, this.id);"
                             />
                             <div class="invalid-feedback">
                                 Por favor, digite a data de nascimento do responsavel 2
@@ -184,16 +181,15 @@ use PHP\test;
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?> 2</label>
                             <input 
                                 name="cpfMae" 
-                                value="{{ $responsavel2->cpf }}"
+                                value="{{ $responsavel2 ? $responsavel2->cpf : '' }}"
                                 type="text" 
                                 size="23" 
                                 maxlength="11" 
-                                class="form-control validate is-valid" 
+                                class="form-control" 
                                 id="cpfMae" 
-                                onkeyup="verifica_cpf(this.value, this.id);"
                             />
                         </div>
 
@@ -419,7 +415,7 @@ use PHP\test;
                         </div>
                         <!-- Observações -->
                         <div class="col-md-12">
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?>*</label>
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.observation');?></label>
                             <textarea 
                                 class="form-control"
                                 name="observacoes" 
@@ -600,15 +596,14 @@ use PHP\test;
                         </div>
                         <!-- Email -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1">Email*</label>
+                            <label for="exampleFormControlInput1">Email</label>
                             <input 
                                 type="text" 
                                 name="email" 
                                 value="{{ $contato->email }}"
                                 size="23" 
-                                class="form-control validate is-valid"
+                                class="form-control"
                                 id="email" 
-                                onkeyup="verifica_email(this.value, this.id);"
                             />
                         </div>
 

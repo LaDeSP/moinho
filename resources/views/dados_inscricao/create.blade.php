@@ -104,9 +104,8 @@ $data = str_replace("/","-",$data);
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 1*</label>
-                            <input type="date" name="data_nascimentoPai" class="form-control validate"
-                            id="data_nascimentoPai" onkeyup="verifica_vazio(this.value, this.id);">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 1</label>
+                            <input type="date" name="data_nascimentoPai" class="form-control" id="data_nascimentoPai">
                             <div class="invalid-feedback">
                                 Por favor, digite a data de nascimento do responsavel 1
                             </div>
@@ -122,27 +121,25 @@ $data = str_replace("/","-",$data);
                         <!-- Dados Responsável 2 -->
                         <div class="col-md-4">
                             <!-- Nome Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?> 2*</label>
-                            <input name="nomeMae" type="text" id="nomeMae" value="" size="23" class="form-control validate" 
-                            onkeyup="verifica_vazio(this.value, this.id);">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleName');?> 2</label>
+                            <input name="nomeMae" type="text" id="nomeMae" value="" size="23" class="form-control">
                             <div class="invalid-feedback">
                                 Por favor, digite o nome do responsavel 2
                             </div>
                         </div>
                         <div class="col-md-4">
                             <!-- Data Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 2*</label>
-                            <input type="date" name="data_nascimentoMae" class="form-control validate"
-                            id="data_nascimentoMae" onkeyup="verifica_vazio(this.value, this.id);">
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.responsibleBirth');?> 2</label>
+                            <input type="date" name="data_nascimentoMae" class="form-control" id="data_nascimentoMae">
                             <div class="invalid-feedback">
                                 Por favor, digite a data de nascimento do responsavel 2
                             </div>
                         </div>
                         <div class="col-md-4">
                             <!-- CPF Responsável 2 -->
-                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?>*</label>
-                            <input name="cpfMae" type="text" size="23" maxlength="11" class="form-control validate" 
-                            id="cpfMae" onkeyup="verifica_cpf(this.value, this.id);" />
+                            <label for="exampleFormControlInput1"><?php echo Lang::get('conteudo.cpfResponsible');?>2</label>
+                            <input name="cpfMae" type="text" size="23" maxlength="11" class="form-control" 
+                            id="cpfMae" />
                         </div>
 
                         
@@ -368,9 +365,8 @@ $data = str_replace("/","-",$data);
                         </div>
                         <!-- Email -->
                         <div class="col-md-4">
-                            <label for="exampleFormControlInput1">Email*</label>
-                            <input type="text" name="email" size="23" class="form-control validate"
-                            id="email" onkeyup="verifica_email(this.value, this.id);">
+                            <label for="exampleFormControlInput1">Email</label>
+                            <input type="text" name="email" size="23" class="form-control" id="email">
                         </div>
 
                         <!-- Submit -->
