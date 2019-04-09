@@ -29,7 +29,7 @@
                     <!-- Dados Inscrição - Arquivo -->
                     <div class="col-md-3">
                         <!-- Numero do Documento -->
-                        <label for="exampleFormControlInput1">Número*</label>
+                        <label for="exampleFormControlInput1">Número</label>
                         <input 
                             type="text" 
                             name="numero_documento[]" 
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-11">
                         <!-- Anotação -->
-                        <label for="exampleFormControlInput1">Anotação*</label>
+                        <label for="exampleFormControlInput1">Anotação</label>
                         <input 
                             type="text" 
                             name="comentario[]" 
@@ -91,7 +91,7 @@
                 <input type="number" class="d-none" name="id[]" value="0" ></input>
                 <div class="col-md-3">
                     <!-- Numero do Documento -->
-                    <label for="exampleFormControlInput1">Número*</label>
+                    <label for="exampleFormControlInput1">Número</label>
                     <input 
                         type="text" 
                         name="numero_documento[]" 
@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-md-11">
                     <!-- Anotação -->
-                    <label for="exampleFormControlInput1">Anotação*</label>
+                    <label for="exampleFormControlInput1">Anotação</label>
                     <input 
                         type="text" 
                         name="comentario[]" 

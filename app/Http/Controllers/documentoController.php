@@ -111,7 +111,7 @@ class documentoController extends Controller
         foreach($request->id as $key => $entrada){
             if( $entrada == 0 || $entrada == null ){
                 echo 'Novo ';
-                if( $request->comentario[$key] == null || $request->doc_type[$key] == null || $request->numero_documento[$key] == null || is_string($request->documento) == true ){
+                if( $request->doc_type[$key] == null || is_string($request->documento) == true ){
                     echo 'Informações faltando ';
                     $resp = $resp.'O documento de numero: '.( (string) $request->numero_documento[$key]).' está faltando informações. ';
                 } else {
@@ -147,7 +147,7 @@ class documentoController extends Controller
             else{
                 if( $this->exists($request->excluir, $entrada) == false ){
                     $doc = Documento::find($entrada);
-                    if( $request->comentario[$key] == null || $request->doc_type[$key] == null || $request->numero_documento[$key] == null){
+                    if( $request->doc_type[$key] == null){
                         $resp = $resp.'Erro ao alterar as infomações do documento de numero: '.( (string) $request->numero_documento[$key]).', Informações faltando. ';                        
                     } else {
                         $doc->documento_numero = $request->numero_documento[$key];

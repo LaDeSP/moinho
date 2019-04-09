@@ -15,7 +15,7 @@
             <!-- Dados Inscrição - Arquivo -->
                 <div class="col-md-3">
                     <!-- Numero do Documento -->
-                    <label for="exampleFormControlInput1">Número*</label>
+                    <label for="exampleFormControlInput1">Número</label>
                     <input type="text" name="numero_documento[]" size="23" value="" id="numero_documento" class="form-control">
                     <div class="invalid-feedback">
                         Por favor, digite o numero do documento
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-md-11">
                     <!-- Anotação -->
-                    <label for="exampleFormControlInput1">Anotação*</label>
+                    <label for="exampleFormControlInput1">Anotação</label>
                     <input type="text" name="comentario[]" size="23" value="" id="comentario" class="form-control">
                     <div class="invalid-feedback">
                         Por favor, digite alguma anotação
